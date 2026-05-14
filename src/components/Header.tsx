@@ -76,7 +76,7 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     gsap.set(headerRef.current, { yPercent: -100, opacity: 0 });
 

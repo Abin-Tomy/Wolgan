@@ -108,7 +108,7 @@ export function Hero() {
             Delivering smart, reliable, and performance-driven systems
             <span className="block mt-2">across Qatar, UAE, and India.</span>
           </p>
-          <h3 className="mt-10 text-2xl font-serif italic text-white/90 tracking-tight relative -translate-x-3">
+          <h3 className="mt-10 text-2xl font-montserrat font-normal text-white/90 tracking-tight relative -translate-x-3">
             Pure Performance Delivered
           </h3>
           <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8 relative -translate-x-3">

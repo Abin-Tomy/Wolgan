@@ -1,19 +1,13 @@
 "use client";
 import { useEffect } from "react";
-import Lenis from "lenis";
+import { createLenis, destroyLenis, getLenis } from "@/lib/lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.4,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
+    const lenis = createLenis();
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -25,7 +19,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     return () => {
       gsap.ticker.remove(raf);
-      lenis.destroy();
+      destroyLenis();
     };
   }, []);
 
