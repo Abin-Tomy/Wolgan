@@ -8,7 +8,8 @@ type ButtonVariant =
   | "heroContactCta"
   | "primaryBrand"
   | "mobileMenu"
-  | "navLink";
+  | "navLink"
+  | "outline";
 
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
@@ -31,6 +32,8 @@ const variantStyles: Record<ButtonVariant, string> = {
   mobileMenu: "md:hidden text-white p-2",
   navLink:
     "flex items-center gap-3 px-5 py-3 text-sm text-white/75 hover:text-white hover:bg-white/5 transition-colors duration-150 group",
+  outline:
+    "inline-flex items-center justify-center border border-current transition-all duration-300",
 };
 
 const Button = React.forwardRef<

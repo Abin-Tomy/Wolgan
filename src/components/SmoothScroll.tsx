@@ -9,6 +9,24 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = createLenis();
 
+    // Connect ScrollTrigger to Lenis via scrollerProxy
+    ScrollTrigger.scrollerProxy(document.body, {
+      scrollTop(value) {
+        if (arguments.length) {
+          lenis.scrollTo(value as number, { immediate: true });
+        }
+        return lenis.scroll;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+    });
+
     lenis.on("scroll", ScrollTrigger.update);
 
     const raf = (time: number) => {
@@ -16,6 +34,8 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     };
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
+
+    ScrollTrigger.refresh();
 
     return () => {
       gsap.ticker.remove(raf);

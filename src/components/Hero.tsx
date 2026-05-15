@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
-import wolganLogo from "@/assets/Wolgan-logo.png";
+import wolganLogo from "@/assets/images/brand/Wolgan-logo.png";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Typography } from "@/components/ui/Typography";
 
 // Wave SVG path
 const waveSvgPath =
@@ -14,6 +15,18 @@ export function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Counter-scroll the video to make it feel 'fixed' only while in the Hero
+      gsap.to(".hero-video-container", {
+        y: () => window.innerHeight * 0.8, // Adjust speed for a slight parallax + stationary feel
+        ease: "none",
+        scrollTrigger: {
+          trigger: rootRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
       // Wolgan text rises slowly + scales as you scroll
       gsap.to(".hero-wolgan", {
         yPercent: -25,
@@ -50,25 +63,27 @@ export function Hero() {
     <section
       ref={rootRef}
       className="relative h-screen w-full overflow-hidden"
-      style={{ backgroundColor: "#0A1F3C" }}
+      style={{ backgroundColor: "var(--brand-navy)" }}
     >
       {/* Dark scene with organic wave bottom */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundColor: "#1E7C9E",
+          backgroundColor: "var(--brand-navy)",
         }}
       >
-        {/* Cinematic Background Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="fixed inset-0 h-[100svh] w-full object-cover"
-        >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-        </video>
+        {/* Cinematic Background Video Container */}
+        <div className="hero-video-container absolute inset-0 w-full h-full overflow-hidden">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src="/videos/hero-video.mp4" type="video/mp4" />
+          </video>
+        </div>
 
         {/* Organic wave shape at bottom */}
         <svg
@@ -77,16 +92,16 @@ export function Hero() {
           preserveAspectRatio="none"
           style={{ transform: "scaleX(-1)" }}
         >
-          <path d={waveSvgPath} fill="#0A1F3C" />
+          <path d={waveSvgPath} fill="var(--brand-navy)" />
         </svg>
 
         <div
           className="absolute inset-x-0 bottom-0 h-[24vh]"
-          style={{ backgroundColor: "#0A1F3C" }}
+          style={{ backgroundColor: "var(--brand-navy)" }}
         />
 
         {/* WOLGAN — Logo image with mix-blend and animation class */}
-        <div className="absolute inset-0 flex items-center justify-center -translate-y-24 -translate-x-4 pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center -translate-y-24 pointer-events-none">
           <Image
             src={wolganLogo}
             alt="Wolgan Logo"
@@ -101,17 +116,21 @@ export function Hero() {
 
         {/* Subtle tagline */}
         <div className="hero-tag absolute bottom-[10%] left-1/2 -translate-x-1/2 text-center w-max max-w-[90vw]">
-          <p
-            className="text-[13px] uppercase tracking-[0.4em] relative"
-            style={{ color: "#ffffff", opacity: 0.7 }}
+          <Typography
+            variant="tagline"
+            as="p"
+            className="text-white relative"
           >
             Delivering smart, reliable, and performance-driven systems
             <span className="block mt-2">across Qatar, UAE, and India.</span>
-          </p>
-          <h3 className="mt-10 text-2xl font-montserrat font-normal text-white/90 tracking-tight relative -translate-x-3">
+          </Typography>
+          <Typography
+            variant="h3"
+            className="mt-10 text-white/90 relative"
+          >
             Pure Performance Delivered
-          </h3>
-          <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8 relative -translate-x-3">
+          </Typography>
+          <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8 relative">
             <Button
               variant="heroServicesCta"
               href="#services"

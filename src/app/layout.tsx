@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
-import "./globals.css";
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+import { montserrat } from "@/lib/fonts";
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"), //change after new domain is ready
+  // Current domain is wolgan.qa, but wolgan.co is the future target production domain
+  metadataBase: new URL("https://www.wolgan.co"),
 
   title: "Wolgan | Pure Performance Delivered",
 
@@ -32,7 +27,7 @@ export const metadata: Metadata = {
     description:
       "Delivering smart, reliable, and performance-driven water treatment systems across Qatar, UAE, and India.",
 
-    url: "https://example.com", //change after new domain is ready
+    url: "https://www.wolgan.co",
 
     siteName: "Wolgan",
 
@@ -76,9 +71,9 @@ export default function RootLayout({
 
               name: "Wolgan",
 
-              url: "https://example.com",
+              url: "https://www.wolgan.co",
 
-              logo: "https://example.com/logo.png",
+              logo: "https://www.wolgan.co/images/brand/logo.png",
 
               description:
                 "Dedicated water treatment company delivering smart, reliable, and performance-driven systems across Qatar, UAE, and India.",
