@@ -71,13 +71,13 @@ export function PortalAbout() {
       // Without this, Phase 3 animates xPercent 0→-50 causing a visible snap.
       gsap.set(textRef.current, { xPercent: -50, yPercent: -50 });
 
-      /* ── Extended timeline: 1200% for maximum smoothness ── */
+      /* ── Extended timeline: 1000% for deliberate pacing ── */
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: rootRef.current,
           start: "top top",
-          end: "+=350%",
-          scrub: 1, // More responsive
+          end: "+=1200%",
+          scrub: 1,
           pin: true,
           anticipatePin: 1,
         },
@@ -99,15 +99,15 @@ export function PortalAbout() {
         .to(logoRef.current, { scale: 8, opacity: 0, ease: "power2.in" }, 0)
         .to(veilContentRef.current, { opacity: 0, scale: 0.95, ease: "power2.inOut" }, 0)
 
-        /* ── Phase 2 (0.35 → 0.55): text fades in centred ── */
+        /* ── Phase 2 (0.25 → 0.45): text fades in centred ── */
         .from(
           textRef.current,
           // Use yPercent instead of 'y' to keep everything in the transform matrix
           { opacity: 0, yPercent: 20, force3D: true, ease: "power2.out" },
-          0.35,
+          0.25,
         )
 
-        /* ── Phase 3 (0.55 → 1.0): "Card Deck" Fan Unfolds ── */
+        /* ── Phase 3 (0.45 → 1.5): "Card Deck" Fan Unfolds ── */
         .to(
           imgWrapRef.current,
           {
@@ -123,7 +123,7 @@ export function PortalAbout() {
             boxShadow: "0 0 0 1px rgba(10, 31, 60, 0.1)",
             ease: "power3.inOut",
           },
-          0.55,
+          0.45,
         )
         // Card 2
         .fromTo(
@@ -143,7 +143,7 @@ export function PortalAbout() {
             boxShadow: "0 0 0 1px rgba(10, 31, 60, 0.1)",
             ease: "power3.out",
           },
-          0.6,
+          0.65,
         )
         // Card 3
         .fromTo(
@@ -163,7 +163,7 @@ export function PortalAbout() {
             boxShadow: "0 0 0 1px rgba(10, 31, 60, 0.1)",
             ease: "power3.out",
           },
-          0.65,
+          0.85,
         )
         // Card 4
         .fromTo(
@@ -183,7 +183,7 @@ export function PortalAbout() {
             boxShadow: "0 0 0 1px rgba(10, 31, 60, 0.1)",
             ease: "power3.out",
           },
-          0.7,
+          1.05,
         )
         // Glassmorphic Stat Card positioned at the bottom-left of the right container
         .fromTo(
@@ -198,14 +198,14 @@ export function PortalAbout() {
             top: "78%",
             ease: "back.out(1.7)",
           },
-          0.8,
+          1.2,
         )
 
         // SVG Path Morphs
-        .to(path1Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.55)
-        .to(path2Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.6)
-        .to(path3Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.65)
-        .to(path4Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.7)
+        .to(path1Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.45)
+        .to(path2Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.65)
+        .to(path3Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.85)
+        .to(path4Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 1.05)
 
         // Move text anchor to the LEFT (perfectly aligned with maximum breathing room)
         .to(
@@ -221,15 +221,15 @@ export function PortalAbout() {
             force3D: true,
             ease: "power3.inOut",
           },
-          0.55,
+          0.45,
         )
 
-        /* ── Phase 4 (1.0 → 1.4): Parallax Float ── */
-        .to(imgWrapRef.current, { yPercent: -54, rotation: 0, ease: "none" }, 1.0)
-        .to(img2Ref.current, { yPercent: -54, rotation: 0, ease: "none" }, 1.0)
-        .to(img3Ref.current, { yPercent: -54, rotation: 0, ease: "none" }, 1.0)
-        .to(img4Ref.current, { yPercent: -54, rotation: 0, ease: "none" }, 1.0)
-        .to(statCardRef.current, { y: -60, x: -10, rotation: 0, ease: "none" }, 1.0)
+        /* ── Phase 4 (1.5 → 2.0): Parallax Float ── */
+        .to(imgWrapRef.current, { yPercent: -54, rotation: 0, ease: "none" }, 1.5)
+        .to(img2Ref.current, { yPercent: -54, rotation: 0, ease: "none" }, 1.5)
+        .to(img3Ref.current, { yPercent: -54, rotation: 0, ease: "none" }, 1.5)
+        .to(img4Ref.current, { yPercent: -54, rotation: 0, ease: "none" }, 1.5)
+        .to(statCardRef.current, { y: -60, x: -10, rotation: 0, ease: "none" }, 1.5)
         
         .to(
           textRef.current,
@@ -240,12 +240,12 @@ export function PortalAbout() {
             transformOrigin: "left top",
             ease: "power3.inOut",
           },
-          1.0,
+          1.5,
         )
         .to(
           introParaRef.current,
           { opacity: 0, y: -20, pointerEvents: "none", ease: "power3.inOut" },
-          1.0
+          1.5
         )
         .fromTo(
           detailRef.current,
@@ -255,26 +255,25 @@ export function PortalAbout() {
             y: 0,
             ease: "power3.out",
           },
-          1.1,
+          1.6,
         )
 
-        /* ── Phase 5 (1.5 → 2.5): The Deep Portal Transition (TEMPORARILY DISABLED) ── */
-        /*
+        /* ── Phase 5 (2.0 → 3.5): The Deep Portal Transition ── */
         // 1. Fade the whole background to Deep Navy
-        .to(rootRef.current, { backgroundColor: "#0A1F3C", duration: 1 }, 1.5)
+        .to(rootRef.current, { backgroundColor: "#0A1F3C", duration: 1 }, 2.0)
         
         .to([textRef.current, detailRef.current, statCardRef.current], { 
           opacity: 0, 
           y: -100, 
           stagger: 0.1,
           ease: "expo.inOut" 
-        }, 1.5)
+        }, 2.0)
 
         // Reveal "Our Services" Heading in White
         .fromTo(".services-main-title", 
           { y: 100, opacity: 0 },
           { y: 0, opacity: 1, ease: "expo.out", color: "#ffffff" },
-          1.8
+          2.3
         )
 
         // Consolidate cards into a central vertical deck
@@ -286,14 +285,14 @@ export function PortalAbout() {
           rotation: 0,
           width: "14vw",
           height: "22vw",
-          borderRadius: "999px", // Solid pill shape
+          borderRadius: "999px",
           border: "2px solid rgba(255,255,255,0.2)",
           stagger: { each: 0.05, from: "end" },
           ease: "expo.inOut",
-        }, 1.8)
+        }, 2.3)
 
-        // Phase 6 (2.5 → 10.0): The Biker Arc Cycle
-        .addLabel("servicesStart", 2.5)
+        // Phase 6 (3.5 → 13.5): The Arc Cycle
+        .addLabel("servicesStart", 3.5)
 
         // Fade in the Glowing Arc Line
         .to(".service-arc-path", { strokeDashoffset: 0, opacity: 1, duration: 1.5, ease: "power2.inOut" }, "servicesStart");
@@ -309,9 +308,9 @@ export function PortalAbout() {
         ];
 
         SERVICES_DATA.forEach((_, i) => {
-          const startTime = 2.5 + i * 2.5;
+          const startTime = 3.5 + i * 2.5;
 
-          // 1. Activate Central Pill (Reduced Size)
+          // 1. Activate Central Pill
           tl.to(cardsArr[i], {
             left: "50%",
             top: "50%",
@@ -322,7 +321,7 @@ export function PortalAbout() {
             zIndex: 500,
             width: "18vw",
             height: "28vw",
-            borderRadius: "999px", // Hard-locked pill shape
+            borderRadius: "999px",
             border: "2px solid #ff7e33", 
             ease: "expo.inOut",
             duration: 1.5
@@ -341,11 +340,11 @@ export function PortalAbout() {
           );
           tl.to(`.service-details-${i}`, { opacity: 1, duration: 1 }, startTime + 0.8);
 
-          // 3. Move other cards to Deep Arc (Reduced Size)
+          // 3. Move other cards to Deep Arc
           cardsArr.forEach((otherCard, j) => {
             if (i === j) return;
             
-            let posIdx = j < i ? j : j - 1;
+            const posIdx = j < i ? j : j - 1;
             const pos = arcPositions[posIdx];
 
             tl.to(otherCard, {
@@ -356,7 +355,7 @@ export function PortalAbout() {
               zIndex: 100 - Math.abs(pos.x),
               width: "12vw",
               height: "12vw",
-              borderRadius: "999px", // Locked circle/pill shape
+              borderRadius: "999px",
               border: "1px solid rgba(255,255,255,0.3)",
               ease: "expo.inOut",
               duration: 1.5
@@ -372,7 +371,6 @@ export function PortalAbout() {
             }, startTime + 2.2);
           }
         });
-        */
     }, rootRef);
 
     return () => ctx.revert();
@@ -446,8 +444,7 @@ export function PortalAbout() {
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      {/* ── Services Section Overlay (TEMPORARILY DISABLED) ── */}
-      {/*
+      {/* ── Services Section Overlay ── */}
       <div className="absolute inset-0 pointer-events-none z-[100]">
         <div className="services-main-title absolute top-12 left-1/2 -translate-x-1/2 text-center opacity-0">
           <p className="text-[10px] uppercase tracking-[0.6em] font-bold text-white opacity-30 mb-2">Our Solutions</p>
@@ -499,7 +496,6 @@ export function PortalAbout() {
            <p className="text-[9px] uppercase tracking-[1em] text-white font-bold">Wolgan Standards</p>
         </div>
       </div>
-      */}
 
       {/* ── Content: starts centred, slides LEFT ── */}
       <div
