@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import Image from "next/image";
+import wolganLogo from "@/assets/images/brand/Wolgan-logo.png";
 
 // Declare global GSAP variable
 declare const gsap: any;
@@ -100,8 +102,8 @@ export function Preloader() {
       if (preloaderTextRef.current) {
         gsap.fromTo(
           preloaderTextRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }
         );
       }
 
@@ -113,7 +115,7 @@ export function Preloader() {
         await new Promise<void>((r) =>
           gsap.to(preloaderTextRef.current, {
             opacity: 0,
-            y: -20,
+            x: 30,
             duration: 0.5,
             ease: "power2.in",
             onComplete: r,
@@ -199,78 +201,11 @@ export function Preloader() {
         .preloader-bg {
           position: fixed;
           inset: 0;
-          background: #030A16; /* Ultra-deep luxury dark navy base */
+          background: rgba(10, 31, 60, 0.9);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
           z-index: 9998;
           pointer-events: none;
-          overflow: hidden;
-        }
-
-        .preloader-blur-1 {
-          position: absolute;
-          top: -20%;
-          left: -20%;
-          width: 75%;
-          height: 75%;
-          background: radial-gradient(circle, rgba(16, 53, 101, 0.75) 0%, rgba(10, 31, 60, 0) 70%);
-          filter: blur(100px);
-          animation: preloader-float-1 18s ease-in-out infinite alternate;
-          pointer-events: none;
-        }
-
-        .preloader-blur-2 {
-          position: absolute;
-          bottom: -20%;
-          right: -20%;
-          width: 85%;
-          height: 85%;
-          background: radial-gradient(circle, rgba(20, 68, 128, 0.7) 0%, rgba(10, 31, 60, 0) 70%);
-          filter: blur(120px);
-          animation: preloader-float-2 22s ease-in-out infinite alternate;
-          pointer-events: none;
-        }
-
-        .preloader-blur-3 {
-          position: absolute;
-          top: 30%;
-          left: 10%;
-          width: 55%;
-          height: 55%;
-          background: radial-gradient(circle, rgba(197, 160, 89, 0.18) 0%, rgba(197, 160, 89, 0) 65%);
-          filter: blur(90px);
-          animation: preloader-float-3 24s ease-in-out infinite alternate;
-          pointer-events: none;
-        }
-
-        .preloader-blur-4 {
-          position: absolute;
-          top: -10%;
-          right: 20%;
-          width: 50%;
-          height: 50%;
-          background: radial-gradient(circle, rgba(10, 31, 60, 0.6) 0%, rgba(3, 10, 22, 0) 70%);
-          filter: blur(80px);
-          animation: preloader-float-4 15s ease-in-out infinite alternate;
-          pointer-events: none;
-        }
-
-        @keyframes preloader-float-1 {
-          0% { transform: translate(0px, 0px) scale(1); }
-          100% { transform: translate(80px, 120px) scale(1.15); }
-        }
-
-        @keyframes preloader-float-2 {
-          0% { transform: translate(0px, 0px) scale(1.1); }
-          100% { transform: translate(-120px, -80px) scale(0.9); }
-        }
-
-        @keyframes preloader-float-3 {
-          0% { transform: translate(0px, 0px) scale(0.95) rotate(0deg); }
-          100% { transform: translate(60px, -60px) scale(1.1) rotate(60deg); }
-        }
-
-        @keyframes preloader-float-4 {
-          0% { transform: translate(0px, 0px) scale(1); }
-          100% { transform: translate(-70px, 90px) scale(1.1); }
         }
 
         .transition-svg {
@@ -302,28 +237,16 @@ export function Preloader() {
           z-index: 10000;
           pointer-events: none;
           opacity: 0;
-          font-family: var(--font-montserrat), sans-serif;
-          font-size: clamp(4rem, 12vw, 14rem);
-          font-weight: 800;
-          letter-spacing: -0.02em;
-          line-height: 1;
-          text-transform: uppercase;
-          color: #ffffff;
-          mix-blend-mode: overlay;
+          width: 350px;
         }
       `}</style>
 
-      {/* Dynamic Brand-Navy & Gold blur background and Loader text visible on load */}
+      {/* Dynamic Brand-Navy background and Logo visible on load */}
       {showPreloader && (
         <>
-          <div className="preloader-bg">
-            <div className="preloader-blur-1" />
-            <div className="preloader-blur-2" />
-            <div className="preloader-blur-3" />
-            <div className="preloader-blur-4" />
-          </div>
+          <div className="preloader-bg" />
           <div className="preloader-text" ref={preloaderTextRef}>
-            wolgan
+            <Image src={wolganLogo} alt="Wolgan Logo" priority className="w-full h-auto brightness-0 invert" />
           </div>
         </>
       )}
@@ -346,7 +269,7 @@ export function Preloader() {
           <path
             ref={path2Ref}
             d="M1661.28 2255.51C1661.28 2255.51 2311.09 1960.37 2111.78 1817.01C1944.47 1696.67 718.456 2870.17 499.781 2255.51C308.969 1719.17 2457.51 1613.83 2111.78 963.512C1766.05 313.198 427.949 2195.17 132.281 1455.51C-155.219 736.292 2014.78 891.514 1708.78 252.012C1437.81 -314.29 369.471 909.169 132.281 566.512C18.1772 401.672 244.781 193.012 244.781 193.012"
-            stroke="#0a1628"
+            stroke="#0A1F3C"
             strokeWidth="200"
             strokeLinecap="round"
           />
