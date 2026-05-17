@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { montserrat } from "@/lib/fonts";
 import "@/styles/globals.css";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { Preloader } from "@/components/Preloader";
 
 export const metadata: Metadata = {
   // Current domain is wolgan.qa, but wolgan.co is the future target production domain
@@ -61,7 +64,12 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}
+      <body className="min-h-full flex flex-col overflow-x-hidden">
+        <Suspense fallback={null}>
+          <Preloader />
+        </Suspense>
+        {children}
+        <WhatsAppButton />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
