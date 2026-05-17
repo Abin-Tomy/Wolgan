@@ -1,342 +1,923 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Typography } from "@/components/ui/Typography";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { 
-  Droplets, 
-  Settings, 
-  FlaskConical, 
-  Globe2,
-  ChevronRight,
-  Eye,
-  Target
+import {
+  ChevronRight, Globe2, Droplets, Settings, FlaskConical,
+  Building2, Hotel, Factory, Ship, Landmark, Hospital, Target, Compass
 } from "lucide-react";
+
+import deck1 from "@/assets/images/about/about-deck-1.jpg";
+import deck2 from "@/assets/images/about/about-deck-2.jpg";
+import deck3 from "@/assets/images/about/about-deck-3.jpg";
+import waterplant from "@/assets/images/about/about-waterplant.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Modern Hero Reveal (fades & text slide)
-      const tl = gsap.timeline();
-      
-      tl.fromTo(".reveal-text", {
-        y: 100,
-        opacity: 0,
-        rotateX: -45,
-        transformOrigin: "0% 0% -50px"
-      }, {
-        y: 0,
-        opacity: 1,
-        rotateX: 0,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "power4.out"
-      })
-      .fromTo(".reveal-fade", {
-        opacity: 0,
-        filter: "blur(10px)",
-        y: 20
-      }, {
-        opacity: 1,
-        filter: "blur(0px)",
-        y: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out"
-      }, "-=0.6");
 
-      // Parallax effect for Hero Image
-      gsap.to(".hero-image", {
-        yPercent: 30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        }
+      /* ── Hero: per-line reveal from bottom ── */
+      gsap.set(".hero-line", { yPercent: 110, opacity: 0 });
+      gsap.to(".hero-line", {
+        yPercent: 0, opacity: 1,
+        duration: 1.4, stagger: 0.13, ease: "expo.out", delay: 0.2,
+      });
+      gsap.fromTo(".hero-sub", { opacity: 0, y: 28 }, {
+        opacity: 1, y: 0, duration: 1.2, ease: "power3.out", delay: 0.85,
+      });
+      gsap.fromTo(".hero-badge", { opacity: 0, y: 12 }, {
+        opacity: 1, y: 0, duration: 0.9, ease: "power3.out", delay: 0.3,
+      });
+      gsap.fromTo(".hero-cta", { opacity: 0, y: 20 }, {
+        opacity: 1, y: 0, duration: 0.9, ease: "power3.out", delay: 1.1,
       });
 
-      // Section Clip-Path Reveals
-      gsap.utils.toArray(".clip-section").forEach((section: any) => {
-        gsap.fromTo(section, {
-          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"
-        }, {
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-          duration: 1.5,
-          ease: "power4.inOut",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-          }
+      /* ── Hero image parallax ── */
+      gsap.to(".hero-img", {
+        yPercent: 20, ease: "none",
+        scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
+      });
+
+      /* ── Scroll reveal helpers ── */
+      gsap.utils.toArray<HTMLElement>(".anim-up").forEach((el) => {
+        gsap.fromTo(el, { y: 35, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 94%" },
+        });
+      });
+      gsap.utils.toArray<HTMLElement>(".anim-left").forEach((el) => {
+        gsap.fromTo(el, { x: -45, opacity: 0 }, {
+          x: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 93%" },
+        });
+      });
+      gsap.utils.toArray<HTMLElement>(".anim-right").forEach((el) => {
+        gsap.fromTo(el, { x: 45, opacity: 0 }, {
+          x: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 93%" },
+        });
+      });
+      gsap.utils.toArray<HTMLElement>(".stagger-parent").forEach((parent) => {
+        gsap.fromTo(parent.children, { y: 30, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: "power2.out",
+          scrollTrigger: { trigger: parent, start: "top 93%" },
         });
       });
 
-      // Staggered Cards Reveal
-      gsap.utils.toArray(".cards-grid").forEach((grid: any) => {
-        const cards = grid.querySelectorAll(".modern-card");
-        gsap.fromTo(cards, {
-          y: 100,
-          opacity: 0,
-          scale: 0.9
-        }, {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "back.out(1.4)",
-          scrollTrigger: {
-            trigger: grid,
-            start: "top 85%",
-          }
+      /* ── Image reveal clip-path (the "show over" animation) ── */
+      gsap.utils.toArray<HTMLElement>(".img-reveal").forEach((el) => {
+        gsap.fromTo(el, { clipPath: "inset(100% 0% 0% 0%)" }, {
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 1.1, ease: "expo.out",
+          scrollTrigger: { trigger: el, start: "top 94%" },
         });
       });
 
-      // Horizontal Scroll Text
-      gsap.to(".scroll-text", {
-        xPercent: -50,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".scroll-text-container",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        }
+      /* ── Process step reveals ── */
+      gsap.utils.toArray<HTMLElement>(".process-step").forEach((el, i) => {
+        gsap.fromTo(el, { x: -25, opacity: 0 }, {
+          x: 0, opacity: 1, duration: 0.7, ease: "power2.out", delay: i * 0.05,
+          scrollTrigger: { trigger: el, start: "top 94%" },
+        });
+      });
+
+      /* ── CTA ── */
+      gsap.fromTo(".cta-card", { scale: 0.95, opacity: 0, y: 30 }, {
+        scale: 1, opacity: 1, y: 0, duration: 0.9, ease: "power3.out",
+        scrollTrigger: { trigger: ".cta-card", start: "top 94%" },
+      });
+
+      /* ── Magnetic Button Hover Effect ── */
+      const buttons = gsap.utils.toArray<HTMLElement>(".btn-magnetic");
+      buttons.forEach((btn) => {
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          gsap.to(btn, {
+            x: x * 0.35,
+            y: y * 0.35,
+            scale: 1.04,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, {
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            ease: "elastic.out(1, 0.3)"
+          });
+        });
+      });
+
+      /* ── Hanging Cards Swing & Smooth Physics Interactions ── */
+      gsap.utils.toArray<HTMLElement>(".hanging-card").forEach((card, index) => {
+        const direction = index % 2 === 0 ? 1 : -1;
+        
+        // Set initial state: card is pulled up, rotated, and invisible
+        gsap.set(card, {
+          transformOrigin: "top center",
+          y: -140,
+          rotation: direction * 14,
+          opacity: 0
+        });
+        
+        // 1. Scroll-triggered entrance: Put down the hanging card (drop down, stretch/jolt, swing to stop)
+        gsap.to(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 94%",
+            onEnter: () => {
+              const delay = index * 0.16; // staggered entrance like putting down boards sequentially
+              const tl = gsap.timeline({ delay });
+
+              // Rapid smooth gravity drop
+              tl.to(card, {
+                y: 0,
+                opacity: 1,
+                duration: 0.65,
+                ease: "power2.in"
+              })
+              // Thread stretch & bounce (stretching past y: 0)
+              .to(card, {
+                y: 12,
+                rotation: direction * -8,
+                duration: 0.22,
+                ease: "power1.out"
+              })
+              // Rebound upward
+              .to(card, {
+                y: -6,
+                rotation: direction * 5.5,
+                duration: 0.3,
+                ease: "power1.inOut"
+              })
+              // Second downward settling bounce
+              .to(card, {
+                y: 3,
+                rotation: direction * -3,
+                duration: 0.35,
+                ease: "power1.inOut"
+              })
+              // Third light rebound
+              .to(card, {
+                y: -1,
+                rotation: direction * 1.5,
+                duration: 0.4,
+                ease: "power1.inOut"
+              })
+              // Perfectly settle to resting position
+              .to(card, {
+                y: 0,
+                rotation: 0,
+                duration: 0.45,
+                ease: "power1.out"
+              });
+            }
+          }
+        });
+
+        // 2. Physical interactive impulse: touch/hover gives a direct push and decay-to-stable swing
+        const triggerSwingImpulse = (isEnter: boolean) => {
+          gsap.killTweensOf(card);
+          const tl = gsap.timeline();
+          
+          const impulseRotation = isEnter ? direction * 7.5 : direction * -5.0;
+          const impulseX = isEnter ? direction * 2.0 : direction * -1.2;
+          const impulseY = isEnter ? 3.0 : 0;
+
+          // Swing phase 1: Instant response to push
+          tl.to(card, {
+            rotation: impulseRotation,
+            x: impulseX,
+            y: impulseY,
+            duration: 0.32,
+            ease: "power1.out"
+          })
+          // Swing phase 2: Swing back past resting state (pendulum peak deceleration)
+          .to(card, {
+            rotation: impulseRotation * -0.65,
+            x: impulseX * -0.65,
+            y: impulseY * 0.4,
+            duration: 0.42,
+            ease: "power1.inOut"
+          })
+          // Swing phase 3: Swing forward
+          .to(card, {
+            rotation: impulseRotation * 0.38,
+            x: impulseX * 0.38,
+            y: impulseY * 0.15,
+            duration: 0.52,
+            ease: "power1.inOut"
+          })
+          // Swing phase 4: Swing backward
+          .to(card, {
+            rotation: impulseRotation * -0.18,
+            x: impulseX * -0.18,
+            y: 0,
+            duration: 0.62,
+            ease: "power1.inOut"
+          })
+          // Settle completely back to resting position
+          .to(card, {
+            rotation: 0,
+            x: 0,
+            y: 0,
+            duration: 0.72,
+            ease: "power1.out"
+          });
+        };
+
+        const onEnter = () => triggerSwingImpulse(true);
+        const onLeave = () => triggerSwingImpulse(false);
+
+        card.addEventListener("mouseenter", onEnter);
+        card.addEventListener("mouseleave", onLeave);
       });
 
     }, containerRef);
-
     return () => ctx.revert();
   }, []);
 
   return (
     <SmoothScroll>
-      <main ref={containerRef} className="bg-[#040D1A] min-h-screen text-white selection:bg-white/20 selection:text-[#040D1A] overflow-hidden">
+      <main ref={containerRef} className="overflow-hidden" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
         <Header />
-        
-        {/* ── High-End Hero Section ── */}
-        <section ref={heroRef} className="relative h-screen flex flex-col justify-end pb-24 md:pb-32 overflow-hidden">
+
+        {/* ═══════════════════════════════════
+            1. HERO — centered text layout
+        ═══════════════════════════════════ */}
+        <section
+          ref={heroRef}
+          className="relative min-h-[75vh] flex flex-col items-center justify-center text-center overflow-hidden pt-24 pb-12"
+          style={{ backgroundColor: "var(--brand-navy)" }}
+        >
+          {/* Full-bleed background image with parallax */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/about/hero.png"
-              alt="Water Treatment Facility"
+              src={deck1}
+              alt="Wolgan engineering"
               fill
-              className="hero-image object-cover opacity-60 brightness-75"
+              className="hero-img object-cover opacity-35"
               priority
+              placeholder="blur"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#040D1A] via-[#040D1A]/50 to-transparent z-10" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#040D1A]/80 via-transparent to-transparent z-10" />
+            <div className="absolute inset-0" style={{
+              background: "linear-gradient(to bottom, rgba(var(--brand-navy-rgb),0.55) 0%, rgba(var(--brand-navy-rgb),0.75) 60%, var(--brand-navy) 100%)",
+            }} />
           </div>
 
-          <div className="container mx-auto px-6 md:px-12 relative z-20">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-12">
-              <div className="max-w-4xl" style={{ perspective: "1000px" }}>
-                <div className="overflow-hidden mb-6">
-                  <div className="reveal-text inline-flex items-center gap-4 px-5 py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-md">
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    <span className="text-xs uppercase tracking-[0.3em] font-semibold text-white/80">About Wolgan</span>
-                  </div>
-                </div>
-                
-                <h1 className="text-[clamp(3.5rem,8vw,8rem)] font-light leading-[0.85] tracking-tighter mb-8">
-                  <div className="overflow-hidden"><div className="reveal-text text-white/90">A Legacy Of</div></div>
-                  <div className="overflow-hidden"><div className="reveal-text text-white">Excellence.</div></div>
-                </h1>
-              </div>
-
-              <div className="max-w-sm pb-4 reveal-fade">
-                <p className="text-lg text-white/70 leading-relaxed font-light mb-8">
-                  An established and reputed Contracting Company in Qatar serving exceptional service across the Middle East.
-                </p>
-                <div className="flex items-center gap-4">
-                  <Button variant="outline" className="rounded-full px-8 h-14 bg-white text-[#0A1F3C] hover:bg-white/90 font-semibold transition-all">
-                    Discover Our Story
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Our Story ── */}
-        <section className="py-32 md:py-48 relative">
-          <div className="container mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-              <div className="lg:col-span-4 reveal-fade">
-                <Typography variant="tagline" className="text-white/40 mb-4">Our Story</Typography>
-                <Typography variant="h2" className="text-4xl md:text-5xl font-light leading-tight">
-                  Entrepreneurial <br />
-                  <span className="italic text-white/80">Leadership & Vision</span>
-                </Typography>
-              </div>
-              
-              <div className="lg:col-span-8 lg:pl-12 border-t border-white/10 pt-12">
-                <div className="reveal-fade space-y-8 text-xl md:text-2xl text-white/80 font-light leading-relaxed max-w-4xl">
-                  <p>
-                    Wolgan is an established and reputed Contracting Company in Qatar that serves exceptional service in the area of Water Treatment, Mechanical Installations, Chemical Supply and more.
-                  </p>
-                  <p className="text-white/60 text-lg md:text-xl">
-                    The Company has flourished through a combination of entrepreneurial leadership, courage and vision and has expanded its business activities. Wolgan continuously explores opportunities to establish joint ventures and strategic alliances in heterogeneous lines of specialization to provide advanced products and services for customers looking to produce energy efficiently, reliably, cost-effectively and with greater awareness of environmental responsibility.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Mission & Vision ── */}
-        <section className="py-32 bg-[#0A1F3C] relative overflow-hidden">
-          {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 pointer-events-none" />
-
-          <div className="container mx-auto px-6 md:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-              
-              {/* Mission */}
-              <div className="reveal-fade group relative p-12 md:p-16 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:bg-white/[0.05] transition-colors duration-500 overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                <div className="w-20 h-20 rounded-3xl bg-white/10 flex items-center justify-center mb-10 border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                  <Target className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-sm uppercase tracking-[0.4em] font-bold text-white/50 mb-6">Our Mission</h3>
-                <p className="text-3xl md:text-4xl font-light leading-snug text-white/90">
-                  We are dedicated to providing <span className="text-white font-medium">High Quality Products and Services</span> through our highly qualified and fully trained workforce, as well as on a constant basis through our reliable supply chain and network of Business Partners.
-                </p>
-              </div>
-
-              {/* Vision */}
-              <div className="reveal-fade group relative p-12 md:p-16 rounded-[3rem] bg-white/[0.03] border border-white/10 hover:bg-white/[0.05] transition-colors duration-500 overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 delay-100" />
-                <div className="w-20 h-20 rounded-3xl bg-white/10 flex items-center justify-center mb-10 border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                  <Eye className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-sm uppercase tracking-[0.4em] font-bold text-white/50 mb-6">Our Vision</h3>
-                <p className="text-3xl md:text-4xl font-light leading-snug text-white/90">
-                  Wolgan aims to become one of the most <span className="text-white font-medium italic">successful and diversified</span> Companies in Qatar and the preferred Business Partner across the Contracting Industry.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* ── High-level Specializations ── */}
-        <section className="py-32 md:py-48 bg-[#040D1A]">
-          <div className="container mx-auto px-6 md:px-12">
-            <div className="mb-24 text-center max-w-3xl mx-auto reveal-fade">
-              <Typography variant="tagline" className="text-white/40 mb-4">Heterogeneous Lines of Specialization</Typography>
-              <Typography variant="h2" className="text-5xl md:text-6xl font-light">Divisions of Expertise</Typography>
-              <p className="mt-6 text-lg text-white/60 font-light">
-                Delivering advanced products and services for customers looking to produce energy efficiently, reliably, and cost-effectively.
-              </p>
+          <div className="relative z-10 px-6 md:px-14 flex flex-col items-center">
+            {/* Badge */}
+            <div className="hero-badge inline-flex items-center gap-3 px-5 py-2 rounded-full mb-12"
+              style={{ border: "1px solid rgba(255,255,255,0.12)", backgroundColor: "rgba(255,255,255,0.05)" }}>
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "rgba(255,255,255,0.6)" }} />
+              <span className="text-[10px] uppercase tracking-[0.45em] font-semibold text-white/60">About Wolgan</span>
             </div>
 
-            <div className="cards-grid grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {/* Division 1 */}
-              <div className="modern-card group p-10 rounded-[2rem] bg-white/[0.02] border border-white/10 flex flex-col items-center text-center hover:bg-white/[0.04] transition-all duration-500">
-                <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                  <Droplets className="w-8 h-8 text-white/80" />
-                </div>
-                <h3 className="text-2xl font-light text-white mb-4">Water Treatment</h3>
-                <p className="text-white/50 font-light leading-relaxed">
-                  Advanced filtration, RO polishing, and comprehensive sewage treatment plant execution.
-                </p>
-              </div>
-
-              {/* Division 2 */}
-              <div className="modern-card group p-10 rounded-[2rem] bg-white/[0.02] border border-white/10 flex flex-col items-center text-center hover:bg-white/[0.04] transition-all duration-500">
-                <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:rotate-45 transition-transform duration-500">
-                  <Settings className="w-8 h-8 text-white/80" />
-                </div>
-                <h3 className="text-2xl font-light text-white mb-4">Mechanical Installations</h3>
-                <p className="text-white/50 font-light leading-relaxed">
-                  Full-scale MEP execution, complex HVAC, and chilled water system integrations.
-                </p>
-              </div>
-
-              {/* Division 3 */}
-              <div className="modern-card group p-10 rounded-[2rem] bg-white/[0.02] border border-white/10 flex flex-col items-center text-center hover:bg-white/[0.04] transition-all duration-500">
-                <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:-translate-y-2 transition-transform duration-500">
-                  <FlaskConical className="w-8 h-8 text-white/80" />
-                </div>
-                <h3 className="text-2xl font-light text-white mb-4">Chemical Supply</h3>
-                <p className="text-white/50 font-light leading-relaxed">
-                  Reliable supply chains for specialized and commodity water treatment chemicals.
-                </p>
-              </div>
+            {/* Big centered heading */}
+            <div className="overflow-hidden mb-1">
+              <h1 className="hero-line text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white uppercase">
+                Pure
+              </h1>
             </div>
-          </div>
-        </section>
-
-        {/* ── Image Break ── */}
-        <section className="clip-section relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/about/detail.png"
-              alt="Engineering Precision"
-              fill
-              className="object-cover opacity-50"
-            />
-            <div className="absolute inset-0 bg-[#0A1F3C]/60 mix-blend-multiply" />
-          </div>
-          
-          <div className="relative z-10 container mx-auto px-6 text-center max-w-4xl">
-            <h2 className="text-4xl md:text-6xl font-light leading-tight text-white">
-              Working with greater awareness of <span className="italic font-medium">Environmental Responsibility.</span>
-            </h2>
-          </div>
-        </section>
-
-        {/* ── Regional Presence ── */}
-        <section className="py-32 bg-[#040D1A] border-b border-white/5">
-          <div className="container mx-auto px-6 md:px-12 text-center max-w-4xl reveal-fade">
-            <div className="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-10">
-              <Globe2 className="w-8 h-8 text-white/80" />
+            <div className="overflow-hidden mb-1">
+              <h1 className="hero-line text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter uppercase"
+                style={{ color: "rgba(255,255,255,0.22)" }}>
+                Performance
+              </h1>
             </div>
-            <Typography variant="tagline" className="text-white/40 mb-6">Regional Presence</Typography>
-            <Typography variant="h2" className="text-5xl md:text-7xl font-light tracking-tight mb-12">
-              Qatar <span className="text-white/20 mx-4">|</span> UAE <span className="text-white/20 mx-4">|</span> India
-            </Typography>
-            <p className="text-xl text-white/50 font-light uppercase tracking-widest">
-              Doha &nbsp; • &nbsp; Dubai &nbsp; • &nbsp; Pune
+            <div className="overflow-hidden mb-8">
+              <h1 className="hero-line text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white uppercase">
+                Delivered.
+              </h1>
+            </div>
+
+            {/* Subtitle */}
+            <p className="hero-sub text-base text-white/50 font-light max-w-sm leading-relaxed mb-0">
+              An established Contracting Company delivering Water Treatment, MEP, and Chemical Supply across Qatar, UAE &amp; India.
             </p>
           </div>
+
+          {/* Bottom thin line removed for seamless blend into next section */}
         </section>
 
-        {/* ── CTA Section ── */}
-        <section className="py-32">
-          <div className="container mx-auto px-6 md:px-12">
-            <div className="clip-section relative bg-[#0A1F3C] border border-white/10 rounded-[3rem] p-12 md:p-24 overflow-hidden group">
-              <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/[0.03] rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 group-hover:bg-white/[0.05] transition-colors duration-1000" />
+        {/* ═══════════════════════════════════
+            2. WHO WE ARE — typography & details
+        ═══════════════════════════════════ */}
+        <section id="who-we-are" className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#f8f9fa" }}>
+          
+          {/* Asymmetrical Sweeping Curve Divider */}
+          <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0" style={{ transform: "translateY(-1px)" }}>
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[60px] md:h-[160px]">
+              <path fill="var(--brand-navy)" d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
+            </svg>
+          </div>
+
+          {/* Subtle background orb to make glassmorphism pop */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[800px] bg-[var(--brand-navy)] opacity-[0.04] blur-[100px] rounded-full pointer-events-none" />
+
+          <div className="container mx-auto px-6 md:px-14 relative z-10">
+            
+            {/* 3-Column Editorial Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               
-              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16 text-center md:text-left">
+              {/* COLUMN 1: Headline & Body Text (Span 4) */}
+              <div className="lg:col-span-4 anim-left flex flex-col justify-center p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl"
+                   style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
+                <p className="text-[10px] uppercase tracking-[0.6em] font-bold mb-6"
+                  style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
+                  Who We Are
+                </p>
+                <h2 className="text-[clamp(1.6rem,2.2vw,2.2rem)] font-light leading-[1.25] tracking-tight mb-8"
+                  style={{ color: "var(--brand-navy)" }}>
+                  Built on courage, vision, and entrepreneurial leadership.
+                </h2>
+                
+                <div className="space-y-6 text-sm md:text-base font-light leading-relaxed"
+                  style={{ color: "rgba(var(--brand-navy-rgb), 0.65)" }}>
+                  <p>
+                    Established and reputed in Qatar, Wolgan serves exceptional service in Water Treatment, Mechanical Installations, Chemical Supply and more. We continuously explore joint ventures and strategic alliances to provide advanced products and services.
+                  </p>
+                  <p>
+                    As your long-term engineering partner, we bring decades of specialized expertise to every project, ensuring international standards and uncompromised quality across the Middle East and India.
+                  </p>
+                </div>
+              </div>
+
+              {/* COLUMN 2: The Massive SVG Numbers (Span 4) - CENTER HIGHLIGHT */}
+              <div className="lg:col-span-4 anim-up flex justify-center py-10 lg:py-0">
+                <div className="w-full relative min-h-[450px] md:min-h-[580px] max-w-[450px]">
+                  <svg viewBox="0 0 450 650" className="w-full h-full absolute inset-0">
+                    <defs>
+                      <clipPath id="textClip">
+                        <text x="50%" y="160" textAnchor="middle" fontFamily="inherit" fontSize="180" fontWeight="900" letterSpacing="-0.05em">
+                          20<tspan fontSize="110" dy="-50">+</tspan>
+                        </text>
+                        <text x="50%" y="195" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
+                          YEARS OF EXCELLENCE
+                        </text>
+
+                        <text x="50%" y="360" textAnchor="middle" fontFamily="inherit" fontSize="155" fontWeight="900" letterSpacing="-0.06em">
+                          1750<tspan fontSize="90" dy="-50">+</tspan>
+                        </text>
+                        <text x="50%" y="395" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
+                          PROJECTS DELIVERED
+                        </text>
+
+                        <text x="50%" y="560" textAnchor="middle" fontFamily="inherit" fontSize="180" fontWeight="900" letterSpacing="-0.05em">
+                          35<tspan fontSize="110" dy="-50">+</tspan>
+                        </text>
+                        <text x="50%" y="595" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
+                          EXPERT ENGINEERS
+                        </text>
+                      </clipPath>
+                    </defs>
+                    <image
+                      href={waterplant.src}
+                      width="100%"
+                      height="100%"
+                      preserveAspectRatio="xMidYMid slice"
+                      clipPath="url(#textClip)"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {/* COLUMN 3: Mission & Vision Editorial (Span 4) */}
+              <div className="lg:col-span-4 anim-right flex flex-col gap-6 justify-center">
+                
+                {/* Mission Card */}
+                <div className="p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl relative overflow-hidden"
+                     style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
+                  <div className="absolute -top-10 -right-10 p-4 opacity-[0.02] pointer-events-none">
+                    <Target className="w-48 h-48" style={{ color: "var(--brand-navy)" }} />
+                  </div>
+                  <div className="relative z-10">
+                    <span className="block text-[10px] uppercase tracking-[0.4em] font-bold mb-4"
+                      style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
+                      Our Mission
+                    </span>
+                    <p className="text-base md:text-lg font-light leading-relaxed"
+                      style={{ color: "var(--brand-navy)" }}>
+                      Provide high-quality products and services through qualified workforce and a reliable supply chain network of Business Partners.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Vision Card */}
+                <div className="p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl relative overflow-hidden"
+                     style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
+                  <div className="absolute -top-10 -right-10 p-4 opacity-[0.02] pointer-events-none">
+                    <Compass className="w-48 h-48" style={{ color: "var(--brand-navy)" }} />
+                  </div>
+                  <div className="relative z-10">
+                    <span className="block text-[10px] uppercase tracking-[0.4em] font-bold mb-4"
+                      style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
+                      Our Vision
+                    </span>
+                    <p className="text-base md:text-lg font-light leading-relaxed"
+                      style={{ color: "var(--brand-navy)" }}>
+                      Become one of the most successful and diversified companies — the preferred partner across the contracting industry.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════
+            3. OUR EXPERTISE — card design
+        ═══════════════════════════════════ */}
+        <section className="py-20 md:py-32 relative overflow-hidden" style={{ backgroundColor: "var(--brand-navy)" }}>
+          
+          {/* Mirrored Wave Divider connecting from Who We Are */}
+          <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0" style={{ transform: "translateY(-1px)" }}>
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[60px] md:h-[160px]">
+              <path fill="#f8f9fa" d="M0,0 L1440,0 L1440,160 C1080,40 360,280 0,160 Z"></path>
+            </svg>
+          </div>
+
+          <div className="container mx-auto px-6 md:px-14 relative z-10">
+
+            <div className="anim-up mb-16 text-center">
+              <p className="text-[10px] uppercase tracking-[0.6em] font-bold mb-4 text-white/30">Our Expertise</p>
+              <h2 className="text-[clamp(2.2rem,4.5vw,4.5rem)] font-light text-white leading-tight tracking-tight">
+                Three divisions.<br />
+                <span style={{ color: "rgba(255,255,255,0.28)" }}>One standard.</span>
+              </h2>
+            </div>
+
+            <style>{`
+              @keyframes gentle-drip {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-6px); }
+              }
+              @keyframes gear-spin-slow {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+              }
+              @keyframes flask-wiggle {
+                0%, 100% { transform: rotate(0deg); }
+                25% { transform: rotate(-8deg); }
+                75% { transform: rotate(8deg); }
+              }
+
+              .group:hover .anim-drip {
+                animation: gentle-drip 2s ease-in-out infinite;
+              }
+              .group:hover .anim-spin-slow {
+                animation: gear-spin-slow 4s linear infinite;
+              }
+              .group:hover .anim-wiggle {
+                animation: flask-wiggle 1.5s ease-in-out infinite;
+              }
+            `}</style>
+
+            <div className="stagger-parent grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {[
+                {
+                  icon: Droplets,
+                  title: "Water Treatment",
+                  desc: "Advanced filtration, RO polishing, and comprehensive sewage treatment plant execution.",
+                  img: deck2,
+                  animClass: "anim-drip",
+                },
+                {
+                  icon: Settings,
+                  title: "Mechanical Installations",
+                  desc: "Full-scale MEP execution, complex HVAC, and chilled water system integrations.",
+                  img: deck3,
+                  animClass: "anim-spin-slow",
+                },
+                {
+                  icon: FlaskConical,
+                  title: "Chemical Supply",
+                  desc: "Reliable supply chains for specialized and commodity water treatment chemicals.",
+                  img: deck1,
+                  animClass: "anim-wiggle",
+                },
+              ].map((s, idx) => (
+                <div key={s.title} className={idx === 1 ? "md:pt-12" : ""}>
+                  <div className="group relative rounded-[2rem] overflow-hidden flex flex-col items-center text-center p-10 md:p-14 transition-all duration-500 hover:-translate-y-2"
+                    style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
+                    
+                    {/* Image Background */}
+                    <div className="absolute inset-0 z-0 bg-[var(--brand-navy)]">
+                      <Image src={s.img} alt={s.title} fill className="object-cover opacity-50 group-hover:opacity-75 transition-opacity duration-700" placeholder="blur" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-navy)]/10 to-[var(--brand-navy)]/95 pointer-events-none" />
+                    </div>
+
+                    {/* Icon */}
+                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/40 flex items-center justify-center mb-8 bg-white/[0.08] shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover:scale-110 group-hover:bg-white/[0.15] group-hover:border-white/70 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                      <div className={s.animClass}>
+                        <s.icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+                      </div>
+                    </div>
+
+                    {/* Text */}
+                    <div className="relative z-10">
+                      <h3 className="text-xl md:text-2xl font-light text-white mb-4">{s.title}</h3>
+                      <p className="text-sm text-white/50 font-light leading-relaxed max-w-[260px] mx-auto">{s.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════
+            4. OUR PROCESS — compact numbered list
+        ═══════════════════════════════════ */}
+        <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden" style={{ backgroundColor: "#f8f9fb" }}>
+          {/* Asymmetrical Sweeping Curve Divider (Navy flowing into White) */}
+          <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0" style={{ transform: "translateY(-1px)" }}>
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[60px] md:h-[160px]">
+              <path fill="var(--brand-navy)" d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
+            </svg>
+          </div>
+          <div className="container mx-auto px-6 md:px-14 relative z-10">
+
+            <div className="anim-up mb-8">
+              <p className="text-[10px] uppercase tracking-[0.6em] font-bold mb-4"
+                style={{ color: "rgba(var(--brand-navy-rgb),0.28)" }}>Our Process</p>
+              <h2 className="text-[clamp(2rem,4vw,4rem)] font-light tracking-tight"
+                style={{ color: "var(--brand-navy)" }}>
+                How we work.
+              </h2>
+            </div>
+
+            <style>{`
+              @keyframes wave-flow {
+                to {
+                  stroke-dashoffset: -24;
+                }
+              }
+              .wave-line-flow {
+                animation: wave-flow 2.5s linear infinite;
+              }
+            `}</style>
+
+            <div className="relative pt-12 pb-12">
+              
+              {/* Dynamic flowing SVG wave path (behind cards) */}
+              <div className="hidden md:block absolute top-[50%] left-[8%] right-[8%] h-[120px] pointer-events-none z-0 overflow-visible" 
+                   style={{ transform: "translateY(-50%)" }}>
+                <svg viewBox="0 0 1000 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                  {/* Outer Glass Pipe Casing */}
+                  <path d="M 0 60 C 50 20, 75 10, 125 10 C 200 10, 300 110, 375 110 C 450 110, 550 10, 625 10 C 700 10, 800 110, 875 110 C 925 110, 950 100, 1000 60" 
+                    stroke="rgba(var(--brand-navy-rgb), 0.04)" 
+                    strokeWidth="12" 
+                    strokeLinecap="round" 
+                  />
+                  {/* Inner Fluid Channel Border */}
+                  <path d="M 0 60 C 50 20, 75 10, 125 10 C 200 10, 300 110, 375 110 C 450 110, 550 10, 625 10 C 700 10, 800 110, 875 110 C 925 110, 950 100, 1000 60" 
+                    stroke="rgba(var(--brand-navy-rgb), 0.08)" 
+                    strokeWidth="6" 
+                    strokeLinecap="round" 
+                  />
+                  {/* Dynamic High-Visibility Flowing Circular Dotted Water Current */}
+                  <path d="M 0 60 C 50 20, 75 10, 125 10 C 200 10, 300 110, 375 110 C 450 110, 550 10, 625 10 C 700 10, 800 110, 875 110 C 925 110, 950 100, 1000 60" 
+                    stroke="url(#wave-path-grad)" 
+                    strokeWidth="4" 
+                    strokeLinecap="round" 
+                    strokeDasharray="6 18"
+                    className="wave-line-flow"
+                  />
+                  <defs>
+                    <linearGradient id="wave-path-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="rgba(var(--brand-navy-rgb), 0.18)" />
+                      <stop offset="50%" stopColor="rgba(var(--brand-navy-rgb), 0.68)" />
+                      <stop offset="100%" stopColor="rgba(var(--brand-navy-rgb), 0.18)" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 pt-8 pb-8">
+                {[
+                  { num: "01", title: "Design", desc: "Rigorous site surveys and water quality analysis precision-engineered to your environment." },
+                  { num: "02", title: "Build", desc: "MEP specialists deliver fully integrated installations to international standards." },
+                  { num: "03", title: "Operate", desc: "Continuous monitoring and management ensuring peak performance and compliance." },
+                  { num: "04", title: "Maintain", desc: "End-to-end chemical supply and maintenance contracts for year-round efficiency." },
+                ].map((step, i) => (
+                  <div key={step.num} className="process-step">
+                    <div className={`group p-8 rounded-[2rem] border bg-white transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_40px_rgba(var(--brand-navy-rgb),0.05)] ${
+                      i % 2 === 0 ? "md:-translate-y-6" : "md:translate-y-6"
+                    }`}
+                      style={{ borderColor: "rgba(var(--brand-navy-rgb),0.06)" }}>
+                      <span className="block text-4xl font-black mb-5 tracking-tight"
+                        style={{ color: "rgba(var(--brand-navy-rgb),0.07)" }}>
+                        {step.num}
+                      </span>
+                      <h3 className="text-sm font-bold uppercase tracking-wider mb-3"
+                        style={{ color: "var(--brand-navy)" }}>
+                        {step.title}
+                      </h3>
+                      <p className="text-xs font-light leading-relaxed text-slate-400">
+                        {step.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Image reveal strip */}
+            <div className="img-reveal relative mt-14 rounded-3xl overflow-hidden" style={{ height: "clamp(200px,28vw,380px)" }}>
+              <Image src={deck3} alt="Wolgan operations" fill className="object-cover" placeholder="blur" />
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 flex items-center justify-center text-center px-6 md:px-16 z-10">
+                <p className="text-white text-2xl md:text-4xl font-light max-w-2xl leading-snug">
+                  Delivering solutions that work —{" "}
+                  <span className="text-white/60">from day one, and for years after.</span>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════
+            5. INDUSTRIES — icon card grid
+        ═══════════════════════════════════ */}
+        <section className="py-16 md:py-24" style={{ backgroundColor: "#f8f9fb" }}>
+          <div className="container mx-auto px-6 md:px-14">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center max-w-7xl mx-auto">
+              
+              {/* LEFT COLUMN: 3 Cards in a Rotated Triangular Cluster (2 left, 1 right) */}
+              <div className="order-2 lg:order-1 lg:col-span-4 flex justify-center">
+                <div className="grid grid-cols-2 gap-8 items-center w-full max-w-[460px]">
+                  {/* Left sub-column: 2 cards stacked */}
+                  <div className="flex flex-col gap-8">
+                    {/* Commercial */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Hanging thread from above (desktop only) */}
+                      <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
+                      {/* Anchoring pegs */}
+                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+                      <div className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Building2 className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          Commercial
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Offices & retail
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Hospitality */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Connecting thread to Commercial card above */}
+                      <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
+                      {/* Anchoring peg */}
+                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Hotel className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          Hospitality
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Resorts & hotels
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right sub-column: 1 card centered vertically */}
+                  <div className="flex items-center justify-center">
+                    {/* Industrial */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Hanging thread from above (desktop only) */}
+                      <div className="hidden lg:block absolute w-[1px] h-36 -top-36 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
+                      {/* Anchoring peg */}
+                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Factory className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          Industrial
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Plants & heavy manufacturing
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CENTER COLUMN: Centered Header Text */}
+              <div className="order-1 lg:order-2 lg:col-span-4 text-center px-4 flex flex-col items-center justify-center">
+                <p className="anim-up text-[10px] uppercase tracking-[0.5em] font-bold mb-4"
+                  style={{ color: "rgba(var(--brand-navy-rgb), 0.35)" }}>
+                  Industries We Serve
+                </p>
+                <h2 className="anim-up text-[clamp(2.2rem,4vw,3.5rem)] font-light leading-tight tracking-tight mb-5"
+                  style={{ color: "var(--brand-navy)" }}>
+                  Across Sectors
+                </h2>
+                <p className="anim-up text-sm md:text-base font-light leading-relaxed max-w-[480px] mx-auto"
+                  style={{ color: "rgba(var(--brand-navy-rgb), 0.55)" }}>
+                  Trusted by leading organizations in critical industries demanding the highest standards of quality and reliability.
+                </p>
+              </div>
+
+              {/* RIGHT COLUMN: 3 Cards in a Rotated Triangular Cluster (1 left, 2 right) */}
+              <div className="order-3 lg:order-3 lg:col-span-4 flex justify-center">
+                <div className="grid grid-cols-2 gap-8 items-center w-full max-w-[460px]">
+                  {/* Left sub-column: 1 card centered vertically */}
+                  <div className="flex items-center justify-center">
+                    {/* Marine */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Hanging thread from above (desktop only) */}
+                      <div className="hidden lg:block absolute w-[1px] h-36 -top-36 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
+                      {/* Anchoring peg */}
+                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Ship className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          Marine
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Vessels & offshore systems
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right sub-column: 2 cards stacked */}
+                  <div className="flex flex-col gap-8">
+                    {/* Government */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Hanging thread from above (desktop only) */}
+                      <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
+                      {/* Anchoring pegs */}
+                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+                      <div className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Landmark className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          Government
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Civic infrastructure
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Healthcare */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Connecting thread to Government card above */}
+                      <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
+                      {/* Anchoring peg */}
+                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Hospital className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          Healthcare
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Labs & hospitals
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════
+            6. REGIONAL PRESENCE — kept
+        ═══════════════════════════════════ */}
+        <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden" style={{ backgroundColor: "var(--brand-navy)" }}>
+          {/* Asymmetrical Sweeping Curve Divider (White flowing into Navy) */}
+          <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0" style={{ transform: "translateY(-1px)" }}>
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[60px] md:h-[160px]">
+              <path fill="#f8f9fb" d="M0,0 L1440,0 L1440,160 C1080,40 360,280 0,160 Z"></path>
+            </svg>
+          </div>
+          <div className="container mx-auto px-6 md:px-12 text-center max-w-4xl relative z-10">
+            <div className="anim-up w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-8 border"
+              style={{ backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" }}>
+              <Globe2 className="w-7 h-7 text-white/80" />
+            </div>
+            <p className="anim-up text-[10px] uppercase tracking-[0.5em] font-bold text-white/40 mb-6">Regional Presence</p>
+            <h2 className="anim-up text-5xl md:text-7xl font-light tracking-tight text-white mb-10">
+              Qatar <span className="text-white/20 mx-3">|</span> UAE{" "}
+              <span className="text-white/20 mx-3">|</span> India
+            </h2>
+            <p className="anim-up text-base md:text-lg text-white/50 font-light leading-relaxed max-w-2xl mx-auto mt-6">
+              Operating dynamic engineering hubs and specialized distribution networks across Qatar, UAE, and India to deliver industry-leading water treatment systems, MEP contracting services, and industrial chemical solutions.
+            </p>
+
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════
+            7. CTA — kept
+        ═══════════════════════════════════ */}
+        <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden" style={{ backgroundColor: "#f8f9fb" }}>
+          {/* Asymmetrical Sweeping Curve Divider (Navy flowing into White) */}
+          <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0" style={{ transform: "translateY(-1px)" }}>
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[60px] md:h-[160px]">
+              <path fill="var(--brand-navy)" d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
+            </svg>
+          </div>
+          <div className="container mx-auto px-6 md:px-12 relative z-10">
+            <div className="cta-card relative rounded-[2.5rem] p-12 md:p-20 overflow-hidden"
+              style={{ backgroundColor: "var(--brand-navy)" }}>
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                 <div className="max-w-2xl">
-                  <h2 className="text-5xl md:text-7xl font-light leading-[1.1] text-white mb-6">
+                  <h2 className="text-4xl md:text-6xl font-light leading-[1.1] text-white mb-5">
                     Ready to discuss your project?
                   </h2>
-                  <p className="text-white/60 text-xl font-light">
+                  <p className="text-white/50 text-lg font-light">
                     Become our preferred business partner across the contracting industry.
                   </p>
                 </div>
-
                 <div className="flex-shrink-0">
-                  <Button variant="outline" className="rounded-full px-10 h-20 text-xl font-semibold bg-white text-[#0A1F3C] hover:scale-105 transition-transform duration-300 flex items-center gap-4">
-                    Contact Team
-                    <div className="w-10 h-10 rounded-full bg-[#0A1F3C]/10 flex items-center justify-center">
-                      <ChevronRight className="w-5 h-5 text-[#0A1F3C]" />
-                    </div>
-                  </Button>
+                  <a href="/contact">
+                    <Button
+                      variant="outline"
+                      className="btn-magnetic rounded-full px-10 h-16 text-lg font-semibold hover:scale-105 transition-transform duration-300 flex items-center gap-3"
+                      style={{ backgroundColor: "#ffffff", color: "var(--brand-navy)" }}>
+                      Contact Team
+                      <div className="w-9 h-9 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: "rgba(var(--brand-navy-rgb), 0.1)" }}>
+                        <ChevronRight className="w-4 h-4" style={{ color: "var(--brand-navy)" }} />
+                      </div>
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>

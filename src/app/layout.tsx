@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { montserrat } from "@/lib/fonts";
 import "@/styles/globals.css";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { QuickActions } from "@/components/QuickActions";
 import { Preloader } from "@/components/Preloader";
 
 export const metadata: Metadata = {
@@ -69,7 +69,7 @@ export default function RootLayout({
           <Preloader />
         </Suspense>
         {children}
-        <WhatsAppButton />
+        <QuickActions />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
