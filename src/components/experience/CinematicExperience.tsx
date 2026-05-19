@@ -69,6 +69,12 @@ export function CinematicExperience() {
         rotation: 180,
         transformOrigin: "50% 100%",
       });
+      gsap.set([
+        ".kinetic-desc-tag",
+        ".kinetic-desc-line1",
+        ".kinetic-desc-line2",
+        ".kinetic-desc-countries"
+      ], { opacity: 0, y: 25 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -216,9 +222,22 @@ export function CinematicExperience() {
         ease: "power2.out",
       }, voidStart + 0.5);
 
-      // Pad the timeline so the next section doesn't slide over while the wheel is still animating
-      // Duration of 1.0 mathematically aligns the slide-over start exactly with the wheel's finish
-      tl.to({}, { duration: 1.0 });
+      // Fade in and translate each description line sequentially for an elite staggered text reveal
+      tl.to([
+        ".kinetic-desc-tag",
+        ".kinetic-desc-line1",
+        ".kinetic-desc-line2",
+        ".kinetic-desc-countries"
+      ], {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        stagger: 0.22,
+        ease: "power3.out",
+      }, voidStart + 2.2);
+
+      // Pad the timeline so the next section doesn't slide over immediately, letting the text be read
+      tl.to({}, { duration: 2.2 });
 
     }, rootRef);
 
@@ -299,6 +318,54 @@ export function CinematicExperience() {
               </textPath>
             </text>
           ))}
+
+          {/* Description and brand details perfectly centered inside the arc wheel */}
+          <g className="kinetic-desc" transform="translate(1500, 950)" textAnchor="middle">
+            <text
+              className="kinetic-desc-tag"
+              fill="rgba(255, 255, 255, 0.35)"
+              fontFamily="var(--font-montserrat), sans-serif"
+              fontWeight={700}
+              fontSize="22"
+              letterSpacing="0.5em"
+              y="-100"
+            >
+              LEADERS IN ENGINEERING
+            </text>
+            <text
+              className="kinetic-desc-line1"
+              fill="#A5B8CC"
+              fontFamily="var(--font-montserrat), sans-serif"
+              fontWeight={300}
+              fontSize="38"
+              letterSpacing="0.02em"
+              y="-10"
+            >
+              Delivering end-to-end pure performance across water treatment,
+            </text>
+            <text
+              className="kinetic-desc-line2"
+              fill="#A5B8CC"
+              fontFamily="var(--font-montserrat), sans-serif"
+              fontWeight={300}
+              fontSize="38"
+              letterSpacing="0.02em"
+              y="45"
+            >
+              mechanical installations, and specialized chemical supplies.
+            </text>
+            <text
+              className="kinetic-desc-countries"
+              fill="#66B2E8"
+              fontFamily="var(--font-montserrat), sans-serif"
+              fontWeight={800}
+              fontSize="22"
+              letterSpacing="0.3em"
+              y="120"
+            >
+              UAE ● QATAR ● INDIA
+            </text>
+          </g>
         </svg>
       </div>
     </section>

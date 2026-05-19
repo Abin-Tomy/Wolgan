@@ -78,72 +78,98 @@ export function Contact() {
           </div>
         </div>
 
-        {/* Right Column: The "Good" Form */}
-        <div className="lg:col-span-7 reveal-right">
-          <div className="bg-white rounded-[2.5rem] shadow-[0_20px_80px_-20px_rgba(10,31,60,0.1)] border border-[#0A1F3C]/5 overflow-hidden">
+        {/* Right Column: Premium Light Mode Form */}
+        <div className="lg:col-span-7 reveal-right relative">
+          
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 lg:p-12 shadow-[0_30px_100px_-20px_rgba(10,31,60,0.1)] relative overflow-hidden">
             
-            {/* Internal Region Toggle with Sliding Animation */}
-            <div className="flex justify-center py-6 bg-gray-50/50 border-b border-gray-100">
-              <div className="relative inline-flex p-1 bg-white rounded-full border border-gray-200">
-                {/* Sliding Background */}
-                <div 
-                  className={`absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-[#0A1F3C] rounded-full transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] shadow-md ${region === 'Qatar' ? 'translate-x-full' : 'translate-x-0'}`}
-                />
+            {/* Background Glow Effect */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#66B2E8] opacity-[0.05] blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#66B2E8] opacity-[0.03] blur-[100px] rounded-full pointer-events-none" />
+            
+            <div className="relative z-10">
+              {/* Premium Region Selector */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#0A1F3C]/10 pb-6 mb-8 gap-6">
+                <div>
+                  <h3 className="text-[#0A1F3C] text-2xl font-light tracking-tight mb-2">Send an Inquiry</h3>
+                  <p className="text-[#66B2E8] text-xs font-bold tracking-[0.2em] uppercase">Select your region</p>
+                </div>
                 
-                <button 
-                  type="button"
-                  onClick={() => setRegion("UAE")}
-                  className={`relative z-10 px-10 py-2.5 text-[0.6rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 ${region === 'UAE' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]'}`}
-                >
-                  UAE
-                </button>
-                <button 
-                  type="button"
-                  onClick={() => setRegion("Qatar")}
-                  className={`relative z-10 px-10 py-2.5 text-[0.6rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 ${region === 'Qatar' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]'}`}
-                >
-                  Qatar
-                </button>
+                <div className="inline-flex p-1.5 bg-[#f8f9fb] rounded-full border border-gray-200 self-start sm:self-auto">
+                  <div className="relative flex items-center">
+                    {/* Sliding active pill */}
+                    <div 
+                      className={`absolute inset-y-0 left-0 w-1/2 bg-[#0A1F3C] rounded-full transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] shadow-sm ${region === 'Qatar' ? 'translate-x-full' : 'translate-x-0'}`}
+                    />
+                    
+                    <button 
+                      type="button"
+                      onClick={() => setRegion("UAE")}
+                      className={`relative z-10 px-8 py-2 text-[0.65rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 w-28 ${region === 'UAE' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]/80'}`}
+                    >
+                      UAE
+                    </button>
+                    <button 
+                      type="button"
+                      onClick={() => setRegion("Qatar")}
+                      className={`relative z-10 px-8 py-2 text-[0.65rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 w-28 ${region === 'Qatar' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]/80'}`}
+                    >
+                      Qatar
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <div className="p-8 md:p-12">
               <form className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6" onSubmit={(e) => e.preventDefault()}>
                 
-                <div className="flex flex-col space-y-2">
-                  <label className="text-[0.6rem] font-bold text-[#0A1F3C]/40 uppercase tracking-widest ml-1">First Name</label>
-                  <input type="text" className="w-full bg-[#fcfcfc] border border-gray-100 rounded-xl px-5 py-3.5 text-sm focus:bg-white focus:border-[#66B2E8] focus:outline-none transition-all" placeholder="John" />
+                {/* First Name */}
+                <div className="flex flex-col space-y-1.5">
+                  <label className="text-[0.65rem] font-bold text-[#0A1F3C]/60 uppercase tracking-widest ml-2">First Name</label>
+                  <input type="text" className="w-full bg-[#fcfcfc] border border-gray-200 rounded-2xl px-5 py-3 text-[#0A1F3C] text-sm focus:bg-white focus:border-[#66B2E8] focus:ring-1 focus:ring-[#66B2E8]/20 focus:outline-none transition-all placeholder:text-[#0A1F3C]/20" placeholder="John" />
                 </div>
 
-                <div className="flex flex-col space-y-2">
-                  <label className="text-[0.6rem] font-bold text-[#0A1F3C]/40 uppercase tracking-widest ml-1">Last Name</label>
-                  <input type="text" className="w-full bg-[#fcfcfc] border border-gray-100 rounded-xl px-5 py-3.5 text-sm focus:bg-white focus:border-[#66B2E8] focus:outline-none transition-all" placeholder="Doe" />
+                {/* Last Name */}
+                <div className="flex flex-col space-y-1.5">
+                  <label className="text-[0.65rem] font-bold text-[#0A1F3C]/60 uppercase tracking-widest ml-2">Last Name</label>
+                  <input type="text" className="w-full bg-[#fcfcfc] border border-gray-200 rounded-2xl px-5 py-3 text-[#0A1F3C] text-sm focus:bg-white focus:border-[#66B2E8] focus:ring-1 focus:ring-[#66B2E8]/20 focus:outline-none transition-all placeholder:text-[#0A1F3C]/20" placeholder="Doe" />
                 </div>
 
-                <div className="md:col-span-2 flex flex-col space-y-2">
-                  <label className="text-[0.6rem] font-bold text-[#0A1F3C]/40 uppercase tracking-widest ml-1">Email Address</label>
-                  <input type="email" className="w-full bg-[#fcfcfc] border border-gray-100 rounded-xl px-5 py-3.5 text-sm focus:bg-white focus:border-[#66B2E8] focus:outline-none transition-all" placeholder="john@company.com" />
+                {/* Email Address */}
+                <div className="md:col-span-2 flex flex-col space-y-1.5">
+                  <label className="text-[0.65rem] font-bold text-[#0A1F3C]/60 uppercase tracking-widest ml-2">Email Address</label>
+                  <input type="email" className="w-full bg-[#fcfcfc] border border-gray-200 rounded-2xl px-5 py-3 text-[#0A1F3C] text-sm focus:bg-white focus:border-[#66B2E8] focus:ring-1 focus:ring-[#66B2E8]/20 focus:outline-none transition-all placeholder:text-[#0A1F3C]/20" placeholder="john@company.com" />
                 </div>
 
-                <div className="md:col-span-2 flex flex-col space-y-2">
-                  <label className="text-[0.6rem] font-bold text-[#0A1F3C]/40 uppercase tracking-widest ml-1">Inquiry Type</label>
-                  <select defaultValue="" className="w-full bg-[#fcfcfc] border border-gray-100 rounded-xl px-5 py-3.5 text-sm focus:bg-white focus:border-[#66B2E8] focus:outline-none transition-all appearance-none cursor-pointer">
-                    <option value="" disabled>Select project area</option>
+                {/* Inquiry Type */}
+                <div className="md:col-span-2 flex flex-col space-y-1.5 relative">
+                  <label className="text-[0.65rem] font-bold text-[#0A1F3C]/60 uppercase tracking-widest ml-2">Area of Interest</label>
+                  <select defaultValue="" className="w-full bg-[#fcfcfc] border border-gray-200 rounded-2xl px-5 py-3 text-[#0A1F3C] text-sm focus:bg-white focus:border-[#66B2E8] focus:ring-1 focus:ring-[#66B2E8]/20 focus:outline-none transition-all appearance-none cursor-pointer">
+                    <option value="" disabled className="text-gray-400">Select an area</option>
                     <option>Water Treatment</option>
                     <option>MEP Installations</option>
                     <option>Chemical Supplies</option>
+                    <option>Other Inquiry</option>
                   </select>
+                  <div className="absolute right-5 top-[2rem] pointer-events-none text-[#0A1F3C]/40">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
 
-                <div className="md:col-span-2 flex flex-col space-y-2">
-                  <label className="text-[0.6rem] font-bold text-[#0A1F3C]/40 uppercase tracking-widest ml-1">Message</label>
-                  <textarea rows={4} className="w-full bg-[#fcfcfc] border border-gray-100 rounded-xl px-5 py-3.5 text-sm focus:bg-white focus:border-[#66B2E8] focus:outline-none transition-all resize-none" placeholder="How can we help?"></textarea>
+                {/* Message */}
+                <div className="md:col-span-2 flex flex-col space-y-1.5">
+                  <label className="text-[0.65rem] font-bold text-[#0A1F3C]/60 uppercase tracking-widest ml-2">Message</label>
+                  <textarea rows={3} className="w-full bg-[#fcfcfc] border border-gray-200 rounded-2xl px-5 py-3 text-[#0A1F3C] text-sm focus:bg-white focus:border-[#66B2E8] focus:ring-1 focus:ring-[#66B2E8]/20 focus:outline-none transition-all resize-none placeholder:text-[#0A1F3C]/20" placeholder="How can we partner with you?"></textarea>
                 </div>
 
+                {/* Submit Button */}
                 <div className="md:col-span-2 pt-2">
-                  <button className="w-full bg-[#0A1F3C] text-white py-4.5 rounded-xl text-[0.65rem] font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-[#66B2E8] transition-all duration-500">
-                    Send Message
-                    <ArrowUpRight className="w-4 h-4" />
+                  <button className="group relative overflow-hidden w-full bg-[#0A1F3C] text-white py-4 rounded-2xl text-[0.7rem] font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-4 transition-all duration-500 shadow-xl shadow-[#0A1F3C]/10 hover:shadow-[#0A1F3C]/20 hover:scale-[1.01]">
+                    <span className="relative z-10 flex items-center gap-3">
+                      Send Inquiry <ArrowUpRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </span>
+                    <div className="absolute inset-0 bg-[#66B2E8] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </button>
                 </div>
               </form>

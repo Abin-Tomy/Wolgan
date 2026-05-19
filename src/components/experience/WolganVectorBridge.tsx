@@ -2,6 +2,8 @@
 import { useEffect, useRef, useCallback } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { getLenis } from "@/lib/lenis";
+import { Button } from "@/components/ui/button";
+import { Download, ShieldCheck, Clock, Zap, Star } from "lucide-react";
 
 /* ── Custom ease (matches reference VectorBridge) ── */
 function easeCustom(t: number): number {
@@ -20,50 +22,110 @@ function easeCustom(t: number): number {
 
 /* ── Portal inner content ── */
 function PortalContent() {
+  const cards = [
+    { title: "Quality Materials", desc: "Sourcing only the finest, internationally certified materials.", icon: ShieldCheck },
+    { title: "24/7 Service", desc: "Round-the-clock support ensuring your systems never halt.", icon: Clock },
+    { title: "Quick Estimates", desc: "Accurate, transparent, and rapid project cost estimation.", icon: Zap },
+    { title: "Professional Touch", desc: "Expert engineers bringing decades of experience to every job.", icon: Star },
+  ];
+
   return (
     <section style={{
       width: "100%", height: "100%",
       display: "flex", flexDirection: "column",
       justifyContent: "center", alignItems: "center",
       padding: "0 clamp(2rem, 8vw, 10rem)",
-      backgroundColor: "#ffffff",
+      background: "radial-gradient(ellipse at center, #e0f2fe 0%, #f0f9ff 50%, #ffffff 100%)",
+      position: "relative",
+      overflow: "hidden"
     }}>
-      <div style={{ maxWidth: "64rem", width: "100%" }}>
-        <p style={{
-          fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.3em",
-          textTransform: "uppercase", color: "rgba(0,0,0,0.4)",
-          marginBottom: "1.5rem",
-          fontFamily: "var(--font-montserrat), sans-serif",
-        }}>Our Approach</p>
+      
+      {/* Decorative Wave SVG — Fades out on the right so it doesn't clash with text */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-60"
+        style={{
+          maskImage: "linear-gradient(to right, black 30%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.15) 90%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, black 30%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.15) 90%, transparent 100%)"
+        }}
+      >
+        <svg viewBox="0 0 1200 800" className="w-full h-full min-w-[1200px] absolute" preserveAspectRatio="xMidYMid slice">
+          <path 
+            className="why-wave-path"
+            d="M -100,500 C 200,700 400,100 600,400 C 800,700 1000,200 1300,400" 
+            fill="none" 
+            stroke="#0A1F3C" 
+            strokeWidth="1.5" 
+            strokeDasharray="3500"
+            strokeDashoffset="3500"
+            strokeLinecap="round"
+          />
+          <path 
+            className="why-wave-path-2"
+            d="M -100,520 C 180,720 380,120 580,420 C 780,720 980,220 1280,420" 
+            fill="none" 
+            stroke="#66B2E8" 
+            strokeWidth="1" 
+            strokeDasharray="3500"
+            strokeDashoffset="3500"
+            strokeLinecap="round"
+            opacity="0.4"
+          />
+        </svg>
+      </div>
 
-        <h2 style={{
-          fontFamily: "var(--font-montserrat), sans-serif",
-          fontWeight: 900, textTransform: "uppercase",
-          lineHeight: 0.9, letterSpacing: "-0.03em",
-          fontSize: "clamp(2.5rem, 7vw, 7rem)",
-          color: "#0A1F3C", marginBottom: "3rem",
-        }}>
-          Engineering<br />
-          <span style={{ color: "rgba(10,31,60,0.25)" }}>Excellence</span><br />
-          Delivered.
-        </h2>
-
-        <div style={{
-          display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "2.5rem", borderTop: "1px solid rgba(0,0,0,0.1)", paddingTop: "2.5rem",
-        }}>
-          {[
-            { num: "01", title: "Assess", body: "Rigorous site surveys and water quality analysis ensure every solution is precision-engineered to your specific environment." },
-            { num: "02", title: "Design & Install", body: "From HVAC to water treatment systems, our MEP specialists deliver fully integrated installations to international standards." },
-            { num: "03", title: "Maintain & Supply", body: "End-to-end chemical supply and maintenance contracts keep your systems performing at peak efficiency year-round." },
-          ].map(p => (
-            <div key={p.num}>
-              <span style={{ display: "block", fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 900, fontSize: "0.7rem", letterSpacing: "0.25em", color: "rgba(0,0,0,0.25)", marginBottom: "0.75rem" }}>{p.num}</span>
-              <h3 style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 900, fontSize: "1.1rem", textTransform: "uppercase", color: "#0A1F3C", marginBottom: "0.75rem" }}>{p.title}</h3>
-              <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "rgba(0,0,0,0.5)" }}>{p.body}</p>
-            </div>
-          ))}
+      <div className="flex flex-col lg:flex-row items-center w-full max-w-[72rem] gap-12 lg:gap-20 relative z-10">
+        
+        {/* Left Side: Animated Cards Deck — all start visible, fly up on scroll */}
+        <div className="relative w-full lg:w-1/2 h-[420px] flex justify-center items-center" style={{ overflow: "visible" }}>
+          {cards.map((card, i) => {
+            /* 
+             * Original beautiful fanned stack (centered, pure rotation) - flipped horizontally, reduced slightly
+             */
+            const deckRots = [4, 1, -3, -7];
+            return (
+              <div 
+                key={i} 
+                className={`why-card-${i} absolute w-[290px] md:w-[340px] aspect-square bg-white rounded-3xl p-9 flex flex-col items-center justify-center text-center shadow-[0_20px_60px_rgba(0,0,0,0.10)] border border-blue-50`}
+                style={{
+                  zIndex: 4 - i,
+                  transform: `rotate(${deckRots[i]}deg)`,
+                  opacity: 1,
+                  willChange: "transform, opacity",
+                }}
+              >
+                <div className="w-16 h-16 rounded-full bg-[#f0f9ff] flex items-center justify-center mb-5 text-[#0A1F3C]">
+                  <card.icon size={28} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-[#0A1F3C] mb-3">{card.title}</h3>
+                <p className="text-xs md:text-sm text-slate-500 font-light leading-relaxed">{card.desc}</p>
+              </div>
+            );
+          })}
         </div>
+
+        {/* Right Side: Text & Button */}
+        <div className="w-full lg:w-1/2 text-center lg:text-left">
+          <p className="text-[10px] uppercase tracking-[0.6em] font-bold mb-6"
+             style={{ color: "rgba(10,31,60,0.4)" }}>
+            Why Choose Us
+          </p>
+          <h2 className="text-[clamp(2.2rem,3.5vw,3.5rem)] font-light leading-tight tracking-tight mb-8"
+              style={{ color: "#0A1F3C" }}>
+            Building on <br className="hidden lg:block" />
+            <span style={{ color: "rgba(10,31,60,0.28)" }}>Reliability</span> & Expertise.
+          </h2>
+          <p className="text-sm md:text-base text-slate-600 mb-10 leading-relaxed max-w-md mx-auto lg:mx-0">
+            We provide precision-engineered solutions tailored to your operational needs. Our commitment to international standards and long-term performance makes us the preferred contracting partner.
+          </p>
+          
+          <div className="flex justify-center lg:justify-start">
+            <Button variant="primaryBrand" href="/Wolgan_Company_Profile.pdf" download="Wolgan_Company_Profile.pdf" className="inline-flex items-center gap-3 bg-[#0A1F3C] text-white hover:bg-[#0A1F3C]/90 px-8 py-3 rounded-full transition-all group border-none shadow-xl shadow-[#0A1F3C]/20">
+              <Download size={18} className="group-hover:-translate-y-0.5 transition-transform" />
+              Company Profile
+            </Button>
+          </div>
+        </div>
+
       </div>
     </section>
   );
@@ -120,9 +182,9 @@ export function WolganVectorBridge() {
       } catch (_) {}
     }
 
-    // Give the section enough height: viewport × 1.2 (expansion runway) + viewport (content) + viewport (slide-over)
+    // Section height: expansion runway + pinned content + 3×vh card fly-out runway + slide-over
     if (sectionRef.current) {
-      const h = vh * 1.2 + vh + vh;
+      const h = vh * 1.2 + vh * 3 + vh;
       sectionRef.current.style.minHeight = `${h}px`;
     }
 
@@ -137,6 +199,8 @@ export function WolganVectorBridge() {
 
   /* ── Per-frame driver: read Lenis scroll via gsap.ticker ── */
   useEffect(() => {
+    let cards: HTMLElement[] = [];
+
     const tick = () => {
       if (!measuredRef.current) return;
 
@@ -199,26 +263,67 @@ export function WolganVectorBridge() {
         const bO = Math.max(0, 1 - e / 0.5);
         box.style.borderWidth = bO < 0.01 ? "0px" : "2px";
         box.style.borderColor = `rgba(0,0,0,${bO.toFixed(3)})`;
-      } else if (loc < expansionRunway + vh) {
-        // Fully expanded, but we keep it fixed for 100vh so the next section can slide over it!
+      } else if (loc < expansionRunway + vh * 3) {
+        // Fully expanded — PINNED for 3×vh so cards can fly out one-by-one
         box.style.position  = "fixed";
         box.style.top       = "50%";
         box.style.overflow  = "visible";
         box.style.transform   = `translate3d(0,0,0) scale(${(vw / RECT_W).toFixed(4)},${(vh / RECT_H).toFixed(4)})`;
         inner.style.transform = `scale(${(RECT_W / vw).toFixed(4)},${(RECT_H / vh).toFixed(4)})`;
         box.style.borderWidth = "0px";
-        // SVG line should scroll up out of view
+        // SVG line scrolls up out of view
         if (svgCont) { svgCont.style.position = "fixed"; svgCont.style.top = `${-(loc - expansionRunway)}px`; }
       } else {
-        // Slide-over complete: release it to absolute so it scrolls naturally off-screen (though covered)
-        const slideOverRunway = vh;
+        // Slide-over complete: release to absolute so it scrolls naturally off-screen
+        const pinnedRunway = vh * 3;
         box.style.position    = "absolute";
-        box.style.top         = `${expansionRunway + slideOverRunway + vh / 2}px`;
+        box.style.top         = `${expansionRunway + pinnedRunway + vh / 2}px`;
         box.style.transform   = `translate3d(0,0,0) scale(${(vw / RECT_W).toFixed(4)},${(vh / RECT_H).toFixed(4)})`;
         inner.style.transform = `scale(${(RECT_W / vw).toFixed(4)},${(RECT_H / vh).toFixed(4)})`;
         box.style.overflow    = "visible";
         box.style.borderWidth = "0px";
         if (svgCont) { svgCont.style.position = "absolute"; svgCont.style.top = `${expansionRunway}px`; }
+      }
+
+      /* 4. Cards fly OUT upward one-by-one as user scrolls through pinned phase */
+      // Query fresh nodes every tick to prevent disconnected DOM nodes from Hot Reloading
+      const cardNodes = [
+        document.querySelector(".why-card-0") as HTMLElement,
+        document.querySelector(".why-card-1") as HTMLElement,
+        document.querySelector(".why-card-2") as HTMLElement,
+        document.querySelector(".why-card-3") as HTMLElement,
+      ];
+
+      /* flyProgress: 0 → 1 over the 3×vh pinned window */
+      const flyProgress = Math.max(0, Math.min(1, (loc - expansionRunway) / (vh * 3)));
+
+      /* Deck resting positions */
+      const deckRots = [4, 1, -3, -7];
+
+      cardNodes.forEach((card, i) => {
+        if (!card) return;
+        /* card 0 exits first (front), card 3 exits last (back) */
+        const start = i * 0.22;
+        const end   = start + 0.25;
+        const raw   = Math.max(0, Math.min(1, (flyProgress - start) / (end - start)));
+        const e     = easeCustom(raw);
+
+        const restR = deckRots[i];
+        /* fly up: translateY up to -120vh, slight counter-rotate as it leaves */
+        card.style.transform = `translateY(${e * -120}vh) rotate(${restR + e * -15}deg)`;
+        card.style.opacity   = `${Math.max(0, 1 - e * 1.5)}`;
+      });
+
+      /* 5. Trace background wave lines */
+      const wavePath = document.querySelector(".why-wave-path") as SVGPathElement;
+      const wavePath2 = document.querySelector(".why-wave-path-2") as SVGPathElement;
+      
+      if (wavePath && wavePath2) {
+        // Trace quickly during the first half of the pinned fly-out phase
+        const traceAmt = Math.max(0, Math.min(1, flyProgress * 1.5));
+        const offset = 3500 - (traceAmt * 3500);
+        wavePath.style.strokeDashoffset = `${offset}`;
+        wavePath2.style.strokeDashoffset = `${offset}`;
       }
     };
 

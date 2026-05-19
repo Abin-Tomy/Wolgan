@@ -142,10 +142,10 @@ export function AboutSection({
           </ul>
         </div>
 
-        <div className="mt-2">
+        <div className="mt-2 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           <Button
             variant="primaryBrand"
-            className="shadow-md hover:shadow-lg transition-all duration-300"
+            className="shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2.5 w-auto"
             href="/about"
           >
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">
@@ -176,6 +176,45 @@ export function AboutSection({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                />
+              </svg>
+            </div>
+          </Button>
+
+          <Button
+            variant="primaryBrand"
+            className="shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2.5 w-auto"
+            href="/Wolgan_Company_Profile.pdf"
+            download="Wolgan_Company_Profile.pdf"
+          >
+            <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+              Company Profile
+            </span>
+            <div className="relative w-3.5 h-3.5 overflow-hidden z-10 ml-2">
+              <svg
+                className="absolute inset-0 w-full h-full transition-transform duration-300 group-hover:translate-y-full text-[var(--brand-deep)] group-hover:text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              <svg
+                className="absolute inset-0 w-full h-full transition-transform duration-300 -translate-y-full group-hover:translate-y-0 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
                 />
               </svg>
             </div>

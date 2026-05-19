@@ -8,7 +8,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import {
   ChevronRight, Globe2, Droplets, Settings, FlaskConical,
-  Building2, Hotel, Factory, Ship, Landmark, Hospital, Target, Compass
+  Building2, Hotel, Factory, Ship, Landmark, Hospital, Target, Compass,
+  Home, Utensils, Flame, Snowflake
 } from "lucide-react";
 
 import deck1 from "@/assets/images/about/about-deck-1.jpg";
@@ -364,21 +365,21 @@ export function AboutPage() {
                     <defs>
                       <clipPath id="textClip">
                         <text x="50%" y="160" textAnchor="middle" fontFamily="inherit" fontSize="180" fontWeight="900" letterSpacing="-0.05em">
-                          20<tspan fontSize="110" dy="-50">+</tspan>
+                          10<tspan fontSize="110" dy="-50">+</tspan>
                         </text>
                         <text x="50%" y="195" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
                           YEARS OF EXCELLENCE
                         </text>
 
                         <text x="50%" y="360" textAnchor="middle" fontFamily="inherit" fontSize="155" fontWeight="900" letterSpacing="-0.06em">
-                          1750<tspan fontSize="90" dy="-50">+</tspan>
+                          100<tspan fontSize="90" dy="-50">+</tspan>
                         </text>
                         <text x="50%" y="395" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
                           PROJECTS DELIVERED
                         </text>
 
                         <text x="50%" y="560" textAnchor="middle" fontFamily="inherit" fontSize="180" fontWeight="900" letterSpacing="-0.05em">
-                          35<tspan fontSize="110" dy="-50">+</tspan>
+                          30<tspan fontSize="110" dy="-50">+</tspan>
                         </text>
                         <text x="50%" y="595" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
                           EXPERT ENGINEERS
@@ -666,7 +667,7 @@ export function AboutPage() {
               <div className="order-2 lg:order-1 lg:col-span-4 flex justify-center">
                 <div className="grid grid-cols-2 gap-8 items-center w-full max-w-[460px]">
                   {/* Left sub-column: 2 cards stacked */}
-                  <div className="flex flex-col gap-8">
+                  <div className="flex flex-col gap-8 mt-0 lg:mt-12">
                     {/* Commercial */}
                     <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
                       {/* Hanging thread from above (desktop only) */}
@@ -719,14 +720,15 @@ export function AboutPage() {
                     </div>
                   </div>
 
-                  {/* Right sub-column: 1 card centered vertically */}
-                  <div className="flex items-center justify-center">
+                  {/* Right sub-column: 2 cards stacked */}
+                  <div className="flex flex-col gap-8">
                     {/* Industrial */}
                     <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
                       {/* Hanging thread from above (desktop only) */}
-                      <div className="hidden lg:block absolute w-[1px] h-36 -top-36 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
-                      {/* Anchoring peg */}
+                      <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
+                      {/* Anchoring pegs */}
                       <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+                      <div className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
 
                       {/* Card Content Panel */}
                       <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
@@ -742,6 +744,31 @@ export function AboutPage() {
                         </span>
                         <span className="text-[11px] text-slate-400 font-light leading-tight">
                           Plants & heavy manufacturing
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Residential */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Connecting thread to Industrial card above */}
+                      <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
+                      {/* Anchoring peg */}
+                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Home className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          Residential
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Towers & communities
                         </span>
                       </div>
                     </div>
@@ -765,40 +792,12 @@ export function AboutPage() {
                 </p>
               </div>
 
-              {/* RIGHT COLUMN: 3 Cards in a Rotated Triangular Cluster (1 left, 2 right) */}
+              {/* RIGHT COLUMN: 4 Cards (2 left, 2 right) */}
               <div className="order-3 lg:order-3 lg:col-span-4 flex justify-center">
                 <div className="grid grid-cols-2 gap-8 items-center w-full max-w-[460px]">
-                  {/* Left sub-column: 1 card centered vertically */}
-                  <div className="flex items-center justify-center">
-                    {/* Marine */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Hanging thread from above (desktop only) */}
-                      <div className="hidden lg:block absolute w-[1px] h-36 -top-36 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
-                      {/* Anchoring peg */}
-                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Ship className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Marine
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Vessels & offshore systems
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right sub-column: 2 cards stacked */}
+                  {/* Left sub-column: 2 cards stacked */}
                   <div className="flex flex-col gap-8">
-                    {/* Government */}
+                    {/* Municipal */}
                     <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
                       {/* Hanging thread from above (desktop only) */}
                       <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
@@ -816,7 +815,7 @@ export function AboutPage() {
                           <Landmark className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
                         </div>
                         <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Government
+                          Municipal
                         </span>
                         <span className="text-[11px] text-slate-400 font-light leading-tight">
                           Civic infrastructure
@@ -824,9 +823,9 @@ export function AboutPage() {
                       </div>
                     </div>
 
-                    {/* Healthcare */}
+                    {/* Food & Beverage */}
                     <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Connecting thread to Government card above */}
+                      {/* Connecting thread to Municipal card above */}
                       <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
                       {/* Anchoring peg */}
                       <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
@@ -838,13 +837,67 @@ export function AboutPage() {
                           boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
                         }}>
                         <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Hospital className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                          <Utensils className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
                         </div>
                         <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Healthcare
+                          Food & Beverage
                         </span>
                         <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Labs & hospitals
+                          Processing & production
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right sub-column: 2 cards stacked */}
+                  <div className="flex flex-col gap-8 mt-0 lg:mt-12">
+                    {/* Oil & Gas */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Hanging thread from above (desktop only) */}
+                      <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
+                      {/* Anchoring pegs */}
+                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+                      <div className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Flame className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          Oil & Gas
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Refineries & rigs
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* District Cooling */}
+                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
+                      {/* Connecting thread to Oil & Gas card above */}
+                      <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
+                      {/* Anchoring peg */}
+                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+
+                      {/* Card Content Panel */}
+                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
+                        style={{
+                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
+                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
+                        }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
+                          <Snowflake className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
+                          District Cooling
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-light leading-tight">
+                          Centralized plants
                         </span>
                       </div>
                     </div>

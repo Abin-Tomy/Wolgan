@@ -15,6 +15,9 @@ interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   variant?: ButtonVariant;
   href?: string;
+  download?: string;
+  target?: string;
+  rel?: string;
   children?: React.ReactNode;
 }
 
