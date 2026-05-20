@@ -118,7 +118,7 @@ export function Hero() {
         <div className="hero-tag absolute bottom-[10%] left-1/2 -translate-x-1/2 text-center w-max max-w-[90vw]">
           <Typography
             variant="tagline"
-            as="p"
+            as="h1"
             className="text-white relative text-xs sm:text-sm tracking-[0.4em] sm:tracking-[0.5em] !opacity-85"
           >
             Delivering smart, reliable, and performance-driven systems
@@ -126,6 +126,7 @@ export function Hero() {
           </Typography>
           <Typography
             variant="h3"
+            as="h2"
             className="mt-10 text-white/90 relative"
           >
             Pure Performance Delivered

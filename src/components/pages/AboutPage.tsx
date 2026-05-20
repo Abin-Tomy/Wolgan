@@ -291,22 +291,24 @@ export function AboutPage() {
             </div>
 
             {/* Big centered heading */}
-            <div className="overflow-hidden mb-1">
-              <h1 className="hero-line text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white uppercase">
-                Pure
-              </h1>
-            </div>
-            <div className="overflow-hidden mb-1">
-              <h1 className="hero-line text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter uppercase"
-                style={{ color: "rgba(255,255,255,0.22)" }}>
-                Performance
-              </h1>
-            </div>
-            <div className="overflow-hidden mb-8">
-              <h1 className="hero-line text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white uppercase">
-                Delivered.
-              </h1>
-            </div>
+            <h1 className="hero-heading">
+              <div className="overflow-hidden mb-1">
+                <span className="hero-line block text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white uppercase">
+                  Pure
+                </span>
+              </div>
+              <div className="overflow-hidden mb-1">
+                <span className="hero-line block text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter uppercase"
+                  style={{ color: "rgba(255,255,255,0.22)" }}>
+                  Performance
+                </span>
+              </div>
+              <div className="overflow-hidden mb-8">
+                <span className="hero-line block text-[clamp(3.2rem,7.5vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white uppercase">
+                  Delivered.
+                </span>
+              </div>
+            </h1>
 
             {/* Subtitle */}
             <p className="hero-sub text-base text-white/50 font-light max-w-sm leading-relaxed mb-0">
