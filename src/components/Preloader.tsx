@@ -167,6 +167,11 @@ export function Preloader() {
         return;
       }
 
+      // Skip download links — let the browser handle file downloads natively
+      if (target.hasAttribute("download") || href.startsWith("/api/download")) {
+        return;
+      }
+
       const targetUrl = new URL(href, window.location.origin);
       if (targetUrl.pathname === pathname) {
         return;

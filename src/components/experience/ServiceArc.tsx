@@ -39,7 +39,7 @@ function ServiceContentBlock({ index, service }: { index: number; service: Servi
         <Button 
           variant="headerCta" 
           href={service.href}
-          className="flex pointer-events-auto"
+          className="inline-flex w-fit pointer-events-auto group"
         >
           View Details
           <ArrowUpRight className="ml-2 w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -61,7 +61,7 @@ export function ServiceArc({ services }: PortalServicesProps) {
           <div className="w-8 h-[1px] bg-white opacity-20" />
         </div>
         <Typography variant="h2" className="text-white leading-tight">
-          Advanced Technical <span className="italic font-light opacity-80 text-white">Solutions</span>
+          Quality Servicing <span className="italic font-light opacity-80 text-white">Opportunity</span>
         </Typography>
       </div>
 

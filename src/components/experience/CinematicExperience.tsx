@@ -18,21 +18,21 @@ import service3 from "@/assets/images/work/chemical-supply.jpeg";
 const SERVICES_DATA = [
   {
     title: "Water Treatment",
-    desc: "The Single Source for Complete Water Treatment Solutions & Supply of Chemicals. We provide excellent service for various commercial & residential sectors.",
+    desc: "Water treatment requires in-depth knowledge and skills to understand, rectify & even build specific systems customized to surrounding operations. Our experienced team provides excellent service for various commercial & residential sectors across Qatar.",
     img: deck1,
     serviceImg: service1,
     href: "/services/water-treatment",
   },
   {
-    title: "MEP Installations",
-    desc: "Expert execution of Chilled Water Systems, HVAC, and Plumbing Systems. Delivering high-precision mechanical infrastructure and building services.",
+    title: "MEP Installations & Services",
+    desc: "WOLGAN MEP Division is dedicated to providing MEP solutions for the most demanding commercial and industrial facilities. We are committed to providing clients with the best possible solutions from initial design and engineering through installation and maintenance.",
     img: deck2,
     serviceImg: service2,
     href: "/services/mep-installations",
   },
   {
     title: "Chemical Supplies",
-    desc: "The Single Source for Complete Supply of Chemicals. We provide specialized water treatment chemicals and commodity chemicals for industrial needs.",
+    desc: "The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth. Wolgan thus employs cutting-edge methods of water treatment to produce water suitable for use.",
     img: deck3,
     serviceImg: service3,
     href: "/services/chemical-supplies",
@@ -128,7 +128,7 @@ export function CinematicExperience() {
         .to(path2Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.65)
         .to(path3Ref.current, { attr: { d: "M 0 0 L 1 0 L 1 1 L 0 1 Z" }, ease: "power2.inOut" }, 0.85)
         .to(textRef.current, {
-            left: "10%", xPercent: 0, yPercent: -50, width: "40vw",
+            left: "8%", xPercent: 0, yPercent: -50, width: "40vw",
             color: "#0a1f3c", textAlign: "left", force3D: true,
             scale: 0.85, transformOrigin: "left center",
             ease: "power3.inOut",
@@ -137,7 +137,7 @@ export function CinematicExperience() {
         /* ── Phase 4 (1.5 → 2.0): Parallax & Detail ── */
         .to([imgWrapRef.current, img2Ref.current, img3Ref.current], { yPercent: -54, ease: "none" }, 1.5)
         .to(statCardRef.current, { y: -30, x: -10, ease: "none" }, 1.5)
-        .to(textRef.current, { top: "15%", left: "10%", yPercent: 0, scale: 0.7, transformOrigin: "left top", ease: "power3.inOut" }, 1.5)
+        .to(textRef.current, { top: "15%", left: "8%", yPercent: 0, scale: 0.7, transformOrigin: "left top", ease: "power3.inOut" }, 1.5)
         .to(introParaRef.current, { opacity: 0, y: -20, pointerEvents: "none", ease: "power3.inOut" }, 1.5)
         .fromTo(detailRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, ease: "power3.out" }, 1.6)
 
@@ -173,8 +173,8 @@ export function CinematicExperience() {
           border: "2px solid rgba(255, 255, 255, 0.8)", ease: "expo.inOut", duration: 1.5
         }, start);
 
-        tl.fromTo(`.service-side-left-${i}`,  { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 1 }, start + 0.5);
-        tl.fromTo(`.service-side-right-${i}`, { x:  40, opacity: 0 }, { x: 0, opacity: 1, duration: 1 }, start + 0.5);
+        tl.fromTo(`.service-side-left-${i}`,  { x: -40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 1 }, start + 0.5);
+        tl.fromTo(`.service-side-right-${i}`, { x:  40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 1 }, start + 0.5);
 
         cardsArr.forEach((otherCard, j) => {
           if (i === j) return;
@@ -187,7 +187,7 @@ export function CinematicExperience() {
         });
 
         if (i < SERVICES_DATA.length - 1) {
-          tl.to([`.service-side-left-${i}`, `.service-side-right-${i}`], { opacity: 0, y: -30, duration: 0.8 }, start + 2.2);
+          tl.to([`.service-side-left-${i}`, `.service-side-right-${i}`], { autoAlpha: 0, y: -30, duration: 0.8 }, start + 2.2);
         }
       });
 
@@ -196,7 +196,7 @@ export function CinematicExperience() {
 
       // Exit last service text
       tl.to([".service-side-left-2", ".service-side-right-2"], {
-        opacity: 0, y: -30, duration: 0.8, ease: "expo.inOut",
+        autoAlpha: 0, y: -30, duration: 0.8, ease: "expo.inOut",
       }, voidStart);
 
       // All 3 cards zoom back in Z (void / wormhole effect)

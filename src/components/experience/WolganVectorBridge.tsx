@@ -3,7 +3,8 @@ import { useEffect, useRef, useCallback } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { getLenis } from "@/lib/lenis";
 import { Button } from "@/components/ui/button";
-import { Download, ShieldCheck, Clock, Zap, Star } from "lucide-react";
+import { ShieldCheck, Clock, Zap, Star } from "lucide-react";
+import { ArrowUpRight } from "@/components/ui/icons/ArrowUpRight";
 
 /* ── Custom ease (matches reference VectorBridge) ── */
 function easeCustom(t: number): number {
@@ -97,7 +98,7 @@ function PortalContent() {
                   <card.icon size={28} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-[#0A1F3C] mb-3">{card.title}</h3>
-                <p className="text-xs md:text-sm text-slate-500 font-light leading-relaxed">{card.desc}</p>
+                <p className="text-sm md:text-base text-slate-600 font-light leading-relaxed">{card.desc}</p>
               </div>
             );
           })}
@@ -105,10 +106,12 @@ function PortalContent() {
 
         {/* Right Side: Text & Button */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <p className="text-[10px] uppercase tracking-[0.6em] font-bold mb-6"
-             style={{ color: "rgba(10,31,60,0.4)" }}>
-            Why Choose Us
-          </p>
+          <div className="flex items-center justify-center lg:justify-start gap-4 mb-6 group">
+            <div className="w-10 h-[1px] bg-[var(--brand-navy)] transition-all duration-700 group-hover:w-16 opacity-40" />
+            <span className="text-[10px] uppercase tracking-[0.5em] font-bold" style={{ color: "rgba(10,31,60,0.4)" }}>
+              Why Choose Us
+            </span>
+          </div>
           <h2 className="text-[clamp(2.2rem,3.5vw,3.5rem)] font-light leading-tight tracking-tight mb-8"
               style={{ color: "#0A1F3C" }}>
             Building on <br className="hidden lg:block" />
@@ -118,10 +121,31 @@ function PortalContent() {
             We provide precision-engineered solutions tailored to your operational needs. Our commitment to international standards and long-term performance makes us the preferred contracting partner.
           </p>
           
-          <div className="flex justify-center lg:justify-start">
-            <Button variant="primaryBrand" href="/Wolgan_Company_Profile.pdf" download="Wolgan_Company_Profile.pdf" className="inline-flex items-center gap-3 bg-[#0A1F3C] text-white hover:bg-[#0A1F3C]/90 px-8 py-3 rounded-full transition-all group border-none shadow-xl shadow-[#0A1F3C]/20">
-              <Download size={18} className="group-hover:-translate-y-0.5 transition-transform" />
-              Company Profile
+          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+            <Button 
+              variant="primaryBrand" 
+              href="/api/download?file=NCR_Brochure.pdf" 
+              download="NCR_Brochure.pdf" 
+              className="group flex gap-2 items-center px-10 h-16 text-lg font-semibold rounded-full shadow-xl shadow-[#0A1F3C]/10 hover:text-white transition-colors duration-300"
+            >
+              <span>NCR Brochure</span>
+              <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
+                <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
+              </div>
+            </Button>
+            
+            <Button 
+              variant="primaryBrand" 
+              href="/api/download?file=Rydlyme_Brochure.pdf" 
+              download="Rydlyme_Brochure.pdf" 
+              className="group flex gap-2 items-center px-10 h-16 text-lg font-semibold rounded-full shadow-xl shadow-[#0A1F3C]/10 hover:text-white transition-colors duration-300"
+            >
+              <span>Rydlyme Brochure</span>
+              <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
+                <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
+              </div>
             </Button>
           </div>
         </div>
@@ -319,8 +343,8 @@ export function WolganVectorBridge() {
       const wavePath2 = document.querySelector(".why-wave-path-2") as SVGPathElement;
       
       if (wavePath && wavePath2) {
-        // Trace quickly during the first half of the pinned fly-out phase
-        const traceAmt = Math.max(0, Math.min(1, flyProgress * 1.5));
+        // Trace slower during the pinned fly-out phase
+        const traceAmt = Math.max(0, Math.min(1, flyProgress * 0.8));
         const offset = 3500 - (traceAmt * 3500);
         wavePath.style.strokeDashoffset = `${offset}`;
         wavePath2.style.strokeDashoffset = `${offset}`;
@@ -384,3 +408,4 @@ export function WolganVectorBridge() {
     </div>
   );
 }
+

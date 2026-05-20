@@ -119,7 +119,7 @@ export function Hero() {
           <Typography
             variant="tagline"
             as="p"
-            className="text-white relative"
+            className="text-white relative text-xs sm:text-sm tracking-[0.4em] sm:tracking-[0.5em] !opacity-85"
           >
             Delivering smart, reliable, and performance-driven systems
             <span className="block mt-2">across Qatar, UAE, and India.</span>

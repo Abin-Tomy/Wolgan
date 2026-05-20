@@ -14,6 +14,12 @@ const serviceItems = [
   { name: "Chemical Supplies", href: "/services/chemical-supplies" },
 ];
 
+const downloadItems = [
+  { name: "Wolgan Brochure", file: "/api/download?file=Wolgan_Brochure.pdf", download: "Wolgan_Brochure.pdf" },
+  { name: "NCR Brochure", file: "/api/download?file=NCR_Brochure.pdf", download: "NCR_Brochure.pdf" },
+  { name: "Rydlyme Brochure", file: "/api/download?file=Rydlyme_Brochure.pdf", download: "Rydlyme_Brochure.pdf" },
+];
+
 function ServicesDropdown() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -76,6 +82,81 @@ function ServicesDropdown() {
                 <span className="w-1 h-1 rounded-full bg-white/30 group-hover:bg-white/70 transition-colors duration-150" />
                 {item.name}
               </Button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function DownloadsDropdown() {
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div
+      ref={dropdownRef}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <Button variant="serviceDropdown">
+        Downloads
+        <svg
+          className={`w-3 h-3 mt-0.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </Button>
+
+      {/* Invisible bridge */}
+      <div className="absolute top-full left-0 w-full h-4 z-10" />
+
+      {/* Dropdown Panel */}
+      <div
+        className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-72 rounded-xl overflow-hidden border border-white/10 shadow-2xl transition-all duration-200 z-50 ${
+          open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+        style={{
+          backgroundColor: "rgba(10, 25, 50, 0.95)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
+      >
+        {/* small arrow */}
+        <div
+          className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 border-l border-t border-white/10"
+          style={{ backgroundColor: "rgba(10, 25, 50, 0.95)" }}
+        />
+        <ul className="py-2">
+          {downloadItems.map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.file}
+                download={item.download}
+                className="flex items-center gap-3 px-5 py-3 text-sm text-white/75 hover:text-white hover:bg-white/5 transition-colors duration-150 group"
+              >
+                {/* Download icon */}
+                <svg className="w-3.5 h-3.5 shrink-0 text-white/40 group-hover:text-white/80 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                {item.name}
+              </a>
             </li>
           ))}
         </ul>
@@ -195,6 +276,7 @@ export function Header() {
               About
             </a>
             <ServicesDropdown />
+            <DownloadsDropdown />
             <a href="/#team" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Team
             </a>
@@ -287,6 +369,24 @@ export function Header() {
                       <a 
                         href={item.href}
                         onClick={(e) => handleMobileNavLinkClick(e, item.href)}
+                        className="text-2xl font-light text-white/60 hover:text-white transition-colors duration-200"
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
+              {/* Downloads section in mobile menu */}
+              <li className="flex flex-col gap-3">
+                <span className="text-lg font-medium text-white/45">Downloads</span>
+                <ul className="pl-4 flex flex-col gap-3 border-l border-white/10">
+                  {downloadItems.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.file}
+                        download={item.download}
                         className="text-2xl font-light text-white/60 hover:text-white transition-colors duration-200"
                       >
                         {item.name}

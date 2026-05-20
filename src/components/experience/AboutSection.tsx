@@ -33,7 +33,7 @@ export function AboutSection({
         }}
       >
         <div className="flex items-center gap-4 mb-6 group">
-          <div className="w-10 h-[1px] bg-[var(--brand-gold)] transition-all duration-700 group-hover:w-16" />
+          <div className="w-10 h-[1px] bg-[var(--brand-navy)] transition-all duration-700 group-hover:w-16" />
           <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-inherit opacity-70">
             About Wolgan
           </span>
@@ -99,7 +99,7 @@ export function AboutSection({
           transform: "none",
         }}
       >
-        <p className="text-sm md:text-[15px] leading-relaxed opacity-80 mb-10 max-w-[520px]">
+        <p className="text-[15px] md:text-base leading-relaxed opacity-80 mb-10 max-w-[520px]">
           Founded in 2020, Wolgan is a dedicated water treatment company
           operating in Qatar and the UAE, delivering smart and reliable
           solutions across commercial, institutional, and industrial sectors.
@@ -184,8 +184,8 @@ export function AboutSection({
           <Button
             variant="primaryBrand"
             className="shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2.5 w-auto"
-            href="/Wolgan_Company_Profile.pdf"
-            download="Wolgan_Company_Profile.pdf"
+            href="/api/download?file=Wolgan_Brochure.pdf"
+            download="Wolgan_Brochure.pdf"
           >
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">
               Company Profile
@@ -224,3 +224,4 @@ export function AboutSection({
     </>
   );
 }
+

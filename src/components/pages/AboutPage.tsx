@@ -4,8 +4,10 @@ import Image from "next/image";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Button } from "@/components/ui/button";
+import { Footer } from "@/components/Footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ArrowUpRight } from "@/components/ui/icons/ArrowUpRight";
 import {
   ChevronRight, Globe2, Droplets, Settings, FlaskConical,
   Building2, Hotel, Factory, Ship, Landmark, Hospital, Target, Compass,
@@ -350,16 +352,16 @@ export function AboutPage() {
                 <div className="space-y-6 text-sm md:text-base font-light leading-relaxed"
                   style={{ color: "rgba(var(--brand-navy-rgb), 0.65)" }}>
                   <p>
-                    Established and reputed in Qatar, Wolgan serves exceptional service in Water Treatment, Mechanical Installations, Chemical Supply and more. We continuously explore joint ventures and strategic alliances to provide advanced products and services.
+                    Founded in 2020, Wolgan is an established Contracting Company operating in Qatar and the UAE. Driven by entrepreneurial leadership and vision, we deliver smart, reliable solutions in water treatment, MEP execution, and specialized chemical supply across commercial and industrial sectors.
                   </p>
                   <p>
-                    As your long-term engineering partner, we bring decades of specialized expertise to every project, ensuring international standards and uncompromised quality across the Middle East and India.
+                    Serving industries from healthcare to large-scale construction, our experienced team provides advanced, cost-effective solutions. We continuously explore strategic alliances to optimize performance, ensure international compliance, and help customers operate efficiently with greater environmental responsibility.
                   </p>
                 </div>
               </div>
 
               {/* COLUMN 2: The Massive SVG Numbers (Span 4) - CENTER HIGHLIGHT */}
-              <div className="lg:col-span-4 anim-up flex justify-center py-10 lg:py-0">
+              <div className="lg:col-span-4 anim-up flex flex-col items-center justify-center gap-8 py-10 lg:py-0">
                 <div className="w-full relative min-h-[450px] md:min-h-[580px] max-w-[450px]">
                   <svg viewBox="0 0 450 650" className="w-full h-full absolute inset-0">
                     <defs>
@@ -395,6 +397,20 @@ export function AboutPage() {
                     />
                   </svg>
                 </div>
+
+                {/* Company Profile Button below the SVG */}
+                <Button
+                  variant="primaryBrand"
+                  href="/api/download?file=Wolgan_Brochure.pdf"
+                  download="Wolgan_Brochure.pdf"
+                  className="group flex gap-2 items-center px-8 h-14 text-base font-semibold rounded-full shadow-xl shadow-[#0A1F3C]/10 hover:text-white transition-colors duration-300"
+                >
+                  <span>Company Profile</span>
+                  <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
+                    <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                    <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
+                  </div>
+                </Button>
               </div>
 
               {/* COLUMN 3: Mission & Vision Editorial (Span 4) */}
@@ -413,7 +429,7 @@ export function AboutPage() {
                     </span>
                     <p className="text-base md:text-lg font-light leading-relaxed"
                       style={{ color: "var(--brand-navy)" }}>
-                      Provide high-quality products and services through qualified workforce and a reliable supply chain network of Business Partners.
+                      We are dedicated to providing High Quality Products and Services through our highly qualified and fully trained workforce, as well as on a constant basis through our reliable supply chain and network of Business Partners.
                     </p>
                   </div>
                 </div>
@@ -431,7 +447,7 @@ export function AboutPage() {
                     </span>
                     <p className="text-base md:text-lg font-light leading-relaxed"
                       style={{ color: "var(--brand-navy)" }}>
-                      Become one of the most successful and diversified companies — the preferred partner across the contracting industry.
+                      Wolgan aims to become one of the most successful and diversified Company in Qatar and the preferred Business Partner across Contracting Industry.
                     </p>
                   </div>
                 </div>
@@ -642,14 +658,40 @@ export function AboutPage() {
             </div>
 
             {/* Image reveal strip */}
-            <div className="img-reveal relative mt-14 rounded-3xl overflow-hidden" style={{ height: "clamp(200px,28vw,380px)" }}>
+            <div className="img-reveal relative mt-14 rounded-3xl overflow-hidden" style={{ height: "clamp(260px,32vw,430px)" }}>
               <Image src={deck3} alt="Wolgan operations" fill className="object-cover" placeholder="blur" />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex items-center justify-center text-center px-6 md:px-16 z-10">
+              <div className="absolute inset-0 bg-black/50" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-16 z-10 gap-8">
                 <p className="text-white text-2xl md:text-4xl font-light max-w-2xl leading-snug">
                   Delivering solutions that work —{" "}
                   <span className="text-white/60">from day one, and for years after.</span>
                 </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    variant="headerCta"
+                    href="/api/download?file=NCR_Brochure.pdf"
+                    download="NCR_Brochure.pdf"
+                    className="group !inline-flex gap-2 items-center px-8 h-12 text-sm font-semibold rounded-full shadow-xl"
+                  >
+                    <span>NCR Brochure</span>
+                    <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
+                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
+                    </div>
+                  </Button>
+                  <Button
+                    variant="headerCta"
+                    href="/api/download?file=Rydlyme_Brochure.pdf"
+                    download="Rydlyme_Brochure.pdf"
+                    className="group !inline-flex gap-2 items-center px-8 h-12 text-sm font-semibold rounded-full shadow-xl"
+                  >
+                    <span>Rydlyme Brochure</span>
+                    <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
+                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
+                    </div>
+                  </Button>
+                </div>
               </div>
             </div>
 
@@ -959,25 +1001,26 @@ export function AboutPage() {
                   </p>
                 </div>
                 <div className="flex-shrink-0">
-                  <a href="/contact">
-                    <Button
-                      variant="outline"
-                      className="btn-magnetic rounded-full px-10 h-16 text-lg font-semibold hover:scale-105 transition-transform duration-300 flex items-center gap-3"
-                      style={{ backgroundColor: "#ffffff", color: "var(--brand-navy)" }}>
-                      Contact Team
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: "rgba(var(--brand-navy-rgb), 0.1)" }}>
-                        <ChevronRight className="w-4 h-4" style={{ color: "var(--brand-navy)" }} />
-                      </div>
-                    </Button>
-                  </a>
+                  <Button
+                    variant="heroServicesCta"
+                    href="/contact"
+                    className="group flex gap-2 h-16 px-10 text-lg font-semibold rounded-full"
+                  >
+                    <span>Contact Team</span>
+                    <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
+                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
+                    </div>
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+        <Footer />
       </main>
     </SmoothScroll>
   );
 }
+
