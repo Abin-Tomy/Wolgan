@@ -186,7 +186,7 @@ export function TeamPage() {
               <span className="inline-block text-[#E5D5C5] text-sm font-semibold tracking-widest uppercase mb-8 px-5 py-2.5 border border-[#E5D5C5]/20 bg-white/5 rounded-full">
                 Leadership & Experts
               </span>
-              <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-light text-white leading-[0.9] tracking-tighter mb-4">
+              <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-light text-white leading-[1.1] tracking-tight">
                 The minds <br/>
                 behind <span className="font-semibold italic text-[#E5D5C5]">Wolgan.</span>
               </h1>
