@@ -181,7 +181,7 @@ export function TeamPage() {
             }} />
           </div>
 
-          <div className="container mx-auto relative z-10 flex flex-col md:flex-row items-end justify-between gap-12">
+          <div className="container mx-auto px-6 md:px-14 relative z-10 flex flex-col md:flex-row items-end justify-between gap-12">
             <div className="max-w-4xl">
               <span className="inline-block text-[#E5D5C5] text-sm font-semibold tracking-widest uppercase mb-8 px-5 py-2.5 border border-[#E5D5C5]/20 bg-white/5 rounded-full">
                 Leadership & Experts
