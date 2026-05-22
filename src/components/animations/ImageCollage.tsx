@@ -1,15 +1,15 @@
-import React from "react";
-import Image, { StaticImageData } from "next/image";
+import type { RefObject } from "react";
+import Image from "next/image";
 
 interface PortalMediaProps {
-  imgWrapRef: React.RefObject<HTMLDivElement | null>;
-  img2Ref: React.RefObject<HTMLDivElement | null>;
-  img3Ref: React.RefObject<HTMLDivElement | null>;
-  path1Ref: React.RefObject<SVGPathElement | null>;
-  path2Ref: React.RefObject<SVGPathElement | null>;
-  path3Ref: React.RefObject<SVGPathElement | null>;
-  images: StaticImageData[];
-  serviceImages: StaticImageData[];
+  imgWrapRef: RefObject<HTMLDivElement | null>;
+  img2Ref: RefObject<HTMLDivElement | null>;
+  img3Ref: RefObject<HTMLDivElement | null>;
+  path1Ref: RefObject<SVGPathElement | null>;
+  path2Ref: RefObject<SVGPathElement | null>;
+  path3Ref: RefObject<SVGPathElement | null>;
+  images: string[];
+  serviceImages: string[];
 }
 
 export function ImageCollage({

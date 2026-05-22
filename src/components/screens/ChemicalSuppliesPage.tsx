@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { Typography } from "@/components/ui/Typography";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";

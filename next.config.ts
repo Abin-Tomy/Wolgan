@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
   images: {
@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(videos|images)/(.*)",
+        source: "/(videos|images|brochures)/(.*)",
         headers: [
           {
             key: "Cache-Control",

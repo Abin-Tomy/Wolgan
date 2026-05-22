@@ -1,5 +1,4 @@
-import React from "react";
-import { ArrowUpRight } from "@/components/ui/icons/ArrowUpRight";
+import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
 
 export function Footer() {
   return (
@@ -32,7 +31,7 @@ export function Footer() {
                 placeholder="Your email address" 
                 className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-8 pr-16 text-white placeholder-[#88A4C4] focus:outline-none focus:border-[#66B2E8] transition-all focus:bg-white/10"
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#66B2E8] hover:text-white text-[#0A1F3C] transition-colors group">
+              <button aria-label="Subscribe to newsletter" className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#66B2E8] hover:text-white text-[#0A1F3C] transition-colors group">
                 <ArrowUpRight className="w-5 h-5 transition-transform group-hover:rotate-45" />
               </button>
             </div>

@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "@/lib/gsap";
-import { ArrowUpRight } from "@/components/ui/icons/ArrowUpRight";
+import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
 
 export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -105,6 +105,8 @@ export function Contact() {
                     <button 
                       type="button"
                       onClick={() => setRegion("UAE")}
+                      aria-label="Select UAE region"
+                      aria-pressed={region === 'UAE'}
                       className={`relative z-10 px-8 py-2 text-[0.65rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 w-28 ${region === 'UAE' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]/80'}`}
                     >
                       UAE
@@ -112,6 +114,8 @@ export function Contact() {
                     <button 
                       type="button"
                       onClick={() => setRegion("Qatar")}
+                      aria-label="Select Qatar region"
+                      aria-pressed={region === 'Qatar'}
                       className={`relative z-10 px-8 py-2 text-[0.65rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 w-28 ${region === 'Qatar' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]/80'}`}
                     >
                       Qatar
@@ -165,7 +169,7 @@ export function Contact() {
 
                 {/* Submit Button */}
                 <div className="md:col-span-2 pt-2">
-                  <button className="group relative overflow-hidden w-full bg-[#0A1F3C] text-white py-4 rounded-2xl text-[0.7rem] font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-4 transition-all duration-500 shadow-xl shadow-[#0A1F3C]/10 hover:shadow-[#0A1F3C]/20 hover:scale-[1.01]">
+                  <button aria-label="Send inquiry" className="group relative overflow-hidden w-full bg-[#0A1F3C] text-white py-4 rounded-2xl text-[0.7rem] font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-4 transition-all duration-500 shadow-xl shadow-[#0A1F3C]/10 hover:shadow-[#0A1F3C]/20 hover:scale-[1.01]">
                     <span className="relative z-10 flex items-center gap-3">
                       Send Inquiry <ArrowUpRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </span>

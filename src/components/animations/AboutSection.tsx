@@ -1,12 +1,12 @@
-import React from "react";
+import type { RefObject } from "react";
 import { Typography } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/button";
 
 interface PortalIntroProps {
-  textRef: React.RefObject<HTMLDivElement | null>;
-  introParaRef: React.RefObject<HTMLParagraphElement | null>;
-  statCardRef: React.RefObject<HTMLDivElement | null>;
-  detailRef: React.RefObject<HTMLDivElement | null>;
+  textRef: RefObject<HTMLDivElement | null>;
+  introParaRef: RefObject<HTMLParagraphElement | null>;
+  statCardRef: RefObject<HTMLDivElement | null>;
+  detailRef: RefObject<HTMLDivElement | null>;
 }
 
 export function AboutSection({
@@ -33,7 +33,7 @@ export function AboutSection({
         }}
       >
         <div className="flex items-center gap-4 mb-6 group">
-          <div className="w-10 h-[1px] bg-[var(--brand-navy)] transition-all duration-700 group-hover:w-16" />
+          <div className="w-10 h-[1px] bg-white/50 transition-all duration-700 group-hover:w-16" />
           <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-inherit opacity-70">
             About Wolgan
           </span>

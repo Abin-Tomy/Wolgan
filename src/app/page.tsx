@@ -1,9 +1,9 @@
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { CinematicExperience } from "@/components/experience/CinematicExperience";
-import { WolganVectorBridge } from "@/components/experience/WolganVectorBridge";
-import { ClientsPartners } from "@/components/experience/ClientsPartners";
+import { CinematicExperience } from "@/components/animations/CinematicExperience";
+import { WolganVectorBridge } from "@/components/animations/WolganVectorBridge";
+import { ClientsPartners } from "@/components/animations/ClientsPartners";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 

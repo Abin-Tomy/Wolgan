@@ -2,7 +2,8 @@
  * Shared Lenis singleton.
  *
  * Any component can call getLenis() to access the instance
- * and pause / resume it — e.g. the ThreeServices section.
+ * and pause / resume smooth scrolling — e.g. during modal opens
+ * or heavy animation sequences.
  *
  * Usage:
  *   import { getLenis } from "@/lib/lenis";

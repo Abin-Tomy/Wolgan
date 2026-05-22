@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  const filePath = path.join(process.cwd(), "public", ALLOWED[file]);
+  const filePath = path.join(process.cwd(), "public", "brochures", ALLOWED[file]);
 
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: "File not found" }, { status: 404 });

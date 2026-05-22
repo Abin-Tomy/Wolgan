@@ -4,7 +4,7 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { getLenis } from "@/lib/lenis";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Clock, Zap, Star } from "lucide-react";
-import { ArrowUpRight } from "@/components/ui/icons/ArrowUpRight";
+import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
 
 /* ── Custom ease (matches reference VectorBridge) ── */
 function easeCustom(t: number): number {

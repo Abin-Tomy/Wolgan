@@ -1,12 +1,12 @@
-import React from "react";
 import { Typography } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "@/components/ui/icons/ArrowUpRight";
+import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
+import { TransitionLink } from "@/components/PageTransition";
 
 interface ServiceItem {
   title: string;
   desc: string;
-  img: any;
+  img: string;
   href: string;
 }
 
@@ -36,14 +36,13 @@ function ServiceContentBlock({ index, service }: { index: number; service: Servi
           {service.desc}
         </p>
 
-        <Button 
-          variant="headerCta" 
+        <TransitionLink
           href={service.href}
-          className="inline-flex w-fit pointer-events-auto group"
+          className="btn-fill-effect btn-fill-white inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium tracking-wide border border-white/30 text-white transition-all duration-300 hover:text-[#0a1f3c] hover:scale-[1.02] active:scale-[0.98] shrink-0 group w-fit pointer-events-auto"
         >
           View Details
           <ArrowUpRight className="ml-2 w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </Button>
+        </TransitionLink>
       </div>
     </div>
   );

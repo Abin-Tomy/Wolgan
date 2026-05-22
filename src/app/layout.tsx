@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { montserrat } from "@/lib/fonts";
-import "@/styles/globals.css";
+import "./globals.css";
 import { QuickActions } from "@/components/QuickActions";
 import { Preloader } from "@/components/Preloader";
+import { PageTransitionProvider } from "@/components/PageTransition";
 
 export const metadata: Metadata = {
-  // Current domain is wolgan.qa, but wolgan.co is the future target production domain
+  // Production domain — update this when going live on a different domain
   metadataBase: new URL("https://www.wolgan.co"),
 
   title: "Wolgan | Pure Performance Delivered",
@@ -37,6 +37,15 @@ export const metadata: Metadata = {
     locale: "en_US",
 
     type: "website",
+
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Wolgan — Pure Performance Delivered",
+      },
+    ],
   },
 
   twitter: {
@@ -46,6 +55,8 @@ export const metadata: Metadata = {
 
     description:
       "Smart, reliable water treatment systems across Qatar, UAE, and India.",
+
+    images: ["/images/og-image.jpg"],
   },
 
   robots: {
@@ -65,11 +76,10 @@ export default function RootLayout({
       className={`${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
-        <Suspense fallback={null}>
+        <PageTransitionProvider>
           <Preloader />
-        </Suspense>
-        {children}
-        <QuickActions />
+          {children}
+          <QuickActions />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -81,7 +91,7 @@ export default function RootLayout({
 
               url: "https://www.wolgan.co",
 
-              logo: "https://www.wolgan.co/images/brand/logo.png",
+              logo: "https://www.wolgan.co/images/Wolgan-logo.png",
 
               description:
                 "Dedicated water treatment company delivering smart, reliable, and performance-driven systems across Qatar, UAE, and India.",
@@ -113,6 +123,7 @@ export default function RootLayout({
             }),
           }}
         />
+        </PageTransitionProvider>
       </body>
     </html>
   );

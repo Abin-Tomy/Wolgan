@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { MouseEvent as ReactMouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
-import wolganLogo from "@/assets/images/brand/Wolgan-logo.png";
+const wolganLogo = "/images/Wolgan-logo.png";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { ArrowUpRight } from "@/components/ui/icons/ArrowUpRight";
+import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
+import { TransitionLink, usePageTransition } from "@/components/PageTransition";
 
 const serviceItems = [
   { name: "Water Treatment", href: "/services/water-treatment" },
@@ -167,6 +169,7 @@ function DownloadsDropdown() {
 
 export function Header() {
   const router = useRouter();
+  const { navigate } = usePageTransition();
   const headerRef = useRef<HTMLElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -201,46 +204,28 @@ export function Header() {
     };
   }, []);
 
-  const getPreloader = () => {
-    if (typeof window !== "undefined") {
-      return (window as any).Preloader;
-    }
-    return null;
-  };
-
-  // Rule 3: EVERY menu open: Call leave() to cover screen while menu opens
-  const handleMobileMenuOpen = async () => {
-    const preloader = getPreloader();
-    if (preloader) await preloader.leave();
+  // Rule 3: EVERY menu open
+  const handleMobileMenuOpen = () => {
     setIsMobileMenuOpen(true);
-    if (preloader) await preloader.enter();
   };
 
-  // Rule 4: EVERY menu close: Call enter() to reveal page after menu closes
-  const handleMobileMenuClose = async () => {
-    const preloader = getPreloader();
-    if (preloader) await preloader.leave();
+  // Rule 4: EVERY menu close
+  const handleMobileMenuClose = () => {
     setIsMobileMenuOpen(false);
-    if (preloader) await preloader.enter();
   };
 
-  // Rule 2 & 4: Mobile Nav Click for Page Navigation (leave() -> swap -> enter())
-  const handleMobileNavLinkClick = async (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  // Mobile Nav Click for Page Navigation
+  const handleMobileNavLinkClick = (e: ReactMouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const preloader = getPreloader();
-    if (preloader) await preloader.leave();
     setIsMobileMenuOpen(false);
-    router.push(href);
+    navigate(href);
   };
 
-  // Mobile Nav Click for same-page Hash Links (leave() -> close & scroll -> enter())
-  const handleMobileHashLinkClick = async (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  // Mobile Nav Click for same-page Hash Links
+  const handleMobileHashLinkClick = (e: ReactMouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const preloader = getPreloader();
-    if (preloader) await preloader.leave();
     setIsMobileMenuOpen(false);
     window.location.hash = href;
-    if (preloader) await preloader.enter();
   };
 
   return (
@@ -256,7 +241,7 @@ export function Header() {
         <div className="container mx-auto flex h-full items-center justify-between px-6">
 
           {/* Logo */}
-          <a href="/" className="shrink-0">
+          <TransitionLink href="/" className="shrink-0">
             <Image
               src={wolganLogo}
               alt="Wolgan Logo"
@@ -265,21 +250,21 @@ export function Header() {
               height={80}
               priority
             />
-          </a>
+          </TransitionLink>
 
           {/* Nav Links */}
           <nav className="hidden md:flex items-center gap-8">
             <a href="/#home" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Home
             </a>
-            <a href="/about" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
+            <TransitionLink href="/about" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               About
-            </a>
+            </TransitionLink>
             <ServicesDropdown />
             <DownloadsDropdown />
-            <a href="/#team" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
+            <TransitionLink href="/team" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Team
-            </a>
+            </TransitionLink>
             <a href="/#clients" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Clients
             </a>
@@ -398,8 +383,8 @@ export function Header() {
 
               <li className="overflow-hidden">
                 <a 
-                  href="/#team" 
-                  onClick={(e) => handleMobileHashLinkClick(e, "team")}
+                  href="/team" 
+                  onClick={(e) => handleMobileNavLinkClick(e, "/team")}
                   className="inline-block text-4xl font-light tracking-tight text-white/70 hover:text-white hover:scale-105 transition-all duration-300"
                 >
                   Our Team

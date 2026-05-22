@@ -36,7 +36,7 @@ export function QuickActions() {
 
         {/* Call Button: Standalone Half-Pill */}
         <a
-          href="tel:+971509376483"
+          href="tel:+971565052820"
           className="pointer-events-auto flex items-center justify-start h-12 md:h-14 pl-3.5 pr-3 rounded-l-full bg-[var(--brand-navy)] text-white border border-r-0 border-white/10 transition-all duration-500 ease-out translate-x-3 hover:translate-x-0 group/call w-14 hover:w-44"
           style={{ 
             transitionProperty: "width, transform"
@@ -67,6 +67,7 @@ export function QuickActions() {
           >
             <button 
               onClick={() => setIsWaModalOpen(false)}
+              aria-label="Close WhatsApp contact modal"
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -83,23 +84,23 @@ export function QuickActions() {
             
             <div className="flex flex-col gap-3">
               <a 
-                href="https://wa.me/971509376483" 
+                href="https://wa.me/971565052820" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 onClick={() => setIsWaModalOpen(false)}
                 className="flex items-center justify-between p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-[#25D366]/5 hover:border-[#25D366]/30 transition-colors group"
               >
-                <span className="font-semibold text-[#0A1F3C]">UAE Team</span>
+                <span className="font-semibold text-[#0A1F3C]">Dubai</span>
                 <span className="text-[#25D366] text-sm font-medium group-hover:translate-x-1 transition-transform">Connect &rarr;</span>
               </a>
               <a 
-                href="https://wa.me/97400000000" 
+                href="https://wa.me/97471251155" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 onClick={() => setIsWaModalOpen(false)}
                 className="flex items-center justify-between p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-[#25D366]/5 hover:border-[#25D366]/30 transition-colors group"
               >
-                <span className="font-semibold text-[#0A1F3C]">Qatar Team</span>
+                <span className="font-semibold text-[#0A1F3C]">Qatar</span>
                 <span className="text-[#25D366] text-sm font-medium group-hover:translate-x-1 transition-transform">Connect &rarr;</span>
               </a>
             </div>

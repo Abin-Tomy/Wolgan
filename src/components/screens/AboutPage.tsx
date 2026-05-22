@@ -5,21 +5,19 @@ import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/Footer";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ArrowUpRight } from "@/components/ui/icons/ArrowUpRight";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
 import {
-  ChevronRight, Globe2, Droplets, Settings, FlaskConical,
+  Globe2, Droplets, Settings, FlaskConical,
   Building2, Hotel, Factory, Ship, Landmark, Hospital, Target, Compass,
   Home, Utensils, Flame, Snowflake
 } from "lucide-react";
 
-import deck1 from "@/assets/images/about/about-deck-1.jpg";
-import deck2 from "@/assets/images/about/about-deck-2.jpg";
-import deck3 from "@/assets/images/about/about-deck-3.jpg";
-import waterplant from "@/assets/images/about/about-waterplant.webp";
+const deck1 = "/images/about-deck-1.jpg";
+const deck2 = "/images/about-deck-2.jpg";
+const deck3 = "/images/about-deck-3.jpg";
+const waterplant = "/images/about-waterplant.webp";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -275,7 +273,6 @@ export function AboutPage() {
               fill
               className="hero-img object-cover opacity-35"
               priority
-              placeholder="blur"
             />
             <div className="absolute inset-0" style={{
               background: "linear-gradient(to bottom, rgba(var(--brand-navy-rgb),0.55) 0%, rgba(var(--brand-navy-rgb),0.75) 60%, var(--brand-navy) 100%)",
@@ -391,7 +388,7 @@ export function AboutPage() {
                       </clipPath>
                     </defs>
                     <image
-                      href={waterplant.src}
+                      href={waterplant}
                       width="100%"
                       height="100%"
                       preserveAspectRatio="xMidYMid slice"
@@ -538,7 +535,7 @@ export function AboutPage() {
                     
                     {/* Image Background */}
                     <div className="absolute inset-0 z-0 bg-[var(--brand-navy)]">
-                      <Image src={s.img} alt={s.title} fill className="object-cover opacity-50 group-hover:opacity-75 transition-opacity duration-700" placeholder="blur" />
+                      <Image src={s.img} alt={s.title} fill className="object-cover opacity-50 group-hover:opacity-75 transition-opacity duration-700" />
                       <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-navy)]/10 to-[var(--brand-navy)]/95 pointer-events-none" />
                     </div>
 
@@ -661,7 +658,7 @@ export function AboutPage() {
 
             {/* Image reveal strip */}
             <div className="img-reveal relative mt-14 rounded-3xl overflow-hidden" style={{ height: "clamp(260px,32vw,430px)" }}>
-              <Image src={deck3} alt="Wolgan operations" fill className="object-cover" placeholder="blur" />
+              <Image src={deck3} alt="Wolgan operations" fill className="object-cover" />
               <div className="absolute inset-0 bg-black/50" />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-16 z-10 gap-8">
                 <p className="text-white text-2xl md:text-4xl font-light max-w-2xl leading-snug">
@@ -1005,7 +1002,7 @@ export function AboutPage() {
                 <div className="flex-shrink-0">
                   <Button
                     variant="heroServicesCta"
-                    href="/contact"
+                    href="/#contact"
                     className="group flex gap-2 h-16 px-10 text-lg font-semibold rounded-full"
                   >
                     <span>Contact Team</span>

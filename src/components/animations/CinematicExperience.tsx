@@ -2,18 +2,17 @@
 import { useEffect, useRef } from "react";
 
 import { gsap } from "@/lib/gsap";
-import deck1 from "@/assets/images/about/about-deck-1.jpg";
-import deck2 from "@/assets/images/about/about-deck-2.jpg";
-import deck3 from "@/assets/images/about/about-deck-3.jpg";
-
 import { ImageCollage } from "./ImageCollage";
 import { PillOpening } from "./PillOpening";
 import { AboutSection } from "./AboutSection";
 import { ServiceArc } from "./ServiceArc";
 
-import service1 from "@/assets/images/work/water-treatment.jpeg";
-import service2 from "@/assets/images/work/mep-installation.jpeg";
-import service3 from "@/assets/images/work/chemical-supply.jpeg";
+const deck1 = "/images/about-deck-1.jpg";
+const deck2 = "/images/about-deck-2.jpg";
+const deck3 = "/images/about-deck-3.jpg";
+const service1 = "/images/water-treatment.jpeg";
+const service2 = "/images/mep-installation.jpeg";
+const service3 = "/images/chemical-supply.jpeg";
 
 const SERVICES_DATA = [
   {

@@ -1,4 +1,5 @@
-import React from "react";
+import { forwardRef } from "react";
+import type { Ref, ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 type ButtonVariant =
@@ -12,13 +13,13 @@ type ButtonVariant =
   | "outline";
 
 interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+  extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   variant?: ButtonVariant;
   href?: string;
   download?: string;
   target?: string;
   rel?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -39,7 +40,7 @@ const variantStyles: Record<ButtonVariant, string> = {
     "inline-flex items-center justify-center border border-current transition-all duration-300",
 };
 
-const Button = React.forwardRef<
+const Button = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonProps
 >(
@@ -59,10 +60,10 @@ const Button = React.forwardRef<
     if (href) {
       return (
         <a
-          ref={ref as React.Ref<HTMLAnchorElement>}
+          ref={ref as Ref<HTMLAnchorElement>}
           href={href}
           className={baseClassName}
-          {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+          {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {children}
         </a>
@@ -72,9 +73,9 @@ const Button = React.forwardRef<
     // Otherwise render as a <button>
     return (
       <button
-        ref={ref as React.Ref<HTMLButtonElement>}
+        ref={ref as Ref<HTMLButtonElement>}
         className={baseClassName}
-        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+        {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
       >
         {children}
       </button>

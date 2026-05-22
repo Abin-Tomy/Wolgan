@@ -1,9 +1,9 @@
-import React from "react";
+import type { RefObject, CSSProperties } from "react";
 
 interface PortalOverlayProps {
-  veilRef: React.RefObject<HTMLDivElement | null>;
-  veilContentRef: React.RefObject<HTMLDivElement | null>;
-  logoRef: React.RefObject<HTMLDivElement | null>;
+  veilRef: RefObject<HTMLDivElement | null>;
+  veilContentRef: RefObject<HTMLDivElement | null>;
+  logoRef: RefObject<HTMLDivElement | null>;
 }
 
 export function PillOpening({
@@ -25,7 +25,7 @@ export function PillOpening({
             height: "var(--hole-h)",
             borderRadius: "9999px",
             boxShadow: "0 0 0 200vmax #0A1F3C",
-          } as React.CSSProperties
+          } as CSSProperties
         }
       />
 
@@ -47,7 +47,7 @@ export function PillOpening({
               border: "1vmax solid rgba(255, 255, 255, 0.3)",
               opacity: 1,
               zIndex: 1,
-            } as React.CSSProperties
+            } as CSSProperties
           }
         />
 

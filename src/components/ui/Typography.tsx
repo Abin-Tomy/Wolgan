@@ -1,12 +1,12 @@
-import React from "react";
+import type { ReactNode, ElementType, CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 interface TypographyProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   variant?: "h1" | "h2" | "h3" | "tagline";
-  as?: React.ElementType;
-  style?: React.CSSProperties;
+  as?: ElementType;
+  style?: CSSProperties;
 }
 
 export function Typography({

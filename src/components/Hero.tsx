@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
-import wolganLogo from "@/assets/images/brand/Wolgan-logo.png";
+const wolganLogo = "/images/Wolgan-logo.png";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Typography } from "@/components/ui/Typography";
@@ -105,6 +105,8 @@ export function Hero() {
           <Image
             src={wolganLogo}
             alt="Wolgan Logo"
+            width={1600}
+            height={400}
             className="hero-wolgan w-[100%] max-w-[1600px] h-auto select-none object-contain"
             fetchPriority="high"
             style={{
