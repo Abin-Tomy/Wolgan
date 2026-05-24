@@ -1,111 +1,157 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import SplitText from "gsap/SplitText";
+import "./preloader.css";
 
-/* ─────────────────────────────────────────────────────────────
-   CONSTANTS
-───────────────────────────────────────────────────────────── */
-const NUM_BLOCKS  = 10;
-const SESSION_KEY = "wolgan_preloader_shown";
+gsap.registerPlugin(SplitText);
 
-/* ─────────────────────────────────────────────────────────────
-   COMPONENT
-───────────────────────────────────────────────────────────── */
 export function Preloader() {
-  // `visible` starts true on both server and client — no SSR mismatch.
-  // The sessionStorage check happens only inside useEffect (client-only).
-  const [visible, setVisible]         = useState(true);
-  const [logoVisible, setLogoVisible] = useState(true); // Logo is visible immediately
+    const [visible, setVisible] = useState(true);
 
-  const blocksRef = useRef<(HTMLDivElement | null)[]>([]);
+    useGSAP(() => {
+        function createSplitTexts(elements: { key: string, selector: string, type: string }[]) {
+            const splits: Record<string, any> = {};
+            elements.forEach(({ key, selector, type }) => {
+                const config: any = { type, mask: type };
+                if (type === "chars") { config.charsClass = "char"; }
+                if (type === "lines") { config.linesClass = "line"; }
+                splits[key] = new SplitText(selector, config);
+            });
+            return splits;
+        }
 
-  useEffect(() => {
-    // Note: sessionStorage check removed for development so the preloader
-    // runs on every refresh. Add it back before production if needed.
+        const splitElements = [
+            { key: "logoChars", selector: ".preloader-logo h1", type: "chars" },
+            { key: "footerLines", selector: ".preloader-footer p", type: "lines" },
+        ];
 
-    // 1500ms: fade out the logo right before the blocks lift
-    const logoFadeOutTimer = setTimeout(() => setLogoVisible(false), 1500);
+        const splits = createSplitTexts(splitElements);
 
-    // 2200ms: stagger-lift the blocks (Wait until logo fade-out is completely finished (600ms + buffer) to avoid stutter)
-    const liftTimer = setTimeout(() => {
-      blocksRef.current.forEach((b, i) => {
-        if (!b) return;
-        b.style.transition = `transform 700ms cubic-bezier(0.76,0,0.24,1) ${i * 55}ms`;
-        b.style.transform  = "translateY(-105%)";
-      });
-      // Unmount after the last block finishes lifting
-      setTimeout(() => setVisible(false), 700 + 55 * 9 + 100);
-    }, 2200);
+        gsap.set(splits.logoChars.chars, { x: "100%" });
 
-    return () => {
-      clearTimeout(logoFadeOutTimer);
-      clearTimeout(liftTimer);
-    };
-  }, []);
+        gsap.set(
+            [
+                splits.footerLines.lines,
+            ],
+            { y: "100%" }
+        );
 
-  if (!visible) return null;
+        function animateProgress(duration = 3.5) {
+            const tl = gsap.timeline();
+            const counterSteps = 3;
+            let currentProgress = 0;
 
-  return (
-    <div
-      aria-hidden="true"
-      style={{
-        position:      "fixed",
-        inset:         0,
-        zIndex:        10000,
-        pointerEvents: "none",
-      }}
-    >
-      {/*
-        CSS Grid guarantees seamless columns — flexbox causes sub-pixel gaps.
-        Blocks are rendered inside a grid child so the logo overlay
-        (absolute) can still sit centred on the outer wrapper.
-      */}
-      <div
-        style={{
-          position:            "absolute",
-          inset:               0,
-          display:             "grid",
-          gridTemplateColumns: `repeat(${NUM_BLOCKS}, 1fr)`,
-        }}
-      >
-        {Array.from({ length: NUM_BLOCKS }).map((_, i) => (
-          <div
-            key={i}
-            ref={(el) => { blocksRef.current[i] = el; }}
-            style={{
-              background: "#FFFFFF",
-              // box-shadow in the same color extends 2px in all directions,
-              // filling any sub-pixel gap between grid columns caused by
-              // fractional 1fr widths at non-round viewport sizes.
-              boxShadow:  "0 0 0 2px #FFFFFF",
-              willChange: "transform",
-              transform:  "translateY(0%)",
-              transition: "none",
-            }}
-          />
-        ))}
-      </div>
+            for (let i = 0; i < counterSteps; i++) {
+                const finalStep = i === counterSteps - 1;
+                const targetProgress = finalStep
+                    ? 1
+                    : Math.min(currentProgress + Math.random() * 0.3 + 0.1, 0.9);
+                currentProgress = targetProgress;
 
-      {/* Centered logo — above the block grid */}
-      <div
-        style={{
-          position:   "absolute",
-          top:        "50%",
-          left:       "50%",
-          transform:  logoVisible ? "translate3d(-50%, -50%, 0)" : "translate3d(-50%, calc(-50% - 40px), 0)",
-          opacity:    logoVisible ? 1 : 0,
-          transition: "opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1), transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)",
-          willChange: "opacity, transform",
-          zIndex:     10001,
-        }}
-      >
-        <img
-          src="/images/wolgan-logo-navy.png"
-          alt="Wolgan"
-          style={{ width: "180px", height: "auto", objectFit: "contain" }}
-        />
-      </div>
-    </div>
-  );
+                tl.to(".preloader-progress-bar", {
+                    scaleX: targetProgress,
+                    duration: duration / counterSteps,
+                    ease: "power3.out",
+                });
+            }
+
+            return tl;
+        }
+
+        const tl = gsap.timeline({ 
+            delay: 0.5,
+            onComplete: () => {
+                setVisible(false);
+            }
+        });
+
+        tl.to(splits.logoChars.chars, {
+            x: "0%",
+            stagger: 0.05,
+            duration: 1,
+            ease: "power4.inOut",
+        })
+            .to(
+                splits.footerLines.lines,
+                {
+                    y: "0%",
+                    stagger: 0.1,
+                    duration: 1,
+                    ease: "power4.inOut",
+                },
+                "0.25"
+            )
+            .add(animateProgress(), "<")
+            .set(".preloader-progress", { backgroundClip: "var(--brand-gold)" })
+            .to(
+                splits.logoChars.chars,
+                {
+                    x: "-100%",
+                    stagger: 0.05,
+                    duration: 1,
+                    ease: "power4.inOut",
+                },
+                "+=0.15"
+            )
+            .to(splits.footerLines.lines, {
+                y: "-100%",
+                stagger: 0.1,
+                duration: 0.5,
+                ease: "power4.inOut",
+            }, "-=0.1")
+            .to(
+                ".preloader-progress",
+                {
+                    opacity: 0,
+                    duration: 0.7,
+                    ease: "power3.out",
+                },
+                "<"
+            )
+            .to(
+                ".preloader-mask",
+                {
+                    scale: 6,
+                    duration: 4,
+                    ease: "power3.out",
+                },
+                "<"
+            )
+            .to(
+                ".preloader-mask",
+                {
+                    delay: 1,
+                    opacity: 0,
+                    display: "none",
+                },
+                "<"
+            );
+    }, []);
+
+    if (!visible) return null;
+
+    return (
+        <div className="size-full fixed z-[10000] overflow-hidden pointer-events-none">
+            <div className="preloader-progress">
+                <div className="preloader-progress-bar"></div>
+                <div className="preloader-logo">
+                    <h1>WOLGAN</h1>
+                </div>
+            </div>
+
+            <div className="preloader-mask"></div>
+
+            <div className="preloader-content">
+                <div className="preloader-footer">
+                    <p className="text-sm">
+                        Pure Performance<br />
+                        Delivered.
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
 }

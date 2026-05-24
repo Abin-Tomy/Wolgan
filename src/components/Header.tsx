@@ -44,7 +44,7 @@ function ServicesDropdown() {
       onMouseLeave={() => setOpen(false)}
     >
       <Button variant="serviceDropdown">
-        Our Services
+        Services
         <svg
           className={`w-3 h-3 mt-0.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           fill="none"
@@ -113,10 +113,10 @@ function DownloadsDropdown() {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <Button variant="serviceDropdown">
+      <Button variant="headerCta">
         Downloads
         <svg
-          className={`w-3 h-3 mt-0.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -241,7 +241,7 @@ export function Header() {
         <div className="container mx-auto flex h-full items-center justify-between px-6">
 
           {/* Logo */}
-          <TransitionLink href="/" className="shrink-0">
+          <TransitionLink href="/" className="shrink-0 relative z-10">
             <Image
               src={wolganLogo}
               alt="Wolgan Logo"
@@ -253,7 +253,7 @@ export function Header() {
           </TransitionLink>
 
           {/* Nav Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
             <a href="/#home" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Home
             </a>
@@ -261,36 +261,42 @@ export function Header() {
               About
             </TransitionLink>
             <ServicesDropdown />
-            <DownloadsDropdown />
             <TransitionLink href="/team" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Team
             </TransitionLink>
             <a href="/#clients" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Clients
             </a>
-            <a href="/#contact" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
-              Contact
-            </a>
+            <TransitionLink href="/blogs" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
+              Blogs
+            </TransitionLink>
           </nav>
 
-          {/* CTA Button */}
-          <Button
-            variant="headerCta"
-            href="/#contact"
-          >
-            <span>Let&apos;s Talk</span>
-            <div className="relative w-3.5 h-3.5 overflow-hidden">
-              <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
-              <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
+          {/* Right Side Items */}
+          <div className="flex items-center gap-3 relative z-10">
+            {/* Action Buttons */}
+            <div className="hidden md:flex items-center gap-3">
+              <DownloadsDropdown />
+              {/* CTA Button */}
+              <Button
+                variant="headerCta"
+                href="/#contact"
+              >
+                <span>Let&apos;s Talk</span>
+                <div className="relative w-3.5 h-3.5 overflow-hidden">
+                  <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                  <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
+                </div>
+              </Button>
             </div>
-          </Button>
 
-          {/* Mobile hamburger */}
-          <Button variant="mobileMenu" onClick={handleMobileMenuOpen} aria-label="Open Mobile Menu">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </Button>
+            {/* Mobile hamburger */}
+            <Button variant="mobileMenu" onClick={handleMobileMenuOpen} aria-label="Open Mobile Menu">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -347,31 +353,13 @@ export function Header() {
               
               {/* Expandable Services list inside Menu */}
               <li className="flex flex-col gap-3">
-                <span className="text-lg font-medium text-white/45">Our Services</span>
+                <span className="text-lg font-medium text-white/45">Services</span>
                 <ul className="pl-4 flex flex-col gap-3 border-l border-white/10">
                   {serviceItems.map((item) => (
                     <li key={item.name}>
                       <a 
                         href={item.href}
                         onClick={(e) => handleMobileNavLinkClick(e, item.href)}
-                        className="text-2xl font-light text-white/60 hover:text-white transition-colors duration-200"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-
-              {/* Downloads section in mobile menu */}
-              <li className="flex flex-col gap-3">
-                <span className="text-lg font-medium text-white/45">Downloads</span>
-                <ul className="pl-4 flex flex-col gap-3 border-l border-white/10">
-                  {downloadItems.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.file}
-                        download={item.download}
                         className="text-2xl font-light text-white/60 hover:text-white transition-colors duration-200"
                       >
                         {item.name}
@@ -400,6 +388,34 @@ export function Header() {
                 </a>
               </li>
               <li className="overflow-hidden">
+                <a 
+                  href="/blogs" 
+                  onClick={(e) => handleMobileNavLinkClick(e, "/blogs")}
+                  className="inline-block text-4xl font-light tracking-tight text-white/70 hover:text-white hover:scale-105 transition-all duration-300"
+                >
+                  Blogs
+                </a>
+              </li>
+
+              {/* Downloads section in mobile menu */}
+              <li className="flex flex-col gap-3 mt-4">
+                <span className="text-lg font-medium text-white/45">Downloads</span>
+                <ul className="pl-4 flex flex-col gap-3 border-l border-white/10">
+                  {downloadItems.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.file}
+                        download={item.download}
+                        className="text-2xl font-light text-white/60 hover:text-white transition-colors duration-200"
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
+              <li className="overflow-hidden mt-4">
                 <a 
                   href="/#contact" 
                   onClick={(e) => handleMobileHashLinkClick(e, "contact")}

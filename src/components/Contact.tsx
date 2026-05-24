@@ -57,23 +57,58 @@ export function Contact() {
           </div>
 
           <p className="reveal-left text-[#0A1F3C]/60 text-lg font-light leading-relaxed mb-12 max-w-lg">
-            Whether you have a specific inquiry or want to explore potential partnerships, our regional teams in the UAE and Qatar are ready to assist you.
+            Whether you have a specific inquiry or want to explore potential partnerships, our regional teams are ready to assist you.
           </p>
 
-          <div className="reveal-left space-y-8">
-            <div className="flex gap-4 items-center">
-              <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#0A1F3C]">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          <div className="reveal-left flex flex-col sm:flex-row gap-10 sm:gap-16">
+            {/* Dubai Office */}
+            <div>
+              <h3 className="text-[#0A1F3C] font-bold text-lg mb-5">Dubai - Contact Us</h3>
+              <div className="space-y-4">
+                <a href="https://wa.me/971565052820" target="_blank" rel="noreferrer" className="flex gap-4 items-center hover:opacity-80 transition-opacity w-fit">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#0A1F3C]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[#0A1F3C]/50 text-xs font-bold uppercase tracking-wider">Whatsapp</span>
+                    <span className="text-[#0A1F3C]/80 text-sm font-medium">00971 565052820</span>
+                  </div>
+                </a>
+                <a href="mailto:a.sampath@wolgan.ae" className="flex gap-4 items-center hover:opacity-80 transition-opacity w-fit">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#66B2E8]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[#0A1F3C]/50 text-xs font-bold uppercase tracking-wider">Email</span>
+                    <span className="text-[#0A1F3C]/80 text-sm font-medium">a.sampath@wolgan.ae</span>
+                  </div>
+                </a>
               </div>
-              <p className="text-[#0A1F3C]/70 text-sm font-medium">
-                {region === 'UAE' ? 'Silicon Oasis, Building A2, Dubai' : 'Al Saad District, Doha, Qatar'}
-              </p>
             </div>
-            <div className="flex gap-4 items-center">
-              <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#66B2E8]">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+
+            {/* Qatar Office */}
+            <div>
+              <h3 className="text-[#0A1F3C] font-bold text-lg mb-5">Qatar - Contact Us</h3>
+              <div className="space-y-4">
+                <a href="https://wa.me/97471251155" target="_blank" rel="noreferrer" className="flex gap-4 items-center hover:opacity-80 transition-opacity w-fit">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#0A1F3C]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[#0A1F3C]/50 text-xs font-bold uppercase tracking-wider">Whatsapp</span>
+                    <span className="text-[#0A1F3C]/80 text-sm font-medium">00974 71251155</span>
+                  </div>
+                </a>
+                <a href="mailto:a.nazeel@wolgan.qa" className="flex gap-4 items-center hover:opacity-80 transition-opacity w-fit">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#66B2E8]">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[#0A1F3C]/50 text-xs font-bold uppercase tracking-wider">Email</span>
+                    <span className="text-[#0A1F3C]/80 text-sm font-medium">a.nazeel@wolgan.qa</span>
+                  </div>
+                </a>
               </div>
-              <p className="text-[#0A1F3C]/70 text-sm font-medium">info@wolgan.com</p>
             </div>
           </div>
         </div>
@@ -95,8 +130,8 @@ export function Contact() {
                   <p className="text-[#66B2E8] text-xs font-bold tracking-[0.2em] uppercase">Select your region</p>
                 </div>
                 
-                <div className="inline-flex p-1.5 bg-[#f8f9fb] rounded-full border border-gray-200 self-start sm:self-auto">
-                  <div className="relative flex items-center">
+                <div className="inline-flex p-1.5 bg-[#f8f9fb] rounded-full border border-gray-200 self-start sm:self-auto overflow-x-auto max-w-full">
+                  <div className="relative flex items-center min-w-max">
                     {/* Sliding active pill */}
                     <div 
                       className={`absolute inset-y-0 left-0 w-1/2 bg-[#0A1F3C] rounded-full transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] shadow-sm ${region === 'Qatar' ? 'translate-x-full' : 'translate-x-0'}`}
@@ -107,7 +142,7 @@ export function Contact() {
                       onClick={() => setRegion("UAE")}
                       aria-label="Select UAE region"
                       aria-pressed={region === 'UAE'}
-                      className={`relative z-10 px-8 py-2 text-[0.65rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 w-28 ${region === 'UAE' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]/80'}`}
+                      className={`relative z-10 px-6 py-2 text-[0.65rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 w-24 ${region === 'UAE' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]/80'}`}
                     >
                       UAE
                     </button>
@@ -116,7 +151,7 @@ export function Contact() {
                       onClick={() => setRegion("Qatar")}
                       aria-label="Select Qatar region"
                       aria-pressed={region === 'Qatar'}
-                      className={`relative z-10 px-8 py-2 text-[0.65rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 w-28 ${region === 'Qatar' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]/80'}`}
+                      className={`relative z-10 px-6 py-2 text-[0.65rem] font-bold tracking-[0.2em] uppercase rounded-full transition-colors duration-500 w-24 ${region === 'Qatar' ? 'text-white' : 'text-[#0A1F3C]/40 hover:text-[#0A1F3C]/80'}`}
                     >
                       Qatar
                     </button>
