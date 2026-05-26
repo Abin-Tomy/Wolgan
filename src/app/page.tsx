@@ -13,7 +13,7 @@ export default function Home() {
       <main>
         <Header />
         <Hero />
-        {/* CinematicExperience: pill → about → services arc → void + kinetic wheel */}
+        {/* CinematicExperience: pill -> about -> services arc -> void + kinetic wheel */}
         <CinematicExperience />
         {/* VectorBridge: white bg, SVG line traces to expanding portal */}
         <WolganVectorBridge />
@@ -22,7 +22,9 @@ export default function Home() {
         {/* Contact Section */}
         <Contact />
         {/* Footer */}
-        <Footer />
+        <div className="relative z-20 -mt-1">
+          <Footer waveColor="#020610" />
+        </div>
       </main>
     </SmoothScroll>
   );

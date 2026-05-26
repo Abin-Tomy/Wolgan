@@ -2,114 +2,195 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "@/lib/gsap";
 
+const sharedPartners = [
+  { name: "SUEZ", src: "/images/Partners/SUEZ.jpeg" },
+  { name: "RYDLYME", src: "/images/Partners/RYDLYME.jpeg" },
+  { name: "IWAKI", src: "/images/Partners/IWAKI.jpeg" },
+  { name: "NCR", src: "/images/Partners/NCR.jpeg" },
+];
+
+const qatarClients = [
+  { name: "Medgulf Construction", src: "/images/Qatar Clients/1. Medgulf Construction.jpg" },
+  { name: "Navayuga", src: "/images/Qatar Clients/2. Navayuga.png" },
+  { name: "Trags Engineering", src: "/images/Qatar Clients/3. Trags Engineering.png" },
+  { name: "Qatar Aviation Services", src: "/images/Qatar Clients/4. Qatar-Aviation-Services.png" },
+  { name: "Al Mirqab", src: "/images/Qatar Clients/5. Al mirqab.png" },
+  { name: "Arabian MEP", src: "/images/Qatar Clients/6. Arabian MEP.png" },
+  { name: "KSC", src: "/images/Qatar Clients/7. ksc.png" },
+  { name: "Balagh", src: "/images/Qatar Clients/8. balagh.png" },
+  { name: "Milaha", src: "/images/Qatar Clients/9. milaha.png" },
+];
+
+const uaeClients = [
+  { name: "BRF", src: "/images/UAE Clients/1. BRF.jpg" },
+  { name: "Transguard", src: "/images/UAE Clients/2. Trasnguard.png" },
+  { name: "Dubai Holding", src: "/images/UAE Clients/3. Dubai Holding.png" },
+  { name: "Emaar", src: "/images/UAE Clients/4. Emaar.svg" },
+  { name: "Imdaad", src: "/images/UAE Clients/5. Imdaad.png" },
+  { name: "Sobha", src: "/images/UAE Clients/6. Sobha.png" },
+  { name: "Tabreed", src: "/images/UAE Clients/7. Tabreedpng.png" },
+  { name: "Engie", src: "/images/UAE Clients/8. engie.jpeg" },
+  { name: "Emrill", src: "/images/UAE Clients/9. Emrill.png" },
+];
+
 export function ClientsPartners() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Scroll reveal animations
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Elegant staggered fade-up for compact layout
-      gsap.from(".fade-up", {
+      // Header animation
+      gsap.from(".header-reveal", {
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 75%",
+          start: "top 80%",
         },
-        y: 30,
+        y: 40,
         opacity: 0,
         duration: 1,
-        stagger: 0.1,
         ease: "power3.out",
+      });
+
+      // Section Headings
+      gsap.utils.toArray(".section-heading").forEach((el: any) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        });
+      });
+
+      // Individual Grid Items
+      gsap.utils.toArray(".scroll-item").forEach((el: any) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%", // Early trigger for aggressive reveal
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power3.out",
+        });
       });
     }, containerRef);
     return () => ctx.revert();
   }, []);
 
-  // Sleek compact heading
-  const SectionHeading = ({ title }: { title: string }) => (
-    <div className="fade-up mb-6">
-      <h2 className="text-[2rem] font-light text-[#0A1F3C] tracking-tight mb-2">
-        {title}
-      </h2>
-      <div className="w-16 h-[1px] bg-[#66B2E8] opacity-70"></div>
-    </div>
-  );
-
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-white z-20"
+      className="relative w-full bg-white z-20 py-24 md:py-32"
       style={{
         minHeight: "100vh",
         marginTop: "-100vh",
         fontFamily: "var(--font-montserrat), sans-serif",
       }}
     >
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-24">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col justify-center">
         
-        {/* LEFT COLUMN: Partners & Image */}
-        <div className="flex flex-col">
-          <SectionHeading title="Partners" />
-          
-          <div className="fade-up grid grid-cols-4 gap-3 mb-12">
-            {[1, 2, 3, 4].map((i) => (
+        {/* Main Header */}
+        <div className="header-reveal text-center mb-20 max-w-3xl mx-auto">
+          <h2 className="text-[2.5rem] md:text-[3.5rem] font-light text-[#0A1F3C] tracking-tight mb-6">
+            Our <span className="font-medium text-[#66B2E8]">Network</span>
+          </h2>
+          <p className="text-gray-500 text-base md:text-lg leading-relaxed">
+            We collaborate with industry leaders and serve top-tier clients across the Middle East to deliver exceptional MEP and Contracting solutions.
+          </p>
+        </div>
+
+        {/* --- STRATEGIC PARTNERS SECTION --- */}
+        <div className="mb-28">
+          <div className="section-heading mb-12 flex flex-col items-center justify-center text-center">
+             <h3 className="text-3xl font-light text-[#0A1F3C] tracking-tight">
+                Strategic <span className="font-medium text-[#66B2E8]">Partners</span>
+             </h3>
+             <div className="w-16 h-[2px] bg-[#66B2E8] mt-5 opacity-80"></div>
+             <p className="mt-4 text-gray-400 text-sm tracking-wide">
+               Trusted across our entire regional footprint.
+             </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {sharedPartners.map((partner, i) => (
               <div 
-                key={i} 
-                className="h-16 bg-white rounded flex items-center justify-center border border-gray-100 shadow-sm hover:shadow-md hover:border-[#66B2E8]/30 transition-all cursor-pointer"
+                key={`partner-${i}`} 
+                className="scroll-item group relative aspect-[4/3] bg-gray-50/70 rounded-2xl flex items-center justify-center border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 hover:border-[#66B2E8]/40 transition-all duration-300 cursor-pointer"
               >
-                <span className="text-gray-400 font-medium tracking-widest text-[0.55rem] uppercase">
-                  Partner {i}
-                </span>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] to-[#eaf4fb] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-6">
+                  <img src={partner.src} alt={partner.name} title={partner.name} className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" loading="lazy" decoding="async" />
+                </div>
               </div>
             ))}
           </div>
-
-          {/* Compact Aesthetic Circular Image */}
-          <div className="fade-up relative w-full max-w-[320px] aspect-square mx-auto flex items-center justify-center mt-auto">
-            <div className="absolute inset-0 rounded-full border-[15px] border-[#eaf4fb] opacity-80 mix-blend-multiply"></div>
-            <div className="absolute inset-[10%] rounded-full bg-gradient-to-br from-gray-50 to-gray-200 shadow-xl overflow-hidden flex items-center justify-center group">
-              <span className="text-gray-400 font-light tracking-[0.2em] uppercase text-[10px] text-center px-4">
-                Water Drop<br/>Image
-              </span>
-            </div>
-          </div>
         </div>
 
-        {/* RIGHT COLUMN: Clients */}
-        <div className="flex flex-col space-y-12">
-          
-          {/* Qatar Clients */}
-          <div>
-            <SectionHeading title="Major Qatar Clients" />
-            <div className="fade-up grid grid-cols-3 sm:grid-cols-4 gap-3">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div 
-                  key={`q-${i}`} 
-                  className="h-16 bg-white rounded flex items-center justify-center border border-gray-100 shadow-sm hover:shadow-md hover:border-[#66B2E8]/30 transition-all cursor-pointer"
-                >
-                  <span className="text-[#0A1F3C]/50 font-medium tracking-wider text-[0.55rem] uppercase">
-                    Client {i}
-                  </span>
-                </div>
-              ))}
-            </div>
+        {/* --- FEATURED CLIENTS SECTION --- */}
+        <div>
+          <div className="section-heading mb-16 flex flex-col items-center justify-center text-center">
+             <h3 className="text-3xl font-light text-[#0A1F3C] tracking-tight">
+                Featured <span className="font-medium text-[#66B2E8]">Clients</span>
+             </h3>
+             <div className="w-16 h-[2px] bg-[#66B2E8] mt-5 opacity-80"></div>
           </div>
 
-          {/* Dubai Clients */}
-          <div>
-            <SectionHeading title="Major Dubai Clients" />
-            <div className="fade-up grid grid-cols-3 sm:grid-cols-4 gap-3">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((i) => (
-                <div 
-                  key={`d-${i}`} 
-                  className="h-16 bg-white rounded flex items-center justify-center border border-gray-100 shadow-sm hover:shadow-md hover:border-[#66B2E8]/30 transition-all cursor-pointer"
-                >
-                  <span className="text-[#0A1F3C]/50 font-medium tracking-wider text-[0.55rem] uppercase">
-                    Brand {i}
-                  </span>
-                </div>
-              ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            
+            {/* Qatar Operations */}
+            <div className="flex flex-col">
+              <div className="section-heading mb-8 flex items-center justify-between border-b border-gray-100 pb-4">
+                <h4 className="text-2xl font-light text-[#0A1F3C] tracking-tight">
+                  Qatar <span className="font-medium text-[#66B2E8]">Operations</span>
+                </h4>
+                <span className="text-xs font-bold tracking-widest text-gray-400 bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-full">QA</span>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-4 sm:gap-6">
+                {qatarClients.map((client, i) => (
+                  <div 
+                    key={`qatar-client-${i}`} 
+                    className="scroll-item group relative aspect-square bg-white rounded-xl flex items-center justify-center border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 hover:border-[#66B2E8]/40 transition-all duration-300 cursor-pointer p-4"
+                  >
+                    <div className="absolute inset-0 bg-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10 w-full h-full flex items-center justify-center">
+                      <img src={client.src} alt={client.name} title={client.name} className="object-contain max-w-full max-h-full group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
 
+            {/* UAE Operations */}
+            <div className="flex flex-col">
+              <div className="section-heading mb-8 flex items-center justify-between border-b border-gray-100 pb-4">
+                <h4 className="text-2xl font-light text-[#0A1F3C] tracking-tight">
+                  UAE <span className="font-medium text-[#66B2E8]">Operations</span>
+                </h4>
+                <span className="text-xs font-bold tracking-widest text-gray-400 bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-full">UAE</span>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4 sm:gap-6">
+                {uaeClients.map((client, i) => (
+                  <div 
+                    key={`uae-client-${i}`} 
+                    className="scroll-item group relative aspect-square bg-white rounded-xl flex items-center justify-center border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 hover:border-[#66B2E8]/40 transition-all duration-300 cursor-pointer p-4"
+                  >
+                    <div className="absolute inset-0 bg-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10 w-full h-full flex items-center justify-center">
+                      <img src={client.src} alt={client.name} title={client.name} className="object-contain max-w-full max-h-full group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>

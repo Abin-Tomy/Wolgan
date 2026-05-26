@@ -264,9 +264,9 @@ export function Header() {
             <TransitionLink href="/team" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Team
             </TransitionLink>
-            <a href="/#clients" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
+            <TransitionLink href="/clients" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Clients
-            </a>
+            </TransitionLink>
             <TransitionLink href="/blogs" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Blogs
             </TransitionLink>
@@ -380,8 +380,8 @@ export function Header() {
               </li>
               <li className="overflow-hidden">
                 <a 
-                  href="/#clients" 
-                  onClick={(e) => handleMobileHashLinkClick(e, "clients")}
+                  href="/clients" 
+                  onClick={(e) => handleMobileNavLinkClick(e, "/clients")}
                   className="inline-block text-4xl font-light tracking-tight text-white/70 hover:text-white hover:scale-105 transition-all duration-300"
                 >
                   Our Clients
