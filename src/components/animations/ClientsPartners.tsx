@@ -3,10 +3,10 @@ import { useRef, useEffect } from "react";
 import { gsap } from "@/lib/gsap";
 
 const sharedPartners = [
-  { name: "SUEZ", src: "/images/Partners/SUEZ.jpeg" },
-  { name: "RYDLYME", src: "/images/Partners/RYDLYME.jpeg" },
-  { name: "IWAKI", src: "/images/Partners/IWAKI.jpeg" },
-  { name: "NCR", src: "/images/Partners/NCR.jpeg" },
+  { name: "SUEZ", src: "/images/Partners/SUEZ.png" },
+  { name: "RYDLYME", src: "/images/Partners/RYDLYME.png" },
+  { name: "IWAKI", src: "/images/Partners/IWAKI.png" },
+  { name: "NCR", src: "/images/Partners/NCR.png" },
 ];
 
 const qatarClients = [
