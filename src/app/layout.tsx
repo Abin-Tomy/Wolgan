@@ -4,6 +4,7 @@ import "./globals.css";
 import { QuickActions } from "@/components/QuickActions";
 import { Preloader } from "@/components/Preloader";
 import { PageTransitionProvider } from "@/components/PageTransition";
+import { CurtainProvider } from "@/components/curtain/CurtainContext";
 
 export const metadata: Metadata = {
   // Production domain — update this when going live on a different domain
@@ -79,10 +80,15 @@ export default function RootLayout({
       className={`${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
-        <PageTransitionProvider>
-          <Preloader />
-          {children}
-          <QuickActions />
+        {/* CurtainProvider is outermost — it owns the shared curtain DOM element */}
+        <CurtainProvider>
+          {/* PageTransitionProvider reads the curtain via useCurtain() */}
+          <PageTransitionProvider>
+            <Preloader />
+            {children}
+            <QuickActions />
+          </PageTransitionProvider>
+        </CurtainProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -126,7 +132,6 @@ export default function RootLayout({
             }),
           }}
         />
-        </PageTransitionProvider>
       </body>
     </html>
   );
