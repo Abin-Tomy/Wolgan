@@ -11,7 +11,11 @@ const services = [
   "Plumbing Systems – Potable Water and Drainage",
 ];
 
-export function MEPInstallationsPage() {
+import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { MobileMEPInstallationsPage } from "./mobile/MobileMEPInstallationsPage";
+import { Footer } from "@/components/Footer";
+
+function DesktopMEPInstallationsPage() {
   return (
     <SmoothScroll>
       <main className="bg-[#0A1F3C] min-h-screen text-white pt-32 pb-20">
@@ -59,7 +63,17 @@ export function MEPInstallationsPage() {
             </div>
           </div>
         </div>
+        <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+export function MEPInstallationsPage() {
+  return (
+    <ResponsiveWrapper
+      desktop={<DesktopMEPInstallationsPage />}
+      mobile={<MobileMEPInstallationsPage />}
+    />
   );
 }

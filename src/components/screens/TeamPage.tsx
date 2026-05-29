@@ -158,7 +158,10 @@ function TeamCard({ id, name, role, quote, bgText, imagePosition, imageSrc }: Te
   );
 }
 
-export function TeamPage() {
+import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { MobileTeamPage } from "./mobile/MobileTeamPage";
+
+function DesktopTeamPage() {
   return (
     <SmoothScroll>
       <main className="bg-[#FDFCFB] min-h-screen overflow-hidden">
@@ -217,5 +220,14 @@ export function TeamPage() {
         <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+export function TeamPage() {
+  return (
+    <ResponsiveWrapper
+      desktop={<DesktopTeamPage />}
+      mobile={<MobileTeamPage />}
+    />
   );
 }
