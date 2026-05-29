@@ -155,7 +155,10 @@ const INSTA_POSTS = [
   }
 ];
 
-export function BlogsPage() {
+import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { MobileBlogsPage } from "./mobile/MobileBlogsPage";
+
+function DesktopBlogsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [socialTab, setSocialTab] = useState("LinkedIn");
   
@@ -660,5 +663,14 @@ export function BlogsPage() {
         <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+export function BlogsPage() {
+  return (
+    <ResponsiveWrapper
+      desktop={<DesktopBlogsPage />}
+      mobile={<MobileBlogsPage />}
+    />
   );
 }

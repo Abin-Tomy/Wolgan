@@ -102,7 +102,10 @@ function DiamondSpotlightCard({ client }: { client: any }) {
   );
 }
 
-export function ClientsPage() {
+import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { MobileClientsPage } from "./mobile/MobileClientsPage";
+
+function DesktopClientsPage() {
   const heroRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const orbsRef = useRef<HTMLDivElement>(null);
@@ -351,5 +354,14 @@ export function ClientsPage() {
         <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+export function ClientsPage() {
+  return (
+    <ResponsiveWrapper
+      desktop={<DesktopClientsPage />}
+      mobile={<MobileClientsPage />}
+    />
   );
 }

@@ -19,7 +19,10 @@ const deck3 = "/images/about-deck-3.jpg";
 const waterplant = "/images/about-waterplant.webp";
 
 
-export function AboutPage() {
+import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { MobileAboutPage } from "./mobile/MobileAboutPage";
+
+function DesktopAboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
 
@@ -1020,6 +1023,15 @@ export function AboutPage() {
         <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+export function AboutPage() {
+  return (
+    <ResponsiveWrapper
+      desktop={<DesktopAboutPage />}
+      mobile={<MobileAboutPage />}
+    />
   );
 }
 

@@ -21,7 +21,11 @@ const solutions = [
   "Cooling Tower Sweeper System",
 ];
 
-export function WaterTreatmentPage() {
+import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { MobileWaterTreatmentPage } from "./mobile/MobileWaterTreatmentPage";
+import { Footer } from "@/components/Footer";
+
+function DesktopWaterTreatmentPage() {
   return (
     <SmoothScroll>
       <main className="bg-[#0A1F3C] min-h-screen text-white pt-32 pb-20">
@@ -63,7 +67,17 @@ export function WaterTreatmentPage() {
             </div>
           </div>
         </div>
+        <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+export function WaterTreatmentPage() {
+  return (
+    <ResponsiveWrapper
+      desktop={<DesktopWaterTreatmentPage />}
+      mobile={<MobileWaterTreatmentPage />}
+    />
   );
 }

@@ -20,7 +20,11 @@ const commodityChemicals = [
   "Soda Ash Light",
 ];
 
-export function ChemicalSuppliesPage() {
+import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { MobileChemicalSuppliesPage } from "./mobile/MobileChemicalSuppliesPage";
+import { Footer } from "@/components/Footer";
+
+function DesktopChemicalSuppliesPage() {
   return (
     <SmoothScroll>
       <main className="bg-[#0A1F3C] min-h-screen text-white pt-32 pb-20">
@@ -81,7 +85,17 @@ export function ChemicalSuppliesPage() {
             </div>
           </div>
         </div>
+        <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+export function ChemicalSuppliesPage() {
+  return (
+    <ResponsiveWrapper
+      desktop={<DesktopChemicalSuppliesPage />}
+      mobile={<MobileChemicalSuppliesPage />}
+    />
   );
 }
