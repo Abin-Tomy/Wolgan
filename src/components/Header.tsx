@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 const wolganLogo = "/images/Wolgan-logo.png";
 import { Button } from "@/components/ui/button";
@@ -169,11 +169,21 @@ function DownloadsDropdown() {
 
 export function Header() {
   const router = useRouter();
+  const pathname = usePathname();
   const { navigate } = usePageTransition();
   const headerRef = useRef<HTMLElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    const isHomePage = pathname === "/";
+
+    if (!isHomePage) {
+      // On all sub-pages: header is always visible, no scroll magic
+      gsap.set(headerRef.current, { yPercent: 0, opacity: 1 });
+      return;
+    }
+
+    // Home page only: hidden initially, slides in on scroll
     gsap.set(headerRef.current, { yPercent: -100, opacity: 0 });
 
     const showHeader = ScrollTrigger.create({
@@ -202,7 +212,7 @@ export function Header() {
     return () => {
       showHeader.kill();
     };
-  }, []);
+  }, [pathname]);
 
   // Rule 3: EVERY menu open
   const handleMobileMenuOpen = () => {
