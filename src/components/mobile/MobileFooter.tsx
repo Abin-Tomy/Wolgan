@@ -1,7 +1,6 @@
 "use client";
 
 import { Phone, Mail } from "lucide-react";
-import Image from "next/image";
 
 interface MobileFooterProps {
   waveColor?: string;

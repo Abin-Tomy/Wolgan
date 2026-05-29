@@ -29,7 +29,7 @@ const TEAM_MEMBERS = [
     role: "Director - UAE",
     quote: "“Strategic insights are the bridge between complex MEP challenges and seamless, scalable solutions for our clients.”",
     bgText: "LEADER",
-    imageSrc: "/images/Sampath-Acharya.png?v=3",
+    imageSrc: "/images/Sampath-Acharya.png?v=4",
   },
 ];
 
