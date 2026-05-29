@@ -137,6 +137,7 @@ export function Contact() {
 
   return (
     <section
+      id="contact"
       ref={containerRef}
       className="relative w-full bg-[#020610] py-24 md:py-32 z-10 overflow-hidden"
       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}

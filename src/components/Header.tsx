@@ -39,7 +39,7 @@ function ServicesDropdown() {
   return (
     <div
       ref={dropdownRef}
-      className="relative"
+      className="relative h-20 flex items-center"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
@@ -61,7 +61,7 @@ function ServicesDropdown() {
 
       {/* Dropdown Panel */}
       <div
-        className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-72 rounded-xl overflow-hidden border border-white/10 shadow-2xl transition-all duration-200 z-50 ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
+        className={`absolute top-full left-1/2 -translate-x-1/2 mt-[2px] w-72 rounded-xl overflow-hidden border border-white/10 shadow-2xl transition-all duration-200 z-50 ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
           }`}
         style={{ 
           backgroundColor: "rgba(10, 25, 50, 0.95)", 
@@ -109,7 +109,7 @@ function DownloadsDropdown() {
   return (
     <div
       ref={dropdownRef}
-      className="relative"
+      className="relative h-20 flex items-center"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
@@ -131,7 +131,7 @@ function DownloadsDropdown() {
 
       {/* Dropdown Panel */}
       <div
-        className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-72 rounded-xl overflow-hidden border border-white/10 shadow-2xl transition-all duration-200 z-50 ${
+        className={`absolute top-full left-1/2 -translate-x-1/2 mt-[2px] w-72 rounded-xl overflow-hidden border border-white/10 shadow-2xl transition-all duration-200 z-50 ${
           open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
         style={{
