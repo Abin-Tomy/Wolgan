@@ -15,27 +15,27 @@ const strategicPartners = [
 ];
 
 const qatarClients = [
-  { name: "Medgulf Construction", src: "/images/Qatar Clients/1. Medgulf Construction.jpg" },
+  { name: "Medgulf Construction", src: "/images/Qatar Clients/MEDGULF-BG-RMV.png" },
   { name: "Navayuga", src: "/images/Qatar Clients/2. Navayuga.png" },
-  { name: "Trags Engineering", src: "/images/Qatar Clients/3. Trags Engineering.png" },
+  { name: "Trags Engineering", src: "/images/Qatar Clients/TRAGS-BG-RMV.png" },
   { name: "Qatar Aviation Services", src: "/images/Qatar Clients/4. Qatar-Aviation-Services.png" },
   { name: "Al Mirqab", src: "/images/Qatar Clients/5. Al mirqab.png" },
   { name: "Arabian MEP", src: "/images/Qatar Clients/6. Arabian MEP.png" },
   { name: "KSC", src: "/images/Qatar Clients/7. ksc.png" },
   { name: "Balagh", src: "/images/Qatar Clients/8. balagh.png" },
-  { name: "Milaha", src: "/images/Qatar Clients/9. milaha.png" },
+  { name: "Milaha", src: "/images/Qatar Clients/MILAHA-BG-RMV.png" },
 ];
 
 const uaeClients = [
-  { name: "BRF", src: "/images/UAE Clients/1. BRF.jpg" },
-  { name: "Transguard", src: "/images/UAE Clients/2. Trasnguard.png" },
-  { name: "Dubai Holding", src: "/images/UAE Clients/3. Dubai Holding.png" },
+  { name: "BRF", src: "/images/UAE Clients/BRF-BG-RMV.png" },
+  { name: "Transguard", src: "/images/UAE Clients/TRANSGUARD-BG-RMV.png" },
+  { name: "Dubai Holding", src: "/images/UAE Clients/HOLDING-BG-RMV.png" },
   { name: "Emaar", src: "/images/UAE Clients/4. Emaar.svg" },
-  { name: "Imdaad", src: "/images/UAE Clients/5. Imdaad.png" },
-  { name: "Sobha", src: "/images/UAE Clients/6. Sobha.png" },
+  { name: "Imdaad", src: "/images/UAE Clients/IMDAAD-BG-RMV.png" },
+  { name: "Sobha", src: "/images/UAE Clients/SOBHA-BG_RMV.png" },
   { name: "Tabreed", src: "/images/UAE Clients/7. Tabreedpng.png" },
-  { name: "Engie", src: "/images/UAE Clients/8. engie.jpeg" },
-  { name: "Emrill", src: "/images/UAE Clients/9. Emrill.png" },
+  { name: "Engie", src: "/images/UAE Clients/ENGIE-BG-RMV.png" },
+  { name: "Emrill", src: "/images/UAE Clients/EMRILL-BG-RMV.png" },
 ];
 
 function DiamondSpotlightCard({ client }: { client: any }) {
@@ -194,7 +194,6 @@ function DesktopClientsPage() {
           {/* Glassmorphic Orbs (The Network) */}
           <div ref={orbsRef} className="absolute inset-0 z-10 pointer-events-none overflow-hidden opacity-40">
             <div className="orb absolute top-1/4 left-1/4 w-64 h-64 bg-[#66B2E8] rounded-full mix-blend-screen filter blur-[100px]"></div>
-            <div className="orb absolute top-1/3 right-1/4 w-80 h-80 bg-[#C7B59D] rounded-full mix-blend-screen filter blur-[120px]"></div>
             <div className="orb absolute bottom-1/4 left-1/2 w-72 h-72 bg-[#0A1F3C] rounded-full mix-blend-screen filter blur-[90px]"></div>
           </div>
 
@@ -210,8 +209,7 @@ function DesktopClientsPage() {
                 {Array.from("Trusted").map((char, i) => <span key={i} className="char inline-block">{char}</span>)}
                 <span className="w-[0.3em]"></span>
                 {Array.from("by").map((char, i) => <span key={i} className="char inline-block">{char}</span>)}
-                <br className="hidden md:block"/>
-                <span className="w-[0.3em] block md:hidden"></span>
+                <span className="w-[0.3em]"></span>
                 {Array.from("industry").map((char, i) => <span key={i} className="char inline-block">{char}</span>)}
                 <span className="w-[0.3em]"></span>
                 <span className="font-semibold italic text-[#E5D5C5] flex">
@@ -255,7 +253,7 @@ function DesktopClientsPage() {
         </div>
 
         {/* --- STICKY SCROLL REGIONAL SHOWCASE --- */}
-        <section className="py-24 md:pt-40 md:pb-64 relative z-20 overflow-clip">
+        <section className="py-24 md:pt-40 md:pb-24 relative z-20 overflow-clip">
           <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
 
             {/* Strategic Partners */}
@@ -336,7 +334,7 @@ function DesktopClientsPage() {
                 </div>
               </div>
 
-              <div className="lg:w-2/3 grid-reveal flex justify-center items-center pt-12 pb-32 md:pt-24 md:pb-48">
+              <div className="lg:w-2/3 grid-reveal flex justify-center items-center pt-12 pb-12 md:pt-24 md:pb-12">
                 {/* Diamond Grid Container */}
                 <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 transform rotate-45 origin-center">
                   {uaeClients.map((client, i) => (
@@ -351,7 +349,9 @@ function DesktopClientsPage() {
           </div>
         </section>
 
-        <Footer />
+        <div className="relative z-20 -mt-1">
+          <Footer waveColor="#FDFCFB" />
+        </div>
       </main>
     </SmoothScroll>
   );

@@ -13,27 +13,27 @@ const strategicPartners = [
 ];
 
 const qatarClients = [
-  { name: "Medgulf Construction", src: "/images/Qatar Clients/1. Medgulf Construction.jpg" },
+  { name: "Medgulf Construction", src: "/images/Qatar Clients/MEDGULF-BG-RMV.png" },
   { name: "Navayuga", src: "/images/Qatar Clients/2. Navayuga.png" },
-  { name: "Trags Engineering", src: "/images/Qatar Clients/3. Trags Engineering.png" },
+  { name: "Trags Engineering", src: "/images/Qatar Clients/TRAGS-BG-RMV.png" },
   { name: "Qatar Aviation Services", src: "/images/Qatar Clients/4. Qatar-Aviation-Services.png" },
   { name: "Al Mirqab", src: "/images/Qatar Clients/5. Al mirqab.png" },
   { name: "Arabian MEP", src: "/images/Qatar Clients/6. Arabian MEP.png" },
   { name: "KSC", src: "/images/Qatar Clients/7. ksc.png" },
   { name: "Balagh", src: "/images/Qatar Clients/8. balagh.png" },
-  { name: "Milaha", src: "/images/Qatar Clients/9. milaha.png" },
+  { name: "Milaha", src: "/images/Qatar Clients/MILAHA-BG-RMV.png" },
 ];
 
 const uaeClients = [
-  { name: "BRF", src: "/images/UAE Clients/1. BRF.jpg" },
-  { name: "Transguard", src: "/images/UAE Clients/2. Trasnguard.png" },
-  { name: "Dubai Holding", src: "/images/UAE Clients/3. Dubai Holding.png" },
+  { name: "BRF", src: "/images/UAE Clients/BRF-BG-RMV.png" },
+  { name: "Transguard", src: "/images/UAE Clients/TRANSGUARD-BG-RMV.png" },
+  { name: "Dubai Holding", src: "/images/UAE Clients/HOLDING-BG-RMV.png" },
   { name: "Emaar", src: "/images/UAE Clients/4. Emaar.svg" },
-  { name: "Imdaad", src: "/images/UAE Clients/5. Imdaad.png" },
-  { name: "Sobha", src: "/images/UAE Clients/6. Sobha.png" },
+  { name: "Imdaad", src: "/images/UAE Clients/IMDAAD-BG-RMV.png" },
+  { name: "Sobha", src: "/images/UAE Clients/SOBHA-BG_RMV.png" },
   { name: "Tabreed", src: "/images/UAE Clients/7. Tabreedpng.png" },
-  { name: "Engie", src: "/images/UAE Clients/8. engie.jpeg" },
-  { name: "Emrill", src: "/images/UAE Clients/9. Emrill.png" },
+  { name: "Engie", src: "/images/UAE Clients/ENGIE-BG-RMV.png" },
+  { name: "Emrill", src: "/images/UAE Clients/EMRILL-BG-RMV.png" },
 ];
 
 function MobileClientCard({ client }: { client: any }) {
@@ -88,8 +88,8 @@ export function MobileClientsPage() {
             Our Network
           </span>
           <h1 className="mobile-hero-text text-4xl font-light text-white leading-tight tracking-tight mb-6">
-            Trusted by <br/>
-            industry <span className="font-semibold italic text-[#E5D5C5]">Leaders.</span>
+            Trusted by industry <br/>
+            <span className="font-semibold italic text-[#E5D5C5]">Leaders.</span>
           </h1>
           <p className="mobile-hero-text text-sm text-white/70 leading-relaxed border-l-2 border-[#66B2E8] pl-4">
             We collaborate with industry leaders across the Middle East to deliver exceptional, scalable MEP and Contracting solutions.
@@ -150,7 +150,7 @@ export function MobileClientsPage() {
         </section>
 
         {/* UAE Clients */}
-        <section className="mobile-client-section mb-12">
+        <section className="mobile-client-section mb-0">
           <div className="mb-8 text-center">
             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">UAE Region</span>
             <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2">
@@ -165,7 +165,7 @@ export function MobileClientsPage() {
       </div>
 
       <div className="relative z-20 -mt-1">
-        <MobileFooter waveColor="#f8f9fb" />
+        <MobileFooter waveColor="#FDFCFB" />
       </div>
     </div>
   );

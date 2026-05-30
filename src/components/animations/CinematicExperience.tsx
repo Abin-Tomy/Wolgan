@@ -292,13 +292,13 @@ export function CinematicExperience() {
             />
           </defs>
           {[
-            { text: "DESIGN",   offset: "14%"  },
-            { text: "●",        offset: "27%", dot: true },
-            { text: "BUILD",    offset: "38%"  },
-            { text: "●",        offset: "50%", dot: true },
-            { text: "OPERATE",  offset: "62%"  },
-            { text: "●",        offset: "74%", dot: true },
-            { text: "MAINTAIN", offset: "86%"  },
+            { text: "DESIGN",   offset: "13.5%" },
+            { text: "●",        offset: "25.5%", dot: true },
+            { text: "BUILD",    offset: "37.5%" },
+            { text: "●",        offset: "49.5%", dot: true },
+            { text: "OPERATE",  offset: "61.5%" },
+            { text: "●",        offset: "73.5%", dot: true },
+            { text: "MAINTAIN", offset: "85.5%" },
           ].map((item, i) => (
             <text
               key={i}
