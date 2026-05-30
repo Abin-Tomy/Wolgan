@@ -96,7 +96,7 @@ export function Hero() {
         </svg>
 
         <div
-          className="absolute inset-x-0 bottom-0 h-[24vh]"
+          className="absolute inset-x-0 bottom-0 h-[calc(24vh+2px)]"
           style={{ backgroundColor: "var(--brand-navy)" }}
         />
 

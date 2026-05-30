@@ -147,9 +147,6 @@ export function Contact() {
         className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] opacity-20 blur-[150px] rounded-full pointer-events-none transition-colors duration-1000"
         style={{ backgroundColor: activeColor }}
       />
-      <div
-        className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#0A1F3C] opacity-50 blur-[120px] rounded-full pointer-events-none"
-      />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
 
@@ -180,9 +177,7 @@ export function Contact() {
 
           <div className="reveal-left space-y-6">
             {/* UAE Contact Info */}
-            <div className={`flex gap-5 items-center p-4 rounded-2xl transition-all duration-500 border border-white/5 ${region === 'UAE' ? 'bg-white/10 shadow-lg backdrop-blur-md' : 'opacity-40 hover:opacity-80 cursor-pointer'}`}
-              onClick={() => setRegion('UAE')}
-            >
+            <div className="flex gap-5 items-center p-4 rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0A1F3C] to-[#112D55] shadow-inner flex items-center justify-center text-[#66B2E8] shrink-0">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               </div>
@@ -193,11 +188,9 @@ export function Contact() {
             </div>
 
             {/* Qatar Contact Info */}
-            <div className={`flex gap-5 items-center p-4 rounded-2xl transition-all duration-500 border border-white/5 ${region === 'Qatar' ? 'bg-white/10 shadow-lg backdrop-blur-md' : 'opacity-40 hover:opacity-80 cursor-pointer'}`}
-              onClick={() => setRegion('Qatar')}
-            >
+            <div className="flex gap-5 items-center p-4 rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2D0B15] to-[#4A1122] shadow-inner flex items-center justify-center text-[#8A1538] shrink-0">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               </div>
               <div>
                 <p className="text-white font-bold text-sm tracking-widest uppercase mb-1">Qatar Office</p>

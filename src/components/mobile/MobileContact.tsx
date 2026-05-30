@@ -126,9 +126,7 @@ export function MobileContact() {
         {/* Contact Info Stacks */}
         <div className="mobile-reveal mt-12 flex flex-col gap-6">
           {/* UAE Contact Info */}
-          <div className={`flex gap-4 items-center p-4 rounded-2xl transition-all duration-500 border border-white/5 ${region === 'UAE' ? 'bg-white/10 backdrop-blur-md' : 'opacity-50'}`}
-            onClick={() => setRegion('UAE')}
-          >
+          <div className="flex gap-4 items-center p-4 rounded-2xl border border-white/5 bg-white/10 backdrop-blur-md">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A1F3C] to-[#112D55] flex items-center justify-center text-[#66B2E8] shrink-0">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
             </div>
@@ -139,11 +137,9 @@ export function MobileContact() {
           </div>
 
           {/* Qatar Contact Info */}
-          <div className={`flex gap-4 items-center p-4 rounded-2xl transition-all duration-500 border border-white/5 ${region === 'Qatar' ? 'bg-white/10 backdrop-blur-md' : 'opacity-50'}`}
-            onClick={() => setRegion('Qatar')}
-          >
+          <div className="flex gap-4 items-center p-4 rounded-2xl border border-white/5 bg-white/10 backdrop-blur-md">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2D0B15] to-[#4A1122] flex items-center justify-center text-[#8A1538] shrink-0">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
             </div>
             <div>
               <p className="text-white font-bold text-[10px] tracking-widest uppercase mb-1">Qatar Office</p>
