@@ -49,14 +49,14 @@ export function MobileBlogsPage() {
         </div>
 
         <div className="relative z-10 mt-24">
-          <span className="mobile-hero-anim inline-block text-[#E5D5C5] text-[10px] font-bold tracking-[0.3em] uppercase mb-6 px-4 py-2 border border-[#E5D5C5]/30 bg-[#E5D5C5]/10 rounded-full">
+          <span className="mobile-hero-anim inline-block text-[#66B2E8] text-[10px] font-bold tracking-[0.3em] uppercase mb-6 px-4 py-2 border border-[#66B2E8]/30 bg-[#66B2E8]/10 rounded-full">
             Knowledge Hub
           </span>
           <h1 className="mobile-hero-anim text-4xl font-light text-white leading-tight tracking-tight mb-6">
             Insights & <br/>
-            <span className="font-semibold italic text-[#E5D5C5]">Updates.</span>
+            <span className="font-semibold italic text-[#66B2E8]">Updates.</span>
           </h1>
-          <p className="mobile-hero-anim text-sm text-white/70 leading-relaxed border-l-2 border-[#E5D5C5] pl-4">
+          <p className="mobile-hero-anim text-sm text-white/70 leading-relaxed border-l-2 border-[#66B2E8] pl-4">
             Industry trends, engineering breakthroughs, technical expertise, and company developments shaping the future of industrial infrastructure.
           </p>
         </div>

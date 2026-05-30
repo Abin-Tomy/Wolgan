@@ -4,15 +4,16 @@ import { Phone, Mail } from "lucide-react";
 
 interface MobileFooterProps {
   waveColor?: string;
+  waveStroke?: string;
 }
 
-export function MobileFooter({ waveColor = "#f8f9fb" }: MobileFooterProps = {}) {
+export function MobileFooter({ waveColor = "#f8f9fb", waveStroke }: MobileFooterProps = {}) {
   return (
     <footer className="relative w-full bg-[#0A1F3C] pt-16 pb-8 z-10 overflow-hidden font-montserrat">
       {/* SVG Wave */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0">
         <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[30px] -mt-[1px]">
-          <path fill={waveColor} d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
+          <path fill={waveColor} stroke={waveStroke} strokeWidth={waveStroke ? "2" : "0"} d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
         </svg>
       </div>
 

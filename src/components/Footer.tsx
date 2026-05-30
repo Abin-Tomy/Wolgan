@@ -5,16 +5,17 @@ import Link from "next/link";
 
 interface FooterProps {
   waveColor?: string;
+  waveStroke?: string;
 }
 
-export function Footer({ waveColor = "#f8f9fb" }: FooterProps = {}) {
+export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) {
   return (
     <footer className="relative w-full bg-[#0A1F3C] pt-24 md:pt-40 pb-12 z-10 overflow-hidden" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
       
       {/* SVG Wave Transition at the very top */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0">
         <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[40px] md:h-[120px] -mt-[1px]">
-          <path fill={waveColor} d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
+          <path fill={waveColor} stroke={waveStroke} strokeWidth={waveStroke ? "2" : "0"} d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
         </svg>
       </div>
 
