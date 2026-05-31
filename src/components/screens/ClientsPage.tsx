@@ -212,7 +212,7 @@ function DesktopClientsPage() {
                 <span className="w-[0.3em]"></span>
                 {Array.from("industry").map((char, i) => <span key={i} className="char inline-block">{char}</span>)}
                 <span className="w-[0.3em]"></span>
-                <span className="font-semibold italic text-[#E5D5C5] flex">
+                <span className="font-semibold italic text-[#66B2E8] flex">
                   {Array.from("Leaders.").map((char, i) => <span key={i} className="char inline-block">{char}</span>)}
                 </span>
               </h1>
@@ -224,14 +224,14 @@ function DesktopClientsPage() {
         </section>
 
         {/* Asymmetrical Sweeping Curve Divider connecting from Hero to Marquee */}
-        <div className="relative w-full overflow-hidden leading-none z-20 bg-[#E5D5C5]" style={{ transform: "translateY(-1px)" }}>
+        <div className="relative w-full overflow-hidden leading-none z-20 bg-white" style={{ transform: "translateY(-1px)" }}>
           <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[40px] md:h-[120px]">
             <path fill="#0A1F3C" d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
           </svg>
         </div>
 
         {/* --- INFINITE MARQUEE DIVIDER --- */}
-        <div className="relative w-full bg-[#E5D5C5] pb-5 pt-1 overflow-hidden border-b border-black/5 z-30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex">
+        <div className="relative w-full bg-white pb-5 pt-1 overflow-hidden border-b border-black/5 z-30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex">
           <div className="flex whitespace-nowrap animate-[marquee_80s_linear_infinite]">
             {Array.from({ length: 12 }).map((_, idx) => (
               <span key={idx} className="text-[#0A1F3C] text-sm md:text-base font-bold tracking-[0.2em] uppercase flex items-center shrink-0">
@@ -253,7 +253,7 @@ function DesktopClientsPage() {
         </div>
 
         {/* --- STICKY SCROLL REGIONAL SHOWCASE --- */}
-        <section className="py-24 md:pt-40 md:pb-24 relative z-20 overflow-clip">
+        <section className="py-24 md:pt-40 md:pb-0 relative z-20 overflow-clip">
           <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
 
             {/* Strategic Partners */}
@@ -266,7 +266,7 @@ function DesktopClientsPage() {
                     <span className="text-sm font-bold tracking-widest text-gray-400 uppercase">Strategic</span>
                   </div>
                   <h2 className="text-5xl md:text-7xl font-light text-[#0A1F3C] tracking-tight leading-none mb-6">
-                    Our <br/><span className="font-semibold italic text-[#C7B59D]">Partners</span>
+                    Our <br/><span className="font-semibold italic text-[#66B2E8]">Partners</span>
                   </h2>
                   <p className="text-gray-500 text-lg leading-relaxed max-w-sm">
                     Collaborating with industry-leading manufacturers and innovators to deliver uncompromising quality and performance.
@@ -296,7 +296,7 @@ function DesktopClientsPage() {
                     <span className="text-sm font-bold tracking-widest text-gray-400 uppercase">QA Region</span>
                   </div>
                   <h2 className="text-5xl md:text-7xl font-light text-[#0A1F3C] tracking-tight leading-none mb-6">
-                    Qatar <br/><span className="font-semibold italic text-[#C7B59D]">Operations</span>
+                    Qatar <br/><span className="font-semibold italic text-[#66B2E8]">Operations</span>
                   </h2>
                   <p className="text-gray-500 text-lg leading-relaxed max-w-sm">
                     Powering infrastructure and strategic developments for Qatar's leading enterprises and government bodies.
@@ -326,7 +326,7 @@ function DesktopClientsPage() {
                     <span className="text-sm font-bold tracking-widest text-gray-400 uppercase">UAE Region</span>
                   </div>
                   <h2 className="text-5xl md:text-7xl font-light text-[#0A1F3C] tracking-tight leading-none mb-6">
-                    Emirates <br/><span className="font-semibold italic text-[#C7B59D]">Operations</span>
+                    Emirates <br/><span className="font-semibold italic text-[#66B2E8]">Operations</span>
                   </h2>
                   <p className="text-gray-500 text-lg leading-relaxed max-w-sm">
                     Delivering world-class MEP, Water Treatment, and facility management solutions across the United Arab Emirates.

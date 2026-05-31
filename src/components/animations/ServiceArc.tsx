@@ -71,7 +71,7 @@ export function ServiceArc({ services }: PortalServicesProps) {
         <path
           d="M 20 70 Q 50 100 80 70"
           fill="none"
-          stroke="#ff7e33"
+          stroke="#66B2E8"
           strokeWidth="0.2"
           strokeDasharray="100 100"
           strokeDashoffset="100"

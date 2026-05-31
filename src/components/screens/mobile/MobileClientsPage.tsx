@@ -89,7 +89,7 @@ export function MobileClientsPage() {
           </span>
           <h1 className="mobile-hero-text text-4xl font-light text-white leading-tight tracking-tight mb-6">
             Trusted by industry <br/>
-            <span className="font-semibold italic text-[#E5D5C5]">Leaders.</span>
+            <span className="font-semibold italic text-[#66B2E8]">Leaders.</span>
           </h1>
           <p className="mobile-hero-text text-sm text-white/70 leading-relaxed border-l-2 border-[#66B2E8] pl-4">
             We collaborate with industry leaders across the Middle East to deliver exceptional, scalable MEP and Contracting solutions.
@@ -98,14 +98,14 @@ export function MobileClientsPage() {
       </section>
 
       {/* Curve */}
-      <div className="relative w-full overflow-hidden leading-none z-20 bg-[#E5D5C5] -translate-y-[1px]">
+      <div className="relative w-full overflow-hidden leading-none z-20 bg-white -translate-y-[1px]">
         <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[40px]">
           <path fill="#0A1F3C" d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
         </svg>
       </div>
 
       {/* INFINITE MARQUEE DIVIDER */}
-      <div className="relative w-full bg-[#E5D5C5] pb-4 pt-1 overflow-hidden border-b border-black/5 shadow-sm">
+      <div className="relative w-full bg-white pb-4 pt-1 overflow-hidden border-b border-black/5 shadow-sm">
         <div className="flex whitespace-nowrap animate-[marquee_40s_linear_infinite]">
           {Array.from({ length: 12 }).map((_, idx) => (
             <span key={idx} className="text-[#0A1F3C] text-[10px] font-bold tracking-[0.2em] uppercase flex items-center shrink-0">
@@ -128,7 +128,7 @@ export function MobileClientsPage() {
           <div className="mb-8 text-center">
             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Strategic</span>
             <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2">
-              Our <span className="font-semibold italic text-[#C7B59D]">Partners</span>
+              Our <span className="font-semibold italic text-[#66B2E8]">Partners</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -141,7 +141,7 @@ export function MobileClientsPage() {
           <div className="mb-8 text-center">
             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">QA Region</span>
             <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2">
-              Qatar <span className="font-semibold italic text-[#C7B59D]">Operations</span>
+              Qatar <span className="font-semibold italic text-[#66B2E8]">Operations</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -154,7 +154,7 @@ export function MobileClientsPage() {
           <div className="mb-8 text-center">
             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">UAE Region</span>
             <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2">
-              Emirates <span className="font-semibold italic text-[#C7B59D]">Operations</span>
+              Emirates <span className="font-semibold italic text-[#66B2E8]">Operations</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 gap-4">

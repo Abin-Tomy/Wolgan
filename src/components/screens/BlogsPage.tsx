@@ -337,12 +337,12 @@ function DesktopBlogsPage() {
 
           <div className="container mx-auto px-6 md:px-14 relative z-10 flex flex-col md:flex-row items-end justify-between gap-12 pt-20">
             <div className="max-w-4xl">
-              <span className="inline-block text-[#E5D5C5] text-sm font-semibold tracking-widest uppercase mb-8 px-5 py-2.5 border border-[#E5D5C5]/20 bg-white/5 rounded-full backdrop-blur-sm">
+              <span className="inline-block text-[#66B2E8] text-sm font-semibold tracking-widest uppercase mb-8 px-5 py-2.5 border border-[#66B2E8]/20 bg-white/5 rounded-full backdrop-blur-sm">
                 Knowledge Hub
               </span>
               <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-light text-white leading-[1.1] tracking-tight">
                 Insights & <br/>
-                <span className="font-semibold italic text-[#E5D5C5]">Updates.</span>
+                <span className="font-semibold italic text-[#66B2E8]">Updates.</span>
               </h1>
             </div>
             

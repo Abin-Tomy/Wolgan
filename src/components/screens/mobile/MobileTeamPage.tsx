@@ -67,7 +67,7 @@ function MobileTeamCard({ id, name, role, quote, bgText, imageSrc }: TeamCardPro
           </h3>
 
           <div className="flex items-center gap-4">
-            <div className="w-8 h-[2px] bg-[#E5D5C5]" />
+            <div className="w-8 h-[2px] bg-[#66B2E8]" />
             <div className="flex flex-col">
               <span className="text-lg font-bold text-white tracking-wider uppercase">
                 {name}
@@ -104,12 +104,12 @@ export function MobileTeamPage() {
         </div>
 
         <div className="relative z-10 mt-24">
-          <span className="inline-block text-[#E5D5C5] text-[10px] font-semibold tracking-widest uppercase mb-6 px-4 py-2 border border-[#E5D5C5]/20 bg-white/5 rounded-full">
+          <span className="inline-block text-[#66B2E8] text-[10px] font-semibold tracking-widest uppercase mb-6 px-4 py-2 border border-[#66B2E8]/20 bg-white/5 rounded-full">
             Leadership & Experts
           </span>
           <h1 className="text-4xl font-light text-white leading-tight tracking-tight mb-6">
             The minds <br/>
-            behind <span className="font-semibold italic text-[#E5D5C5]">Wolgan.</span>
+            behind <span className="font-semibold italic text-[#66B2E8]">Wolgan.</span>
           </h1>
           <p className="text-sm text-white/70 leading-relaxed border-l-2 border-white/20 pl-4">
             Meet the visionary leaders and expert engineers dedicated to delivering 
