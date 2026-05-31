@@ -235,7 +235,11 @@ export function Header() {
   const handleMobileHashLinkClick = (e: ReactMouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    window.location.hash = href;
+    if (pathname === "/") {
+      window.location.hash = href;
+    } else {
+      navigate(`/#${href}`);
+    }
   };
 
   return (
@@ -363,7 +367,7 @@ export function Header() {
               
               {/* Expandable Services list inside Menu */}
               <li className="flex flex-col gap-3">
-                <span className="text-lg font-medium text-white/45">Services</span>
+                <span className="inline-block text-4xl font-light tracking-tight text-white/70 hover:text-white hover:scale-105 transition-all duration-300 transform origin-left">Services</span>
                 <ul className="pl-4 flex flex-col gap-3 border-l border-white/10">
                   {serviceItems.map((item) => (
                     <li key={item.name}>
@@ -409,7 +413,7 @@ export function Header() {
 
               {/* Downloads section in mobile menu */}
               <li className="flex flex-col gap-3 mt-4">
-                <span className="text-lg font-medium text-white/45">Downloads</span>
+                <span className="inline-block text-4xl font-light tracking-tight text-white/70 hover:text-white hover:scale-105 transition-all duration-300 transform origin-left">Downloads</span>
                 <ul className="pl-4 flex flex-col gap-3 border-l border-white/10">
                   {downloadItems.map((item) => (
                     <li key={item.name}>

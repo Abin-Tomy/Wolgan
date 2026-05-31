@@ -91,7 +91,11 @@ export function MobileHeader() {
   const handleMobileHashLinkClick = (e: ReactMouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     handleMobileMenuClose();
-    window.location.hash = href;
+    if (window.location.pathname === "/") {
+      window.location.hash = href;
+    } else {
+      navigate(`/#${href}`);
+    }
   };
 
   return (
