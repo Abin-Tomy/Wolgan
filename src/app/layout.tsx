@@ -132,6 +132,12 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* Cloudflare Turnstile — loaded async so it doesn't block rendering */}
+        <script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          async
+          defer
+        />
       </body>
     </html>
   );

@@ -1005,7 +1005,7 @@ function DesktopAboutPage() {
                 <div className="flex-shrink-0">
                   <Button
                     variant="heroServicesCta"
-                    href="/#contact"
+                    href="/contact"
                     className="group flex gap-2 h-16 px-10 text-lg font-semibold rounded-full"
                   >
                     <span>Contact Team</span>
