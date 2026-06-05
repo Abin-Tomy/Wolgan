@@ -258,7 +258,7 @@ export function MobileAboutPage() {
         <div className="mobile-anim-up bg-[#0A1F3C] rounded-3xl p-8 text-center flex flex-col items-center">
           <h2 className="text-3xl font-light text-white mb-4">Ready to discuss?</h2>
           <p className="text-sm text-white/50 font-light mb-8">Become our preferred business partner across the contracting industry.</p>
-          <Button variant="heroServicesCta" href="/#contact" className="w-full justify-center h-14 rounded-full">
+          <Button variant="heroServicesCta" href="/contact" className="w-full justify-center h-14 rounded-full">
             Contact Team
           </Button>
         </div>

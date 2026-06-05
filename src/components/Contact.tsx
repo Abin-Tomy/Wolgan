@@ -1,7 +1,18 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "@/lib/gsap";
 import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
+
+// ─── Turnstile Callback ─────────────────────────────────────────
+// The Turnstile script calls this global function when the user
+// completes the challenge. We store the token in a module-level
+// variable that the form can read.
+let _turnstileToken = "";
+if (typeof window !== "undefined") {
+  (window as unknown as Record<string, unknown>).onTurnstileCallback = (token: string) => {
+    _turnstileToken = token;
+  };
+}
 
 const CustomDropdown = ({ options, value, onChange, placeholder, label }: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,14 +68,32 @@ const CustomDropdown = ({ options, value, onChange, placeholder, label }: any) =
   );
 };
 
+// ─── Submission Status Types ────────────────────────────────────
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
 export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
   const formWrapperRef = useRef<HTMLDivElement>(null);
+  const turnstileRef = useRef<HTMLDivElement>(null);
   const [region, setRegion] = useState<"UAE" | "Qatar">("UAE");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Form States
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [emirate, setEmirate] = useState("");
+  const [phone, setPhone] = useState("");
   const [interest, setInterest] = useState("");
+  const [message, setMessage] = useState("");
+
+  // Submission states
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const emiratesList = [
     "Abu Dhabi",
@@ -118,6 +147,7 @@ export function Contact() {
 
     // Reset specific states
     setEmirate("");
+    setPhone("");
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -129,6 +159,93 @@ export function Contact() {
 
     return () => ctx.revert();
   }, [region]);
+
+  // Re-render Turnstile widget when region changes (to reset it)
+  useEffect(() => {
+    if (!isMounted || !turnstileRef.current) return;
+    _turnstileToken = "";
+
+    // Clear previous widget
+    turnstileRef.current.innerHTML = "";
+
+    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+    if (!siteKey) return;
+
+    // If the Turnstile script is loaded, render the widget
+    const win = window as Record<string, any>;
+    if (win.turnstile) {
+      win.turnstile.render(turnstileRef.current, {
+        sitekey: siteKey,
+        callback: (token: string) => { _turnstileToken = token; },
+        theme: "dark",
+        size: "flexible",
+      });
+    }
+  }, [region, status, isMounted]);
+
+  // Reset form helper
+  const resetForm = useCallback(() => {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setEmirate("");
+    setPhone("");
+    setInterest("");
+    setMessage("");
+    _turnstileToken = "";
+  }, []);
+
+  // ─── Form Submission ──────────────────────────────────────────
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === "loading") return;
+
+    setStatus("loading");
+    setErrorMessage("");
+
+    // Read the honeypot value
+    const form = e.target as HTMLFormElement;
+    const honeypot = (form.elements.namedItem("website") as HTMLInputElement)?.value ?? "";
+
+    const payload = {
+      firstName,
+      lastName,
+      email,
+      region,
+      emirate: region === "UAE" ? emirate : "",
+      phone: region === "Qatar" ? phone : "",
+      interest,
+      message,
+      website: honeypot,
+      turnstileToken: _turnstileToken,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setStatus("error");
+        setErrorMessage(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setStatus("success");
+      resetForm();
+
+      // Reset status after 6 seconds
+      setTimeout(() => setStatus("idle"), 6000);
+    } catch {
+      setStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
+    }
+  };
 
   const uaeColor = "#66B2E8";
   const qatarColor = "#8A1538"; // Qatar maroon
@@ -160,7 +277,7 @@ export function Contact() {
               Connect with Wolgan
             </span>
             <h2 className="text-[3rem] md:text-[4.5rem] font-black text-white leading-[1.05] tracking-tighter mb-6">
-              LET’S PIONEER <br />
+              LET'S PIONEER <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 font-light">
                 THE FUTURE.
               </span>
@@ -256,24 +373,73 @@ export function Contact() {
               </div>
 
               <div className="form-content">
-                <form className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8" onSubmit={(e) => e.preventDefault()}>
+                <form className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8" onSubmit={handleSubmit}>
+
+                  {/* ── Honeypot (invisible to humans) ── */}
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      left: "-9999px",
+                      top: "-9999px",
+                      width: 0,
+                      height: 0,
+                      overflow: "hidden",
+                      opacity: 0,
+                      pointerEvents: "none",
+                    }}
+                  >
+                    <label htmlFor="website">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
 
                   {/* First Name */}
                   <div className="flex flex-col space-y-2">
                     <label className="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest ml-2">First Name</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600" placeholder="John" />
+                    <input
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600"
+                      placeholder="John"
+                      required
+                      minLength={2}
+                      maxLength={100}
+                    />
                   </div>
 
                   {/* Last Name */}
                   <div className="flex flex-col space-y-2">
                     <label className="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest ml-2">Last Name</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600" placeholder="Doe" />
+                    <input
+                      type="text"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600"
+                      placeholder="Doe"
+                      required
+                      minLength={1}
+                      maxLength={100}
+                    />
                   </div>
 
                   {/* Email Address */}
                   <div className="flex flex-col space-y-2">
                     <label className="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest ml-2">Email Address</label>
-                    <input type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600" placeholder="john@company.com" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600"
+                      placeholder="john@company.com"
+                      required
+                    />
                   </div>
 
                   {/* Dynamic Field based on Region */}
@@ -292,7 +458,14 @@ export function Contact() {
                         <div className="bg-white/5 border border-white/10 border-r-0 rounded-l-2xl px-4 py-4 text-gray-400 text-sm flex items-center">
                           +974
                         </div>
-                        <input type="tel" className="w-full bg-white/5 border border-white/10 rounded-r-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600" placeholder="0000 0000" />
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className="w-full bg-white/5 border border-white/10 rounded-r-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600"
+                          placeholder="0000 0000"
+                          required
+                        />
                       </div>
                     </div>
                   )}
@@ -311,18 +484,71 @@ export function Contact() {
                   {/* Message */}
                   <div className="md:col-span-2 flex flex-col space-y-2">
                     <label className="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest ml-2">Message</label>
-                    <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all resize-none placeholder:text-gray-600" placeholder="Tell us about your project..."></textarea>
+                    <textarea
+                      rows={4}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all resize-none placeholder:text-gray-600"
+                      placeholder="Tell us about your project..."
+                      required
+                      minLength={10}
+                      maxLength={5000}
+                    ></textarea>
                   </div>
+
+                  {/* Cloudflare Turnstile Widget */}
+                  <div className="md:col-span-2">
+                    {isMounted && (
+                      <div ref={turnstileRef} className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} data-callback="onTurnstileCallback" data-theme="dark" data-size="flexible" />
+                    )}
+                  </div>
+
+                  {/* Status Messages */}
+                  {status === "success" && (
+                    <div className="md:col-span-2">
+                      <div className="flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl px-5 py-4 text-emerald-400 text-sm animate-in fade-in duration-300">
+                        <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>Thank you! Your inquiry has been sent to our <strong>{region}</strong> team. We'll be in touch soon.</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {status === "error" && (
+                    <div className="md:col-span-2">
+                      <div className="flex items-center gap-3 bg-red-500/10 border border-red-500/20 rounded-2xl px-5 py-4 text-red-400 text-sm animate-in fade-in duration-300">
+                        <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                        </svg>
+                        <span>{errorMessage}</span>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Submit Button */}
                   <div className="md:col-span-2 pt-4">
                     <button
+                      type="submit"
                       aria-label="Send inquiry"
-                      className="group relative overflow-hidden w-full text-white py-5 rounded-2xl text-[0.75rem] font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-4 transition-all duration-500 hover:scale-[1.01]"
+                      disabled={status === "loading"}
+                      className="group relative overflow-hidden w-full text-white py-5 rounded-2xl text-[0.75rem] font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-4 transition-all duration-500 hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                       style={{ backgroundColor: activeColor }}
                     >
                       <span className="relative z-10 flex items-center gap-3">
-                        Submit Inquiry <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                        {status === "loading" ? (
+                          <>
+                            <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                            </svg>
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            Submit Inquiry <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                          </>
+                        )}
                       </span>
                       <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
                     </button>

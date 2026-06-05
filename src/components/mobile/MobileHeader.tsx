@@ -178,7 +178,7 @@ export function MobileHeader() {
                   { name: "Our Team", href: "/team" },
                   { name: "Our Clients", href: "/clients" },
                   { name: "Blogs", href: "/blogs" },
-                  { name: "Contact", href: "/#contact", isHash: true },
+                  { name: "Contact", href: "/contact" },
                 ].map((item) => (
                   <li key={item.name}>
                     <a 

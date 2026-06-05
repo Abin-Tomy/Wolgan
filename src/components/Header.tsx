@@ -294,7 +294,11 @@ export function Header() {
               {/* CTA Button */}
               <Button
                 variant="headerCta"
-                href="/#contact"
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/contact");
+                }}
               >
                 <span>Let&apos;s Talk</span>
                 <div className="relative w-3.5 h-3.5 overflow-hidden">
@@ -431,8 +435,8 @@ export function Header() {
 
               <li className="overflow-hidden mt-4">
                 <a 
-                  href="/#contact" 
-                  onClick={(e) => handleMobileHashLinkClick(e, "contact")}
+                  href="/contact" 
+                  onClick={(e) => handleMobileNavLinkClick(e, "/contact")}
                   className="inline-block text-4xl font-light tracking-tight text-white/70 hover:text-white hover:scale-105 transition-all duration-300"
                 >
                   Contact

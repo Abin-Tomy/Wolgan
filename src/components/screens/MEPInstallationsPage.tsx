@@ -115,7 +115,7 @@ function DesktopMEPInstallationsPage() {
                     Our team of experts is ready to help you with your MEP installation and maintenance needs. Contact us today for a consultation.
                   </p>
                   <a 
-                    href="/#contact" 
+                    href="/contact" 
                     className="group inline-flex items-center gap-4 bg-white text-[#66B2E8] px-10 py-5 rounded-full font-medium text-lg hover:bg-[#f0f8ff] transition-colors duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
                   >
                     Get in Touch
