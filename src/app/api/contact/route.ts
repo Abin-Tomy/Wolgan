@@ -33,16 +33,14 @@ function jsonResponse(body: Record<string, unknown>, status: number) {
 // ─── POST /api/contact ─────────────────────────────────────────
 
 export async function POST(request: NextRequest) {
+
   // 1. Content-Type enforcement
   const contentType = request.headers.get("content-type") ?? "";
   if (!contentType.includes("application/json")) {
-    return jsonResponse(
-      { error: "Content-Type must be application/json." },
-      415
-    );
+    return jsonResponse({ error: "Content-Type must be application/json." }, 415);
   }
 
-  // 2. Rate limiting (use forwarded IP or fallback)
+  // 2. Rate limiting
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
     request.headers.get("x-real-ip") ??
@@ -50,11 +48,7 @@ export async function POST(request: NextRequest) {
 
   const rateCheck = checkRateLimit(ip);
   if (!rateCheck.allowed) {
-    const retryAfter = Math.ceil((rateCheck.retryAfterMs ?? 60_000) / 1000);
-    return jsonResponse(
-      { error: "Too many requests. Please try again later." },
-      429
-    );
+    return jsonResponse({ error: "Too many requests. Please try again later." }, 429);
   }
 
   // 3. Parse JSON body
@@ -72,7 +66,7 @@ export async function POST(request: NextRequest) {
   }
   const data: ContactPayload = result.data;
 
-  // 5. Honeypot — if filled, silently accept (fool the bot)
+  // 5. Honeypot
   if (data.website) {
     return jsonResponse({ message: "Thank you for your inquiry." }, 200);
   }
@@ -80,44 +74,38 @@ export async function POST(request: NextRequest) {
   // 6. Turnstile verification
   const turnstileValid = await verifyTurnstile(data.turnstileToken, ip);
   if (!turnstileValid) {
-    return jsonResponse(
-      { error: "CAPTCHA verification failed. Please try again." },
-      403
-    );
+    return jsonResponse({ error: "CAPTCHA verification failed. Please try again." }, 403);
   }
 
-  // 7. Resolve destination email by region
+  // 7. Resolve destination email
   const toEmail = EMAIL_BY_REGION[data.region];
   if (!toEmail) {
-    console.error(
-      `[contact] No email configured for region "${data.region}"`
-    );
-    return jsonResponse(
-      { error: "Unable to process your request at this time." },
-      500
-    );
+    console.error(`[contact] No email configured for region "${data.region}"`);
+    return jsonResponse({ error: "Unable to process your request at this time." }, 500);
   }
 
   const fromEmail = process.env.EMAIL_FROM ?? "Wolgan Contact <noreply@wolgan.co>";
 
-  // 8. Build & send email
+  // 8. Send email
   try {
-    await resend.emails.send({
+    const sendResult = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
       subject: `New ${data.region} Inquiry — ${data.interest}`,
       replyTo: data.email,
       html: buildEmailHtml(data),
     });
+
+    // Resend returns errors as data, not thrown exceptions — must check explicitly
+    if (sendResult.error) {
+      console.error("[contact] Resend rejected the email:", sendResult.error.message);
+      return jsonResponse({ error: "Unable to send your message. Please try again later." }, 500);
+    }
   } catch (err) {
     console.error("[contact] Failed to send email:", err);
-    return jsonResponse(
-      { error: "Unable to send your message. Please try again later." },
-      500
-    );
+    return jsonResponse({ error: "Unable to send your message. Please try again later." }, 500);
   }
 
-  // 9. Success
   return jsonResponse({ message: "Thank you for your inquiry." }, 200);
 }
 
