@@ -101,7 +101,7 @@ export function AboutSection({
       >
         <p className="text-[15px] md:text-base leading-relaxed opacity-80 mb-10 max-w-[520px]">
           Founded in 2020, Wolgan is a dedicated water treatment company
-          operating in Qatar and the UAE, delivering smart and reliable
+          operating in the Middle East, delivering smart and reliable
           solutions across commercial, institutional, and industrial sectors.
           We specialize in water treatment services, MEP execution, and
           specialized chemical solutions.
