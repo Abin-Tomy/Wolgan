@@ -354,7 +354,7 @@ function DesktopAboutPage() {
                 <div className="space-y-6 text-sm md:text-base font-light leading-relaxed"
                   style={{ color: "rgba(var(--brand-navy-rgb), 0.65)" }}>
                   <p>
-                    Founded in 2020, Wolgan is an established Contracting Company operating in the Middle East. Driven by entrepreneurial leadership and vision, we deliver smart, reliable solutions in water treatment, MEP execution, and specialized chemical supply across commercial and industrial sectors.
+                    Founded in 2020, Wolgan is an established Water Treatment Specialist operating in the Middle East. Driven by entrepreneurial leadership and vision, we deliver smart, reliable solutions in water treatment, MEP execution, and specialized chemical supply across commercial and industrial sectors.
                   </p>
                   <p>
                     Serving industries from healthcare to large-scale construction, our experienced team provides advanced, cost-effective solutions. We continuously explore strategic alliances to optimize performance, ensure international compliance, and help customers operate efficiently with greater environmental responsibility.

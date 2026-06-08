@@ -223,37 +223,15 @@ function DesktopClientsPage() {
           </div>
         </section>
 
-        {/* Asymmetrical Sweeping Curve Divider connecting from Hero to Marquee */}
-        <div className="relative w-full overflow-hidden leading-none z-20 bg-white" style={{ transform: "translateY(-1px)" }}>
-          <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[40px] md:h-[120px]">
+        {/* Asymmetrical Sweeping Curve Divider */}
+        <div className="relative w-full overflow-hidden leading-none z-20 bg-transparent -mt-[2px]">
+          <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[40px] md:h-[120px] block">
             <path fill="#0A1F3C" d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
           </svg>
         </div>
 
-        {/* --- INFINITE MARQUEE DIVIDER --- */}
-        <div className="relative w-full bg-white pb-5 pt-1 overflow-hidden border-b border-black/5 z-30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex">
-          <div className="flex whitespace-nowrap animate-[marquee_80s_linear_infinite]">
-            {Array.from({ length: 12 }).map((_, idx) => (
-              <span key={idx} className="text-[#0A1F3C] text-sm md:text-base font-bold tracking-[0.2em] uppercase flex items-center shrink-0">
-                <span className="mx-6 md:mx-10">WATER TREATMENT</span>
-                <span className="text-[#0A1F3C]/40">•</span> 
-                <span className="mx-6 md:mx-10">MEP INSTALLATIONS</span>
-                <span className="text-[#0A1F3C]/40">•</span> 
-                <span className="mx-6 md:mx-10">CHEMICAL SUPPLIES</span>
-                <span className="text-[#0A1F3C]/40">•</span> 
-              </span>
-            ))}
-          </div>
-          <style dangerouslySetInnerHTML={{__html: `
-            @keyframes marquee {
-              0% { transform: translateX(0%); }
-              100% { transform: translateX(-50%); }
-            }
-          `}} />
-        </div>
-
         {/* --- STICKY SCROLL REGIONAL SHOWCASE --- */}
-        <section className="py-24 md:pt-40 md:pb-0 relative z-20 overflow-clip">
+        <section className="py-12 md:pt-20 md:pb-12 relative z-20">
           <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
 
             {/* Strategic Partners */}
@@ -329,12 +307,12 @@ function DesktopClientsPage() {
                     Emirates <br/><span className="font-semibold italic text-[#66B2E8]">Operations</span>
                   </h2>
                   <p className="text-gray-500 text-lg leading-relaxed max-w-sm">
-                    Delivering world-class MEP, Water Treatment, and facility management solutions across the United Arab Emirates.
+                    Delivering world-class Water Treatment Specialist solutions with excellence, innovation, and reliability across the United Arab Emirates.
                   </p>
                 </div>
               </div>
 
-              <div className="lg:w-2/3 grid-reveal flex justify-center items-center pt-12 pb-12 md:pt-24 md:pb-12">
+              <div className="lg:w-2/3 grid-reveal flex justify-center items-center pt-12 pb-24 md:pt-24 md:pb-32">
                 {/* Diamond Grid Container */}
                 <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 transform rotate-45 origin-center">
                   {uaeClients.map((client, i) => (
