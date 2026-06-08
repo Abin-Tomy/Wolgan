@@ -60,7 +60,7 @@ function DesktopChemicalSuppliesPage() {
       <main className="bg-[#0A1F3C] min-h-screen text-white overflow-hidden" ref={containerRef}>
         <Header />
         
-        <section className="hero-section relative min-h-[60vh] flex items-end pb-20 pt-40 px-6">
+        <section className="hero-section relative min-h-[20vh] flex items-end pb-10 pt-40 px-6">
           <div className="absolute inset-0 z-0 overflow-hidden">
             <div className="hero-bg absolute inset-0">
               <Image src="/images/chemical-supplies-services.webp" alt="Chemical Supplies" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
@@ -82,7 +82,7 @@ function DesktopChemicalSuppliesPage() {
           </div>
         </section>
 
-        <section className="relative py-20 px-6 z-10">
+        <section className="relative pt-10 pb-20 px-6 z-10">
           <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#66B2E8]/10 rounded-full blur-[120px] pointer-events-none" />
           <div className="container mx-auto">
             <div className="max-w-5xl mx-auto">
@@ -108,7 +108,7 @@ function DesktopChemicalSuppliesPage() {
                     <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#66B2E8]/20 to-[#66B2E8]/5 flex items-center justify-center border border-[#66B2E8]/30 shadow-[0_0_30px_rgba(102,178,232,0.2)]">
                       <Droplet className="w-8 h-8 text-[#66B2E8]" />
                     </div>
-                    <h3 className="text-3xl font-light text-white">Water Treatment<br/><span className="font-medium text-[#66B2E8]">Chemicals</span></h3>
+                    <h3 className="text-3xl font-light text-white">Water Treatment<br/><span className="font-medium text-[#66B2E8]">Speciality Chemicals</span></h3>
                   </div>
                   <div className="flex flex-col gap-4">
                     {waterTreatmentChemicals.map((item, i) => (

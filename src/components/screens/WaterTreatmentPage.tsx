@@ -60,7 +60,7 @@ function DesktopWaterTreatmentPage() {
       <main className="bg-[#0A1F3C] min-h-screen text-white overflow-hidden" ref={containerRef}>
         <Header />
         
-        <section className="hero-section relative min-h-[60vh] flex items-end pb-20 pt-40 px-6">
+        <section className="hero-section relative min-h-[20vh] flex items-end pb-10 pt-40 px-6">
           <div className="absolute inset-0 z-0 overflow-hidden">
             <div className="hero-bg absolute inset-0">
               <Image src="/images/water-treatment-service.webp" alt="Water Treatment Solutions" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
@@ -82,7 +82,7 @@ function DesktopWaterTreatmentPage() {
           </div>
         </section>
 
-        <section className="relative py-20 px-6 z-10">
+        <section className="relative pt-10 pb-20 px-6 z-10">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[150px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#66B2E8]/10 rounded-full blur-[120px] pointer-events-none" />
           

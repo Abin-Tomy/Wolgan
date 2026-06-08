@@ -131,7 +131,7 @@ export function MobileFooter({ waveColor = "#f8f9fb", waveStroke }: MobileFooter
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 text-center">
           <p className="text-white/40 text-[9px] uppercase tracking-widest font-semibold">
-            © {new Date().getFullYear()} Wolgan Engineering. All rights reserved.
+            © {new Date().getFullYear()} Wolgan. All rights reserved.
           </p>
         </div>
       </div>

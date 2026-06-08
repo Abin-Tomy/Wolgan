@@ -294,26 +294,36 @@ export function Contact() {
 
           <div className="reveal-left space-y-6">
             {/* UAE Contact Info */}
-            <div className="flex gap-5 items-center p-4 rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0A1F3C] to-[#112D55] shadow-inner flex items-center justify-center text-[#66B2E8] shrink-0">
+            <a
+              href="https://maps.app.goo.gl/Hg6V4onBY1U9VAL67"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-5 items-center p-4 rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md hover:bg-white/15 transition-all cursor-pointer group"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0A1F3C] to-[#112D55] shadow-inner flex items-center justify-center text-[#66B2E8] shrink-0 transition-transform group-hover:scale-105">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               </div>
               <div>
-                <p className="text-white font-bold text-sm tracking-widest uppercase mb-1">UAE Headquarters</p>
-                <p className="text-gray-400 text-sm font-light">Silicon Oasis, Building A2, Dubai</p>
+                <p className="text-white font-bold text-sm tracking-widest uppercase mb-1 group-hover:text-[#66B2E8] transition-colors">UAE Headquarters</p>
+                <p className="text-gray-400 text-sm font-light group-hover:text-gray-300 transition-colors">Silicon Oasis, Building A2, Dubai</p>
               </div>
-            </div>
+            </a>
 
             {/* Qatar Contact Info */}
-            <div className="flex gap-5 items-center p-4 rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2D0B15] to-[#4A1122] shadow-inner flex items-center justify-center text-[#8A1538] shrink-0">
+            <a
+              href="https://maps.app.goo.gl/LTjhWDqQU94wLhpm7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-5 items-center p-4 rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md hover:bg-white/15 transition-all cursor-pointer group"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2D0B15] to-[#4A1122] shadow-inner flex items-center justify-center text-[#8A1538] shrink-0 transition-transform group-hover:scale-105">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               </div>
               <div>
-                <p className="text-white font-bold text-sm tracking-widest uppercase mb-1">Qatar Office</p>
-                <p className="text-gray-400 text-sm font-light">Al Saad District, Doha, Qatar</p>
+                <p className="text-white font-bold text-sm tracking-widest uppercase mb-1 group-hover:text-[#8A1538] transition-colors">Qatar Office</p>
+                <p className="text-gray-400 text-sm font-light group-hover:text-gray-300 transition-colors">Al Saad District, Doha, Qatar</p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
