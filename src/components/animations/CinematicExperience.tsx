@@ -362,7 +362,7 @@ export function CinematicExperience() {
               letterSpacing="0.3em"
               y="120"
             >
-              UAE ● QATAR ● INDIA
+              MIDDLE EAST ● INDIA
             </text>
           </g>
         </svg>

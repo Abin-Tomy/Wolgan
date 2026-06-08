@@ -65,7 +65,7 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
               />
             </div>
             <p className="text-[#88A4C4] text-sm leading-relaxed max-w-sm font-light mb-10">
-              Wolgan is an established and reputed Contracting Company in Qatar that serves exceptional service in the area of Water Treatment, Mechanical Installations, Chemical Supply and more.
+              Wolgan is an established and reputed Contracting Company in the Middle East that serves exceptional service in the area of Water Treatment, Mechanical Installations, Chemical Supply and more.
             </p>
             <div className="flex items-center gap-4">
               <a href="https://www.linkedin.com/company/wolgan-qatar/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:bg-[#66B2E8] hover:text-white hover:border-[#66B2E8] hover:-translate-y-1 transition-all duration-300 group">

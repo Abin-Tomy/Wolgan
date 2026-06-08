@@ -124,7 +124,7 @@ export function Hero() {
             className="text-white relative text-xs sm:text-sm tracking-[0.4em] sm:tracking-[0.5em] !opacity-85"
           >
             Delivering smart, reliable, and performance-driven systems
-            <span className="block mt-2">across Qatar, UAE, and India.</span>
+            <span className="block mt-2">across the Middle East and India.</span>
           </Typography>
           <Typography
             variant="h3"

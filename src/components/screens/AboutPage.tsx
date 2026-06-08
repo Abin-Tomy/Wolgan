@@ -312,7 +312,7 @@ function DesktopAboutPage() {
 
             {/* Subtitle */}
             <p className="hero-sub text-base text-white/50 font-light max-w-sm leading-relaxed mb-0">
-              An established Contracting Company delivering Water Treatment, MEP, and Chemical Supply across Qatar, UAE &amp; India.
+              An established Contracting Company delivering Water Treatment, MEP, and Chemical Supply across the Middle East &amp; India.
             </p>
           </div>
 
@@ -354,7 +354,7 @@ function DesktopAboutPage() {
                 <div className="space-y-6 text-sm md:text-base font-light leading-relaxed"
                   style={{ color: "rgba(var(--brand-navy-rgb), 0.65)" }}>
                   <p>
-                    Founded in 2020, Wolgan is an established Contracting Company operating in Qatar and the UAE. Driven by entrepreneurial leadership and vision, we deliver smart, reliable solutions in water treatment, MEP execution, and specialized chemical supply across commercial and industrial sectors.
+                    Founded in 2020, Wolgan is an established Contracting Company operating in the Middle East. Driven by entrepreneurial leadership and vision, we deliver smart, reliable solutions in water treatment, MEP execution, and specialized chemical supply across commercial and industrial sectors.
                   </p>
                   <p>
                     Serving industries from healthcare to large-scale construction, our experienced team provides advanced, cost-effective solutions. We continuously explore strategic alliances to optimize performance, ensure international compliance, and help customers operate efficiently with greater environmental responsibility.
@@ -449,7 +449,7 @@ function DesktopAboutPage() {
                     </span>
                     <p className="text-base md:text-lg font-light leading-relaxed"
                       style={{ color: "var(--brand-navy)" }}>
-                      Wolgan aims to become one of the most successful and diversified Company in Qatar and the preferred Business Partner across Contracting Industry.
+                      Wolgan aims to become one of the most successful and diversified Company in the Middle East and the preferred Business Partner across Contracting Industry.
                     </p>
                   </div>
                 </div>
