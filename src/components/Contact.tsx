@@ -265,10 +265,10 @@ export function Contact() {
         style={{ backgroundColor: activeColor }}
       />
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
 
         {/* Left Column: Heading & Content */}
-        <div className="lg:col-span-5 relative z-10">
+        <div className="lg:col-span-5 relative z-10 flex flex-col">
           <div className="reveal-left mb-6">
             <span
               className="font-bold tracking-[0.2em] text-xs uppercase mb-4 block transition-colors duration-500"
@@ -292,39 +292,61 @@ export function Contact() {
             Whether you have a specific inquiry or want to explore potential partnerships, our regional teams are ready to architect the next big thing with you.
           </p>
 
-          <div className="reveal-left space-y-6">
-            {/* UAE Contact Info */}
-            <a
-              href="https://maps.app.goo.gl/Hg6V4onBY1U9VAL67"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-5 items-center p-4 rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md hover:bg-white/15 transition-all cursor-pointer group"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0A1F3C] to-[#112D55] shadow-inner flex items-center justify-center text-[#66B2E8] shrink-0 transition-transform group-hover:scale-105">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              </div>
-              <div>
-                <p className="text-white font-bold text-sm tracking-widest uppercase mb-1 group-hover:text-[#66B2E8] transition-colors">UAE Headquarters</p>
-                <p className="text-gray-400 text-sm font-light group-hover:text-gray-300 transition-colors">Silicon Oasis, Building A2, Dubai</p>
-              </div>
-            </a>
+          {/* Embedded Maps - fills remaining left column space */}
+          <div className="reveal-left flex-1 flex flex-col gap-4 min-h-0">
 
-            {/* Qatar Contact Info */}
-            <a
-              href="https://maps.app.goo.gl/LTjhWDqQU94wLhpm7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-5 items-center p-4 rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md hover:bg-white/15 transition-all cursor-pointer group"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2D0B15] to-[#4A1122] shadow-inner flex items-center justify-center text-[#8A1538] shrink-0 transition-transform group-hover:scale-105">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            {/* UAE Map Card */}
+            <div className="flex-1 min-h-0 flex flex-col rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md overflow-hidden">
+              <div className="flex items-center gap-3 px-4 py-3 shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#0A1F3C] to-[#112D55] flex items-center justify-center text-[#66B2E8] shrink-0">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm tracking-widest uppercase leading-none mb-1.5">UAE Office</p>
+                  <p className="text-gray-400 text-xs font-light">The European Business Centre, Dubai Investment Park, Dubai</p>
+                </div>
               </div>
-              <div>
-                <p className="text-white font-bold text-sm tracking-widest uppercase mb-1 group-hover:text-[#8A1538] transition-colors">Qatar Office</p>
-                <p className="text-gray-400 text-sm font-light group-hover:text-gray-300 transition-colors">Al Saad District, Doha, Qatar</p>
+              <div className="flex-1 min-h-0">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.867323044399!2d55.1550228!3d25.004623900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6d4888ee878b%3A0x2ea68bad90e7614c!2sThe%20European%20Business%20Centre!5e0!3m2!1sen!2sin!4v1781011618001!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.85) contrast(1.1)" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="UAE Headquarters Map"
+                />
               </div>
-            </a>
+            </div>
+
+            {/* Qatar Map Card */}
+            <div className="flex-1 min-h-0 flex flex-col rounded-2xl border border-white/5 bg-white/10 shadow-lg backdrop-blur-md overflow-hidden">
+              <div className="flex items-center gap-3 px-4 py-3 shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2D0B15] to-[#4A1122] flex items-center justify-center text-[#8A1538] shrink-0">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm tracking-widest uppercase leading-none mb-1.5">Qatar Office</p>
+                  <p className="text-gray-400 text-xs font-light">Building Al Handasa Street, B Ring Rd, Doha, Qatar</p>
+                </div>
+              </div>
+              <div className="flex-1 min-h-0">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3607.8821579512!2d51.5352435!3d25.2745493!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45c5dcbf98ff87%3A0x4ab1713b2a89ec09!2sWolgan!5e0!3m2!1sen!2sin!4v1781011638549!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.85) contrast(1.1)" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Qatar Office Map"
+                />
+              </div>
+            </div>
+
           </div>
+
         </div>
 
         {/* Right Column: Premium Dark/Glassmorphic Form */}

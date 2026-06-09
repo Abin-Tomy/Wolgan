@@ -8,7 +8,7 @@ import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
 import { MobileWaterTreatmentPage } from "./mobile/MobileWaterTreatmentPage";
 import { Footer } from "@/components/Footer";
 import { gsap } from "@/lib/gsap";
-import { Waves, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const solutions = [
   "Wastewater Treatment (Design, Build, Operate & Maintain)",
@@ -72,7 +72,7 @@ function DesktopWaterTreatmentPage() {
           <div className="container mx-auto relative z-10">
             <div className="max-w-5xl mx-auto">
               <div className="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/30 mb-8 backdrop-blur-md">
-                <Waves className="w-4 h-4 text-white" />
+                <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
                 <span className="text-white text-xs font-bold tracking-widest uppercase">Our Expertise</span>
               </div>
               <h1 className="reveal-up text-5xl lg:text-7xl font-light text-white leading-tight tracking-tight mb-6">
@@ -89,8 +89,7 @@ function DesktopWaterTreatmentPage() {
           <div className="container mx-auto">
             <div className="max-w-5xl mx-auto">
               
-              <div className="reveal-up p-10 lg:p-14 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-xl mb-24 relative overflow-hidden group shadow-[0_0_50px_rgba(255,255,255,0.03)]">
-                <div className="absolute -top-20 -left-20 w-64 h-64 bg-white/10 rounded-full blur-[80px] group-hover:bg-white/20 transition-colors duration-700" />
+              <div className="reveal-up p-10 lg:p-14 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-xl mb-24 relative group shadow-[0_0_50px_rgba(255,255,255,0.03)]">
                 
                 <h3 className="text-2xl lg:text-3xl font-medium text-white mb-8 leading-snug relative z-10 max-w-4xl">
                   The Single Source for Complete Water Treatment Solutions & Supply of Chemicals
@@ -101,7 +100,7 @@ function DesktopWaterTreatmentPage() {
                     Water treatment requires in-depth knowledge and skills to understand, rectify & even build specific systems that are customized to its surrounding operations. Any procedure that raises the quality of water to make it more suitable for a certain end user is referred to as water treatment.
                   </p>
                   <p>
-                    This concept covers physical procedures that modify the characteristics of water by removing solutes or altering its pH, as well as procedures to remove undesired components like germs and other pollutants. Wolgan is a team of experienced and highly qualified individuals who provide excellent service for various commercial & residential sectors across Qatar.
+                    This concept covers physical procedures that modify the characteristics of water by removing solutes or altering its pH, as well as procedures to remove undesired components like germs and other pollutants. Wolgan is a team of experienced and highly qualified individuals who provide excellent service for various commercial & residential sectors across the Middle East.
                   </p>
                   <p className="md:col-span-2 mt-6 inline-block w-full break-inside-avoid">
                     The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth. Wolgan thus employs cutting-edge methods of water treatment to produce water suitable for use.

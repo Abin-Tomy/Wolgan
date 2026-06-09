@@ -17,7 +17,7 @@ const service3 = "/images/chemical-supply.jpeg";
 const SERVICES_DATA = [
   {
     title: "Water Treatment",
-    desc: "Water treatment requires in-depth knowledge and skills to understand, rectify & even build specific systems customized to surrounding operations. Our experienced team provides excellent service for various commercial & residential sectors across Qatar.",
+    desc: "Water treatment requires in-depth knowledge and skills to understand, rectify & even build specific systems customized to surrounding operations. Our experienced team provides excellent service for various commercial & residential sectors across the Middle East.",
     img: deck1,
     serviceImg: service1,
     href: "/services/water-treatment",
