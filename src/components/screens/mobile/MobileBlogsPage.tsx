@@ -78,9 +78,9 @@ export function MobileBlogsPage() {
             </svg>
             <h3 className="text-xl font-semibold text-[#0A1F3C]">LinkedIn</h3>
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-row gap-4 overflow-x-auto pb-2 -mx-6 px-6">
             {SOCIAL_POSTS.map((post) => (
-               <div key={post.id} className="mobile-fade-up bg-white rounded-2xl p-6 shadow-md border border-black/5">
+               <div key={post.id} className="mobile-fade-up bg-white rounded-2xl p-5 shadow-md border border-black/5 flex-shrink-0 w-[80vw] max-w-[320px] flex flex-col">
                  <div className="flex items-center gap-3 mb-4">
                    <div className="w-10 h-10 rounded-full bg-[#0A1F3C]/10 flex items-center justify-center font-bold text-[#0A1F3C]">
                      {post.author.charAt(0)}
@@ -90,7 +90,7 @@ export function MobileBlogsPage() {
                      <p className="text-[10px] text-black/40">{post.type} • {post.date}</p>
                    </div>
                  </div>
-                 <p className="text-sm text-black/70 mb-4">{post.content}</p>
+                 <p className="text-sm text-black/70 mb-4 flex-1">{post.content}</p>
                  <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden">
                    <Image src={post.image} alt="Social post" fill className="object-cover" />
                  </div>
@@ -111,38 +111,36 @@ export function MobileBlogsPage() {
             </div>
             <h3 className="text-xl font-semibold text-[#0A1F3C]">Instagram</h3>
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-row gap-4 overflow-x-auto pb-2 -mx-6 px-6">
             {INSTA_POSTS.map((post) => (
-              <div key={post.id} className="mobile-fade-up bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden flex flex-col">
-                <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-fuchsia-600 p-[2px]">
+              <div key={post.id} className="mobile-fade-up bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden flex flex-col flex-shrink-0 w-[65vw] max-w-[240px]">
+                <div className="flex items-center justify-between p-3 border-b border-gray-100">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-fuchsia-600 p-[2px]">
                       <div className="w-full h-full bg-white rounded-full flex items-center justify-center border border-white">
-                        <span className="text-[10px] font-bold text-gray-800">W</span>
+                        <span className="text-[9px] font-bold text-gray-800">W</span>
                       </div>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-xs font-semibold text-gray-900 leading-none">wolgan_engineering</span>
+                      <span className="text-[10px] font-semibold text-gray-900 leading-none">wolgan_engineering</span>
                     </div>
                   </div>
                 </div>
                 <div className="w-full aspect-square relative bg-gray-100">
                   <Image src={post.image} alt="Instagram Post" fill className="object-cover" />
                 </div>
-                <div className="p-4 flex flex-col gap-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <svg className="w-6 h-6 text-gray-800 hover:text-red-500 cursor-pointer transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                      <svg className="w-6 h-6 text-gray-800 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
-                    </div>
+                <div className="p-3 flex flex-col gap-2">
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-gray-800 hover:text-red-500 cursor-pointer transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <svg className="w-5 h-5 text-gray-800 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
                   </div>
-                  <div className="flex gap-2 mt-1">
-                    <div className="w-8 h-2 bg-gray-200 rounded-full" />
-                    <div className="w-16 h-2 bg-gray-200 rounded-full" />
+                  <div className="flex gap-2">
+                    <div className="w-6 h-1.5 bg-gray-200 rounded-full" />
+                    <div className="w-12 h-1.5 bg-gray-200 rounded-full" />
                   </div>
                 </div>
               </div>

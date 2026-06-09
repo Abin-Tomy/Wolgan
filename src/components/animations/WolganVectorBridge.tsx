@@ -117,37 +117,10 @@ function PortalContent() {
             Building on <br className="hidden lg:block" />
             <span style={{ color: "rgba(10,31,60,0.28)" }}>Reliability</span> & Expertise.
           </h2>
-          <p className="text-sm md:text-base text-slate-600 mb-10 leading-relaxed max-w-md mx-auto lg:mx-0">
+          <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-md mx-auto lg:mx-0">
             We provide precision-engineered solutions tailored to your operational needs. Our commitment to international standards and long-term performance makes us the preferred contracting partner.
           </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-            <Button 
-              variant="primaryBrand" 
-              href="/api/download?file=NCR_Brochure.pdf" 
-              download="NCR_Brochure.pdf" 
-              className="group flex gap-2 items-center px-10 h-16 text-lg font-semibold rounded-full shadow-xl shadow-[#0A1F3C]/10 hover:text-white transition-colors duration-300"
-            >
-              <span>NCR Brochure</span>
-              <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
-                <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
-                <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
-              </div>
-            </Button>
-            
-            <Button 
-              variant="primaryBrand" 
-              href="/api/download?file=Rydlyme_Brochure.pdf" 
-              download="Rydlyme_Brochure.pdf" 
-              className="group flex gap-2 items-center px-10 h-16 text-lg font-semibold rounded-full shadow-xl shadow-[#0A1F3C]/10 hover:text-white transition-colors duration-300"
-            >
-              <span>Rydlyme Brochure</span>
-              <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
-                <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
-                <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
-              </div>
-            </Button>
-          </div>
+
         </div>
 
       </div>

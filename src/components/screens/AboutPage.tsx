@@ -668,32 +668,7 @@ function DesktopAboutPage() {
                   Delivering solutions that work —{" "}
                   <span className="text-white/60">from day one, and for years after.</span>
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    variant="headerCta"
-                    href="/api/download?file=NCR_Brochure.pdf"
-                    download="NCR_Brochure.pdf"
-                    className="group !inline-flex gap-2 items-center px-8 h-12 text-sm font-semibold rounded-full shadow-xl"
-                  >
-                    <span>NCR Brochure</span>
-                    <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
-                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
-                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
-                    </div>
-                  </Button>
-                  <Button
-                    variant="headerCta"
-                    href="/api/download?file=Rydlyme_Brochure.pdf"
-                    download="Rydlyme_Brochure.pdf"
-                    className="group !inline-flex gap-2 items-center px-8 h-12 text-sm font-semibold rounded-full shadow-xl"
-                  >
-                    <span>Rydlyme Brochure</span>
-                    <div className="relative w-4 h-4 overflow-hidden mt-0.5 ml-1">
-                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
-                      <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
-                    </div>
-                  </Button>
-                </div>
+
               </div>
             </div>
 
@@ -701,257 +676,179 @@ function DesktopAboutPage() {
         </section>
 
         {/* ═══════════════════════════════════
-            5. INDUSTRIES — icon card grid
+            5. INDUSTRIES — Diamond card grid
         ═══════════════════════════════════ */}
-        <section className="py-16 md:py-24" style={{ backgroundColor: "#f8f9fb" }}>
+        <section className="py-20 md:py-32 relative" style={{ backgroundColor: "#f8f9fb", overflowX: "clip" }}>
+          <style>{`
+            .diamond-card-wrap {
+              width: 140px;
+              height: 140px;
+              transform: rotate(45deg);
+              border-radius: 1.6rem;
+              overflow: hidden;
+              background: white;
+              border: 1px solid rgba(var(--brand-navy-rgb), 0.07);
+              box-shadow: 0 8px 28px rgba(var(--brand-navy-rgb), 0.06);
+              transition: box-shadow 0.35s ease, transform 0.35s ease;
+              cursor: default;
+            }
+            .diamond-card-wrap:hover {
+              box-shadow: 0 20px 48px rgba(var(--brand-navy-rgb), 0.14);
+              transform: rotate(45deg) scale(1.06);
+            }
+            .diamond-card-inner {
+              width: 100%;
+              height: 100%;
+              transform: rotate(-45deg);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              padding: 10px;
+              text-align: center;
+            }
+            .diamond-card-wrap:hover .diamond-icon-ring {
+              background: var(--brand-navy);
+              border-color: var(--brand-navy);
+            }
+            .diamond-card-wrap:hover .diamond-icon-ring svg {
+              color: white;
+            }
+            .diamond-icon-ring {
+              width: 44px;
+              height: 44px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: rgba(var(--brand-navy-rgb), 0.04);
+              border: 1px solid rgba(var(--brand-navy-rgb), 0.08);
+              margin-bottom: 7px;
+              transition: background 0.35s ease, border-color 0.35s ease;
+            }
+            .diamond-icon-ring svg {
+              color: var(--brand-navy);
+              transition: color 0.35s ease;
+            }
+            .diamond-card-wrap:hover .diamond-icon-ring svg {
+              color: white;
+            }
+          `}</style>
+
           <div className="container mx-auto px-6 md:px-14">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center max-w-7xl mx-auto">
-              
-              {/* LEFT COLUMN: 3 Cards in a Rotated Triangular Cluster (2 left, 1 right) */}
-              <div className="order-2 lg:order-1 lg:col-span-4 flex justify-center">
-                <div className="grid grid-cols-2 gap-8 items-center w-full max-w-[460px]">
-                  {/* Left sub-column: 2 cards stacked */}
-                  <div className="flex flex-col gap-8 mt-0 lg:mt-12">
-                    {/* Commercial */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Hanging thread from above (desktop only) */}
-                      <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
-                      {/* Anchoring pegs */}
-                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-                      <div className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_560px] gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
 
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Building2 className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Commercial
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Offices & retail
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Hospitality */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Connecting thread to Commercial card above */}
-                      <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
-                      {/* Anchoring peg */}
-                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Hotel className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Hospitality
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Resorts & hotels
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right sub-column: 2 cards stacked */}
-                  <div className="flex flex-col gap-8">
-                    {/* Industrial */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Hanging thread from above (desktop only) */}
-                      <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
-                      {/* Anchoring pegs */}
-                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-                      <div className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Factory className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Industrial
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Plants & heavy manufacturing
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Residential */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Connecting thread to Industrial card above */}
-                      <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
-                      {/* Anchoring peg */}
-                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Home className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Residential
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Towers & communities
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CENTER COLUMN: Centered Header Text */}
-              <div className="order-1 lg:order-2 lg:col-span-4 text-center px-4 flex flex-col items-center justify-center">
-                <p className="anim-up text-[10px] uppercase tracking-[0.5em] font-bold mb-4"
+              {/* LEFT: Heading Text */}
+              <div className="flex flex-col justify-center min-w-0">
+                <p className="anim-up text-[10px] uppercase tracking-[0.55em] font-bold mb-5"
                   style={{ color: "rgba(var(--brand-navy-rgb), 0.35)" }}>
                   Industries We Serve
                 </p>
-                <h2 className="anim-up text-[clamp(2.2rem,4vw,3.5rem)] font-light leading-tight tracking-tight mb-5"
+                <h2 className="anim-up text-[clamp(2.8rem,5vw,5rem)] font-light leading-[1.05] tracking-tight mb-7"
                   style={{ color: "var(--brand-navy)" }}>
-                  Across Sectors
+                  Across<br />
+                  <span className="font-semibold italic" style={{ color: "rgba(var(--brand-navy-rgb),0.45)" }}>Sectors.</span>
                 </h2>
-                <p className="anim-up text-sm md:text-base font-light leading-relaxed max-w-[480px] mx-auto"
+                <p className="anim-up text-base md:text-lg font-light leading-relaxed max-w-[420px]"
                   style={{ color: "rgba(var(--brand-navy-rgb), 0.55)" }}>
                   Trusted by leading organizations in critical industries demanding the highest standards of quality and reliability.
                 </p>
+
+
               </div>
 
-              {/* RIGHT COLUMN: 4 Cards (2 left, 2 right) */}
-              <div className="order-3 lg:order-3 lg:col-span-4 flex justify-center">
-                <div className="grid grid-cols-2 gap-8 items-center w-full max-w-[460px]">
-                  {/* Left sub-column: 2 cards stacked */}
-                  <div className="flex flex-col gap-8">
-                    {/* Municipal */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Hanging thread from above (desktop only) */}
-                      <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
-                      {/* Anchoring pegs */}
-                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-                      <div className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
+              {/* RIGHT: Diamond Grid — 3-2-3 staggered, 140px cards, 14px gap */}
+              <div className="flex justify-center items-center">
+                <div className="relative w-full" style={{ height: "370px", maxWidth: "560px", margin: "0 auto" }}>
 
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Landmark className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Municipal
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Civic infrastructure
-                        </span>
+                  {/* Row 0 (top): Commercial | Industrial | Municipal */}
+                  {/* s=140, s√2≈198, gap=14 → step=212px horiz, 106px vert */}
+
+
+                  <div className="absolute" style={{ top: "0px", left: "162px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Factory className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Industrial</span>
+                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Plants &amp; mfg</span>
                       </div>
                     </div>
-
-                    {/* Food & Beverage */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Connecting thread to Municipal card above */}
-                      <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
-                      {/* Anchoring peg */}
-                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Utensils className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Food & Beverage
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Processing & production
-                        </span>
+                  </div>
+                  <div className="absolute" style={{ top: "0px", left: "374px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Landmark className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Municipal</span>
+                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Civic infra</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Right sub-column: 2 cards stacked */}
-                  <div className="flex flex-col gap-8 mt-0 lg:mt-12">
-                    {/* Oil & Gas */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Hanging thread from above (desktop only) */}
-                      <div className="hidden lg:block absolute w-[1px] h-24 -top-24 left-1/2 -translate-x-1/2 bg-gradient-to-t from-[rgba(var(--brand-navy-rgb),0.12)] to-transparent pointer-events-none" />
-                      {/* Anchoring pegs */}
-                      <div className="hidden lg:block absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-                      <div className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Flame className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          Oil & Gas
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Refineries & rigs
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* District Cooling */}
-                    <div className="hanging-card group relative w-full flex flex-col items-center justify-center">
-                      {/* Connecting thread to Oil & Gas card above */}
-                      <div className="absolute w-[1px] h-8 -top-8 left-1/2 -translate-x-1/2 bg-[rgba(var(--brand-navy-rgb),0.12)] pointer-events-none" />
-                      {/* Anchoring peg */}
-                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--brand-navy)] opacity-60 z-10" />
-
-                      {/* Card Content Panel */}
-                      <div className="card-panel w-full flex flex-col items-center justify-center p-5 rounded-[1.8rem] border bg-white text-center transition-all duration-500 group-hover:shadow-[0_15px_35px_rgba(var(--brand-navy-rgb),0.06)]"
-                        style={{
-                          borderColor: "rgba(var(--brand-navy-rgb), 0.07)",
-                          boxShadow: "0 10px 25px rgba(var(--brand-navy-rgb),0.01)"
-                        }}>
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border bg-[rgba(var(--brand-navy-rgb),0.03)] border-[rgba(var(--brand-navy-rgb),0.05)] group-hover:scale-110 group-hover:bg-[var(--brand-navy)] group-hover:border-[var(--brand-navy)] transition-all duration-500">
-                          <Snowflake className="w-5 h-5 text-[var(--brand-navy)] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-xs font-semibold tracking-wide text-[var(--brand-navy)] mb-0.5">
-                          District Cooling
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-light leading-tight">
-                          Centralized plants
-                        </span>
+                  {/* Row 1 (middle, offset 106px): Hospitality | Oil & Gas | Commercial */}
+                  <div className="absolute" style={{ top: "106px", left: "56px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Hotel className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Hospitality</span>
+                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Resorts &amp; hotels</span>
                       </div>
                     </div>
                   </div>
+                  <div className="absolute" style={{ top: "106px", left: "268px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Flame className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Oil &amp; Gas</span>
+                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Refineries &amp; rigs</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute" style={{ top: "106px", left: "480px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Building2 className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Commercial</span>
+                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Offices &amp; retail</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Row 2 (bottom): Residential | Food & Bev | District Cooling */}
+                  <div className="absolute" style={{ top: "212px", left: "-50px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Home className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Residential</span>
+                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Towers &amp; comm.</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute" style={{ top: "212px", left: "162px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Utensils className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Food &amp; Bev.</span>
+                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Processing</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute" style={{ top: "212px", left: "374px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Snowflake className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>District</span>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Cooling</span>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
             </div>
           </div>
         </section>
+
 
         {/* ═══════════════════════════════════
             6. REGIONAL PRESENCE — kept

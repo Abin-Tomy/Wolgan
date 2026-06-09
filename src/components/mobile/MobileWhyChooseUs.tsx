@@ -77,30 +77,8 @@ export function MobileWhyChooseUs() {
         ))}
       </div>
 
-      <div className="relative z-10 flex flex-col gap-4">
-        <Button 
-          variant="primaryBrand" 
-          href="/api/download?file=NCR_Brochure.pdf" 
-          download="NCR_Brochure.pdf" 
-          className="w-full justify-center group flex gap-3 items-center py-5 text-sm font-semibold rounded-2xl shadow-xl shadow-[#66B2E8]/10 bg-[#66B2E8] text-[#0A1F3C] hover:bg-white"
-        >
-          <span>NCR Brochure</span>
-          <div className="w-6 h-6 rounded-full bg-[#0A1F3C]/10 flex items-center justify-center">
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </div>
-        </Button>
-        <Button 
-          variant="primaryBrand" 
-          href="/api/download?file=Rydlyme_Brochure.pdf" 
-          download="Rydlyme_Brochure.pdf" 
-          className="w-full justify-center group flex gap-3 items-center py-5 text-sm font-semibold rounded-2xl border border-white/20 bg-transparent text-white hover:bg-white/10"
-        >
-          <span>Rydlyme Brochure</span>
-          <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </div>
-        </Button>
-      </div>
+
+
     </section>
   );
 }

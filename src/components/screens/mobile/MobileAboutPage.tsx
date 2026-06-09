@@ -190,14 +190,7 @@ export function MobileAboutPage() {
                <p className="text-white text-xl font-light mb-6">
                  Delivering solutions that work — <span className="text-white/60">for years after.</span>
                </p>
-               <div className="flex flex-col w-full gap-3">
-                 <Button variant="headerCta" href="/api/download?file=NCR_Brochure.pdf" download="NCR_Brochure.pdf" className="w-full justify-center text-xs h-12">
-                   NCR Brochure
-                 </Button>
-                 <Button variant="headerCta" href="/api/download?file=Rydlyme_Brochure.pdf" download="Rydlyme_Brochure.pdf" className="w-full justify-center text-xs h-12">
-                   Rydlyme Brochure
-                 </Button>
-               </div>
+             
              </div>
           </div>
         </div>
