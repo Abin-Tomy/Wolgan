@@ -56,7 +56,7 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
           
           {/* Brand & Socials */}
           <div className="lg:col-span-4 flex flex-col">
-            <div className="mb-3 overflow-visible">
+            <div className="-mb-8 overflow-visible">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/Wolgan-logo.png"
@@ -64,8 +64,8 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
                 style={{ height: '130px', width: 'auto', display: 'block', transform: 'translateX(-53px) translateY(-25px)' }}
               />
             </div>
-            <p className="text-[#88A4C4] text-sm leading-relaxed max-w-sm font-light mb-10">
-              Wolgan is an established and reputed Contracting Company in Qatar that serves exceptional service in the area of Water Treatment, Mechanical Installations, Chemical Supply and more.
+            <p className="text-[#88A4C4] text-sm leading-relaxed max-w-sm font-light mb-6">
+              Founded in Qatar in 2020, Wolgan is a global “Water Treatment Specialist” dedicated to delivering high-quality chemicals, maintenance supplies, engineered solutions, and technical services. Serving a broad range of industries, we help clients overcome complex water treatment challenges while advancing sustainability initiatives across the GCC and international markets.
             </p>
             <div className="flex items-center gap-4">
               <a href="https://www.linkedin.com/company/wolgan-qatar/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:bg-[#66B2E8] hover:text-white hover:border-[#66B2E8] hover:-translate-y-1 transition-all duration-300 group">
@@ -168,7 +168,7 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 pb-2 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-[11px] uppercase tracking-widest font-semibold">
-            © {new Date().getFullYear()} Wolgan Engineering. All rights reserved.
+            © {new Date().getFullYear()} Wolgan. All rights reserved.
           </p>
           <p className="text-white/40 text-[11px] uppercase tracking-widest font-semibold flex items-center gap-2">
             Pioneering Industrial Infrastructure

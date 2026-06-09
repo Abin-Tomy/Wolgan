@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone } from "lucide-react";
 
 export function QuickActions() {
   const [isWaModalOpen, setIsWaModalOpen] = useState(false);
@@ -34,25 +33,6 @@ export function QuickActions() {
           </span>
         </button>
 
-        {/* Call Button: Standalone Half-Pill */}
-        <a
-          href="tel:+971565052820"
-          className="pointer-events-auto flex items-center justify-start h-12 md:h-14 pl-3.5 pr-3 rounded-l-full bg-[var(--brand-navy)] text-white border border-r-0 border-white/10 transition-all duration-500 ease-out translate-x-3 hover:translate-x-0 group/call w-14 hover:w-44"
-          style={{ 
-            transitionProperty: "width, transform"
-          }}
-          aria-label="Call Us"
-        >
-          <div className="flex-shrink-0 flex items-center justify-center w-6 h-6">
-            <Phone className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover/call:scale-110" strokeWidth={1.75} />
-          </div>
-          {/* Slid-out Label on hover */}
-          <span 
-            className="overflow-hidden opacity-0 group-hover/call:opacity-100 transition-opacity duration-300 text-white text-[11px] md:text-xs font-semibold tracking-wider uppercase whitespace-nowrap ml-3.5"
-          >
-            Call support
-          </span>
-        </a>
       </div>
 
       {/* Region Selection Modal */}

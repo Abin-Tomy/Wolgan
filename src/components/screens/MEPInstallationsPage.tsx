@@ -50,7 +50,7 @@ function DesktopMEPInstallationsPage() {
       <main className="bg-[#0A1F3C] min-h-screen text-white overflow-hidden" ref={containerRef}>
         <Header />
         
-        <section className="hero-section relative min-h-[60vh] flex items-end pb-20 pt-40 px-6">
+        <section className="hero-section relative min-h-[20vh] flex items-end pb-10 pt-40 px-6">
           <div className="absolute inset-0 z-0 overflow-hidden">
             <div className="hero-bg absolute inset-0">
               <Image src="/images/MEP-installation-service.webp" alt="MEP Installations" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
@@ -72,7 +72,7 @@ function DesktopMEPInstallationsPage() {
           </div>
         </section>
 
-        <section className="relative py-20 px-6 z-10">
+        <section className="relative pt-10 pb-20 px-6 z-10">
           <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#66B2E8]/10 rounded-full blur-[150px] pointer-events-none" />
           
           <div className="container mx-auto">

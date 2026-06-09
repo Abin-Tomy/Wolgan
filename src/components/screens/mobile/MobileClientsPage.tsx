@@ -98,30 +98,14 @@ export function MobileClientsPage() {
       </section>
 
       {/* Curve */}
-      <div className="relative w-full overflow-hidden leading-none z-20 bg-white -translate-y-[1px]">
-        <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[40px]">
+      <div className="relative w-full overflow-hidden leading-none z-20 bg-transparent -mt-[2px]">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="w-full h-[40px] block">
           <path fill="#0A1F3C" d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"></path>
         </svg>
       </div>
 
-      {/* INFINITE MARQUEE DIVIDER */}
-      <div className="relative w-full bg-white pb-4 pt-1 overflow-hidden border-b border-black/5 shadow-sm">
-        <div className="flex whitespace-nowrap animate-[marquee_40s_linear_infinite]">
-          {Array.from({ length: 12 }).map((_, idx) => (
-            <span key={idx} className="text-[#0A1F3C] text-[10px] font-bold tracking-[0.2em] uppercase flex items-center shrink-0">
-              <span className="mx-4">WATER TREATMENT</span>
-              <span className="text-[#0A1F3C]/40">•</span> 
-              <span className="mx-4">MEP INSTALLATIONS</span>
-              <span className="text-[#0A1F3C]/40">•</span> 
-              <span className="mx-4">CHEMICAL SUPPLIES</span>
-              <span className="text-[#0A1F3C]/40">•</span> 
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* SECTIONS */}
-      <div className="py-16 px-6 flex flex-col gap-16">
+      <div className="py-8 px-6 flex flex-col gap-16">
         
         {/* Strategic Partners */}
         <section className="mobile-client-section">

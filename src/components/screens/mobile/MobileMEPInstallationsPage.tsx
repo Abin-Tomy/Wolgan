@@ -31,7 +31,7 @@ export function MobileMEPInstallationsPage() {
     <div className="flex flex-col w-full min-h-screen overflow-x-hidden bg-[#0A1F3C]" ref={containerRef}>
       <MobileHeader />
 
-      <section className="relative w-full min-h-[55vh] flex flex-col justify-end pb-12 px-6">
+      <section className="relative w-full min-h-[25vh] flex flex-col justify-end pb-6 px-6">
         <div className="absolute inset-0 z-0">
           <Image src="/images/MEP-installation-service.webp" alt="MEP Installations" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F3C] via-[#0A1F3C]/80 to-[#0A1F3C]/20" />
