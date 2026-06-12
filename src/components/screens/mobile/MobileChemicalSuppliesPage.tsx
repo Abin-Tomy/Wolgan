@@ -66,10 +66,10 @@ export function MobileChemicalSuppliesPage() {
           </h2>
           <div className="space-y-4 text-white/70 text-sm font-light leading-relaxed relative z-10">
             <p>
-              The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth.
+              The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth. Wolgan thus employs cutting-edge methods of water treatment to produce water suitable for use. 
             </p>
             <p>
-              In the course of treating water, suspended particles, viruses, fungi, bacteria, algae, and minerals are all eliminated. Wolgan provides Water Treatment Chemicals with Corrosion Inhibitors, Scale Control, and Microbiological Growth Control.
+              In the course of treating water, suspended particles, viruses, fungi, bacteria, algae, and minerals are all eliminated. Both chemical and physical approaches are used in the procedure where Water treatment chemicals utilized in the process. Wolgan provides Water Treatment Chemicals with Corrosion Inhibitors, Scale Control, Microbiological Growth Control, and antisclant to name a few of the processes.
             </p>
           </div>
         </div>
@@ -80,7 +80,7 @@ export function MobileChemicalSuppliesPage() {
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#66B2E8]/20 to-[#66B2E8]/5 flex items-center justify-center border border-[#66B2E8]/30 shrink-0 shadow-[0_0_20px_rgba(102,178,232,0.15)]">
                 <Droplet className="w-6 h-6 text-[#66B2E8]" />
               </div>
-              <h2 className="text-2xl font-light text-white leading-snug">Water Treatment<br/><span className="font-medium text-[#66B2E8] text-xl">Chemicals</span></h2>
+              <h2 className="text-2xl font-light text-white leading-snug">Water Treatment<br/><span className="font-medium text-[#66B2E8] text-xl">Speciality Chemicals</span></h2>
             </div>
             <div className="flex flex-col gap-3">
               {waterTreatmentChemicals.map((item, i) => (

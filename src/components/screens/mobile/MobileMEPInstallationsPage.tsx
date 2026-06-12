@@ -78,9 +78,9 @@ export function MobileMEPInstallationsPage() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-[80px] transform translate-x-1/2 -translate-y-1/2" />
           
           <div className="relative z-10 p-10 text-center text-white flex flex-col items-center">
-            <h2 className="text-2xl font-light mb-4">Ready to start?</h2>
+            <h2 className="text-2xl font-light mb-4">Ready to start a project?</h2>
             <p className="text-sm opacity-90 mb-8 leading-relaxed max-w-[280px]">
-              Our team of experts is ready to help you with your MEP installation and maintenance needs.
+              Our team of experts is ready to help you with your MEP installation and maintenance needs. Contact us today for a consultation.
             </p>
             <Button variant="outline" href="/contact" className="w-full bg-white text-[#66B2E8] hover:bg-[#f0f8ff] border-none justify-center h-14 rounded-full font-bold shadow-[0_0_20px_rgba(255,255,255,0.2)]">
               Get in Touch

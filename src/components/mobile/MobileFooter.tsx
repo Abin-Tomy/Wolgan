@@ -74,7 +74,14 @@ export function MobileFooter({ waveColor = "#f8f9fb", waveStroke }: MobileFooter
               <h5 className="text-white font-semibold tracking-[0.2em] uppercase text-[10px] mb-4 opacity-50">Company</h5>
               <ul className="flex flex-col gap-3">
                 <li><a href="/about" className="text-white/80 text-xs">About Us</a></li>
-                <li><a href="/services" className="text-white/80 text-xs">Services</a></li>
+                <li className="flex flex-col gap-2 items-center">
+                  <span className="text-white/80 text-xs cursor-default">Services</span>
+                  <ul className="flex flex-col gap-2 items-center">
+                    <li><a href="/services/water-treatment" className="text-white/60 text-[11px]">Water Treatment</a></li>
+                    <li><a href="/services/mep-installations" className="text-white/60 text-[11px]">MEP Installations</a></li>
+                    <li><a href="/services/chemical-supplies" className="text-white/60 text-[11px]">Chemical Supplies</a></li>
+                  </ul>
+                </li>
                 <li><a href="/team" className="text-white/80 text-xs">Our Team</a></li>
                 <li><a href="/blogs" className="text-white/80 text-xs">Blogs</a></li>
               </ul>

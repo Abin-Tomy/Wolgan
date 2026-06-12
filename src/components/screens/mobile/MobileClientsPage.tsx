@@ -111,9 +111,12 @@ export function MobileClientsPage() {
         <section className="mobile-client-section">
           <div className="mb-8 text-center">
             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Strategic</span>
-            <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2">
+            <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2 mb-4">
               Our <span className="font-semibold italic text-[#66B2E8]">Partners</span>
             </h2>
+            <p className="text-gray-500 text-sm leading-relaxed max-w-sm mx-auto">
+              Collaborating with industry-leading manufacturers and innovators to deliver uncompromising quality and performance.
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {strategicPartners.map((c, i) => <MobileClientCard key={i} client={c} />)}
@@ -124,9 +127,12 @@ export function MobileClientsPage() {
         <section className="mobile-client-section">
           <div className="mb-8 text-center">
             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">QA Region</span>
-            <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2">
+            <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2 mb-4">
               Qatar <span className="font-semibold italic text-[#66B2E8]">Operations</span>
             </h2>
+            <p className="text-gray-500 text-sm leading-relaxed max-w-sm mx-auto">
+              Powering infrastructure and strategic developments for Qatar's leading enterprises and government bodies.
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {qatarClients.map((c, i) => <MobileClientCard key={i} client={c} />)}
@@ -137,9 +143,12 @@ export function MobileClientsPage() {
         <section className="mobile-client-section mb-0">
           <div className="mb-8 text-center">
             <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">UAE Region</span>
-            <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2">
+            <h2 className="text-3xl font-light text-[#0A1F3C] tracking-tight leading-none mt-2 mb-4">
               Emirates <span className="font-semibold italic text-[#66B2E8]">Operations</span>
             </h2>
+            <p className="text-gray-500 text-sm leading-relaxed max-w-sm mx-auto">
+              Delivering world-class Water Treatment Specialist solutions with excellence, innovation, and reliability across the United Arab Emirates.
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {uaeClients.map((c, i) => <MobileClientCard key={i} client={c} />)}
