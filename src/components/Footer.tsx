@@ -44,7 +44,7 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
                 className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-8 pr-36 text-white placeholder-[#88A4C4] focus:outline-none focus:border-[#66B2E8] transition-all focus:bg-white/10"
                 required
               />
-              <button aria-label="Subscribe to newsletter" className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-white hover:bg-[#66B2E8] hover:text-white text-[#0A1F3C] px-6 md:px-8 py-3 rounded-full font-bold tracking-widest uppercase text-[10px] md:text-xs transition-colors duration-300">
+              <button disabled aria-label="Subscribe to newsletter" className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-white opacity-50 cursor-not-allowed text-[#0A1F3C] px-6 md:px-8 py-3 rounded-full font-bold tracking-widest uppercase text-[10px] md:text-xs transition-colors duration-300">
                 Subscribe
               </button>
             </form>
