@@ -94,10 +94,23 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
                 About Us
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>
-              <Link href="/services" className="text-white/80 hover:text-white text-sm font-light transition-colors w-fit relative group">
-                Services
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              <div className="flex flex-col space-y-3">
+                <span className="text-white/80 text-sm font-light cursor-default">Services</span>
+                <div className="flex flex-col space-y-2 pl-4 border-l border-white/20">
+                  <Link href="/services/water-treatment" className="text-white/60 hover:text-white text-sm font-light transition-colors w-fit relative group">
+                    Water Treatment
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                  <Link href="/services/mep-installations" className="text-white/60 hover:text-white text-sm font-light transition-colors w-fit relative group">
+                    MEP Installations
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                  <Link href="/services/chemical-supplies" className="text-white/60 hover:text-white text-sm font-light transition-colors w-fit relative group">
+                    Chemical Supplies
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </div>
+              </div>
               <Link href="/team" className="text-white/80 hover:text-white text-sm font-light transition-colors w-fit relative group">
                 Our Team
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>

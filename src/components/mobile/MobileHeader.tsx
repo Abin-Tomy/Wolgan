@@ -17,8 +17,6 @@ const serviceItems = [
 
 const downloadItems = [
   { name: "Wolgan Brochure", file: "/api/download?file=Wolgan_Brochure.pdf", download: "Wolgan_Brochure.pdf" },
-  { name: "NCR Brochure", file: "/api/download?file=NCR_Brochure.pdf", download: "NCR_Brochure.pdf" },
-  { name: "Rydlyme Brochure", file: "/api/download?file=Rydlyme_Brochure.pdf", download: "Rydlyme_Brochure.pdf" },
 ];
 
 export function MobileHeader() {

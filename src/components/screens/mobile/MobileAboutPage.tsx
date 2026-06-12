@@ -58,7 +58,7 @@ export function MobileAboutPage() {
           </h1>
 
           <p className="mobile-anim-up text-sm text-white/50 font-light leading-relaxed max-w-sm">
-            An established Contracting Company delivering Water Treatment, MEP, and Chemical Supply across Qatar, UAE & India.
+            An established Contracting Company delivering Water Treatment, MEP, and Chemical Supply across the Middle East & India.
           </p>
         </div>
       </section>
@@ -76,23 +76,25 @@ export function MobileAboutPage() {
           <div className="mobile-anim-up p-8 rounded-3xl bg-white/80 border border-white shadow-xl backdrop-blur-md">
             <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#0A1F3C]/40 mb-4">Who We Are</p>
             <h2 className="text-2xl font-light leading-tight tracking-tight text-[#0A1F3C] mb-6">
-              Built on courage, vision, and leadership.
+              Built on courage, vision, and entrepreneurial leadership.
             </h2>
             <div className="space-y-4 text-sm font-light text-[#0A1F3C]/70">
-              <p>Founded in 2020, Wolgan delivers smart, reliable solutions in water treatment, MEP, and specialized chemical supply.</p>
-              <p>Serving diverse industries, our experienced team provides advanced, cost-effective solutions with environmental responsibility.</p>
+              <p>Founded in 2020, Wolgan is an established Water Treatment Specialist operating in the Middle East. Driven by entrepreneurial leadership and vision, we deliver smart, reliable solutions in water treatment, MEP execution, and specialized chemical supply across commercial and industrial sectors.</p>
+              <p>Serving industries from healthcare to large-scale construction, our experienced team provides advanced, cost-effective solutions. We continuously explore strategic alliances to optimize performance, ensure international compliance, and help customers operate efficiently with greater environmental responsibility.</p>
             </div>
           </div>
 
           <div className="mobile-anim-up flex flex-col items-center gap-6">
-            <div className="w-full h-[300px] relative rounded-3xl overflow-hidden border border-white/20 shadow-lg">
+            <div className="w-full h-[360px] relative rounded-3xl overflow-hidden border border-white/20 shadow-lg">
                <Image src={waterplant} alt="Water Plant" fill className="object-cover" />
                <div className="absolute inset-0 bg-[#0A1F3C]/60" />
                <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
                   <span className="text-5xl font-black mb-1">10<span className="text-3xl">+</span></span>
-                  <span className="text-[9px] uppercase tracking-widest font-bold mb-6 opacity-80">Years</span>
+                  <span className="text-[9px] uppercase tracking-widest font-bold mb-6 opacity-80">Years Of Excellence</span>
                   <span className="text-5xl font-black mb-1">100<span className="text-3xl">+</span></span>
-                  <span className="text-[9px] uppercase tracking-widest font-bold opacity-80">Projects</span>
+                  <span className="text-[9px] uppercase tracking-widest font-bold mb-6 opacity-80">Projects Delivered</span>
+                  <span className="text-5xl font-black mb-1">30<span className="text-3xl">+</span></span>
+                  <span className="text-[9px] uppercase tracking-widest font-bold opacity-80">Expert Engineers</span>
                </div>
             </div>
             
@@ -104,11 +106,11 @@ export function MobileAboutPage() {
           <div className="flex flex-col gap-6">
              <div className="mobile-anim-up p-8 rounded-3xl bg-white/80 border border-white shadow-xl">
                <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#0A1F3C]/40 mb-3">Our Mission</p>
-               <p className="text-sm font-light text-[#0A1F3C]">Providing High Quality Products and Services through our highly qualified workforce and reliable supply chain.</p>
+               <p className="text-sm font-light text-[#0A1F3C]">We are dedicated to providing High Quality Products and Services through our highly qualified and fully trained workforce, as well as on a constant basis through our reliable supply chain and network of Business Partners.</p>
              </div>
              <div className="mobile-anim-up p-8 rounded-3xl bg-white/80 border border-white shadow-xl">
                <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#0A1F3C]/40 mb-3">Our Vision</p>
-               <p className="text-sm font-light text-[#0A1F3C]">Aiming to become the most successful diversified Company and preferred Business Partner across the industry.</p>
+               <p className="text-sm font-light text-[#0A1F3C]">Wolgan aims to become one of the most successful and diversified Company in the Middle East and the preferred Business Partner across Contracting Industry.</p>
              </div>
           </div>
         </div>
@@ -131,9 +133,9 @@ export function MobileAboutPage() {
 
           <div className="flex flex-col gap-6">
             {[
-              { icon: Droplets, title: "Water Treatment", desc: "Advanced filtration, RO polishing, and STP execution.", img: deck2 },
-              { icon: Settings, title: "Mechanical", desc: "Full-scale MEP execution, complex HVAC systems.", img: deck3 },
-              { icon: FlaskConical, title: "Chemical Supply", desc: "Reliable chains for specialized treatment chemicals.", img: deck1 },
+              { icon: Droplets, title: "Water Treatment", desc: "Advanced filtration, RO polishing, and comprehensive sewage treatment plant execution.", img: deck2 },
+              { icon: Settings, title: "Mechanical Installations", desc: "Full-scale MEP execution, complex HVAC, and chilled water system integrations.", img: deck3 },
+              { icon: FlaskConical, title: "Chemical Supply", desc: "Reliable supply chains for specialized and commodity water treatment chemicals.", img: deck1 },
             ].map((s, idx) => (
               <div key={idx} className="mobile-anim-up relative rounded-3xl overflow-hidden p-8 flex flex-col items-center border border-white/10 shadow-2xl text-center">
                 <div className="absolute inset-0 bg-[#0A1F3C]">
@@ -168,10 +170,10 @@ export function MobileAboutPage() {
 
           <div className="flex flex-col gap-5">
             {[
-              { num: "01", title: "Design", desc: "Rigorous site surveys and precision-engineered analysis." },
-              { num: "02", title: "Build", desc: "Integrated installations to international standards." },
-              { num: "03", title: "Operate", desc: "Continuous monitoring ensuring peak performance." },
-              { num: "04", title: "Maintain", desc: "End-to-end chemical supply and maintenance contracts." },
+              { num: "01", title: "Design", desc: "Rigorous site surveys and water quality analysis precision-engineered to your environment." },
+              { num: "02", title: "Build", desc: "MEP specialists deliver fully integrated installations to international standards." },
+              { num: "03", title: "Operate", desc: "Continuous monitoring and management ensuring peak performance and compliance." },
+              { num: "04", title: "Maintain", desc: "End-to-end chemical supply and maintenance contracts for year-round efficiency." },
             ].map((s, i) => (
               <div key={i} className="mobile-anim-up bg-white rounded-3xl p-6 border border-[#0A1F3C]/5 shadow-lg flex gap-5 items-start">
                 <span className="text-3xl font-black text-[#0A1F3C]/10 leading-none">{s.num}</span>
@@ -188,7 +190,7 @@ export function MobileAboutPage() {
              <div className="absolute inset-0 bg-black/60" />
              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
                <p className="text-white text-xl font-light mb-6">
-                 Delivering solutions that work — <span className="text-white/60">for years after.</span>
+                 Delivering solutions that work — <span className="text-white/60">from day one, and for years after.</span>
                </p>
              
              </div>
@@ -199,8 +201,9 @@ export function MobileAboutPage() {
       {/* 5. INDUSTRIES */}
       <section className="py-16 bg-[#f8f9fb] px-6">
         <div className="mobile-anim-up text-center mb-10">
-           <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#0A1F3C]/35 mb-3">Industries</p>
-           <h2 className="text-3xl font-light text-[#0A1F3C]">Across Sectors</h2>
+           <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#0A1F3C]/35 mb-3">Industries We Serve</p>
+           <h2 className="text-3xl font-light text-[#0A1F3C] mb-4">Across Sectors.</h2>
+           <p className="text-sm font-light text-[#0A1F3C]/60">Trusted by leading organizations in critical industries demanding the highest standards of quality and reliability.</p>
         </div>
         
         <div className="grid grid-cols-2 gap-4">
@@ -238,10 +241,10 @@ export function MobileAboutPage() {
           <div className="mobile-anim-up w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mb-6 text-white/80">
             <Globe2 size={24} />
           </div>
-          <p className="mobile-anim-up text-[10px] uppercase tracking-[0.5em] font-bold text-white/40 mb-6">Presence</p>
+          <p className="mobile-anim-up text-[10px] uppercase tracking-[0.5em] font-bold text-white/40 mb-6">Regional Presence</p>
           <h2 className="mobile-anim-up text-3xl font-light text-white mb-6">Qatar | UAE | India</h2>
           <p className="mobile-anim-up text-sm text-white/50 font-light leading-relaxed">
-            Operating dynamic engineering hubs across the region to deliver industry-leading systems.
+            Operating dynamic engineering hubs and specialized distribution networks across Qatar, UAE, and India to deliver industry-leading water treatment systems, MEP contracting services, and industrial chemical solutions.
           </p>
         </div>
       </section>
@@ -249,7 +252,7 @@ export function MobileAboutPage() {
       {/* 7. CTA */}
       <section className="py-16 bg-[#f8f9fb] px-6">
         <div className="mobile-anim-up bg-[#0A1F3C] rounded-3xl p-8 text-center flex flex-col items-center">
-          <h2 className="text-3xl font-light text-white mb-4">Ready to discuss?</h2>
+          <h2 className="text-3xl font-light text-white mb-4">Ready to discuss your project?</h2>
           <p className="text-sm text-white/50 font-light mb-8">Become our preferred business partner across the contracting industry.</p>
           <Button variant="heroServicesCta" href="/contact" className="w-full justify-center h-14 rounded-full">
             Contact Team
