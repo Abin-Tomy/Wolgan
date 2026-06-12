@@ -265,7 +265,7 @@ export function Header() {
           </TransitionLink>
 
           {/* Nav Links */}
-          <nav className="hidden lg:flex flex-1 justify-center items-center gap-4 xl:gap-8 mx-4">
+          <nav className="hidden lg:flex flex-1 justify-center items-center gap-4 xl:absolute xl:left-1/2 xl:-translate-x-1/2 xl:flex-none xl:gap-8 mx-4">
             <a href="/#home" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Home
             </a>

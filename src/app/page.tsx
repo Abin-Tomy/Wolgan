@@ -8,6 +8,7 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
 import { MobileHome } from "@/components/mobile/MobileHome";
+import { LaptopHome } from "@/components/screens/laptop/LaptopHome";
 
 export default function Home() {
   return (
@@ -31,8 +32,9 @@ export default function Home() {
             </div>
           </main>
         }
+        laptop={<LaptopHome />}
         mobile={<MobileHome />}
       />
     </SmoothScroll>
   );
-}
+}
