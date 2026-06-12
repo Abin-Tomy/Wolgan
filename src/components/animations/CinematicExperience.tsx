@@ -212,10 +212,12 @@ export function CinematicExperience() {
       tl.to(".services-main-title", { opacity: 0, y: -40, duration: 1, ease: "expo.inOut" }, voidStart);
       tl.to(".service-arc-path",    { opacity: 0, duration: 0.8, ease: "power2.inOut" }, voidStart);
 
-      // Kinetic wheel rises: rotation 180° → 0° around bottom pivot
+      // Kinetic wheel rises: rotation 180° → 1.5° around bottom pivot
+      // The 1.5° offset compensates for DESIGN (6 chars) vs MAINTAIN (8 chars) — the longer
+      // word's endpoint sits lower on the arc, and the slight clockwise tilt equalises them.
       tl.to(kineticRef.current, {
         opacity: 1,
-        rotation: 0,
+        rotation: -1.5,
         transformOrigin: "50% 100%",
         duration: 2,
         ease: "power2.out",
@@ -292,13 +294,13 @@ export function CinematicExperience() {
             />
           </defs>
           {[
-            { text: "DESIGN",   offset: "13.5%" },
-            { text: "●",        offset: "25.5%", dot: true },
-            { text: "BUILD",    offset: "37.5%" },
-            { text: "●",        offset: "49.5%", dot: true },
-            { text: "OPERATE",  offset: "61.5%" },
-            { text: "●",        offset: "73.5%", dot: true },
-            { text: "MAINTAIN", offset: "85.5%" },
+            { text: "DESIGN",   offset: "14%" },
+            { text: "●",        offset: "26%", dot: true },
+            { text: "BUILD",    offset: "38%" },
+            { text: "●",        offset: "50%", dot: true },
+            { text: "OPERATE",  offset: "62%" },
+            { text: "●",        offset: "74%", dot: true },
+            { text: "MAINTAIN", offset: "86%" },
           ].map((item, i) => (
             <text
               key={i}

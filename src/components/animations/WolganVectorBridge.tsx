@@ -198,6 +198,22 @@ export function WolganVectorBridge() {
   useEffect(() => {
     let cards: HTMLElement[] = [];
 
+    // Cache wave path elements once — avoids per-tick querySelector and
+    // prevents cross-instance conflicts when ResponsiveWrapper renders
+    // duplicate component trees (one visible, one hidden via display:none).
+    const wavePath = sectionRef.current?.querySelector(".why-wave-path") as SVGPathElement | null;
+    const wavePath2 = sectionRef.current?.querySelector(".why-wave-path-2") as SVGPathElement | null;
+
+    // Explicitly force initial hidden state so the wave never flashes as drawn
+    if (wavePath) {
+      wavePath.style.strokeDasharray = "3500";
+      wavePath.style.strokeDashoffset = "3500";
+    }
+    if (wavePath2) {
+      wavePath2.style.strokeDasharray = "3500";
+      wavePath2.style.strokeDashoffset = "3500";
+    }
+
     const tick = () => {
       if (!measuredRef.current) return;
 
@@ -227,6 +243,10 @@ export function WolganVectorBridge() {
       if (loc < -vh * 0.35) {
         box.style.visibility = "hidden";
         box.style.opacity    = "0";
+
+        // Reset wave paths to hidden when portal is not visible
+        if (wavePath)  wavePath.style.strokeDashoffset = "3500";
+        if (wavePath2) wavePath2.style.strokeDashoffset = "3500";
         return;
       }
       box.style.visibility = "visible";
@@ -311,12 +331,8 @@ export function WolganVectorBridge() {
         card.style.opacity   = `${Math.max(0, 1 - e * 1.5)}`;
       });
 
-      /* 5. Trace background wave lines */
-      const wavePath = document.querySelector(".why-wave-path") as SVGPathElement;
-      const wavePath2 = document.querySelector(".why-wave-path-2") as SVGPathElement;
-      
+      /* 5. Trace background wave lines — draws left-to-right during the pinned fly-out */
       if (wavePath && wavePath2) {
-        // Trace slower during the pinned fly-out phase
         const traceAmt = Math.max(0, Math.min(1, flyProgress * 0.8));
         const offset = 3500 - (traceAmt * 3500);
         wavePath.style.strokeDashoffset = `${offset}`;
