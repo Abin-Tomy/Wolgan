@@ -19,11 +19,7 @@ const deck3 = "/images/about-deck-3.jpg";
 const waterplant = "/images/about-waterplant.webp";
 
 
-import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
-import { MobileAboutPage } from "./mobile/MobileAboutPage";
-import { LaptopAboutPage } from "./laptop/LaptopAboutPage";
-
-function DesktopAboutPage() {
+export function LaptopAboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
 
@@ -337,68 +333,89 @@ function DesktopAboutPage() {
 
           <div className="container mx-auto px-6 md:px-14 relative z-10">
             
-            {/* 3-Column Editorial Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-              
-              {/* COLUMN 1: Headline & Body Text (Span 4) */}
-              <div className="lg:col-span-4 anim-left flex flex-col justify-center p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl"
-                   style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
-                <p className="text-[10px] uppercase tracking-[0.6em] font-bold mb-6"
-                  style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
-                  Who We Are
-                </p>
-                <h2 className="text-[clamp(1.6rem,2.2vw,2.2rem)] font-light leading-[1.25] tracking-tight mb-8"
-                  style={{ color: "var(--brand-navy)" }}>
-                  Built on courage, vision, and entrepreneurial leadership.
-                </h2>
+            <div className="flex flex-col gap-10 lg:gap-14">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
                 
-                <div className="space-y-6 text-sm md:text-base font-light leading-relaxed"
-                  style={{ color: "rgba(var(--brand-navy-rgb), 0.65)" }}>
-                  <p>
-                    Founded in 2020, Wolgan is an established Water Treatment Specialist operating in the Middle East. Driven by entrepreneurial leadership and vision, we deliver smart, reliable solutions in water treatment, MEP execution, and specialized chemical supply across commercial and industrial sectors.
+                {/* COLUMN 1: Headline & Body Text */}
+                <div className="anim-left flex flex-col justify-center p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl"
+                     style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
+                  <p className="text-[10px] uppercase tracking-[0.6em] font-bold mb-6"
+                    style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
+                    Who We Are
                   </p>
-                  <p>
-                    Serving industries from healthcare to large-scale construction, our experienced team provides advanced, cost-effective solutions. We continuously explore strategic alliances to optimize performance, ensure international compliance, and help customers operate efficiently with greater environmental responsibility.
-                  </p>
+                  <h2 className="text-[clamp(1.6rem,2.2vw,2.2rem)] font-light leading-[1.25] tracking-tight mb-8"
+                    style={{ color: "var(--brand-navy)" }}>
+                    Built on courage, vision, and entrepreneurial leadership.
+                  </h2>
+                  
+                  <div className="space-y-6 text-sm md:text-base font-light leading-relaxed"
+                    style={{ color: "rgba(var(--brand-navy-rgb), 0.65)" }}>
+                    <p>
+                      Founded in 2020, Wolgan is an established Water Treatment Specialist operating in the Middle East. Driven by entrepreneurial leadership and vision, we deliver smart, reliable solutions in water treatment, MEP execution, and specialized chemical supply across commercial and industrial sectors.
+                    </p>
+                    <p>
+                      Serving industries from healthcare to large-scale construction, our experienced team provides advanced, cost-effective solutions. We continuously explore strategic alliances to optimize performance, ensure international compliance, and help customers operate efficiently with greater environmental responsibility.
+                    </p>
+                  </div>
+                </div>
+
+                {/* COLUMN 2: Mission & Vision Editorial */}
+                <div className="anim-right flex flex-col gap-6 justify-center">
+                  
+                  {/* Mission Card */}
+                  <div className="flex-1 p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl relative overflow-hidden"
+                       style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
+                    <div className="absolute -top-10 -right-10 p-4 opacity-[0.02] pointer-events-none">
+                      <Target className="w-48 h-48" style={{ color: "var(--brand-navy)" }} />
+                    </div>
+                    <div className="relative z-10">
+                      <span className="block text-[10px] uppercase tracking-[0.4em] font-bold mb-4"
+                        style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
+                        Our Mission
+                      </span>
+                      <p className="text-base md:text-lg font-light leading-relaxed"
+                        style={{ color: "var(--brand-navy)" }}>
+                        We are dedicated to providing High Quality Products and Services through our highly qualified and fully trained workforce, as well as on a constant basis through our reliable supply chain and network of Business Partners.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Vision Card */}
+                  <div className="flex-1 p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl relative overflow-hidden"
+                       style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
+                    <div className="absolute -top-10 -right-10 p-4 opacity-[0.02] pointer-events-none">
+                      <Compass className="w-48 h-48" style={{ color: "var(--brand-navy)" }} />
+                    </div>
+                    <div className="relative z-10">
+                      <span className="block text-[10px] uppercase tracking-[0.4em] font-bold mb-4"
+                        style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
+                        Our Vision
+                      </span>
+                      <p className="text-base md:text-lg font-light leading-relaxed"
+                        style={{ color: "var(--brand-navy)" }}>
+                        Wolgan aims to become one of the most successful and diversified Company in the Middle East and the preferred Business Partner across Contracting Industry.
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
-              {/* COLUMN 2: The Massive SVG Numbers (Span 4) - CENTER HIGHLIGHT */}
-              <div className="lg:col-span-4 anim-up flex flex-col items-center justify-center gap-8 py-10 lg:py-0">
-                <div className="w-full relative min-h-[450px] md:min-h-[580px] max-w-[450px]">
-                  <svg viewBox="0 0 450 650" className="w-full h-full absolute inset-0">
-                    <defs>
-                      <clipPath id="textClip">
-                        <text x="50%" y="160" textAnchor="middle" fontFamily="inherit" fontSize="180" fontWeight="900" letterSpacing="-0.05em">
-                          10<tspan fontSize="110" dy="-50">+</tspan>
-                        </text>
-                        <text x="50%" y="195" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
-                          YEARS OF EXCELLENCE
-                        </text>
-
-                        <text x="50%" y="360" textAnchor="middle" fontFamily="inherit" fontSize="155" fontWeight="900" letterSpacing="-0.06em">
-                          100<tspan fontSize="90" dy="-50">+</tspan>
-                        </text>
-                        <text x="50%" y="395" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
-                          PROJECTS DELIVERED
-                        </text>
-
-                        <text x="50%" y="560" textAnchor="middle" fontFamily="inherit" fontSize="180" fontWeight="900" letterSpacing="-0.05em">
-                          30<tspan fontSize="110" dy="-50">+</tspan>
-                        </text>
-                        <text x="50%" y="595" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
-                          EXPERT ENGINEERS
-                        </text>
-                      </clipPath>
-                    </defs>
-                    <image
-                      href={waterplant}
-                      width="100%"
-                      height="100%"
-                      preserveAspectRatio="xMidYMid slice"
-                      clipPath="url(#textClip)"
-                    />
-                  </svg>
+              {/* COLUMN 3: The Massive SVG Numbers - CENTER HIGHLIGHT */}
+              <div className="anim-up flex flex-col items-center justify-center gap-8 py-10 lg:py-0">
+                <div className="w-full relative min-h-[450px] md:min-h-[580px] max-w-[450px] rounded-3xl overflow-hidden border border-white/20 shadow-lg">
+                   <Image src={waterplant} alt="Water Plant" fill className="object-cover" />
+                   <div className="absolute inset-0 bg-[#0A1F3C]/70" />
+                   <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                      <span className="text-6xl md:text-8xl font-black mb-1">10<span className="text-4xl md:text-6xl">+</span></span>
+                      <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-8 opacity-90">Years Of Excellence</span>
+                      
+                      <span className="text-6xl md:text-8xl font-black mb-1">100<span className="text-4xl md:text-6xl">+</span></span>
+                      <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-8 opacity-90">Projects Delivered</span>
+                      
+                      <span className="text-6xl md:text-8xl font-black mb-1">30<span className="text-4xl md:text-6xl">+</span></span>
+                      <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold opacity-90">Expert Engineers</span>
+                   </div>
                 </div>
 
                 {/* Company Profile Button below the SVG */}
@@ -414,47 +431,6 @@ function DesktopAboutPage() {
                     <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
                   </div>
                 </Button>
-              </div>
-
-              {/* COLUMN 3: Mission & Vision Editorial (Span 4) */}
-              <div className="lg:col-span-4 anim-right flex flex-col gap-6 justify-center">
-                
-                {/* Mission Card */}
-                <div className="p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl relative overflow-hidden"
-                     style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
-                  <div className="absolute -top-10 -right-10 p-4 opacity-[0.02] pointer-events-none">
-                    <Target className="w-48 h-48" style={{ color: "var(--brand-navy)" }} />
-                  </div>
-                  <div className="relative z-10">
-                    <span className="block text-[10px] uppercase tracking-[0.4em] font-bold mb-4"
-                      style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
-                      Our Mission
-                    </span>
-                    <p className="text-base md:text-lg font-light leading-relaxed"
-                      style={{ color: "var(--brand-navy)" }}>
-                      We are dedicated to providing High Quality Products and Services through our highly qualified and fully trained workforce, as well as on a constant basis through our reliable supply chain and network of Business Partners.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Vision Card */}
-                <div className="p-8 md:p-10 rounded-[2rem] border border-white shadow-[0_8px_32px_rgba(0,0,0,0.03)] backdrop-blur-xl relative overflow-hidden"
-                     style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%)" }}>
-                  <div className="absolute -top-10 -right-10 p-4 opacity-[0.02] pointer-events-none">
-                    <Compass className="w-48 h-48" style={{ color: "var(--brand-navy)" }} />
-                  </div>
-                  <div className="relative z-10">
-                    <span className="block text-[10px] uppercase tracking-[0.4em] font-bold mb-4"
-                      style={{ color: "rgba(var(--brand-navy-rgb), 0.4)" }}>
-                      Our Vision
-                    </span>
-                    <p className="text-base md:text-lg font-light leading-relaxed"
-                      style={{ color: "var(--brand-navy)" }}>
-                      Wolgan aims to become one of the most successful and diversified Company in the Middle East and the preferred Business Partner across Contracting Industry.
-                    </p>
-                  </div>
-                </div>
-
               </div>
 
             </div>
@@ -737,25 +713,22 @@ function DesktopAboutPage() {
           `}</style>
 
           <div className="container mx-auto px-6 md:px-14">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_560px] gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+            <div className="flex flex-col gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
 
-              {/* LEFT: Heading Text */}
-              <div className="flex flex-col justify-center min-w-0">
+              {/* TOP: Heading Text */}
+              <div className="flex flex-col items-center justify-center text-center min-w-0 max-w-2xl">
                 <p className="anim-up text-[10px] uppercase tracking-[0.55em] font-bold mb-5"
                   style={{ color: "rgba(var(--brand-navy-rgb), 0.35)" }}>
                   Industries We Serve
                 </p>
                 <h2 className="anim-up text-[clamp(2.8rem,5vw,5rem)] font-light leading-[1.05] tracking-tight mb-7"
                   style={{ color: "var(--brand-navy)" }}>
-                  Across<br />
-                  <span className="font-semibold italic" style={{ color: "rgba(var(--brand-navy-rgb),0.45)" }}>Sectors.</span>
+                  Across <span className="font-semibold italic" style={{ color: "rgba(var(--brand-navy-rgb),0.45)" }}>Sectors.</span>
                 </h2>
                 <p className="anim-up text-base md:text-lg font-light leading-relaxed max-w-[420px]"
                   style={{ color: "rgba(var(--brand-navy-rgb), 0.55)" }}>
                   Trusted by leading organizations in critical industries demanding the highest standards of quality and reliability.
                 </p>
-
-
               </div>
 
               {/* RIGHT: Diamond Grid — 3-2-3 staggered, 140px cards, 14px gap */}
@@ -925,12 +898,3 @@ function DesktopAboutPage() {
   );
 }
 
-export function AboutPage() {
-  return (
-    <ResponsiveWrapper
-      desktop={<DesktopAboutPage />}
-      laptop={<LaptopAboutPage />}
-      mobile={<MobileAboutPage />}
-    />
-  );
-}

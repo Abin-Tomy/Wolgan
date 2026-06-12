@@ -205,7 +205,6 @@ export function MobileBlogsPage() {
                     width="100%"
                     frameBorder="0"
                     scrolling="no"
-                    allowtransparency="true"
                     title="Embedded Instagram post"
                     style={{ display: "block", minHeight: "680px", borderRadius: "12px" }}
                   />
