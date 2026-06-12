@@ -285,10 +285,10 @@ export function WolganVectorBridge() {
       /* 4. Cards fly OUT upward one-by-one as user scrolls through pinned phase */
       // Query fresh nodes every tick to prevent disconnected DOM nodes from Hot Reloading
       const cardNodes = [
-        document.querySelector(".why-card-0") as HTMLElement,
-        document.querySelector(".why-card-1") as HTMLElement,
-        document.querySelector(".why-card-2") as HTMLElement,
-        document.querySelector(".why-card-3") as HTMLElement,
+        sectionRef.current?.querySelector(".why-card-0") as HTMLElement,
+        sectionRef.current?.querySelector(".why-card-1") as HTMLElement,
+        sectionRef.current?.querySelector(".why-card-2") as HTMLElement,
+        sectionRef.current?.querySelector(".why-card-3") as HTMLElement,
       ];
 
       /* flyProgress: 0 → 1 over the 3×vh pinned window */

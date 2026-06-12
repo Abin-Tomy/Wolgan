@@ -765,6 +765,15 @@ function DesktopAboutPage() {
                   {/* s=140, s√2≈198, gap=14 → step=212px horiz, 106px vert */}
 
 
+                  <div className="absolute" style={{ top: "0px", left: "-50px" }}>
+                    <div className="diamond-card-wrap">
+                      <div className="diamond-card-inner">
+                        <div className="diamond-icon-ring"><Building2 className="w-5 h-5" strokeWidth={1.5} /></div>
+                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Commercial</span>
+                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Offices &amp; retail</span>
+                      </div>
+                    </div>
+                  </div>
                   <div className="absolute" style={{ top: "0px", left: "162px" }}>
                     <div className="diamond-card-wrap">
                       <div className="diamond-card-inner">
@@ -803,15 +812,7 @@ function DesktopAboutPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="absolute" style={{ top: "106px", left: "480px" }}>
-                    <div className="diamond-card-wrap">
-                      <div className="diamond-card-inner">
-                        <div className="diamond-icon-ring"><Building2 className="w-5 h-5" strokeWidth={1.5} /></div>
-                        <span className="text-[11px] font-bold leading-tight" style={{ color: "var(--brand-navy)" }}>Commercial</span>
-                        <span className="text-[10px] leading-tight mt-1" style={{ color: "rgba(var(--brand-navy-rgb),0.4)" }}>Offices &amp; retail</span>
-                      </div>
-                    </div>
-                  </div>
+
 
                   {/* Row 2 (bottom): Residential | Food & Bev | District Cooling */}
                   <div className="absolute" style={{ top: "212px", left: "-50px" }}>

@@ -139,9 +139,17 @@
     z-index: -1;
   }
 
-  .btn-fill-effect:hover::before {
-    top: -10%;
-    border-radius: 0;
+  @media (hover: hover) {
+    .btn-fill-effect:hover::before {
+      top: -10%;
+      border-radius: 0;
+    }
+    .btn-fill-white:hover {
+      color: #0A1F3C;
+    }
+    .btn-fill-dark:hover {
+      color: #ffffff;
+    }
   }
 
   /* Specific variants for hero buttons */

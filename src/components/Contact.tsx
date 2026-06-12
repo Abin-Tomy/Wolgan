@@ -256,7 +256,7 @@ export function Contact() {
     <section
       id="contact"
       ref={containerRef}
-      className="relative w-full bg-[#020610] py-24 md:py-32 z-10 overflow-hidden"
+      className="relative w-full bg-[#020610] py-24 md:py-32 z-10 overflow-x-clip overflow-y-visible"
       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
     >
       {/* Dynamic Background Glows based on region */}
@@ -265,7 +265,7 @@ export function Contact() {
         style={{ backgroundColor: activeColor }}
       />
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 xl:gap-24 items-stretch">
 
         {/* Left Column: Heading & Content */}
         <div className="lg:col-span-5 relative z-10 flex flex-col">
@@ -276,7 +276,7 @@ export function Contact() {
             >
               Connect with Wolgan
             </span>
-            <h2 className="text-[3rem] md:text-[4.5rem] font-black text-white leading-[1.05] tracking-tighter mb-6">
+            <h2 className="text-[3rem] md:text-[4.5rem] lg:text-[3.5rem] xl:text-[4.5rem] font-black text-white leading-[1.05] tracking-tighter mb-6">
               LET'S PIONEER <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 font-light">
                 THE FUTURE.
@@ -352,7 +352,7 @@ export function Contact() {
         {/* Right Column: Premium Dark/Glassmorphic Form */}
         <div className="lg:col-span-7 reveal-right relative z-10" ref={formWrapperRef}>
 
-          <div className="bg-[#0A1120]/60 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 lg:p-12 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.5)] relative group">
+          <div className="bg-[#0A1120]/60 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-8 lg:p-8 xl:p-12 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.5)] relative group">
 
             {/* Subtle interactive hover light */}
             <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
@@ -405,7 +405,7 @@ export function Contact() {
               </div>
 
               <div className="form-content">
-                <form className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8" onSubmit={handleSubmit}>
+                <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-8" onSubmit={handleSubmit}>
 
                   {/* ── Honeypot (invisible to humans) ── */}
                   <div

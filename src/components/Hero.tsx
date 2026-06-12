@@ -87,7 +87,7 @@ export function Hero() {
 
         {/* Organic wave shape at bottom */}
         <svg
-          className="absolute inset-x-0 bottom-[24vh] h-[46vh] w-full"
+          className="absolute inset-x-0 bottom-[24vh] h-[20vh] w-full"
           viewBox="0 0 1440 300"
           preserveAspectRatio="none"
           style={{ transform: "scaleX(-1)" }}
