@@ -41,7 +41,7 @@ function ServicesDropdown() {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <Button variant="serviceDropdown">
+      <Button variant="serviceDropdown" onClick={() => setOpen(!open)}>
         Services
         <svg
           className={`w-3 h-3 mt-0.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
@@ -111,7 +111,7 @@ function DownloadsDropdown() {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <Button variant="headerCta">
+      <Button variant="headerCta" onClick={() => setOpen(!open)}>
         Downloads
         <svg
           className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
@@ -265,7 +265,7 @@ export function Header() {
           </TransitionLink>
 
           {/* Nav Links */}
-          <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
+          <nav className="hidden lg:flex flex-1 justify-center items-center gap-4 xl:gap-8 mx-4">
             <a href="/#home" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Home
             </a>
