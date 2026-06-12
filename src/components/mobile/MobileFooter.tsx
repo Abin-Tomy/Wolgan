@@ -34,7 +34,7 @@ export function MobileFooter({ waveColor = "#f8f9fb", waveStroke }: MobileFooter
               className="w-full bg-white/5 border border-white/10 rounded-full py-3 px-6 text-white text-sm placeholder-[#88A4C4] focus:outline-none focus:border-[#66B2E8]"
               required
             />
-            <button aria-label="Subscribe" className="mt-4 w-full bg-white hover:bg-[#66B2E8] text-[#0A1F3C] py-3 rounded-full font-bold tracking-widest uppercase text-[10px] transition-colors">
+            <button disabled aria-label="Subscribe" className="mt-4 w-full bg-white opacity-50 cursor-not-allowed text-[#0A1F3C] py-3 rounded-full font-bold tracking-widest uppercase text-[10px] transition-colors">
               Subscribe
             </button>
           </form>

@@ -3,9 +3,23 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
 
+// ─── Turnstile Callback ─────────────────────────────────────────
+let _turnstileToken = "";
+if (typeof window !== "undefined") {
+  (window as unknown as Record<string, unknown>).onTurnstileCallback = (token: string) => {
+    _turnstileToken = token;
+  };
+}
+
 export function MobileContact() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const turnstileRef = useRef<HTMLDivElement>(null);
   const [region, setRegion] = useState<"UAE" | "Qatar">("UAE");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -23,6 +37,29 @@ export function MobileContact() {
     }, containerRef);
     return () => ctx.revert();
   }, []);
+
+  // Re-render Turnstile widget when region changes (to reset it)
+  useEffect(() => {
+    if (!isMounted || !turnstileRef.current) return;
+    _turnstileToken = "";
+
+    // Clear previous widget
+    turnstileRef.current.innerHTML = "";
+
+    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+    if (!siteKey) return;
+
+    // If the Turnstile script is loaded, render the widget
+    const win = window as Record<string, any>;
+    if (win.turnstile) {
+      win.turnstile.render(turnstileRef.current, {
+        sitekey: siteKey,
+        callback: (token: string) => { _turnstileToken = token; },
+        theme: "dark",
+        size: "flexible",
+      });
+    }
+  }, [region, isMounted]);
 
   const activeColor = region === "UAE" ? "#66B2E8" : "#8A1538";
 
@@ -112,6 +149,22 @@ export function MobileContact() {
             <div className="flex flex-col gap-2">
               <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Message</label>
               <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:bg-white/10 focus:outline-none transition-all resize-none placeholder:text-gray-600" placeholder="Tell us about your project..."></textarea>
+            </div>
+
+            {/* Cloudflare Turnstile Widget */}
+            <div className="w-full mt-2 flex justify-center">
+              <div className="scale-[0.85] sm:scale-100 origin-center">
+                {isMounted && (
+                  <div 
+                    ref={turnstileRef} 
+                    className="cf-turnstile" 
+                    data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} 
+                    data-callback="onTurnstileCallback" 
+                    data-theme="dark" 
+                    data-size="normal" 
+                  />
+                )}
+              </div>
             </div>
 
             <button
