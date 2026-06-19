@@ -63,7 +63,7 @@ function DesktopWaterTreatmentPage() {
         <section className="hero-section relative min-h-[20vh] flex items-end pb-10 pt-40 px-6">
           <div className="absolute inset-0 z-0 overflow-hidden">
             <div className="hero-bg absolute inset-0">
-              <Image src="/images/water-treatment-service.webp" alt="Water Treatment Solutions" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
+              <Image src="/images/water-treatment-service.jpg" alt="Water Treatment Solutions" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F3C] via-[#0A1F3C]/80 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3C] via-transparent to-transparent" />
