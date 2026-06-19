@@ -11,6 +11,9 @@ export const metadata: Metadata = {
       "Explore our network of strategic partners and top-tier clients across Qatar and the UAE.",
     url: "https://www.wolgan.co/clients",
   },
+  alternates: {
+    canonical: "/clients",
+  },
 };
 
 export default function Page() {

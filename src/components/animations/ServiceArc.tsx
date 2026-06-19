@@ -60,7 +60,7 @@ export function ServiceArc({ services }: PortalServicesProps) {
           <div className="w-8 h-[1px] bg-white opacity-20" />
         </div>
         <Typography variant="h2" className="text-white leading-tight">
-          Quality Servicing <span className="italic font-light opacity-80 text-white">Opportunity</span>
+          Quality Servicing <span className="font-light opacity-80 text-white">Opportunity</span>
         </Typography>
       </div>
 

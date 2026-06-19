@@ -12,6 +12,9 @@ export const metadata: Metadata = {
       "Connect with Wolgan's regional offices in Dubai and Doha. Submit your inquiries for customized water treatment, MEP, and chemical systems.",
     url: "https://www.wolgan.co/contact",
   },
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function Page() {

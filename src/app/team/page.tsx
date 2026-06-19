@@ -11,6 +11,9 @@ export const metadata: Metadata = {
       "Meet the minds behind Wolgan. Our expert team of engineers and visionaries delivering smart water treatment solutions.",
     url: "https://www.wolgan.co/team",
   },
+  alternates: {
+    canonical: "/team",
+  },
 };
 
 export default function Page() {

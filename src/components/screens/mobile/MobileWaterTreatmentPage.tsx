@@ -66,17 +66,17 @@ export function MobileWaterTreatmentPage() {
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/20 rounded-full blur-[40px]" />
           
           <h2 className="text-xl font-medium text-white mb-6 leading-snug relative z-10">
-            The Single Source for Complete Water Treatment Solutions & Supply of Chemicals
+            Complete Water &amp; Wastewater Treatment Solutions
           </h2>
           <div className="space-y-4 text-white/70 text-sm font-light leading-relaxed relative z-10">
             <p>
-              Water treatment requires in-depth knowledge and skills to understand, rectify & even build specific systems that are customized to its surrounding operations.
+              Wolgan is a leading provider of comprehensive water and wastewater treatment solutions across Qatar and the Middle East. While the company was established six years ago, our true strength lies in the extensive expertise of our management and technical teams, who bring over 20 to 30 years of industry experience in designing, operating, and maintaining advanced water treatment systems.
             </p>
             <p>
-              This concept covers physical procedures that modify the characteristics of water by removing solutes or altering its pH, as well as procedures to remove undesired components like germs and other pollutants.
+              Over the years, Wolgan has successfully built a strong reputation for delivering reliable, efficient, and sustainable solutions. We are approved by major authorities, infrastructure organizations, and leading facilities across Qatar, reflecting our commitment to quality, safety, and regulatory compliance.
             </p>
             <p>
-              The demand for safe and clean water is constantly increasing. Wolgan employs cutting-edge methods of water treatment to produce water suitable for use.
+              As a single-source provider, Wolgan offers complete turnkey services covering design, engineering, supply, installation, commissioning, operation, maintenance, and chemical treatment programs. Our solutions are customized to meet the specific requirements of commercial, industrial, residential, hospitality, healthcare, and government sectors.
             </p>
           </div>
         </div>

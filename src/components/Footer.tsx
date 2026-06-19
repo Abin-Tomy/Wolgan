@@ -25,31 +25,6 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#66B2E8] opacity-[0.08] blur-[120px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#66B2E8] opacity-[0.04] blur-[100px] rounded-full pointer-events-none"></div>
 
-        {/* Top Section: Newsletter */}
-        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-20 md:mb-28 border-b border-white/10 pb-16 lg:pb-20">
-          <div className="max-w-2xl mb-10 xl:mb-0">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight tracking-tight mb-4">
-              Stay ahead of the <span className="font-semibold italic text-white/90">curve.</span>
-            </h2>
-            <p className="text-[#88A4C4] text-lg font-light leading-relaxed max-w-xl">
-              Receive occasional insights on engineering, sustainable systems, and market trends directly to your inbox.
-            </p>
-          </div>
-
-          <div className="w-full xl:w-auto flex-shrink-0">
-            <form className="relative w-full sm:w-[450px] lg:w-[500px]" onSubmit={(e) => e.preventDefault()}>
-              <input 
-                type="email" 
-                placeholder="Business Email Address" 
-                className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-8 pr-36 text-white placeholder-[#88A4C4] focus:outline-none focus:border-[#66B2E8] transition-all focus:bg-white/10"
-                required
-              />
-              <button disabled aria-label="Subscribe to newsletter" className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-white opacity-50 cursor-not-allowed text-[#0A1F3C] px-6 md:px-8 py-3 rounded-full font-bold tracking-widest uppercase text-[10px] md:text-xs transition-colors duration-300">
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
 
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">

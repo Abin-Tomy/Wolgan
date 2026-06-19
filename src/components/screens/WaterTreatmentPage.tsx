@@ -92,18 +92,18 @@ function DesktopWaterTreatmentPage() {
               <div className="reveal-up p-10 lg:p-14 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-xl mb-24 relative group shadow-[0_0_50px_rgba(255,255,255,0.03)]">
                 
                 <h3 className="text-2xl lg:text-3xl font-medium text-white mb-8 leading-snug relative z-10 max-w-4xl">
-                  The Single Source for Complete Water Treatment Solutions & Supply of Chemicals
+                  Complete Water &amp; Wastewater Treatment Solutions
                 </h3>
                 
                 <div className="space-y-6 text-white/70 leading-relaxed text-lg font-light relative z-10 columns-1 md:columns-2 gap-12">
                   <p>
-                    Water treatment requires in-depth knowledge and skills to understand, rectify & even build specific systems that are customized to its surrounding operations. Any procedure that raises the quality of water to make it more suitable for a certain end user is referred to as water treatment.
+                    Wolgan is a leading provider of comprehensive water and wastewater treatment solutions across Qatar and the Middle East. While the company was established six years ago, our true strength lies in the extensive expertise of our management and technical teams, who bring over 20 to 30 years of industry experience in designing, operating, and maintaining advanced water treatment systems.
                   </p>
                   <p>
-                    This concept covers physical procedures that modify the characteristics of water by removing solutes or altering its pH, as well as procedures to remove undesired components like germs and other pollutants. Wolgan is a team of experienced and highly qualified individuals who provide excellent service for various commercial & residential sectors across the Middle East.
+                    Over the years, Wolgan has successfully built a strong reputation for delivering reliable, efficient, and sustainable solutions. We are approved by major authorities, infrastructure organizations, and leading facilities across Qatar, reflecting our commitment to quality, safety, and regulatory compliance.
                   </p>
                   <p className="md:col-span-2 mt-6 inline-block w-full break-inside-avoid">
-                    The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth. Wolgan thus employs cutting-edge methods of water treatment to produce water suitable for use.
+                    As a single-source provider, Wolgan offers complete turnkey services covering design, engineering, supply, installation, commissioning, operation, maintenance, and chemical treatment programs. Our solutions are customized to meet the specific requirements of commercial, industrial, residential, hospitality, healthcare, and government sectors.
                   </p>
                 </div>
               </div>

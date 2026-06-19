@@ -11,6 +11,9 @@ export const metadata: Metadata = {
       "Read the latest industry insights, updates, and innovations in water treatment, MEP installations, and chemical supplies.",
     url: "https://www.wolgan.co/blogs",
   },
+  alternates: {
+    canonical: "/blogs",
+  },
 };
 
 export default function Page() {

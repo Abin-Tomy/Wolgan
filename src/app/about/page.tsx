@@ -11,6 +11,9 @@ export const metadata: Metadata = {
       "Founded in 2020, Wolgan delivers smart, reliable water treatment and MEP solutions across Qatar, UAE, and India.",
     url: "https://www.wolgan.co/about",
   },
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function Page() {
