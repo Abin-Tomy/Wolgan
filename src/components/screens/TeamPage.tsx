@@ -28,6 +28,7 @@ type DualMember = {
     quote: string;
     imagePosition: "left" | "right";
     imageSrc: string;
+    region: string;
   }[];
 };
 
@@ -48,7 +49,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     id: 2,
     type: "single",
     name: "Kevin Fernandez",
-    role: "Director - Qatar",
+    role: "Regional Head",
     quote: "“Engineering excellence isn't just about the technology we use; it's about the relentless pursuit of perfection in every drop of water we treat.”",
     bgText: "EXPERT",
     imagePosition: "right",
@@ -57,20 +58,22 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 3,
     type: "dual",
-    role: "Directors - UAE",
+    role: "Directors",
     bgText: "LEADERS",
     members: [
       {
         name: "Sampath Acharya",
         quote: "“Strategic insights are the bridge between complex MEP challenges and seamless, scalable solutions for our clients.”",
         imageSrc: "/images/Sampath-Acharya.png?v=4",
-        imagePosition: "left"
+        imagePosition: "left",
+        region: "UAE"
       },
       {
         name: "Emad",
         quote: "“Driving excellence and innovation across every project we undertake in the UAE.”",
         imageSrc: "/images/employee-placeholder.png",
-        imagePosition: "right"
+        imagePosition: "right",
+        region: "Qatar"
       }
     ]
   },
@@ -136,7 +139,7 @@ function TeamCard(props: TeamMember) {
         {/* Huge Background Text */}
         <div
           ref={bgTextRef}
-          className={`absolute bottom-full mb-4 md:mb-10 left-4 md:left-[5%] text-left font-bold text-[#0A1F3C]/10 uppercase leading-none select-none z-0 tracking-tighter whitespace-nowrap`}
+          className={`absolute bottom-full mb-4 md:mb-10 w-full flex justify-center font-bold text-[#0A1F3C]/10 uppercase leading-none select-none z-0 tracking-tighter whitespace-nowrap`}
           style={{ fontSize: `clamp(2rem, ${100 / props.role.length * 1.55}vw, 12rem)` }}
         >
           {props.role}
@@ -145,9 +148,24 @@ function TeamCard(props: TeamMember) {
         {/* Two Separate Dark Cards Side by Side */}
         <div className="container mx-auto px-6 md:px-8 lg:px-12 flex flex-col md:flex-row gap-12 md:gap-6 lg:gap-8 z-10 relative">
           
-          {/* Left Card */}
-          <div className="relative bg-[#0A1F3C] w-full md:w-1/2 min-h-[300px] lg:min-h-[350px] flex items-end shadow-2xl py-8 lg:py-12 px-6 lg:px-8 overflow-visible rounded-3xl">
+          {/* Left Column */}
+          <div className="w-full md:w-1/2 flex flex-col z-10 relative">
+            {/* Left Card */}
+            <div className="relative bg-[#0A1F3C] w-full min-h-[300px] lg:min-h-[350px] flex items-end shadow-2xl py-8 lg:py-12 px-6 lg:px-8 overflow-visible rounded-3xl flex-grow">
             
+            {/* Massive Region Watermark */}
+            <div className="absolute top-4 md:top-8 right-6 md:right-10 lg:right-12 flex justify-end pointer-events-none z-0 opacity-70">
+              <h3 
+                className="text-[5rem] md:text-[6.5rem] lg:text-[8rem] font-black leading-none uppercase tracking-tighter text-right"
+                style={{
+                  color: "transparent",
+                  WebkitTextStroke: "2px rgba(253, 252, 251, 0.4)"
+                }}
+              >
+                {props.members[0].region}
+              </h3>
+            </div>
+
             {/* Breakout Image - Left */}
             <div className="absolute bottom-0 left-0 lg:left-[-5%] z-10 pointer-events-none hidden md:block">
               <img
@@ -170,18 +188,31 @@ function TeamCard(props: TeamMember) {
                   <span className="text-base lg:text-lg font-bold text-white tracking-wider uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
                     {props.members[0].name}
                   </span>
-                  <span className="text-[10px] lg:text-xs text-white/90 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                    Director - UAE
-                  </span>
                 </div>
               </div>
             </div>
 
+            </div>
           </div>
 
-          {/* Right Card */}
-          <div className="relative bg-[#0A1F3C] w-full md:w-1/2 min-h-[300px] lg:min-h-[350px] flex items-end shadow-2xl py-8 lg:py-12 px-6 lg:px-8 overflow-visible rounded-3xl mt-24 md:mt-0">
+          {/* Right Column */}
+          <div className="w-full md:w-1/2 flex flex-col z-10 relative mt-24 md:mt-0">
+            {/* Right Card */}
+            <div className="relative bg-[#0A1F3C] w-full min-h-[300px] lg:min-h-[350px] flex items-end shadow-2xl py-8 lg:py-12 px-6 lg:px-8 overflow-visible rounded-3xl flex-grow">
             
+            {/* Massive Region Watermark */}
+            <div className="absolute top-4 md:top-8 left-6 md:left-10 lg:left-12 flex justify-start pointer-events-none z-0 opacity-70">
+              <h3 
+                className="text-[5rem] md:text-[6.5rem] lg:text-[8rem] font-black leading-none uppercase tracking-tighter text-left"
+                style={{
+                  color: "transparent",
+                  WebkitTextStroke: "2px rgba(253, 252, 251, 0.4)"
+                }}
+              >
+                {props.members[1].region}
+              </h3>
+            </div>
+
             {/* Breakout Image - Right */}
             <div className="absolute bottom-0 right-0 lg:right-[-5%] z-10 pointer-events-none hidden md:block">
               <img
@@ -204,13 +235,11 @@ function TeamCard(props: TeamMember) {
                   <span className="text-base lg:text-lg font-bold text-white tracking-wider uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
                     {props.members[1].name}
                   </span>
-                  <span className="text-[10px] lg:text-xs text-white/90 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                    Director - UAE
-                  </span>
                 </div>
               </div>
             </div>
 
+            </div>
           </div>
 
         </div>
