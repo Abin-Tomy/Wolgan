@@ -108,7 +108,7 @@ function DesktopChemicalSuppliesPage() {
                     <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#66B2E8]/20 to-[#66B2E8]/5 flex items-center justify-center border border-[#66B2E8]/30 shadow-[0_0_30px_rgba(102,178,232,0.2)]">
                       <Droplet className="w-8 h-8 text-[#66B2E8]" />
                     </div>
-                    <h3 className="text-3xl font-light text-white">Water Treatment<br/><span className="font-medium text-[#66B2E8]">Speciality Chemicals</span></h3>
+                    <h3 className="text-3xl font-light text-white">Water Treatment<br/><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc]">Speciality Chemicals</span></h3>
                   </div>
                   <div className="flex flex-col gap-4">
                     {waterTreatmentChemicals.map((item, i) => (
@@ -125,7 +125,7 @@ function DesktopChemicalSuppliesPage() {
                     <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
                       <FlaskConical className="w-8 h-8 text-white/80" />
                     </div>
-                    <h3 className="text-3xl font-light text-white">Commodity<br/><span className="font-medium">Chemicals</span></h3>
+                    <h3 className="text-3xl font-light text-white">Commodity<br/><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc]">Chemicals</span></h3>
                   </div>
                   <div className="flex flex-col gap-4">
                     {commodityChemicals.map((item, i) => (

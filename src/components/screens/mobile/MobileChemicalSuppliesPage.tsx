@@ -80,7 +80,7 @@ export function MobileChemicalSuppliesPage() {
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#66B2E8]/20 to-[#66B2E8]/5 flex items-center justify-center border border-[#66B2E8]/30 shrink-0 shadow-[0_0_20px_rgba(102,178,232,0.15)]">
                 <Droplet className="w-6 h-6 text-[#66B2E8]" />
               </div>
-              <h2 className="text-2xl font-light text-white leading-snug">Water Treatment<br/><span className="font-medium text-[#66B2E8] text-xl">Speciality Chemicals</span></h2>
+              <h2 className="text-2xl font-light text-white leading-snug">Water Treatment<br/><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc] text-xl">Speciality Chemicals</span></h2>
             </div>
             <div className="flex flex-col gap-3">
               {waterTreatmentChemicals.map((item, i) => (
@@ -97,7 +97,7 @@ export function MobileChemicalSuppliesPage() {
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/20 shrink-0 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
                 <FlaskConical className="w-6 h-6 text-white/80" />
               </div>
-              <h2 className="text-2xl font-light text-white leading-snug">Commodity<br/><span className="font-medium text-xl">Chemicals</span></h2>
+              <h2 className="text-2xl font-light text-white leading-snug">Commodity<br/><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc] text-xl">Chemicals</span></h2>
             </div>
             <div className="flex flex-col gap-3">
               {commodityChemicals.map((item, i) => (
