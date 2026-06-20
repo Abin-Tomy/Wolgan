@@ -54,7 +54,7 @@ export function MobileWaterTreatmentPage() {
             </span>
           </div>
           <h1 className="mobile-fade-up text-4xl font-light text-white leading-tight tracking-tight mb-6">
-            Water Treatment <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Solutions</span>
+            Water Treatment <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc]">Solutions</span>
           </h1>
         </div>
       </section>

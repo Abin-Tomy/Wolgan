@@ -76,7 +76,7 @@ function DesktopWaterTreatmentPage() {
                 <span className="text-white text-xs font-bold tracking-widest uppercase">Our Expertise</span>
               </div>
               <h1 className="reveal-up text-5xl lg:text-7xl font-light text-white leading-tight tracking-tight mb-6">
-                Water Treatment <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Solutions</span>
+                Water Treatment <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc]">Solutions</span>
               </h1>
             </div>
           </div>
