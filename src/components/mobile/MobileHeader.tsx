@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
+import { useRouter } from "next/navigation";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -20,6 +21,7 @@ const downloadItems = [
 ];
 
 export function MobileHeader() {
+  const router = useRouter();
   const { navigate } = usePageTransition();
   const headerRef = useRef<HTMLElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -90,7 +92,7 @@ export function MobileHeader() {
     e.preventDefault();
     handleMobileMenuClose();
     if (window.location.pathname === "/") {
-      window.location.hash = href;
+      router.push(`/#${href}`);
     } else {
       navigate(`/#${href}`);
     }
@@ -173,7 +175,7 @@ export function MobileHeader() {
                 {[
                   { name: "Home", href: "/#home", isHash: true },
                   { name: "About", href: "/about" },
-                  { name: "Our Team", href: "/team" },
+                  // { name: "Our Team", href: "/team" },
                   { name: "Our Clients", href: "/clients" },
                   { name: "Blogs", href: "/blogs" },
                   { name: "Contact", href: "/contact" },

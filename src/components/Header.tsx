@@ -7,6 +7,7 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 const wolganLogo = "/images/Wolgan-logo.png";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
 import { TransitionLink, usePageTransition } from "@/components/PageTransition";
 
@@ -234,7 +235,7 @@ export function Header() {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     if (pathname === "/") {
-      window.location.hash = href;
+      router.push(`/#${href}`);
     } else {
       navigate(`/#${href}`);
     }
@@ -266,16 +267,16 @@ export function Header() {
 
           {/* Nav Links */}
           <nav className="hidden lg:flex flex-1 justify-center items-center gap-4 xl:absolute xl:left-1/2 xl:-translate-x-1/2 xl:flex-none xl:gap-8 mx-4">
-            <a href="/#home" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
+            <Link href="/#home" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Home
-            </a>
+            </Link>
             <TransitionLink href="/about" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               About
             </TransitionLink>
             <ServicesDropdown />
-            <TransitionLink href="/team" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
+            {/* <TransitionLink href="/team" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Team
-            </TransitionLink>
+            </TransitionLink> */}
             <TransitionLink href="/clients" className="text-white/80 hover:text-white text-sm tracking-wide transition-colors duration-200">
               Our Clients
             </TransitionLink>
@@ -349,13 +350,13 @@ export function Header() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-white/35">Navigation</span>
             <ul className="flex flex-col gap-6">
               <li className="overflow-hidden">
-                <a 
+                <Link 
                   href="/#home" 
                   onClick={(e) => handleMobileHashLinkClick(e, "home")}
                   className="inline-block text-4xl font-light tracking-tight text-white/70 hover:text-white hover:scale-105 transition-all duration-300"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li className="overflow-hidden">
                 <a 
@@ -385,7 +386,7 @@ export function Header() {
                 </ul>
               </li>
 
-              <li className="overflow-hidden">
+              {/* <li className="overflow-hidden">
                 <a 
                   href="/team" 
                   onClick={(e) => handleMobileNavLinkClick(e, "/team")}
@@ -393,7 +394,7 @@ export function Header() {
                 >
                   Our Team
                 </a>
-              </li>
+              </li> */}
               <li className="overflow-hidden">
                 <a 
                   href="/clients" 

@@ -86,8 +86,12 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
                   </Link>
                 </div>
               </div>
-              <Link href="/team" className="text-white/80 hover:text-white text-sm font-light transition-colors w-fit relative group">
+              {/* <Link href="/team" className="text-white/80 hover:text-white text-sm font-light transition-colors w-fit relative group">
                 Our Team
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </Link> */}
+              <Link href="/clients" className="text-white/80 hover:text-white text-sm font-light transition-colors w-fit relative group">
+                Our Clients
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link href="/blogs" className="text-white/80 hover:text-white text-sm font-light transition-colors w-fit relative group">
