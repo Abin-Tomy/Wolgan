@@ -370,7 +370,7 @@ function DesktopAboutPage() {
                     <defs>
                       <clipPath id="textClip">
                         <text x="50%" y="160" textAnchor="middle" fontFamily="inherit" fontSize="180" fontWeight="900" letterSpacing="-0.05em">
-                          10<tspan fontSize="110" dy="-50">+</tspan>
+                          7<tspan fontSize="110" dy="-50">+</tspan>
                         </text>
                         <text x="50%" y="195" textAnchor="middle" fontFamily="inherit" fontSize="16" fontWeight="700" letterSpacing="0.4em">
                           YEARS OF EXCELLENCE

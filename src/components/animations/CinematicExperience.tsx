@@ -321,7 +321,7 @@ export function CinematicExperience() {
           ))}
 
           {/* Description and brand details perfectly centered inside the arc wheel */}
-          <g className="kinetic-desc" transform="translate(1500, 950)" textAnchor="middle">
+          <g className="kinetic-desc" transform="translate(1500, 950) rotate(1.5)" textAnchor="middle">
             <text
               className="kinetic-desc-tag"
               fill="rgba(255, 255, 255, 0.35)"

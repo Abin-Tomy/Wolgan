@@ -407,7 +407,7 @@ export function LaptopAboutPage() {
                    <Image src={waterplant} alt="Water Plant" fill className="object-cover" />
                    <div className="absolute inset-0 bg-[#0A1F3C]/70" />
                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
-                      <span className="text-6xl md:text-8xl font-black mb-1">10<span className="text-4xl md:text-6xl">+</span></span>
+                      <span className="text-6xl md:text-8xl font-black mb-1">7<span className="text-4xl md:text-6xl">+</span></span>
                       <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-8 opacity-90">Years Of Excellence</span>
                       
                       <span className="text-6xl md:text-8xl font-black mb-1">100<span className="text-4xl md:text-6xl">+</span></span>
