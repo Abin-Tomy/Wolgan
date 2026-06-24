@@ -82,7 +82,8 @@ export function MobileFooter({ waveColor = "#f8f9fb", waveStroke }: MobileFooter
                     <li><a href="/services/chemical-supplies" className="text-white/60 text-[11px]">Chemical Supplies</a></li>
                   </ul>
                 </li>
-                <li><a href="/team" className="text-white/80 text-xs">Our Team</a></li>
+                {/* <li><a href="/team" className="text-white/80 text-xs">Our Team</a></li> */}
+                <li><a href="/clients" className="text-white/80 text-xs">Our Clients</a></li>
                 <li><a href="/blogs" className="text-white/80 text-xs">Blogs</a></li>
               </ul>
             </div>
