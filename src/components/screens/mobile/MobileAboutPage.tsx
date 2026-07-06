@@ -98,9 +98,9 @@ export function MobileAboutPage() {
                </div>
             </div>
             
-            <Button variant="primaryBrand" href="/api/download?file=Wolgan_Brochure.pdf" download="Wolgan_Brochure.pdf" className="w-full h-14 justify-center text-sm shadow-xl rounded-full">
+            {/* <Button variant="primaryBrand" href="/api/download?file=Wolgan_Brochure.pdf" download="Wolgan_Brochure.pdf" className="w-full h-14 justify-center text-sm shadow-xl rounded-full">
               Company Profile
-            </Button>
+            </Button> */}
           </div>
 
           <div className="flex flex-col gap-6">
