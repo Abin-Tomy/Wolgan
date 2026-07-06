@@ -181,7 +181,7 @@ export function AboutSection({
             </div>
           </Button>
 
-          <Button
+          {/* <Button
             variant="primaryBrand"
             className="shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2.5 w-auto"
             href="/api/download?file=Wolgan_Brochure.pdf"
@@ -218,7 +218,7 @@ export function AboutSection({
                 />
               </svg>
             </div>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </>

@@ -8,7 +8,7 @@ export function MobileAbout() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.utils.toArray(".mobile-about-reveal").forEach((el: any) => {
+      gsap.utils.toArray<HTMLElement>(".mobile-about-reveal").forEach((el) => {
         gsap.from(el, {
           scrollTrigger: {
             trigger: el,
@@ -82,14 +82,14 @@ export function MobileAbout() {
           >
             Explore Our Story
           </Button>
-          <Button
+          {/* <Button
             variant="primaryBrand"
             href="/api/download?file=Wolgan_Brochure.pdf"
             download="Wolgan_Brochure.pdf"
             className="w-full justify-center py-4 text-sm bg-white/10 text-white hover:bg-white/20 border border-white/10"
           >
             Company Profile
-          </Button>
+          </Button> */}
         </div>
       </div>
     </section>
