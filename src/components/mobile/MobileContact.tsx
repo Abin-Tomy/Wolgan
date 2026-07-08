@@ -4,6 +4,7 @@ import { gsap } from "@/lib/gsap";
 import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
 
 // ─── Turnstile Callback ─────────────────────────────────────────
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let _turnstileToken = "";
 if (typeof window !== "undefined") {
   (window as unknown as Record<string, unknown>).onTurnstileCallback = (token: string) => {
@@ -14,11 +15,15 @@ if (typeof window !== "undefined") {
 export function MobileContact() {
   const containerRef = useRef<HTMLDivElement>(null);
   const turnstileRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [region, setRegion] = useState<"UAE" | "Qatar">("UAE");
   const [isMounted, setIsMounted] = useState(false);
+  const [attachment, setAttachment] = useState<File | null>(null);
+  const [isUploadLimited, setIsUploadLimited] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -50,7 +55,7 @@ export function MobileContact() {
     if (!siteKey) return;
 
     // If the Turnstile script is loaded, render the widget
-    const win = window as Record<string, any>;
+    const win = window as unknown as { turnstile?: { render: (el: HTMLElement, opts: Record<string, unknown>) => void } };
     if (win.turnstile) {
       win.turnstile.render(turnstileRef.current, {
         sitekey: siteKey,
@@ -142,13 +147,64 @@ export function MobileContact() {
                 <div className="bg-white/5 border border-white/10 border-r-0 rounded-l-xl px-3 py-3 text-gray-400 text-sm flex items-center shrink-0">
                   {region === 'UAE' ? '+971' : '+974'}
                 </div>
-                <input type="tel" className="w-full bg-white/5 border border-white/10 rounded-r-xl px-4 py-3 text-white text-sm focus:bg-white/10 focus:outline-none transition-all placeholder:text-gray-600" placeholder="000 0000" />
+                <input type="tel" className="w-full bg-white/5 border border-white/10 rounded-r-xl px-4 py-3 text-white text-sm focus:bg-white/10 focus:outline-none transition-all placeholder:text-gray-600" placeholder="000 0000" required />
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
               <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Message</label>
               <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:bg-white/10 focus:outline-none transition-all resize-none placeholder:text-gray-600" placeholder="Tell us about your project..."></textarea>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Attachment (Optional)</label>
+              <div className="flex flex-col gap-3">
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  className="hidden"
+                  onChange={(e) => {
+                    if (e.target.files && e.target.files[0]) {
+                      setAttachment(e.target.files[0]);
+                    }
+                  }}
+                />
+                <button
+                  type="button"
+                  disabled={isUploadLimited}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (isUploadLimited) return;
+                    setIsUploadLimited(true);
+                    setTimeout(() => setIsUploadLimited(false), 3000);
+                    fileInputRef.current?.click();
+                  }}
+                  className="w-full py-3 rounded-xl text-[10px] font-bold tracking-[0.1em] uppercase transition-all duration-300 flex items-center justify-center gap-2 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] shadow-lg"
+                  style={{ backgroundColor: activeColor }}
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                  </svg>
+                  {isUploadLimited ? "Wait..." : "Attach File"}
+                </button>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400 text-xs truncate max-w-[80%]">
+                    {attachment ? attachment.name : "No file selected"}
+                  </span>
+                  {attachment && (
+                    <button
+                      type="button"
+                      onClick={() => setAttachment(null)}
+                      className="text-red-400 hover:text-red-300 p-1"
+                      aria-label="Remove attachment"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
 
             {/* Cloudflare Turnstile Widget */}

@@ -14,7 +14,15 @@ if (typeof window !== "undefined") {
   };
 }
 
-const CustomDropdown = ({ options, value, onChange, placeholder, label }: any) => {
+interface DropdownProps {
+  options: string[];
+  value: string;
+  onChange: (val: string) => void;
+  placeholder: string;
+  label: string;
+}
+
+const CustomDropdown = ({ options, value, onChange, placeholder, label }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -79,7 +87,8 @@ export function Contact() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Form States
@@ -90,10 +99,13 @@ export function Contact() {
   const [phone, setPhone] = useState("");
   const [interest, setInterest] = useState("");
   const [message, setMessage] = useState("");
+  const [attachment, setAttachment] = useState<File | null>(null);
 
   // Submission states
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isUploadLimited, setIsUploadLimited] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const emiratesList = [
     "Abu Dhabi",
@@ -172,7 +184,7 @@ export function Contact() {
     if (!siteKey) return;
 
     // If the Turnstile script is loaded, render the widget
-    const win = window as Record<string, any>;
+    const win = window as unknown as { turnstile?: { render: (el: HTMLElement, opts: Record<string, unknown>) => void } };
     if (win.turnstile) {
       win.turnstile.render(turnstileRef.current, {
         sitekey: siteKey,
@@ -192,6 +204,7 @@ export function Contact() {
     setPhone("");
     setInterest("");
     setMessage("");
+    setAttachment(null);
     _turnstileToken = "";
   }, []);
 
@@ -214,7 +227,7 @@ export function Contact() {
       email,
       region,
       emirate: region === "UAE" ? emirate : "",
-      phone: region === "Qatar" ? phone : "",
+      phone,
       interest,
       message,
       website: honeypot,
@@ -277,7 +290,7 @@ export function Contact() {
               Connect with Wolgan
             </span>
             <h2 className="text-[3rem] md:text-[4.5rem] lg:text-[3.5rem] xl:text-[4.5rem] font-black text-white leading-[1.05] tracking-tighter mb-6">
-              LET'S PIONEER <br />
+              LET&apos;S PIONEER <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 font-light">
                 THE FUTURE.
               </span>
@@ -475,7 +488,7 @@ export function Contact() {
                   </div>
 
                   {/* Dynamic Field based on Region */}
-                  {region === 'UAE' ? (
+                  {region === 'UAE' && (
                     <CustomDropdown
                       label="Emirate"
                       placeholder="Select Emirate"
@@ -483,24 +496,24 @@ export function Contact() {
                       value={emirate}
                       onChange={setEmirate}
                     />
-                  ) : (
-                    <div className="flex flex-col space-y-2">
-                      <label className="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest ml-2">Contact Number</label>
-                      <div className="relative flex">
-                        <div className="bg-white/5 border border-white/10 border-r-0 rounded-l-2xl px-4 py-4 text-gray-400 text-sm flex items-center">
-                          +974
-                        </div>
-                        <input
-                          type="tel"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-r-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600"
-                          placeholder="0000 0000"
-                          required
-                        />
-                      </div>
-                    </div>
                   )}
+                  
+                  <div className={`flex flex-col space-y-2 ${region === 'UAE' ? 'md:col-span-2' : ''}`}>
+                    <label className="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest ml-2">Contact Number</label>
+                    <div className="relative flex">
+                      <div className="bg-white/5 border border-white/10 border-r-0 rounded-l-2xl px-4 py-4 text-gray-400 text-sm flex items-center">
+                        {region === 'UAE' ? '+971' : '+974'}
+                      </div>
+                      <input
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="w-full bg-white/5 border border-white/10 rounded-r-2xl px-5 py-4 text-white text-sm focus:bg-white/10 focus:border-white/30 focus:outline-none transition-all placeholder:text-gray-600"
+                        placeholder={region === 'UAE' ? "00 000 0000" : "0000 0000"}
+                        required
+                      />
+                    </div>
+                  </div>
 
                   {/* Inquiry Type */}
                   <div className="md:col-span-2">
@@ -528,6 +541,56 @@ export function Contact() {
                     ></textarea>
                   </div>
 
+                  {/* File Attachment */}
+                  <div className="md:col-span-2 flex flex-col space-y-2">
+                    <label className="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest ml-2">Attachment (Optional)</label>
+                    <div className="flex items-center gap-4">
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        className="hidden"
+                        onChange={(e) => {
+                          if (e.target.files && e.target.files[0]) {
+                            setAttachment(e.target.files[0]);
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        disabled={isUploadLimited}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (isUploadLimited) return;
+                          setIsUploadLimited(true);
+                          setTimeout(() => setIsUploadLimited(false), 3000);
+                          fileInputRef.current?.click();
+                        }}
+                        className="px-6 py-3 rounded-2xl text-[0.7rem] font-bold tracking-[0.1em] uppercase transition-all duration-300 flex items-center gap-2 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105"
+                        style={{ backgroundColor: activeColor }}
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                        </svg>
+                        {isUploadLimited ? "Wait..." : "Attach File"}
+                      </button>
+                      <span className="text-gray-400 text-sm truncate max-w-[200px]">
+                        {attachment ? attachment.name : "No file selected"}
+                      </span>
+                      {attachment && (
+                        <button
+                          type="button"
+                          onClick={() => setAttachment(null)}
+                          className="text-red-400 hover:text-red-300 text-sm p-1"
+                          aria-label="Remove attachment"
+                        >
+                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
                   {/* Cloudflare Turnstile Widget */}
                   <div className="md:col-span-2">
                     {isMounted && (
@@ -542,7 +605,7 @@ export function Contact() {
                         <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Thank you! Your inquiry has been sent to our <strong>{region}</strong> team. We'll be in touch soon.</span>
+                        <span>Thank you! Your inquiry has been sent to our <strong>{region}</strong> team. We&apos;ll be in touch soon.</span>
                       </div>
                     </div>
                   )}
