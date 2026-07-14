@@ -18,7 +18,7 @@ const serviceItems = [
 ];
 
 const downloadItems = [
-  { name: "Wolgan Brochure", file: "/api/download?file=Wolgan_Brochure.pdf", download: "Wolgan_Brochure.pdf" },
+  { name: "Wolgan Brochure", file: "/api/download?file=Wolgan - Profile.pdf", download: "Wolgan - Profile.pdf" },
 ];
 
 function ServicesDropdown() {
@@ -289,7 +289,7 @@ export function Header() {
           <div className="flex items-center gap-3 relative z-10">
             {/* Action Buttons */}
             <div className="hidden md:flex items-center gap-3">
-              {/* <DownloadsDropdown /> */}
+              <DownloadsDropdown />
               {/* CTA Button */}
               <Button
                 variant="headerCta"
@@ -415,7 +415,7 @@ export function Header() {
               </li>
 
               {/* Downloads section in mobile menu */}
-              {/* <li className="flex flex-col gap-3 mt-4">
+              <li className="flex flex-col gap-3 mt-4">
                 <span className="inline-block text-4xl font-light tracking-tight text-white/70 hover:text-white hover:scale-105 transition-all duration-300 transform origin-left">Downloads</span>
                 <ul className="pl-4 flex flex-col gap-3 border-l border-white/10">
                   {downloadItems.map((item) => (
@@ -430,7 +430,7 @@ export function Header() {
                     </li>
                   ))}
                 </ul>
-              </li> */}
+              </li>
 
               <li className="overflow-hidden mt-4">
                 <a 

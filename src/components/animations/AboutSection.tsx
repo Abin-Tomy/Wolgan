@@ -181,11 +181,11 @@ export function AboutSection({
             </div>
           </Button>
 
-          {/* <Button
+          <Button
             variant="primaryBrand"
             className="shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2.5 w-auto"
-            href="/api/download?file=Wolgan_Brochure.pdf"
-            download="Wolgan_Brochure.pdf"
+            href="/api/download?file=Wolgan - Profile.pdf"
+            download="Wolgan - Profile.pdf"
           >
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">
               Company Profile
@@ -218,7 +218,7 @@ export function AboutSection({
                 />
               </svg>
             </div>
-          </Button> */}
+          </Button>
         </div>
       </div>
     </>

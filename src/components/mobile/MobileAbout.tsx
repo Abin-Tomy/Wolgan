@@ -82,14 +82,14 @@ export function MobileAbout() {
           >
             Explore Our Story
           </Button>
-          {/* <Button
+          <Button
             variant="primaryBrand"
-            href="/api/download?file=Wolgan_Brochure.pdf"
-            download="Wolgan_Brochure.pdf"
+            href="/api/download?file=Wolgan - Profile.pdf"
+            download="Wolgan - Profile.pdf"
             className="w-full justify-center py-4 text-sm bg-white/10 text-white hover:bg-white/20 border border-white/10"
           >
             Company Profile
-          </Button> */}
+          </Button>
         </div>
       </div>
     </section>

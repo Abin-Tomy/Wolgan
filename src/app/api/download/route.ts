@@ -4,7 +4,7 @@ import fs from "fs";
 
 // Allowed files whitelist — only these can be downloaded
 const ALLOWED: Record<string, string> = {
-  "Wolgan_Brochure.pdf": "Wolgan_Brochure.pdf",
+  "Wolgan - Profile.pdf": "Wolgan - Profile.pdf",
   "NCR_Brochure.pdf": "NCR_Brochure.pdf",
   "Rydlyme_Brochure.pdf": "Rydlyme_Brochure.pdf",
 };

@@ -419,10 +419,10 @@ export function LaptopAboutPage() {
                 </div>
 
                 {/* Company Profile Button below the SVG */}
-                {/* <Button
+                <Button
                   variant="primaryBrand"
-                  href="/api/download?file=Wolgan_Brochure.pdf"
-                  download="Wolgan_Brochure.pdf"
+                  href="/api/download?file=Wolgan - Profile.pdf"
+                  download="Wolgan - Profile.pdf"
                   className="group flex gap-2 items-center px-8 h-14 text-base font-semibold rounded-full shadow-xl shadow-[#0A1F3C]/10 hover:text-white transition-colors duration-300"
                 >
                   <span>Company Profile</span>
@@ -430,7 +430,7 @@ export function LaptopAboutPage() {
                     <ArrowUpRight className="absolute inset-0 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
                     <ArrowUpRight className="absolute inset-0 transition-transform duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0" />
                   </div>
-                </Button> */}
+                </Button>
               </div>
 
             </div>
