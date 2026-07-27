@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { montserrat } from "@/lib/fonts";
 import "./globals.css";
 import { QuickActions } from "@/components/QuickActions";
@@ -143,6 +144,19 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* Google Analytics — afterInteractive defers until the page is interactive */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WSCPWVKP8H"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WSCPWVKP8H');
+          `}
+        </Script>
         {/* Cloudflare Turnstile — loaded async so it doesn't block rendering */}
         <script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
