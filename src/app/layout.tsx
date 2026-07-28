@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import { Suspense } from "react";
 import { montserrat } from "@/lib/fonts";
 import "./globals.css";
 import { QuickActions } from "@/components/QuickActions";
 import { Preloader } from "@/components/Preloader";
 import { PageTransitionProvider } from "@/components/PageTransition";
 import { CurtainProvider } from "@/components/curtain/CurtainContext";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   // Production domain — update this when going live on a different domain
@@ -144,19 +145,12 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Google Analytics — afterInteractive defers until the page is interactive */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WSCPWVKP8H"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WSCPWVKP8H');
-          `}
-        </Script>
+        {/* Google Analytics — ID read from NEXT_PUBLIC_GA_MEASUREMENT_ID.
+             Wrapped in Suspense because GoogleAnalytics uses useSearchParams()
+             which requires a Suspense boundary in the App Router. */}
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         {/* Cloudflare Turnstile — loaded async so it doesn't block rendering */}
         <script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
