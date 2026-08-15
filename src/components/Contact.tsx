@@ -250,6 +250,15 @@ export function Contact() {
       }
 
       setStatus("success");
+
+      // Fire GA4 generate_lead event on confirmed success
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", {
+          form_location: "contact",
+          region: region.toLowerCase(),
+        });
+      }
+
       resetForm();
 
       // Reset status after 6 seconds

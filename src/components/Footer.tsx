@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface FooterProps {
@@ -32,10 +33,11 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
           {/* Brand & Socials */}
           <div className="lg:col-span-4 flex flex-col">
             <div className="-mb-8 overflow-visible">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/Wolgan-logo.png"
                 alt="Wolgan Logo"
+                width={320}
+                height={130}
                 style={{ height: '130px', width: 'auto', display: 'block', transform: 'translateX(-53px) translateY(-25px)' }}
               />
             </div>

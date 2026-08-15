@@ -5,6 +5,8 @@ import { Typography } from "@/components/ui/Typography";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
+import { RelatedServices } from "@/components/RelatedServices";
 import { MobileWaterTreatmentPage } from "./mobile/MobileWaterTreatmentPage";
 import { Footer } from "@/components/Footer";
 import { gsap } from "@/lib/gsap";
@@ -28,7 +30,7 @@ const solutions = [
   "Cooling Tower Sweeper System",
 ];
 
-function DesktopWaterTreatmentPage() {
+function DesktopWaterTreatmentPage({ additionalContent }: { additionalContent?: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -125,6 +127,8 @@ function DesktopWaterTreatmentPage() {
             </div>
           </div>
         </section>
+
+        {additionalContent}
         
         <Footer waveColor="#0A1F3C" waveStroke="rgba(255,255,255,0.05)" />
       </main>
@@ -133,10 +137,56 @@ function DesktopWaterTreatmentPage() {
 }
 
 export function WaterTreatmentPage() {
+  const additionalContent = (
+    <section className="relative py-16 px-6 z-10 border-t border-white/10 bg-[#0A1F3C]/50 backdrop-blur-md">
+      <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          {/* FAQ hidden temporarily — uncomment to restore
+          <div className="lg:col-span-2">
+            <ServiceFAQ
+              title="Water Treatment — Frequently Asked Questions"
+              items={[
+                {
+                  question: "What is reverse osmosis (RO) and how does it work?",
+                  answer:
+                    "Reverse osmosis (RO) is a water purification process that uses a semi-permeable membrane to remove dissolved salts, bacteria, and other contaminants. Water is forced under pressure through the membrane, leaving impurities behind. Wolgan designs and installs RO polishing units for industrial and commercial applications across Qatar, UAE, and India.",
+                },
+                {
+                  question: "How much does a water treatment plant cost?",
+                  answer:
+                    "The cost of a water treatment plant depends on capacity, treatment type, and site conditions. A basic RO system may start from AED 50,000, while full sewage treatment plants (STP) or effluent treatment plants (ETP) for large facilities can range significantly higher. Contact Wolgan for a customised quotation.",
+                },
+                {
+                  question: "What is included in a water treatment AMC (Annual Maintenance Contract)?",
+                  answer:
+                    "A water treatment AMC from Wolgan includes scheduled inspections, chemical dosing adjustments, filter media replacement, equipment servicing, water quality testing, and emergency callout support. AMC plans are tailored for cooling towers, RO plants, STPs, chilled water systems, and boiler systems.",
+                },
+                {
+                  question: "What is a sewage treatment plant (STP) and how does it work?",
+                  answer:
+                    "A sewage treatment plant (STP) processes wastewater from buildings to remove solids, organic matter, and pathogens before discharge or reuse. The treatment involves primary screening, biological treatment (aeration), secondary clarification, and disinfection (chlorination or UV). Wolgan designs, installs, and operates STPs for hotels, hospitals, and industrial sites.",
+                },
+                {
+                  question: "What is grey water treatment and can grey water be reused?",
+                  answer:
+                    "Grey water is wastewater from sinks, showers, and laundry — excluding toilet waste. After treatment through filtration and disinfection, grey water can be safely reused for irrigation, toilet flushing, and cooling tower make-up. Wolgan installs grey water recycling systems to reduce freshwater consumption and meet sustainability targets.",
+                },
+              ]}
+            />
+          </div>
+          */}
+          <div className="lg:col-span-3">
+            <RelatedServices currentService="water" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
   return (
     <ResponsiveWrapper
-      desktop={<DesktopWaterTreatmentPage />}
-      mobile={<MobileWaterTreatmentPage />}
+      desktop={<DesktopWaterTreatmentPage additionalContent={additionalContent} />}
+      mobile={<MobileWaterTreatmentPage additionalContent={additionalContent} />}
     />
   );
 }

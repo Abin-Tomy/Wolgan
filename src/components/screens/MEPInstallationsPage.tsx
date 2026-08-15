@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
+import { RelatedServices } from "@/components/RelatedServices";
 import { MobileMEPInstallationsPage } from "./mobile/MobileMEPInstallationsPage";
 import { Footer } from "@/components/Footer";
 import { gsap } from "@/lib/gsap";
@@ -43,7 +45,7 @@ const serviceCategories = [
   },
 ];
 
-function DesktopMEPInstallationsPage() {
+function DesktopMEPInstallationsPage({ additionalContent }: { additionalContent?: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -170,6 +172,8 @@ function DesktopMEPInstallationsPage() {
           </div>
         </section>
 
+        {additionalContent}
+        
         <Footer waveColor="#0A1F3C" waveStroke="rgba(255,255,255,0.05)" />
       </main>
     </SmoothScroll>
@@ -177,10 +181,51 @@ function DesktopMEPInstallationsPage() {
 }
 
 export function MEPInstallationsPage() {
+  const additionalContent = (
+    <section className="relative py-16 px-6 z-10 border-t border-white/10 bg-[#0A1F3C]/50 backdrop-blur-md">
+      <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          {/* FAQ hidden temporarily — uncomment to restore
+          <div className="lg:col-span-2">
+            <ServiceFAQ
+              title="MEP Installations — Frequently Asked Questions"
+              items={[
+                {
+                  question: "What does MEP installation include?",
+                  answer:
+                    "MEP installation covers mechanical, electrical, and plumbing systems for buildings and infrastructure. Wolgan's MEP scope includes chilled water system installation, HVAC systems, plumbing (hot and cold water, drainage, sanitary), energy transfer stations (ETS), district cooling connections, firefighting systems, and process piping. We serve commercial, hospitality, healthcare, and industrial projects across Qatar and UAE.",
+                },
+                {
+                  question: "What is chilled water flushing and why is it necessary?",
+                  answer:
+                    "Chilled water flushing is the process of circulating clean water through a new or refurbished pipework system to remove debris, welding residue, and mill scale before the system goes live. It prevents blockages, valve damage, and corrosion. Wolgan performs chilled water flushing, chemical flushing, and passivation as part of MEP commissioning services.",
+                },
+                {
+                  question: "What is passivation in MEP piping systems?",
+                  answer:
+                    "Passivation is a chemical treatment applied to metal pipework after flushing to form a protective oxide layer on the internal surface. This layer inhibits corrosion and extends the life of chilled water and heating systems. Wolgan carries out passivation as a standard step in MEP commissioning and new system handover.",
+                },
+                {
+                  question: "What is a district cooling plant and how is it installed?",
+                  answer:
+                    "A district cooling plant produces and distributes chilled water from a central plant to multiple buildings through insulated underground pipes. Installation involves the chilled water network, pumping stations, energy transfer stations (ETS), and mechanical plant room equipment. Wolgan has extensive experience in district cooling infrastructure installation across Qatar.",
+                },
+              ]}
+            />
+          </div>
+          */}
+          <div className="lg:col-span-3">
+            <RelatedServices currentService="mep" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
   return (
     <ResponsiveWrapper
-      desktop={<DesktopMEPInstallationsPage />}
-      mobile={<MobileMEPInstallationsPage />}
+      desktop={<DesktopMEPInstallationsPage additionalContent={additionalContent} />}
+      mobile={<MobileMEPInstallationsPage additionalContent={additionalContent} />}
     />
   );
 }

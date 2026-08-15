@@ -12,26 +12,36 @@ export const metadata: Metadata = {
   // Production domain — update this when going live on a different domain
   metadataBase: new URL("https://www.wolgan.co"),
 
-  title: "Wolgan | Pure Performance Delivered",
+  title: "Water Treatment Company in Qatar, UAE & India | MEP & Chemical Supply | Wolgan",
 
   description:
-    "Wolgan delivers smart, reliable, and performance-driven water treatment systems across Qatar, UAE, and India.",
+    "Wolgan delivers industrial water treatment, MEP installations & chemical supplies across Qatar, UAE & India. RO, STP, AMC experts. Contact us today.",
 
   keywords: [
+    "water treatment company near me",
+    "industrial water treatment company",
+    "best water treatment plant supplier",
+    "water treatment chemical suppliers",
+    "commodity chemical suppliers",
+    "water treatment consultants",
+    "water treatment AMC providers",
+    "STP/ETP contractor near me",
+    "RO plant installation near me",
+    "water softener installation near me",
+    "odour control chemical suppliers",
     "Water Treatment Qatar",
-    "MEP Installation",
-    "Chemical Supply",
-    "Industrial Water Solutions",
     "Water Treatment UAE",
     "Water Treatment India",
+    "MEP Installation Qatar",
+    "Chemical Supply UAE",
     "Wolgan",
   ],
 
   openGraph: {
-    title: "Wolgan | Pure Performance Delivered",
+    title: "Water Treatment Company in Qatar, UAE & India | MEP & Chemical Supply | Wolgan",
 
     description:
-      "Delivering smart, reliable, and performance-driven water treatment systems across Qatar, UAE, and India.",
+      "Wolgan delivers industrial water treatment, MEP installations & chemical supplies across Qatar, UAE & India. RO, STP, AMC experts.",
 
     url: "https://www.wolgan.co",
 
@@ -54,10 +64,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Wolgan | Pure Performance Delivered",
+    title: "Water Treatment Company in Qatar, UAE & India | MEP & Chemical Supply | Wolgan",
 
     description:
-      "Smart, reliable water treatment systems across Qatar, UAE, and India.",
+      "Industrial water treatment, MEP installations & chemical supplies across Qatar, UAE & India. RO, STP, AMC experts.",
 
     images: ["/images/og-image.jpg"],
   },

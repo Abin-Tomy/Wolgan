@@ -5,6 +5,8 @@ import { Typography } from "@/components/ui/Typography";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
+import { RelatedServices } from "@/components/RelatedServices";
 import { MobileChemicalSuppliesPage } from "./mobile/MobileChemicalSuppliesPage";
 import { Footer } from "@/components/Footer";
 import { gsap } from "@/lib/gsap";
@@ -27,7 +29,7 @@ const commodityChemicals = [
   "Soda Ash Light",
 ];
 
-function DesktopChemicalSuppliesPage() {
+function DesktopChemicalSuppliesPage({ additionalContent }: { additionalContent?: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -142,6 +144,8 @@ function DesktopChemicalSuppliesPage() {
           </div>
         </section>
         
+        {additionalContent}
+        
         <Footer waveColor="#0A1F3C" waveStroke="rgba(255,255,255,0.05)" />
       </main>
     </SmoothScroll>
@@ -149,10 +153,56 @@ function DesktopChemicalSuppliesPage() {
 }
 
 export function ChemicalSuppliesPage() {
+  const additionalContent = (
+    <section className="relative py-16 px-6 z-10 border-t border-white/10 bg-[#0A1F3C]/50 backdrop-blur-md">
+      <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          {/* FAQ hidden temporarily — uncomment to restore
+          <div className="lg:col-span-2">
+            <ServiceFAQ
+              title="Chemical Supplies — Frequently Asked Questions"
+              items={[
+                {
+                  question: "What water treatment chemicals does Wolgan supply?",
+                  answer:
+                    "Wolgan supplies a comprehensive range of water treatment chemicals including corrosion inhibitors, scale control agents (antiscalants), microbiological growth control (biocides), flocculants, coagulants, and pH adjusters. Commodity chemicals supplied include caustic soda solution, sodium hypochlorite 12%, calcium hypochlorite 65%, sulphuric acid 98%, sodium meta bi-sulphate, and soda ash light.",
+                },
+                {
+                  question: "What is antiscalant used for in water treatment?",
+                  answer:
+                    "Antiscalant is a chemical added to water systems — especially RO plants, cooling towers, and boilers — to prevent the formation of mineral scale on membranes, heat exchangers, and pipework. It works by sequestering calcium, magnesium, and other scale-forming ions. Wolgan supplies and doses antiscalant as part of water treatment chemical programmes.",
+                },
+                {
+                  question: "What causes legionella in water systems and how is it controlled?",
+                  answer:
+                    "Legionella bacteria thrive in warm stagnant water (20–45°C) in cooling towers, hot water systems, and spa pools. Control methods include maintaining water temperatures outside the growth range, regular disinfection using biocides (chlorine, bromine, or non-oxidising biocides), and periodic hyperchlorination. Wolgan supplies legionella control chemicals and provides water treatment programmes compliant with regional health guidelines.",
+                },
+                {
+                  question: "What is the difference between a corrosion inhibitor and a biocide?",
+                  answer:
+                    "A corrosion inhibitor is a chemical that forms a protective layer on metal surfaces to prevent oxidation and corrosion in water systems. A biocide is a chemical that kills or controls microorganisms such as bacteria, algae, and fungi. In cooling water and chilled water treatment programmes, both are typically used together to control MIC (microbiologically influenced corrosion), scaling, and fouling.",
+                },
+                {
+                  question: "What is odour control in water and wastewater treatment?",
+                  answer:
+                    "Odour in water and wastewater systems is typically caused by hydrogen sulphide (H2S) produced by sulphate reducing bacteria (SRB) in anaerobic conditions. Odour control chemicals — such as iron salts, oxidants, or bioaugmentation products — are dosed to neutralise odorous compounds. Wolgan supplies odour control chemicals and provides ongoing dosing programmes for STPs, pump stations, and drainage networks.",
+                },
+              ]}
+            />
+          </div>
+          */}
+          <div className="lg:col-span-3">
+            <RelatedServices currentService="chemical" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
   return (
     <ResponsiveWrapper
-      desktop={<DesktopChemicalSuppliesPage />}
-      mobile={<MobileChemicalSuppliesPage />}
+      desktop={<DesktopChemicalSuppliesPage additionalContent={additionalContent} />}
+      mobile={<MobileChemicalSuppliesPage additionalContent={additionalContent} />}
     />
   );
 }

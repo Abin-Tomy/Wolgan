@@ -1,6 +1,7 @@
 "use client";
 
 import { Phone, Mail } from "lucide-react";
+import Image from "next/image";
 
 interface MobileFooterProps {
   waveColor?: string;
@@ -44,10 +45,11 @@ export function MobileFooter({ waveColor = "#f8f9fb", waveStroke }: MobileFooter
           {/* Brand */}
           <div className="text-center flex flex-col items-center">
             <div className="mb-2 flex justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/Wolgan-logo.png"
                 alt="Wolgan Logo"
+                width={197}
+                height={80}
                 style={{ height: '80px', width: 'auto', display: 'block' }}
               />
             </div>

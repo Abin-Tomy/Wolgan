@@ -4,12 +4,41 @@ import { ChemicalSuppliesPage } from "@/components/screens/ChemicalSuppliesPage"
 export const metadata: Metadata = {
   title: "Chemical Supplies | Water Treatment Chemicals | Wolgan",
   description:
-    "Wolgan supplies specialized water treatment chemicals including corrosion inhibitors, scale control, microbiological growth control, and commodity chemicals across Qatar, UAE, and India.",
+    "Wolgan supplies water treatment chemicals — corrosion inhibitors, scale control, biocides & commodity chemicals across Qatar, UAE & India.",
+  keywords: [
+    "water treatment chemical suppliers",
+    "commodity chemical suppliers",
+    "odour control chemical suppliers",
+    "antiscalant supplier Qatar",
+    "corrosion inhibitor supplier",
+    "scale control chemicals",
+    "biocide water treatment",
+    "sodium hypochlorite supplier",
+    "calcium hypochlorite supplier",
+    "chlorine treatment chemicals",
+    "disinfection chemicals",
+    "legionella control chemicals",
+    "sulphate reducing bacteria treatment",
+    "biofilm control",
+    "MIC treatment chemicals",
+    "water treatment chemicals UAE",
+    "water treatment chemicals Qatar",
+    "odour control",
+    "coagulant flocculant supplier",
+  ],
   openGraph: {
     title: "Chemical Supplies | Wolgan",
     description:
       "Specialized water treatment chemicals and commodity chemical supply — corrosion inhibitors, scale control, biocides, and more.",
     url: "https://www.wolgan.co/services/chemical-supplies",
+    images: [
+      {
+        url: "/images/chemical-supplies-services.webp",
+        width: 1200,
+        height: 630,
+        alt: "Wolgan Chemical Supplies — Water Treatment & Commodity Chemicals",
+      },
+    ],
   },
   alternates: {
     canonical: "/services/chemical-supplies",
@@ -99,6 +128,63 @@ const chemicalSchema = {
   },
 };
 
+const chemicalBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wolgan.co" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://www.wolgan.co/services/chemical-supplies" },
+    { "@type": "ListItem", position: 3, name: "Chemical Supplies", item: "https://www.wolgan.co/services/chemical-supplies" },
+  ],
+};
+
+const chemicalFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What water treatment chemicals does Wolgan supply?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Wolgan supplies a comprehensive range of water treatment chemicals including corrosion inhibitors, scale control agents (antiscalants), microbiological growth control (biocides), flocculants, coagulants, and pH adjusters. Commodity chemicals supplied include caustic soda solution, sodium hypochlorite 12%, calcium hypochlorite 65%, sulphuric acid 98%, sodium meta bi-sulphate, and soda ash light.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is antiscalant used for in water treatment?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Antiscalant is a chemical added to water systems — especially RO plants, cooling towers, and boilers — to prevent the formation of mineral scale on membranes, heat exchangers, and pipework. It works by sequestering calcium, magnesium, and other scale-forming ions. Wolgan supplies and doses antiscalant as part of water treatment chemical programmes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What causes legionella in water systems and how is it controlled?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Legionella bacteria thrive in warm stagnant water (20–45°C) in cooling towers, hot water systems, and spa pools. Control methods include maintaining water temperatures outside the growth range, regular disinfection using biocides (chlorine, bromine, or non-oxidising biocides), and periodic hyperchlorination. Wolgan supplies legionella control chemicals and provides water treatment programmes compliant with regional health guidelines.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the difference between a corrosion inhibitor and a biocide?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A corrosion inhibitor is a chemical that forms a protective layer on metal surfaces to prevent oxidation and corrosion in water systems. A biocide is a chemical that kills or controls microorganisms such as bacteria, algae, and fungi. In cooling water and chilled water treatment programmes, both are typically used together to control MIC (microbiologically influenced corrosion), scaling, and fouling.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is odour control in water and wastewater treatment?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Odour in water and wastewater systems is typically caused by hydrogen sulphide (H2S) produced by sulphate reducing bacteria (SRB) in anaerobic conditions. Odour control chemicals — such as iron salts, oxidants, or bioaugmentation products — are dosed to neutralise odorous compounds. Wolgan supplies odour control chemicals and provides ongoing dosing programmes for STPs, pump stations, and drainage networks.",
+      },
+    },
+  ],
+};
+
 export default function Page() {
   return (
     <>
@@ -106,8 +192,15 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(chemicalSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(chemicalBreadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(chemicalFAQ) }}
+      />
       <ChemicalSuppliesPage />
     </>
   );
 }
-

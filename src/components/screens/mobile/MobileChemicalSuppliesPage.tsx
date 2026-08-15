@@ -23,7 +23,7 @@ const commodityChemicals = [
   "Soda Ash Light",
 ];
 
-export function MobileChemicalSuppliesPage() {
+export function MobileChemicalSuppliesPage({ additionalContent }: { additionalContent?: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

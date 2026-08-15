@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 
 /* ─────────────────────────────────────────────────────────────
@@ -108,18 +109,20 @@ export function CurtainProvider({ children }: { children: ReactNode }) {
           willChange: "transform",
         }}
       >
-        {/* Logo is centered inside the panel — slides in/out with it */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/images/Wolgan-logo.png"
           alt="Wolgan"
-          aria-hidden="true"
+          aria-hidden={true}
+          width={260}
+          height={106}
+          sizes="260px"
           style={{
             position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: "clamp(160px, 20vw, 260px)",
+            height: "auto",
             pointerEvents: "none",
             userSelect: "none",
           }}

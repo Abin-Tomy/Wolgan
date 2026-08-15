@@ -24,7 +24,7 @@ const solutions = [
   "Cooling Tower Sweeper System",
 ];
 
-export function MobileWaterTreatmentPage() {
+export function MobileWaterTreatmentPage({ additionalContent }: { additionalContent?: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

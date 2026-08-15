@@ -106,8 +106,9 @@ export function LaptopHero() {
             src={wolganLogo}
             alt="Wolgan Logo"
             width={1600}
-            height={400}
+            height={650}
             className="laptop-hero-wolgan w-[100%] max-w-[1600px] h-auto select-none object-contain"
+            sizes="(max-width: 1600px) 100vw, 1600px"
             fetchPriority="high"
             style={{
               mixBlendMode: "overlay",

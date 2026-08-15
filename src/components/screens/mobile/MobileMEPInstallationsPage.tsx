@@ -41,7 +41,7 @@ const serviceCategories = [
   },
 ];
 
-export function MobileMEPInstallationsPage() {
+export function MobileMEPInstallationsPage({ additionalContent }: { additionalContent?: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

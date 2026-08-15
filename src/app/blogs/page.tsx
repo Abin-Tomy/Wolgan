@@ -16,6 +16,20 @@ export const metadata: Metadata = {
   },
 };
 
+const blogsBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wolgan.co" },
+    { "@type": "ListItem", position: 2, name: "Insights & Updates", item: "https://www.wolgan.co/blogs" },
+  ],
+};
+
 export default function Page() {
-  return <BlogsPage />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogsBreadcrumb) }} />
+      <BlogsPage />
+    </>
+  );
 }

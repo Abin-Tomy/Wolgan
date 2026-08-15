@@ -259,7 +259,7 @@ export function Header() {
               src={wolganLogo}
               alt="Wolgan Logo"
               className="h-16 w-auto object-contain"
-              width={240}
+              width={197}
               height={80}
               priority
             />
@@ -333,7 +333,7 @@ export function Header() {
               src={wolganLogo}
               alt="Wolgan Logo"
               className="h-12 w-auto object-contain"
-              width={180}
+              width={148}
               height={60}
             />
             <button 

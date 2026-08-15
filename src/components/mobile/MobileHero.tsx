@@ -61,8 +61,9 @@ export function MobileHero() {
             src={wolganLogo}
             alt="Wolgan Logo"
             width={800}
-            height={200}
+            height={325}
             className="mobile-hero-wolgan w-full max-w-[400px] h-auto select-none object-contain"
+            sizes="400px"
             fetchPriority="high"
             style={{
               filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.6))",

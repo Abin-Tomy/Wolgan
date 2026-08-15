@@ -116,7 +116,7 @@ export function MobileHeader() {
               alt="Wolgan Logo"
               className="h-10 w-auto object-contain"
               width={160}
-              height={50}
+              height={65}
               priority
             />
           </TransitionLink>
@@ -152,7 +152,7 @@ export function MobileHeader() {
               alt="Wolgan Logo"
               className="h-10 w-auto object-contain"
               width={160}
-              height={50}
+              height={65}
             />
             <button 
               className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white hover:text-[#0A1F3C] transition-all duration-300"

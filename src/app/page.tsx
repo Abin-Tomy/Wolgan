@@ -10,9 +10,19 @@ import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
 import { MobileHome } from "@/components/mobile/MobileHome";
 import { LaptopHome } from "@/components/screens/laptop/LaptopHome";
 
+const homeBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wolgan.co" },
+  ],
+};
+
 export default function Home() {
   return (
-    <SmoothScroll>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeBreadcrumb) }} />
+      <SmoothScroll>
       <ResponsiveWrapper
         desktop={
           <main>
@@ -36,5 +46,6 @@ export default function Home() {
         mobile={<MobileHome />}
       />
     </SmoothScroll>
+    </>
   );
-}
+}
