@@ -10,7 +10,7 @@ import { RelatedServices } from "@/components/RelatedServices";
 import { MobileChemicalSuppliesPage } from "./mobile/MobileChemicalSuppliesPage";
 import { Footer } from "@/components/Footer";
 import { gsap } from "@/lib/gsap";
-import { Droplet, FlaskConical } from "lucide-react";
+import { Droplet, FlaskConical, ArrowRight } from "lucide-react";
 
 const waterTreatmentChemicals = [
   "Corrosion Inhibitors",
@@ -143,7 +143,34 @@ function DesktopChemicalSuppliesPage({ additionalContent }: { additionalContent?
             </div>
           </div>
         </section>
-        
+
+        {/* CTA */}
+        <section className="relative px-6 pb-20 z-10">
+          <div className="container mx-auto">
+            <div className="max-w-5xl mx-auto">
+              <div className="reveal-up relative rounded-[3rem] overflow-hidden border border-white/10">
+                <div className="absolute inset-0 bg-[#0A1F3C]" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#66B2E8]/10 to-transparent" />
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#66B2E8]/10 rounded-full blur-[100px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
+                <div className="relative z-10 p-12 lg:p-20 text-center flex flex-col items-center">
+                  <h2 className="text-3xl lg:text-5xl font-light text-white mb-6">Ready to start a project?</h2>
+                  <p className="text-xl text-white/70 font-light mb-10 max-w-2xl leading-relaxed">
+                    Our team of experts is ready to help you with your chemical supply and treatment programme needs. Contact us today for a consultation.
+                  </p>
+                  <a
+                    href="/contact"
+                    className="group inline-flex items-center gap-4 bg-white text-[#0A1F3C] px-10 py-5 rounded-full font-medium text-lg hover:bg-[#f0f8ff] transition-colors duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                  >
+                    Get in Touch
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {additionalContent}
         
         <Footer waveColor="#0A1F3C" waveStroke="rgba(255,255,255,0.05)" />
@@ -157,7 +184,6 @@ export function ChemicalSuppliesPage() {
     <section className="relative py-16 px-6 z-10 border-t border-white/10 bg-[#0A1F3C]/50 backdrop-blur-md">
       <div className="container mx-auto">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-          {/* FAQ hidden temporarily — uncomment to restore
           <div className="lg:col-span-2">
             <ServiceFAQ
               title="Chemical Supplies — Frequently Asked Questions"
@@ -190,8 +216,7 @@ export function ChemicalSuppliesPage() {
               ]}
             />
           </div>
-          */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-1">
             <RelatedServices currentService="chemical" />
           </div>
         </div>

@@ -140,6 +140,8 @@ export function MobileMEPInstallationsPage({ additionalContent }: { additionalCo
         </div>
       </section>
 
+      {additionalContent}
+
       <div className="relative z-20">
         <MobileFooter waveColor="#0A1F3C" waveStroke="rgba(255,255,255,0.05)" />
       </div>

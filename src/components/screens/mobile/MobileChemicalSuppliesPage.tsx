@@ -4,7 +4,8 @@ import Image from "next/image";
 import { MobileHeader } from "@/components/mobile/MobileHeader";
 import { MobileFooter } from "@/components/mobile/MobileFooter";
 import { gsap } from "@/lib/gsap";
-import { Droplet, FlaskConical } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Droplet, FlaskConical, ArrowRight } from "lucide-react";
 
 const waterTreatmentChemicals = [
   "Corrosion Inhibitors",
@@ -110,6 +111,26 @@ export function MobileChemicalSuppliesPage({ additionalContent }: { additionalCo
           </div>
         </div>
       </section>
+
+      {/* CTA */}
+      <div className="mobile-fade-up relative rounded-[2.5rem] overflow-hidden border border-white/10 mx-6 mb-10">
+        <div className="absolute inset-0 bg-[#0A1F3C]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#66B2E8]/10 to-transparent" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#66B2E8]/10 rounded-full blur-[80px] transform translate-x-1/2 -translate-y-1/2" />
+
+        <div className="relative z-10 p-10 text-center text-white flex flex-col items-center">
+          <h2 className="text-2xl font-light mb-4">Ready to start a project?</h2>
+          <p className="text-sm opacity-70 mb-8 leading-relaxed max-w-[280px]">
+            Our team of experts is ready to help you with your chemical supply and treatment programme needs. Contact us today for a consultation.
+          </p>
+          <Button variant="outline" href="/contact" className="w-full bg-white text-[#0A1F3C] hover:bg-[#f0f8ff] border-none justify-center h-14 rounded-full font-bold shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+            Get in Touch
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </div>
+      </div>
+
+      {additionalContent}
 
       <div className="relative z-20">
         <MobileFooter waveColor="#0A1F3C" waveStroke="rgba(255,255,255,0.05)" />

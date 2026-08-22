@@ -1,0 +1,90 @@
+# Wolgan
+
+> Wolgan is a water treatment, MEP installation, and chemical supply company serving Qatar, UAE, and India. The company provides end-to-end water and wastewater treatment solutions for commercial, industrial, residential, hospitality, healthcare, and government sectors.
+
+Wolgan was established approximately six years ago, but its management and technical teams bring over 20–30 years of industry experience. The company is approved by major authorities, infrastructure organisations, and leading facilities across Qatar.
+
+## Services
+
+### Water Treatment Solutions
+Full-spectrum water and wastewater treatment — design, supply, installation, commissioning, operation and maintenance (O&M), and Annual Maintenance Contracts (AMC).
+
+Systems provided include:
+- Reverse Osmosis (RO) — seawater and brackish water (SWRO, BWRO)
+- Sewage Treatment Plants (STP)
+- Effluent Treatment Plants (ETP)
+- Grey water treatment and recycling
+- Ultra-Filtration systems
+- Demineralisation plants
+- Cooling water, chilled water, and boiler water treatment
+- Deoiling and oily water treatment packages
+- Containerised and modular water treatment packages
+- Chemical dosing systems (automatic and manual)
+- Side stream filtration units
+- Cooling tower sweeper systems
+
+URL: https://www.wolgan.co/services/water-treatment
+
+### MEP Installations
+High-precision Mechanical, Electrical, and Plumbing (MEP) installation services for infrastructure, industrial, commercial, and utility projects.
+
+Capabilities include:
+- Chilled water system installation, flushing, and commissioning
+- HVAC installation and commissioning
+- Plumbing and pipework installation
+- District cooling plant and energy transfer station installation
+- Desalination plant installation
+- Pumping station installation
+- Chemical flushing and passivation
+- Copper silver ionisation plant installation
+- Operation and maintenance of MEP infrastructure
+
+URL: https://www.wolgan.co/services/mep-installations
+
+### Chemical Supplies
+Supply of water treatment chemicals, specialty chemicals, and commodity chemicals for industrial and commercial applications.
+
+Products include:
+- Corrosion inhibitors
+- Scale control and antiscalant chemicals
+- Biocides and microbiocides
+- Sodium hypochlorite and calcium hypochlorite
+- Coagulants and flocculants
+- pH adjustment chemicals
+- Odour control chemicals
+- Sulphate-reducing bacteria (SRB) treatment chemicals
+- Legionella control and disinfection chemicals
+- Biofilm control chemicals
+- MIC (microbiologically influenced corrosion) treatment chemicals
+- Commodity chemicals
+
+URL: https://www.wolgan.co/services/chemical-supplies
+
+## Geographic Coverage
+
+- **Qatar** — Primary market. Approved vendor for major Qatari infrastructure organisations and authorities.
+- **UAE** — Active operations. Dubai and wider UAE.
+- **India** — Operations managed through the India office.
+- Other Middle Eastern markets, subject to project requirements.
+
+## Contact
+
+- **Qatar**: info@wolgan.qa | WhatsApp: +974 7125 1155
+- **UAE**: info@wolgan.ae | WhatsApp: +971 56 505 2820
+- **Website**: https://www.wolgan.co
+
+## Key Pages
+
+- Homepage: https://www.wolgan.co
+- About: https://www.wolgan.co/about
+- Water Treatment: https://www.wolgan.co/services/water-treatment
+- MEP Installations: https://www.wolgan.co/services/mep-installations
+- Chemical Supplies: https://www.wolgan.co/services/chemical-supplies
+- Clients: https://www.wolgan.co/clients
+- Blog: https://www.wolgan.co/blogs
+- Contact: https://www.wolgan.co/contact
+
+## Optional
+
+- Sitemap: https://www.wolgan.co/sitemap.xml
+- Robots: https://www.wolgan.co/robots.txt

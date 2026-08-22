@@ -5,6 +5,7 @@ import { LaptopHero } from "./LaptopHero";
 import { CinematicExperience } from "@/components/animations/CinematicExperience";
 import { WolganVectorBridge } from "@/components/animations/WolganVectorBridge";
 import { ClientsPartners } from "@/components/animations/ClientsPartners";
+import { HomeFAQ } from "@/components/HomeFAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -19,6 +20,8 @@ export function LaptopHome() {
       <WolganVectorBridge />
       {/* Clients and Partners */}
       <ClientsPartners />
+      {/* FAQ Section */}
+      <HomeFAQ />
       {/* Contact Section */}
       <Contact />
       {/* Footer */}

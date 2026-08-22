@@ -5,7 +5,7 @@ import { Plus, Minus } from "lucide-react";
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: string | string[];
 }
 
 interface ServiceFAQProps {
@@ -18,15 +18,17 @@ export function ServiceFAQ({ title = "Frequently Asked Questions", items }: Serv
 
   return (
     <div className="flex flex-col">
-      <div className="flex items-center gap-4 mb-8">
-        <h2 className="text-3xl lg:text-4xl font-light text-white leading-tight">
-          {title.split("—").map((part, i, arr) => (
-            <span key={i}>
-              {i === 0 ? part : <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc]"> — {part.trim()}</span>}
-            </span>
-          ))}
-        </h2>
-      </div>
+      {title && (
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="text-3xl lg:text-4xl font-light text-white leading-tight">
+            {title.split("—").map((part, i, arr) => (
+              <span key={i}>
+                {i === 0 ? part : <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc]"> — {part.trim()}</span>}
+              </span>
+            ))}
+          </h2>
+        </div>
+      )}
 
       <div className="flex flex-col gap-4">
         {items.map((item, i) => {
@@ -54,11 +56,16 @@ export function ServiceFAQ({ title = "Frequently Asked Questions", items }: Serv
               </button>
 
               <div 
-                className={`transition-all duration-300 ease-in-out ${isOpen ? "max-h-[500px] opacity-100 pb-6 px-6" : "max-h-0 opacity-0 overflow-hidden px-6"}`}
+                className={`transition-all duration-300 ease-in-out ${isOpen ? "max-h-[600px] opacity-100 pb-6 px-6" : "max-h-0 opacity-0 overflow-hidden px-6"}`}
               >
-                <p className="text-white/70 text-base leading-relaxed">
-                  {item.answer}
-                </p>
+                {Array.isArray(item.answer)
+                  ? item.answer.map((para, pi) => (
+                      <p key={pi} className={`text-white/70 text-base leading-relaxed${pi > 0 ? " mt-3" : ""}`}>
+                        {para}
+                      </p>
+                    ))
+                  : <p className="text-white/70 text-base leading-relaxed">{item.answer}</p>
+                }
               </div>
             </div>
           );

@@ -6,6 +6,7 @@ import { MobileAbout } from "./MobileAbout";
 import { MobileCinematic } from "./MobileCinematic";
 import { MobileClientsPartners } from "./MobileClientsPartners";
 import { MobileWhyChooseUs } from "./MobileWhyChooseUs";
+import { HomeFAQ } from "@/components/HomeFAQ";
 import { MobileContact } from "./MobileContact";
 import { MobileFooter } from "./MobileFooter";
 
@@ -18,6 +19,7 @@ export function MobileHome() {
       <MobileCinematic />
       <MobileWhyChooseUs />
       <MobileClientsPartners />
+      <HomeFAQ />
       <MobileContact />
       <div className="relative z-20 -mt-1">
         <MobileFooter waveColor="#020610" />

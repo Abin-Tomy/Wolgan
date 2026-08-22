@@ -41,7 +41,7 @@ export function RelatedServices({ currentService }: RelatedServicesProps) {
           <Link
             key={index}
             href={service.href}
-            className="group w-full p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#66B2E8]/50 hover:bg-white/10 transition-all duration-300 flex flex-col justify-between"
+            className="group w-full min-h-[220px] p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#66B2E8]/50 hover:bg-white/10 transition-all duration-300 flex flex-col justify-between"
           >
             <div>
               <h3 className="text-xl font-medium text-white mb-3 group-hover:text-[#66B2E8] transition-colors">{service.title}</h3>

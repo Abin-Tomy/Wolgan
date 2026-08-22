@@ -129,44 +129,6 @@ const mepBreadcrumb = {
   ],
 };
 
-const mepFAQ = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What does MEP installation include?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "MEP installation covers mechanical, electrical, and plumbing systems for buildings and infrastructure. Wolgan's MEP scope includes chilled water system installation, HVAC systems, plumbing (hot and cold water, drainage, sanitary), energy transfer stations (ETS), district cooling connections, firefighting systems, and process piping. We serve commercial, hospitality, healthcare, and industrial projects across Qatar and UAE.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is chilled water flushing and why is it necessary?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Chilled water flushing is the process of circulating clean water through a new or refurbished pipework system to remove debris, welding residue, and mill scale before the system goes live. It prevents blockages, valve damage, and corrosion. Wolgan performs chilled water flushing, chemical flushing, and passivation as part of MEP commissioning services.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is passivation in MEP piping systems?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Passivation is a chemical treatment applied to metal pipework after flushing to form a protective oxide layer on the internal surface. This layer inhibits corrosion and extends the life of chilled water and heating systems. Wolgan carries out passivation as a standard step in MEP commissioning and new system handover.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is a district cooling plant and how is it installed?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A district cooling plant produces and distributes chilled water from a central plant to multiple buildings through insulated underground pipes. Installation involves the chilled water network, pumping stations, energy transfer stations (ETS), and mechanical plant room equipment. Wolgan has extensive experience in district cooling infrastructure installation across Qatar.",
-      },
-    },
-  ],
-};
 
 export default function Page() {
   return (
@@ -178,10 +140,6 @@ export default function Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(mepBreadcrumb) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(mepFAQ) }}
       />
       <MEPInstallationsPage />
     </>
