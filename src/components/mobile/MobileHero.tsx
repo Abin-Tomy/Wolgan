@@ -93,7 +93,7 @@ export function MobileHero() {
           <div className="mt-8 flex flex-col w-full max-w-[280px] gap-4">
             <Button
               variant="heroServicesCta"
-              href="#services"
+              href="#mobile-services"
               className="w-full justify-center py-4 text-sm"
             >
               Our services

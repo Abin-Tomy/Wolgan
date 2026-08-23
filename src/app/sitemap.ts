@@ -9,51 +9,51 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: base,
-      lastModified: "2026-08-16",
+      lastModified: "2026-08-23",
       changeFrequency: "monthly",
       priority: 1.0,
     },
     {
       url: `${base}/about`,
-      lastModified: "2026-08-16",
+      lastModified: "2026-08-23",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/services/water-treatment`,
-      lastModified: "2026-08-16",
+      lastModified: "2026-08-23",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/services/mep-installations`,
-      lastModified: "2026-08-16",
+      lastModified: "2026-08-23",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/services/chemical-supplies`,
-      lastModified: "2026-08-16",
+      lastModified: "2026-08-23",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/clients`,
-      lastModified: "2026-08-16",
+      lastModified: "2026-08-23",
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${base}/blogs`,
-      lastModified: "2026-08-16",
+      lastModified: "2026-08-23",
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: `${base}/contact`,
-      lastModified: "2026-08-16",
+      lastModified: "2026-08-23",
       changeFrequency: "yearly",
-      priority: 0.6,
+      priority: 0.8,
     },
   ];
 }

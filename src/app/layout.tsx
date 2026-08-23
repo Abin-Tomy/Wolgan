@@ -47,7 +47,9 @@ export const metadata: Metadata = {
 
     siteName: "Wolgan",
 
-    locale: "en_US",
+    locale: "en_GB",
+
+    alternateLocale: ["ar_QA", "ar_AE"],
 
     type: "website",
 
