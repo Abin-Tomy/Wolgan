@@ -2,48 +2,20 @@ import type { Metadata } from "next";
 import { WaterTreatmentPage } from "@/components/screens/WaterTreatmentPage";
 
 export const metadata: Metadata = {
-  title: "Water Treatment Solutions | Wolgan Qatar & UAE",
+  title: "Water Treatment Company in UAE & Qatar | Wolgan",
   description:
-    "Wolgan provides water treatment solutions — RO polishing, STP, grey water systems & industrial water management across Qatar, UAE & India.",
-  keywords: [
-    "water treatment company near me",
-    "RO plant installation near me",
-    "STP/ETP contractor near me",
-    "industrial water treatment company",
-    "water treatment AMC providers",
-    "wastewater treatment",
-    "effluent treatment",
-    "reverse osmosis",
-    "sewage treatment plant",
-    "grey water treatment",
-    "multimedia filter",
-    "dosing system",
-    "manual dosing system",
-    "chlorination",
-    "disinfection",
-    "chlorine treatment",
-    "legionella control",
-    "scaling",
-    "biofilm",
-    "MIC microbiologically influenced corrosion",
-    "corrosion inhibitors",
-    "water analysis Qatar",
-    "operation and maintenance water treatment",
-    "water treatment Qatar",
-    "water treatment UAE",
-    "water treatment India",
-  ],
+    "Wolgan provides water treatment solutions across the UAE and Qatar, including RO plants, STP, ETP, wastewater treatment, filtration, chemical dosing, cooling and boiler water treatment, and O&M services.",
   openGraph: {
-    title: "Water Treatment Solutions | Wolgan",
+    title: "Water Treatment Company in UAE & Qatar | Wolgan",
     description:
-      "Comprehensive water treatment — RO polishing, sewage treatment plants, grey water systems, and industrial water management.",
+      "Water treatment solutions across the UAE and Qatar, including RO, STP, ETP, wastewater treatment, filtration, chemical dosing, and O&M services.",
     url: "https://www.wolgan.co/services/water-treatment",
     images: [
       {
         url: "/images/water-treatment-service.jpg",
         width: 1200,
         height: 630,
-        alt: "Wolgan Water Treatment Solutions — RO, STP & Industrial Systems",
+        alt: "Wolgan Water Treatment Solutions in UAE and Qatar",
       },
     ],
   },
