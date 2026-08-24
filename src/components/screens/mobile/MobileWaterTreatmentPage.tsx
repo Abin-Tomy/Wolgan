@@ -43,7 +43,7 @@ export function MobileWaterTreatmentPage({ additionalContent }: { additionalCont
 
       <section className="relative w-full min-h-[25vh] flex flex-col justify-end pb-6 px-6">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/water-treatment-service.jpg" alt="Water Treatment" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
+          <Image src="/images/water-treatment-service.jpg" alt="Water treatment solutions by Wolgan" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F3C] via-[#0A1F3C]/80 to-[#0A1F3C]/20" />
         </div>
 
@@ -83,18 +83,18 @@ export function MobileWaterTreatmentPage({ additionalContent }: { additionalCont
         </div>
 
         <div className="mobile-fade-up mb-8">
-          <h2 className="text-2xl font-light text-white mb-4">Our Comprehensive Range</h2>
+          <h2 className="text-2xl font-light text-white mb-4">Water Treatment Systems & Solutions</h2>
           <div className="w-12 h-0.5 bg-white" />
         </div>
 
-        <div className="flex flex-col gap-3 relative z-10">
+        <ul className="flex flex-col gap-3 relative z-10">
           {solutions.map((item, i) => (
-            <div key={i} className="mobile-fade-up flex items-start gap-4 p-5 rounded-xl bg-white/5 border border-white/10">
+            <li key={i} className="mobile-fade-up flex items-start gap-4 p-5 rounded-xl bg-white/5 border border-white/10">
               <CheckCircle2 className="w-5 h-5 text-white shrink-0 opacity-80" />
               <span className="text-white/90 text-sm font-light leading-relaxed">{item}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
         {/* CTA */}

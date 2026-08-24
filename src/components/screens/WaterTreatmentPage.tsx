@@ -65,7 +65,7 @@ function DesktopWaterTreatmentPage({ additionalContent }: { additionalContent?: 
         <section className="hero-section relative min-h-[20vh] flex items-end pb-10 pt-40 px-6">
           <div className="absolute inset-0 z-0 overflow-hidden">
             <div className="hero-bg absolute inset-0">
-              <Image src="/images/water-treatment-service.jpg" alt="Water Treatment Solutions" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
+              <Image src="/images/water-treatment-service.jpg" alt="Water treatment solutions by Wolgan" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F3C] via-[#0A1F3C]/80 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F3C] via-transparent to-transparent" />
@@ -111,18 +111,18 @@ function DesktopWaterTreatmentPage({ additionalContent }: { additionalContent?: 
               </div>
 
               <div className="reveal-up mb-12">
-                <h2 className="text-3xl lg:text-4xl font-medium text-white mb-4">Our Comprehensive Range</h2>
+                <h2 className="text-3xl lg:text-4xl font-medium text-white mb-4">Water Treatment Systems & Solutions</h2>
                 <div className="w-16 h-1 bg-gradient-to-r from-white to-transparent" />
               </div>
 
-              <div className="stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              <ul className="stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {solutions.map((item, i) => (
-                  <div key={i} className="stagger-item group flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/40 hover:bg-white/5 transition-all duration-300">
+                  <li key={i} className="stagger-item group flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/40 hover:bg-white/5 transition-all duration-300">
                     <CheckCircle2 className="w-6 h-6 text-white shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
                     <span className="text-white/80 group-hover:text-white transition-colors font-light leading-relaxed">{item}</span>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               {/* CTA */}
               <div className="reveal-up relative rounded-[3rem] overflow-hidden border border-white/10 mt-16">

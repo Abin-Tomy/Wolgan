@@ -29,7 +29,7 @@ const waterTreatmentSchema = {
   "@type": "Service",
   name: "Water Treatment Solutions",
   description:
-    "Comprehensive water treatment services including RO polishing, sewage treatment plants (STP), grey water recycling systems, and industrial water management across Qatar, UAE, and India.",
+    "Comprehensive water treatment services including RO polishing, sewage treatment plants (STP), grey water recycling systems, and industrial water management across Qatar and the United Arab Emirates.",
   url: "https://www.wolgan.co/services/water-treatment",
   provider: {
     "@type": "LocalBusiness",
@@ -39,7 +39,6 @@ const waterTreatmentSchema = {
     areaServed: [
       { "@type": "Country", name: "Qatar" },
       { "@type": "Country", name: "United Arab Emirates" },
-      { "@type": "Country", name: "India" },
     ],
     contactPoint: [
       {
