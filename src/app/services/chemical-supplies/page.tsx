@@ -4,28 +4,7 @@ import { ChemicalSuppliesPage } from "@/components/screens/ChemicalSuppliesPage"
 export const metadata: Metadata = {
   title: "Chemical Supplies | Water Treatment Chemicals | Wolgan",
   description:
-    "Wolgan supplies water treatment chemicals — corrosion inhibitors, scale control, biocides & commodity chemicals across Qatar, UAE & India.",
-  keywords: [
-    "water treatment chemical suppliers",
-    "commodity chemical suppliers",
-    "odour control chemical suppliers",
-    "antiscalant supplier Qatar",
-    "corrosion inhibitor supplier",
-    "scale control chemicals",
-    "biocide water treatment",
-    "sodium hypochlorite supplier",
-    "calcium hypochlorite supplier",
-    "chlorine treatment chemicals",
-    "disinfection chemicals",
-    "legionella control chemicals",
-    "sulphate reducing bacteria treatment",
-    "biofilm control",
-    "MIC treatment chemicals",
-    "water treatment chemicals UAE",
-    "water treatment chemicals Qatar",
-    "odour control",
-    "coagulant flocculant supplier",
-  ],
+    "Wolgan supplies water treatment chemicals, including corrosion inhibitors, scale control, biocides and commodity chemicals across Qatar and the UAE.",
   openGraph: {
     title: "Chemical Supplies | Wolgan",
     description:
@@ -50,7 +29,7 @@ const chemicalSchema = {
   "@type": "Service",
   name: "Chemical Supplies",
   description:
-    "Specialized water treatment chemical supply including corrosion inhibitors, scale control agents, microbiological growth control (biocides), and commodity chemicals for industrial and commercial systems across Qatar, UAE, and India.",
+    "Specialized water treatment chemical supply including corrosion inhibitors, scale control agents, microbiological growth control (biocides), and commodity chemicals for industrial and commercial systems across Qatar and the United Arab Emirates.",
   url: "https://www.wolgan.co/services/chemical-supplies",
   provider: {
     "@type": "LocalBusiness",
@@ -60,7 +39,6 @@ const chemicalSchema = {
     areaServed: [
       { "@type": "Country", name: "Qatar" },
       { "@type": "Country", name: "United Arab Emirates" },
-      { "@type": "Country", name: "India" },
     ],
     contactPoint: [
       {

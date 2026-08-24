@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MobileHeader } from "@/components/mobile/MobileHeader";
 import { MobileFooter } from "@/components/mobile/MobileFooter";
 import { gsap } from "@/lib/gsap";
@@ -67,7 +68,7 @@ export function MobileChemicalSuppliesPage({ additionalContent }: { additionalCo
           </h2>
           <div className="space-y-4 text-white/70 text-sm font-light leading-relaxed relative z-10">
             <p>
-              The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth. Wolgan thus employs cutting-edge methods of water treatment to produce water suitable for use. 
+              The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth. Wolgan thus employs cutting-edge methods of <Link href="/services/water-treatment" className="underline text-white/90 hover:text-white transition-colors">water treatment</Link> to produce water suitable for use. 
             </p>
             <p>
               In the course of treating water, suspended particles, viruses, fungi, bacteria, algae, and minerals are all eliminated. Both chemical and physical approaches are used in the procedure where Water treatment chemicals utilized in the process. Wolgan provides Water Treatment Chemicals with Corrosion Inhibitors, Scale Control, Microbiological Growth Control, and antisclant to name a few of the processes.
@@ -81,16 +82,16 @@ export function MobileChemicalSuppliesPage({ additionalContent }: { additionalCo
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#66B2E8]/20 to-[#66B2E8]/5 flex items-center justify-center border border-[#66B2E8]/30 shrink-0 shadow-[0_0_20px_rgba(102,178,232,0.15)]">
                 <Droplet className="w-6 h-6 text-[#66B2E8]" />
               </div>
-              <h2 className="text-2xl font-light text-white leading-snug">Water Treatment<br/><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc] text-xl">Speciality Chemicals</span></h2>
+              <h3 className="text-2xl font-light text-white leading-snug">Water Treatment<br/><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc] text-xl">Speciality Chemicals</span></h3>
             </div>
-            <div className="flex flex-col gap-3">
+            <ul aria-label="Water treatment speciality chemicals" className="flex flex-col gap-3">
               {waterTreatmentChemicals.map((item, i) => (
-                <div key={i} className="p-5 rounded-xl bg-white/5 border border-white/10 text-white/90 text-sm font-light flex items-center justify-between">
+                <li key={i} className="p-5 rounded-xl bg-white/5 border border-white/10 text-white/90 text-sm font-light flex items-center justify-between">
                   {item}
                   <div className="w-1.5 h-1.5 rounded-full bg-[#66B2E8]/50" />
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           <div className="mobile-fade-up">
@@ -98,16 +99,16 @@ export function MobileChemicalSuppliesPage({ additionalContent }: { additionalCo
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/20 shrink-0 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
                 <FlaskConical className="w-6 h-6 text-white/80" />
               </div>
-              <h2 className="text-2xl font-light text-white leading-snug">Commodity<br/><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc] text-xl">Chemicals</span></h2>
+              <h3 className="text-2xl font-light text-white leading-snug">Commodity<br/><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#66B2E8] to-[#a3d8fc] text-xl">Chemicals</span></h3>
             </div>
-            <div className="flex flex-col gap-3">
+            <ul aria-label="Commodity chemicals" className="flex flex-col gap-3">
               {commodityChemicals.map((item, i) => (
-                <div key={i} className="p-5 rounded-xl bg-white/5 border border-white/10 text-white/90 text-sm font-light flex items-center justify-between">
+                <li key={i} className="p-5 rounded-xl bg-white/5 border border-white/10 text-white/90 text-sm font-light flex items-center justify-between">
                   {item}
                   <div className="w-1.5 h-1.5 rounded-full bg-white/30" />
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </section>
