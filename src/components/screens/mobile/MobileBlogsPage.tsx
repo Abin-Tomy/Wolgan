@@ -105,7 +105,7 @@ export function MobileBlogsPage() {
         {/* HERO SECTION */}
         <section className="relative w-full min-h-[60vh] flex flex-col justify-end pb-16 px-6 bg-[#0A1F3C]">
           <div className="absolute inset-0 z-0">
-            <Image src="/images/about-deck-3.jpg" alt="Background" fill className="object-cover opacity-20" priority />
+            <Image src="/images/about-deck-3.jpg" alt="" fill className="object-cover opacity-20" priority />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F3C] via-[#0A1F3C]/80 to-[#0A1F3C]/40" />
           </div>
 
