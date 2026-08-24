@@ -12,44 +12,22 @@ export const metadata: Metadata = {
   // Production domain — update this when going live on a different domain
   metadataBase: new URL("https://www.wolgan.co"),
 
-  title: "Water Treatment Company in Qatar, UAE & India | MEP & Chemical Supply | Wolgan",
+  title: "Water Treatment & Chemical Supplies in UAE & Qatar | Wolgan",
 
   description:
-    "Wolgan delivers industrial water treatment, MEP installations & chemical supplies across Qatar, UAE & India. RO, STP, AMC experts. Contact us today.",
-
-  keywords: [
-    "water treatment company near me",
-    "industrial water treatment company",
-    "best water treatment plant supplier",
-    "water treatment chemical suppliers",
-    "commodity chemical suppliers",
-    "water treatment consultants",
-    "water treatment AMC providers",
-    "STP/ETP contractor near me",
-    "RO plant installation near me",
-    "water softener installation near me",
-    "odour control chemical suppliers",
-    "Water Treatment Qatar",
-    "Water Treatment UAE",
-    "Water Treatment India",
-    "MEP Installation Qatar",
-    "Chemical Supply UAE",
-    "Wolgan",
-  ],
+    "Wolgan provides industrial water treatment solutions and chemical supplies across the UAE and Qatar. Experts in RO, STP, and AMC. Contact us today.",
 
   openGraph: {
-    title: "Water Treatment Company in Qatar, UAE & India | MEP & Chemical Supply | Wolgan",
+    title: "Water Treatment & Chemical Supplies in UAE & Qatar | Wolgan",
 
     description:
-      "Wolgan delivers industrial water treatment, MEP installations & chemical supplies across Qatar, UAE & India. RO, STP, AMC experts.",
+      "Wolgan provides industrial water treatment solutions and chemical supplies across the UAE and Qatar. Experts in RO, STP, and AMC. Contact us today.",
 
     url: "https://www.wolgan.co",
 
     siteName: "Wolgan",
 
     locale: "en_GB",
-
-    alternateLocale: ["ar_QA", "ar_AE"],
 
     type: "website",
 
@@ -66,10 +44,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Water Treatment Company in Qatar, UAE & India | MEP & Chemical Supply | Wolgan",
+    title: "Water Treatment & Chemical Supplies in UAE & Qatar | Wolgan",
 
     description:
-      "Industrial water treatment, MEP installations & chemical supplies across Qatar, UAE & India. RO, STP, AMC experts.",
+      "Wolgan provides industrial water treatment solutions and chemical supplies across the UAE and Qatar. Experts in RO, STP, and AMC. Contact us today.",
 
     images: ["/images/og-image.jpg"],
   },
@@ -132,21 +110,21 @@ export default function RootLayout({
               contactPoint: [
                 {
                   "@type": "ContactPoint",
-                  telephone: "+974-444-298-18",
+                  telephone: "+974 7125 1155",
                   contactType: "customer service",
                   areaServed: "QA",
                 },
 
                 {
                   "@type": "ContactPoint",
-                  telephone: "+971-42987226",
+                  telephone: "+971 56 505 2820",
                   contactType: "customer service",
                   areaServed: "AE",
                 },
 
                 {
                   "@type": "ContactPoint",
-                  telephone: "+91-9823807882",
+                  telephone: "+91 9823807882",
                   contactType: "customer service",
                   areaServed: "IN",
                 },

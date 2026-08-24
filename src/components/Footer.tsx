@@ -78,12 +78,12 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
                     Water Treatment
                     <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
                   </Link>
-                  <Link href="/services/mep-installations" className="text-white/60 hover:text-white text-sm font-light transition-colors w-fit relative group">
-                    MEP Installations
-                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
                   <Link href="/services/chemical-supplies" className="text-white/60 hover:text-white text-sm font-light transition-colors w-fit relative group">
                     Chemical Supplies
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                  <Link href="/services/mep-installations" className="text-white/60 hover:text-white text-sm font-light transition-colors w-fit relative group">
+                    MEP Installations
                     <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 </div>

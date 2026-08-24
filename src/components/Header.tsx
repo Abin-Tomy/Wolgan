@@ -13,8 +13,8 @@ import { TransitionLink, usePageTransition } from "@/components/PageTransition";
 
 const serviceItems = [
   { name: "Water Treatment", href: "/services/water-treatment" },
-  { name: "MEP Installations", href: "/services/mep-installations" },
   { name: "Chemical Supplies", href: "/services/chemical-supplies" },
+  { name: "MEP Installations", href: "/services/mep-installations" },
 ];
 
 const downloadItems = [
