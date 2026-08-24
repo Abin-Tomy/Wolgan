@@ -41,6 +41,7 @@ export function RelatedServices({ currentService }: RelatedServicesProps) {
           <Link
             key={index}
             href={service.href}
+            aria-label={service.title === "Chemical Supplies" ? "Explore Chemical Supplies" : undefined}
             className="group w-full min-h-[220px] p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#66B2E8]/50 hover:bg-white/10 transition-all duration-300 flex flex-col justify-between"
           >
             <div>
@@ -50,7 +51,7 @@ export function RelatedServices({ currentService }: RelatedServicesProps) {
               </p>
             </div>
             <div className="flex items-center gap-2 text-[#66B2E8] text-sm font-semibold opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-transform">
-              Learn more <ArrowRight className="w-4 h-4" />
+              {service.title === "Chemical Supplies" ? "Explore Chemical Supplies" : "Learn more"} <ArrowRight className="w-4 h-4" />
             </div>
           </Link>
         ))}

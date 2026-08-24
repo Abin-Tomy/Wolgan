@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MobileHeader } from "@/components/mobile/MobileHeader";
 import { MobileFooter } from "@/components/mobile/MobileFooter";
 import { gsap } from "@/lib/gsap";
@@ -77,7 +78,7 @@ export function MobileWaterTreatmentPage({ additionalContent }: { additionalCont
               Over the years, Wolgan has successfully built a strong reputation for delivering reliable, efficient, and sustainable solutions. We are approved by major authorities, infrastructure organizations, and leading facilities across Qatar, reflecting our commitment to quality, safety, and regulatory compliance.
             </p>
             <p>
-              As a single-source provider, Wolgan offers complete turnkey services covering design, engineering, supply, installation, commissioning, operation, maintenance, and chemical treatment programs. Our solutions are customized to meet the specific requirements of commercial, industrial, residential, hospitality, healthcare, and government sectors.
+              As a single-source provider, Wolgan offers complete turnkey services covering design, engineering, supply, installation, commissioning, operation, maintenance, and <Link href="/services/chemical-supplies" className="underline text-white/90 hover:text-white transition-colors">chemical treatment programs</Link>. Our solutions are customized to meet the specific requirements of commercial, industrial, residential, hospitality, healthcare, and government sectors.
             </p>
           </div>
         </div>
@@ -87,7 +88,7 @@ export function MobileWaterTreatmentPage({ additionalContent }: { additionalCont
           <div className="w-12 h-0.5 bg-white" />
         </div>
 
-        <ul className="flex flex-col gap-3 relative z-10">
+        <ul aria-label="List of water treatment systems and solutions" className="flex flex-col gap-3 relative z-10">
           {solutions.map((item, i) => (
             <li key={i} className="mobile-fade-up flex items-start gap-4 p-5 rounded-xl bg-white/5 border border-white/10">
               <CheckCircle2 className="w-5 h-5 text-white shrink-0 opacity-80" />
