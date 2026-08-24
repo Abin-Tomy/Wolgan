@@ -74,9 +74,6 @@ export const metadata: Metadata = {
     images: ["/images/og-image.jpg"],
   },
 
-  alternates: {
-    canonical: "/",
-  },
 
   robots: {
     index: true,

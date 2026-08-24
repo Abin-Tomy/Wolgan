@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -11,6 +12,11 @@ import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
 import { MobileHome } from "@/components/mobile/MobileHome";
 import { LaptopHome } from "@/components/screens/laptop/LaptopHome";
 
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 const homeBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",

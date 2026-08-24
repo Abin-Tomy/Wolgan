@@ -12,6 +12,9 @@ export async function generateMetadata(props: BlogPostProps): Promise<Metadata> 
   return {
     title: `Blog Post: ${params.slug} | Wolgan`,
     description: `Read our latest insights on ${params.slug} at Wolgan Water Treatment.`,
+    alternates: {
+      canonical: `/blogs/${params.slug}`,
+    },
   };
 }
 
