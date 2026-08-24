@@ -43,7 +43,7 @@ export function MobileChemicalSuppliesPage({ additionalContent }: { additionalCo
 
       <section className="relative w-full min-h-[25vh] flex flex-col justify-end pb-6 px-6">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/chemical-supplies-services.webp" alt="Chemical Supplies" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
+          <Image src="/images/chemical-supplies-services.webp" alt="Water treatment chemical supplies by Wolgan" fill className="object-cover opacity-30 mix-blend-luminosity" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F3C] via-[#0A1F3C]/80 to-[#0A1F3C]/20" />
         </div>
 
