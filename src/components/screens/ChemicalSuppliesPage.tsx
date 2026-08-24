@@ -100,7 +100,7 @@ function DesktopChemicalSuppliesPage({ additionalContent }: { additionalContent?
                     The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth. Wolgan thus employs cutting-edge methods of <Link href="/services/water-treatment" className="underline hover:text-[#66B2E8] transition-colors">water treatment</Link> to produce water suitable for use. 
                   </p>
                   <p>
-                    In the course of treating water, suspended particles, viruses, fungi, bacteria, algae, and minerals are all eliminated. Both chemical and physical approaches are used in the procedure where Water treatment chemicals utilized in the process. Wolgan provides Water Treatment Chemicals with Corrosion Inhibitors, Scale Control, Microbiological Growth Control, and antisclant to name a few of the processes.
+                    In the course of treating water, suspended particles, viruses, fungi, bacteria, algae, and minerals are all eliminated. Both chemical and physical approaches are used in these procedures. Wolgan supplies a range of water treatment chemicals, including corrosion inhibitors, scale control, microbiological growth control, and antiscalants.
                   </p>
                 </div>
               </div>
