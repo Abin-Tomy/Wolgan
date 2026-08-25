@@ -13,15 +13,15 @@ const services = {
     href: "/services/water-treatment",
     description: "RO polishing, STP, and industrial water management.",
   },
-  mep: {
-    title: "MEP Installations",
-    href: "/services/mep-installations",
-    description: "High-precision mechanical, electrical, and plumbing execution.",
-  },
   chemical: {
     title: "Chemical Supplies",
     href: "/services/chemical-supplies",
     description: "Specialized water treatment and commodity chemicals.",
+  },
+  mep: {
+    title: "MEP Installations",
+    href: "/services/mep-installations",
+    description: "High-precision mechanical, electrical, and plumbing execution.",
   },
 };
 

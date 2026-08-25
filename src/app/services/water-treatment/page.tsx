@@ -43,13 +43,13 @@ const waterTreatmentSchema = {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+974-444-298-18",
+        telephone: "+974 7125 1155",
         contactType: "customer service",
         areaServed: "QA",
       },
       {
         "@type": "ContactPoint",
-        telephone: "+971-42987226",
+        telephone: "+971 56 505 2820",
         contactType: "customer service",
         areaServed: "AE",
       },
@@ -105,8 +105,7 @@ const waterTreatmentBreadcrumb = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wolgan.co" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://www.wolgan.co/services/water-treatment" },
-    { "@type": "ListItem", position: 3, name: "Water Treatment", item: "https://www.wolgan.co/services/water-treatment" },
+    { "@type": "ListItem", position: 2, name: "Water Treatment", item: "https://www.wolgan.co/services/water-treatment" },
   ],
 };
 

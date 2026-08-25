@@ -23,18 +23,18 @@ const SERVICES_DATA = [
     href: "/services/water-treatment",
   },
   {
-    title: "MEP Installations & Services",
-    desc: "WOLGAN MEP Division is dedicated to providing MEP solutions for the most demanding commercial and industrial facilities. We are committed to providing clients with the best possible solutions from initial design and engineering through installation and maintenance.",
-    img: deck2,
-    serviceImg: service2,
-    href: "/services/mep-installations",
-  },
-  {
     title: "Chemical Supplies",
     desc: "The demand for safe and clean water is constantly increasing, both to meet human needs and to support industrial activities. Current water resources are unlikely to meet the escalating needs due to urbanization and economic growth. Wolgan thus employs cutting-edge methods of water treatment to produce water suitable for use.",
     img: deck3,
     serviceImg: service3,
     href: "/services/chemical-supplies",
+  },
+  {
+    title: "MEP Installations & Services",
+    desc: "WOLGAN MEP Division is dedicated to providing MEP solutions for the most demanding commercial and industrial facilities. We are committed to providing clients with the best possible solutions from initial design and engineering through installation and maintenance.",
+    img: deck2,
+    serviceImg: service2,
+    href: "/services/mep-installations",
   },
 ];
 

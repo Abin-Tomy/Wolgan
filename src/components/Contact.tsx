@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { gsap } from "@/lib/gsap";
 import { ArrowUpRight } from "@/components/ui/ArrowUpRight";
 
@@ -85,11 +86,105 @@ export function Contact() {
   const turnstileRef = useRef<HTMLDivElement>(null);
   const [region, setRegion] = useState<"UAE" | "Qatar">("UAE");
   const [isMounted, setIsMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsMounted(true), 0);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const regionParam = params.get("region")?.toLowerCase();
+      if (regionParam === "qatar") {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setRegion("Qatar");
+      } else if (regionParam === "uae") {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setRegion("UAE");
+      }
+    }
+  }, []);
+
+  // ─── URL ?region= syncing ───────────────────────────────────────
+  // Dedicated /contact page: always write ?region= on region change.
+  useEffect(() => {
+    if (!isMounted || typeof window === "undefined") return;
+    if (pathname !== "/contact") return;
+
+    const url = new URL(window.location.href);
+    const currentParam = url.searchParams.get("region")?.toLowerCase();
+    const targetParam = region.toLowerCase();
+    if (currentParam !== targetParam) {
+      url.searchParams.set("region", targetParam);
+      window.history.replaceState(null, "", url.toString());
+    }
+  }, [region, isMounted, pathname]);
+
+  // Homepage (/): add ?region= when Contact section is visible,
+  // remove it when it scrolls out of view.
+  const isContactVisibleRef = useRef(false);
+
+  useEffect(() => {
+    if (!isMounted || typeof window === "undefined") return;
+    if (pathname !== "/") return;
+    if (!containerRef.current) return;
+
+    const setRegionParam = () => {
+      const url = new URL(window.location.href);
+      const targetParam = region.toLowerCase();
+      if (url.searchParams.get("region")?.toLowerCase() !== targetParam) {
+        url.searchParams.set("region", targetParam);
+        window.history.replaceState(null, "", url.toString());
+      }
+    };
+
+    const removeRegionParam = () => {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has("region")) {
+        url.searchParams.delete("region");
+        // Rebuild URL: keep pathname + hash, drop empty search
+        const clean = url.pathname + (url.searchParams.toString() ? `?${url.searchParams.toString()}` : "") + url.hash;
+        window.history.replaceState(null, "", clean);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          isContactVisibleRef.current = true;
+          setRegionParam();
+        } else {
+          isContactVisibleRef.current = false;
+          removeRegionParam();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => {
+      observer.disconnect();
+      // Safety: remove ?region= when observer is torn down on homepage
+      removeRegionParam();
+    };
+  }, [isMounted, pathname]); // intentionally excludes `region` — handled below
+
+  // When region toggles while the Contact section is visible on the homepage,
+  // update the URL immediately.
+  useEffect(() => {
+    if (!isMounted || typeof window === "undefined") return;
+    if (pathname !== "/" || !isContactVisibleRef.current) return;
+
+    const url = new URL(window.location.href);
+    const targetParam = region.toLowerCase();
+    if (url.searchParams.get("region")?.toLowerCase() !== targetParam) {
+      url.searchParams.set("region", targetParam);
+      window.history.replaceState(null, "", url.toString());
+    }
+  }, [region, isMounted, pathname]);
 
   // Form States
   const [firstName, setFirstName] = useState("");
@@ -119,8 +214,8 @@ export function Contact() {
 
   const interestOptions = [
     "Water Treatment Solutions",
-    "MEP Installations",
     "Specialized Chemical Supplies",
+    "MEP Installations",
     "Partnership Opportunities",
     "Other Inquiry"
   ];
@@ -323,9 +418,14 @@ export function Contact() {
                 <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#0A1F3C] to-[#112D55] flex items-center justify-center text-[#66B2E8] shrink-0">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className="text-white font-bold text-sm tracking-widest uppercase leading-none mb-1.5">UAE Office</p>
-                  <p className="text-gray-400 text-xs font-light">The European Business Centre, Dubai Investment Park, Dubai</p>
+                  <p className="text-gray-400 text-xs font-light mb-1.5">The European Business Centre, Dubai Investment Park, Dubai</p>
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 text-[0.65rem] font-medium text-gray-400">
+                    <a href="tel:+971565052820" className="hover:text-white transition-colors">+971 56 505 2820</a>
+                    <span className="text-gray-700">|</span>
+                    <a href="mailto:info@wolgan.ae" className="hover:text-white transition-colors">info@wolgan.ae</a>
+                  </div>
                 </div>
               </div>
               <div className="flex-1 min-h-0">
@@ -348,9 +448,14 @@ export function Contact() {
                 <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2D0B15] to-[#4A1122] flex items-center justify-center text-[#8A1538] shrink-0">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className="text-white font-bold text-sm tracking-widest uppercase leading-none mb-1.5">Qatar Office</p>
-                  <p className="text-gray-400 text-xs font-light">Building Al Handasa Street, B Ring Rd, Doha, Qatar</p>
+                  <p className="text-gray-400 text-xs font-light mb-1.5">Building Al Handasa Street, B Ring Rd, Doha, Qatar</p>
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 text-[0.65rem] font-medium text-gray-400">
+                    <a href="tel:+97471251155" className="hover:text-white transition-colors">+974 7125 1155</a>
+                    <span className="text-gray-700">|</span>
+                    <a href="mailto:info@wolgan.qa" className="hover:text-white transition-colors">info@wolgan.qa</a>
+                  </div>
                 </div>
               </div>
               <div className="flex-1 min-h-0">

@@ -17,6 +17,31 @@ export const metadata: Metadata = {
   },
 };
 
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Wolgan",
+  url: "https://www.wolgan.co/contact",
+  mainEntity: {
+    "@type": "Organization",
+    name: "Wolgan",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+974 7125 1155",
+        areaServed: "QA",
+        contactType: "customer service",
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+971 56 505 2820",
+        areaServed: "AE",
+        contactType: "customer service",
+      },
+    ],
+  },
+};
+
 const contactBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -29,6 +54,7 @@ const contactBreadcrumb = {
 export default function Page() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactBreadcrumb) }} />
       <ContactPage />
     </>

@@ -114,8 +114,8 @@ export function AboutSection({
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-12 w-full max-w-[560px]">
             {[
               "Water Treatment",
-              "MEP Installations",
               "Chemical Supplies",
+              "MEP Installations",
             ].map((item, i) => (
               <li
                 key={i}

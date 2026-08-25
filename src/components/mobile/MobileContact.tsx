@@ -66,6 +66,81 @@ export function MobileContact() {
     }
   }, [region, isMounted]);
 
+  // ─── URL ?region= syncing (mobile homepage) ────────────────────
+  // Read ?region= from URL on mount for deep-link support.
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const regionParam = params.get("region")?.toLowerCase();
+      if (regionParam === "qatar") {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setRegion("Qatar");
+      } else if (regionParam === "uae") {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setRegion("UAE");
+      }
+    }
+  }, []);
+
+  // Add ?region= when Contact section is visible, remove when it leaves.
+  const isContactVisibleRef = useRef(false);
+
+  useEffect(() => {
+    if (!isMounted || typeof window === "undefined") return;
+    if (!containerRef.current) return;
+
+    const setRegionParam = () => {
+      const url = new URL(window.location.href);
+      const targetParam = region.toLowerCase();
+      if (url.searchParams.get("region")?.toLowerCase() !== targetParam) {
+        url.searchParams.set("region", targetParam);
+        window.history.replaceState(null, "", url.toString());
+      }
+    };
+
+    const removeRegionParam = () => {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has("region")) {
+        url.searchParams.delete("region");
+        const clean = url.pathname + (url.searchParams.toString() ? `?${url.searchParams.toString()}` : "") + url.hash;
+        window.history.replaceState(null, "", clean);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          isContactVisibleRef.current = true;
+          setRegionParam();
+        } else {
+          isContactVisibleRef.current = false;
+          removeRegionParam();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => {
+      observer.disconnect();
+      removeRegionParam();
+    };
+  }, [isMounted]); // intentionally excludes `region` — handled below
+
+  // When region toggles while the Contact section is visible, update URL.
+  useEffect(() => {
+    if (!isMounted || typeof window === "undefined") return;
+    if (!isContactVisibleRef.current) return;
+
+    const url = new URL(window.location.href);
+    const targetParam = region.toLowerCase();
+    if (url.searchParams.get("region")?.toLowerCase() !== targetParam) {
+      url.searchParams.set("region", targetParam);
+      window.history.replaceState(null, "", url.toString());
+    }
+  }, [region, isMounted]);
+
   const activeColor = region === "UAE" ? "#66B2E8" : "#8A1538";
 
   return (

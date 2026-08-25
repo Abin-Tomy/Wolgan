@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/services/mep-installations`,
       lastModified: "2026-08-23",
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.8,
     },
     {
       url: `${base}/services/chemical-supplies`,

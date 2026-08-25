@@ -55,7 +55,7 @@ export function MobileAbout() {
             Core Expertise
           </p>
           <ul className="flex flex-col gap-4">
-            {["Water Treatment", "MEP Installations", "Chemical Supplies"].map((item, i) => (
+            {["Water Treatment", "Chemical Supplies", "MEP Installations"].map((item, i) => (
               <li key={i} className="flex items-center gap-4 text-sm font-semibold text-white/90">
                 <div className="w-8 h-8 shrink-0 rounded-full bg-[#66B2E8]/20 flex items-center justify-center">
                   <svg className="w-4 h-4 text-[#66B2E8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
