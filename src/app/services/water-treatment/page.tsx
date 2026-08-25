@@ -53,6 +53,12 @@ const waterTreatmentSchema = {
         contactType: "customer service",
         areaServed: "AE",
       },
+      {
+        "@type": "ContactPoint",
+        telephone: "+91 9823807882",
+        contactType: "customer service",
+        areaServed: "IN",
+      },
     ],
   },
   serviceType: "Water Treatment",

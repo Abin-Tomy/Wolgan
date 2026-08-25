@@ -3,6 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
+Disallow: /_team
 
 # ─── AI Search & Assistant Bots (allowed — these surface Wolgan to prospects) ──
 # OpenAI / ChatGPT

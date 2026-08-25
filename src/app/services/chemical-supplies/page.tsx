@@ -55,7 +55,7 @@ const chemicalSchema = {
       },
       {
         "@type": "ContactPoint",
-        telephone: "+91-9823807882",
+        telephone: "+91 9823807882",
         contactType: "customer service",
         areaServed: "IN",
       },

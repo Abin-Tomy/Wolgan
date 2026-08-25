@@ -128,9 +128,60 @@ const homeFAQ = {
   ],
 };
 
+const homeOrganization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Wolgan",
+  url: "https://www.wolgan.co",
+  logo: "https://www.wolgan.co/images/Wolgan-logo.png",
+  description:
+    "Dedicated water treatment company delivering smart, reliable, and performance-driven systems across Qatar, UAE, and India.",
+  foundingDate: "2020",
+  sameAs: [
+    "https://www.linkedin.com/company/wolgan-qatar/",
+    "https://www.instagram.com/wolgan.qa/",
+    "https://www.facebook.com/wolganqatar/"
+  ],
+  address: [
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "The European Business Centre, Dubai Investment Park",
+      "addressLocality": "Dubai",
+      "addressCountry": "AE"
+    },
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "Building Al Handasa Street, B Ring Rd",
+      "addressLocality": "Doha",
+      "addressCountry": "QA"
+    }
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+974 7125 1155",
+      contactType: "customer service",
+      areaServed: "QA",
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+971 56 505 2820",
+      contactType: "customer service",
+      areaServed: "AE",
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+91 9823807882",
+      contactType: "customer service",
+      areaServed: "IN",
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeOrganization) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeBreadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFAQ) }} />
       <SmoothScroll>

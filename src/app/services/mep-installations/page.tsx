@@ -5,25 +5,6 @@ export const metadata: Metadata = {
   title: "MEP Installations | Mechanical, Electrical & Plumbing | Wolgan",
   description:
     "Wolgan delivers high-precision MEP installation services — chilled water, HVAC, plumbing & energy transfer stations across Qatar & UAE.",
-  keywords: [
-    "MEP installation Qatar",
-    "MEP installation UAE",
-    "mechanical electrical plumbing contractor",
-    "chilled water system installation",
-    "chilled water flushing",
-    "chemical flushing",
-    "passivation",
-    "district cooling plant",
-    "energy transfer station",
-    "HVAC installation",
-    "plumbing contractor Qatar",
-    "desalination plant installation",
-    "pumping station installation",
-    "operation and maintenance MEP",
-    "water treatment plant installation",
-    "sulphate reducing bacteria",
-    "copper silver ionization plant",
-  ],
   openGraph: {
     title: "MEP Installations | Wolgan",
     description:
@@ -71,6 +52,12 @@ const mepSchema = {
         telephone: "+971 56 505 2820",
         contactType: "customer service",
         areaServed: "AE",
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+91 9823807882",
+        contactType: "customer service",
+        areaServed: "IN",
       },
     ],
   },

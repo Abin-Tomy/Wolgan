@@ -89,49 +89,7 @@ export default function RootLayout({
             <QuickActions />
           </PageTransitionProvider>
         </CurtainProvider>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
 
-              name: "Wolgan",
-
-              url: "https://www.wolgan.co",
-
-              logo: "https://www.wolgan.co/images/Wolgan-logo.png",
-
-              description:
-                "Dedicated water treatment company delivering smart, reliable, and performance-driven systems across Qatar, UAE, and India.",
-
-              foundingDate: "2020",
-
-              contactPoint: [
-                {
-                  "@type": "ContactPoint",
-                  telephone: "+974 7125 1155",
-                  contactType: "customer service",
-                  areaServed: "QA",
-                },
-
-                {
-                  "@type": "ContactPoint",
-                  telephone: "+971 56 505 2820",
-                  contactType: "customer service",
-                  areaServed: "AE",
-                },
-
-                {
-                  "@type": "ContactPoint",
-                  telephone: "+91 9823807882",
-                  contactType: "customer service",
-                  areaServed: "IN",
-                },
-              ],
-            }),
-          }}
-        />
         {/* Google Analytics — ID read from NEXT_PUBLIC_GA_MEASUREMENT_ID.
              Wrapped in Suspense because GoogleAnalytics uses useSearchParams()
              which requires a Suspense boundary in the App Router. */}
