@@ -196,13 +196,13 @@ export default function Home() {
             <WolganVectorBridge />
             {/* Clients and Partners */}
             <ClientsPartners />
-            {/* FAQ Section */}
-            <HomeFAQ />
             {/* Contact Section */}
             <Contact />
+            {/* FAQ Section */}
+            <HomeFAQ />
             {/* Footer */}
             <div className="relative z-20 -mt-1">
-              <Footer waveColor="#020610" />
+              <Footer waveColor="#0A1F3C" waveStroke="rgba(255,255,255,0.05)" />
             </div>
           </main>
         }

@@ -20,26 +20,6 @@ export function MobileFooter({ waveColor = "#f8f9fb", waveStroke }: MobileFooter
 
       <div className="px-6 relative z-10 mt-8">
         
-        {/* Newsletter */}
-        <div className="mb-12 border-b border-white/10 pb-10 text-center">
-          <h2 className="text-2xl font-light text-white leading-tight tracking-tight mb-3">
-            Stay ahead of the <span className="font-semibold italic text-white/90">curve.</span>
-          </h2>
-          <p className="text-[#88A4C4] text-xs font-light leading-relaxed mb-6">
-            Insights on engineering and market trends directly to your inbox.
-          </p>
-          <form className="relative w-full" onSubmit={(e) => e.preventDefault()}>
-            <input 
-              type="email" 
-              placeholder="Business Email" 
-              className="w-full bg-white/5 border border-white/10 rounded-full py-3 px-6 text-white text-sm placeholder-[#88A4C4] focus:outline-none focus:border-[#66B2E8]"
-              required
-            />
-            <button disabled aria-label="Subscribe" className="mt-4 w-full bg-white opacity-50 cursor-not-allowed text-[#0A1F3C] py-3 rounded-full font-bold tracking-widest uppercase text-[10px] transition-colors">
-              Subscribe
-            </button>
-          </form>
-        </div>
 
         <div className="flex flex-col gap-10 mb-12">
           {/* Brand */}

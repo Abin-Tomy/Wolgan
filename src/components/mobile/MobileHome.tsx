@@ -19,10 +19,10 @@ export function MobileHome() {
       <MobileCinematic />
       <MobileWhyChooseUs />
       <MobileClientsPartners />
-      <HomeFAQ />
       <MobileContact />
+      <HomeFAQ />
       <div className="relative z-20 -mt-1">
-        <MobileFooter waveColor="#020610" />
+        <MobileFooter waveColor="#0A1F3C" waveStroke="rgba(255,255,255,0.05)" />
       </div>
     </div>
   );
