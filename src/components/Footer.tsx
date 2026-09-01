@@ -172,6 +172,17 @@ export function Footer({ waveColor = "#f8f9fb", waveStroke }: FooterProps = {}) 
           <p className="text-white/40 text-[11px] uppercase tracking-widest font-semibold flex items-center gap-2">
             Pioneering Industrial Infrastructure
           </p>
+          <p className="text-white/40 text-[11px] uppercase tracking-widest font-semibold">
+            Developed by{" "}
+            <a
+              href="https://www.zyvextech.co/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#66B2E8]/70 hover:text-[#66B2E8] transition-colors duration-300"
+            >
+              Zyvex Tech LLP
+            </a>
+          </p>
         </div>
 
       </div>

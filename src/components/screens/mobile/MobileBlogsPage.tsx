@@ -1,9 +1,31 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MobileHeader } from "@/components/mobile/MobileHeader";
 import { MobileFooter } from "@/components/mobile/MobileFooter";
 import { gsap } from "@/lib/gsap";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const MOBILE_FEATURED_POST = {
+  slug: "industrial-water-treatment-system-guide",
+  category: "Water Treatment",
+  title: "Industrial Water Treatment: What Businesses Need to Know Before Choosing a System",
+  date: "Aug 21, 2026",
+  readTime: "8 min read",
+  image: "/images/industrial_water_treatment_hero.jpg",
+};
+
+const MOBILE_LATEST_POSTS = [
+  {
+    slug: "ro-membrane-scaling-causes-prevention",
+    category: "Water Treatment",
+    title: "RO Membrane Scaling: Causes, Warning Signs and Prevention",
+    date: "Aug 21, 2026",
+    readTime: "7 min read",
+    image: "/images/ro_membrane_skid_system.jpg",
+  },
+];
 
 const LINKEDIN_POSTS = [
   { id: 1, src: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392124039206703106?collapsed=1" },
@@ -82,6 +104,7 @@ function EmbedCard({
   );
 }
 
+
 export function MobileBlogsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -89,8 +112,8 @@ export function MobileBlogsPage() {
     const ctx = gsap.context(() => {
       gsap.from(".mobile-hero-anim", { y: 20, opacity: 0, duration: 1, ease: "power2.out", stagger: 0.1 });
 
-      gsap.utils.toArray(".mobile-fade-up").forEach((el: any) => {
-        gsap.from(el, { scrollTrigger: { trigger: el, start: "top 85%" }, y: 30, opacity: 0, duration: 0.8, ease: "power2.out" });
+      gsap.utils.toArray(".mobile-fade-up").forEach((el) => {
+        gsap.from(el as Element, { scrollTrigger: { trigger: el as Element, start: "top 85%" }, y: 30, opacity: 0, duration: 0.8, ease: "power2.out" });
       });
     }, containerRef);
 
@@ -130,7 +153,67 @@ export function MobileBlogsPage() {
           </svg>
         </div>
 
-        {/* SOCIAL POSTS */}
+        {/* ── NEW: Featured Post ── */}
+        <section className="bg-[#f8f9fb] pt-8 px-6 pb-6">
+          <Link href={`/blogs/${MOBILE_FEATURED_POST.slug}`} className="group relative rounded-2xl overflow-hidden block w-full h-full shadow-lg shadow-black/10">
+            <div className="relative w-full h-full min-h-[280px]">
+              <Image
+                src={MOBILE_FEATURED_POST.image}
+                alt={MOBILE_FEATURED_POST.title}
+                fill
+                sizes="100vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <span className="inline-flex items-center gap-1.5 mb-2">
+                  <span className="w-2 h-2 rounded-full bg-[#C17A3A] inline-block" />
+                  <span className="text-white/90 text-[10px] font-bold tracking-wide uppercase">{MOBILE_FEATURED_POST.category}</span>
+                </span>
+                <h2 className="text-white text-lg font-semibold leading-snug mb-2">
+                  {MOBILE_FEATURED_POST.title}
+                </h2>
+                <p className="text-white/60 text-xs">{MOBILE_FEATURED_POST.date} &nbsp;•&nbsp; {MOBILE_FEATURED_POST.readTime}</p>
+              </div>
+            </div>
+          </Link>
+        </section>
+
+        {/* ── NEW: Latest Posts ── */}
+        <section className="bg-[#f8f9fb] px-6 pb-8">
+          <h3 className="text-[#0A1F3C] text-base font-semibold mb-4">Latest post</h3>
+          <div className="flex flex-col gap-3">
+            {MOBILE_LATEST_POSTS.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blogs/${post.slug}`}
+                className="group flex items-start gap-3 p-2.5 rounded-xl bg-white shadow-sm shadow-black/5 border border-black/5"
+              >
+                <div className="relative w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[#0A1F3C] text-xs font-semibold leading-snug line-clamp-2">
+                    {post.title}
+                  </p>
+                  <p className="text-black/40 text-[11px] mt-1">{post.date} &nbsp;•&nbsp; {post.readTime}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+
+        {/* Divider */}
+        <div className="bg-[#f8f9fb] px-6 pb-4">
+          <div className="border-t border-black/10" />
+        </div>
         <section className="relative z-30 py-12 px-6 bg-[#f8f9fb] -mt-[1px]">
           <div className="mb-10 text-center mobile-fade-up">
             <h2 className="text-3xl font-light text-[#0A1F3C]">

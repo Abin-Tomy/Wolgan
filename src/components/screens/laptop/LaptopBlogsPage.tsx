@@ -1,11 +1,27 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Script from "next/script";
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { gsap } from "@/lib/gsap";
+
+/* ─────────── Shared Blog Data ─────────── */
+const LAPTOP_FEATURED_POST = {
+  slug: "industrial-water-treatment-system-guide",
+  category: "Water Treatment",
+  title: "Industrial Water Treatment: What Businesses Need to Know Before Choosing a System",
+  date: "May 2024",
+  readTime: "8 min read",
+  image: "/images/water-treatment.jpeg",
+};
+
+const LAPTOP_LATEST_POSTS: any[] = [];
+
+const LAPTOP_FOUNDERS_POSTS: any[] = [];
 
 const LINKEDIN_POSTS = [
   { id: 1, src: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392124039206703106?collapsed=1" },
@@ -52,10 +68,18 @@ export function LaptopBlogsPage() {
   }, []);
 
   const processInstagramEmbeds = () => {
-    if (typeof window !== "undefined" && (window as any).instgrm) {
-      (window as any).instgrm.Embeds.process();
+    if (typeof window !== "undefined" && (window as unknown as Record<string, { Embeds: { process: () => void } }>).instgrm) {
+      (window as unknown as Record<string, { Embeds: { process: () => void } }>).instgrm.Embeds.process();
     }
   };
+
+  const [foundersPage, setFoundersPage] = useState(0);
+  const FOUNDERS_PER_PAGE = 3;
+  const totalFoundersPages = Math.ceil(LAPTOP_FOUNDERS_POSTS.length / FOUNDERS_PER_PAGE);
+  const visibleFoundersPosts = LAPTOP_FOUNDERS_POSTS.slice(
+    foundersPage * FOUNDERS_PER_PAGE,
+    foundersPage * FOUNDERS_PER_PAGE + FOUNDERS_PER_PAGE
+  );
 
   return (
     <>
@@ -126,6 +150,132 @@ export function LaptopBlogsPage() {
               d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"
             />
           </svg>
+        </div>
+
+        {/* ── NEW: Featured Post + Latest Posts ── */}
+        <section className="bg-[#f8f9fb] pt-2 pb-14">
+          <div className="container mx-auto px-8 max-w-6xl">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-7">
+
+              {/* Featured */}
+              <Link href={`/blogs/${LAPTOP_FEATURED_POST.slug}`} className="group relative rounded-2xl overflow-hidden block w-full h-full shadow-xl shadow-black/10">
+                <div className="relative w-full h-full min-h-[380px]">
+                  <Image
+                    src={LAPTOP_FEATURED_POST.image}
+                    alt={LAPTOP_FEATURED_POST.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <span className="inline-flex items-center gap-1.5 mb-2.5">
+                      <span className="w-2 h-2 rounded-full bg-[#C17A3A] inline-block" />
+                      <span className="text-white/90 text-xs font-semibold tracking-wide">{LAPTOP_FEATURED_POST.category}</span>
+                    </span>
+                    <h2 className="text-white text-xl lg:text-2xl font-semibold leading-snug mb-2.5 group-hover:text-[#66B2E8] transition-colors duration-300">
+                      {LAPTOP_FEATURED_POST.title}
+                    </h2>
+                    <p className="text-white/60 text-sm">{LAPTOP_FEATURED_POST.date} &nbsp;•&nbsp; {LAPTOP_FEATURED_POST.readTime}</p>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Latest Posts sidebar */}
+              <div className="flex flex-col">
+                <h3 className="text-[#0A1F3C] text-lg font-semibold mb-4">Latest post</h3>
+                <div className="flex flex-col gap-3">
+                  {LAPTOP_LATEST_POSTS.map((post) => (
+                    <Link
+                      key={post.slug}
+                      href={`/blogs/${post.slug}`}
+                      className="group flex items-start gap-3 p-2.5 rounded-xl bg-white shadow-sm shadow-black/5 border border-black/5 hover:shadow-md transition-all duration-200"
+                    >
+                      <div className="relative w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          sizes="56px"
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[#0A1F3C] text-xs font-semibold leading-snug line-clamp-2 group-hover:text-[#66B2E8] transition-colors duration-200">
+                          {post.title}
+                        </p>
+                        <p className="text-black/40 text-[11px] mt-1">{post.date} &nbsp;•&nbsp; {post.readTime}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── NEW: Founders Corner ── */}
+        <section className="bg-[#f8f9fb] pb-16">
+          <div className="container mx-auto px-8 max-w-6xl">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-[#0A1F3C] text-2xl font-semibold">Founders corner</h2>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setFoundersPage((p) => Math.max(0, p - 1))}
+                  disabled={foundersPage === 0}
+                  aria-label="Previous founders posts"
+                  className="w-8 h-8 rounded-full border border-black/15 flex items-center justify-center text-[#0A1F3C] hover:bg-[#0A1F3C] hover:text-white hover:border-[#0A1F3C] transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => setFoundersPage((p) => Math.min(totalFoundersPages - 1, p + 1))}
+                  disabled={foundersPage === totalFoundersPages - 1}
+                  aria-label="Next founders posts"
+                  className="w-8 h-8 rounded-full border border-black/15 flex items-center justify-center text-[#0A1F3C] hover:bg-[#0A1F3C] hover:text-white hover:border-[#0A1F3C] transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {visibleFoundersPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blogs/${post.slug}`}
+                  className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm shadow-black/5 border border-black/5 hover:shadow-lg hover:shadow-black/10 transition-all duration-300"
+                >
+                  <div className="relative w-full h-44 overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col gap-2 flex-1">
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-[#C17A3A] inline-block" />
+                      <span className="text-[#C17A3A] text-xs font-semibold tracking-wide">{post.category}</span>
+                    </span>
+                    <h3 className="text-[#0A1F3C] text-sm font-bold leading-snug group-hover:text-[#66B2E8] transition-colors duration-200">
+                      {post.title}
+                    </h3>
+                    <p className="text-black/50 text-xs leading-relaxed line-clamp-3 flex-1">{post.excerpt}</p>
+                    <p className="text-black/35 text-[11px] mt-1">{post.date} &nbsp;•&nbsp; {post.readTime}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Divider before Live Feeds ── */}
+        <div className="bg-[#f8f9fb] pb-4">
+          <div className="container mx-auto px-8 max-w-6xl">
+            <div className="border-t border-black/10" />
+          </div>
         </div>
 
         {/* --- LIVE FEEDS --- */}

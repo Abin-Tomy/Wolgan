@@ -3,12 +3,34 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Script from "next/script";
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 import { gsap } from "@/lib/gsap";
 import { ResponsiveWrapper } from "@/components/ResponsiveWrapper";
 import { MobileBlogsPage } from "./mobile/MobileBlogsPage";
+
+/* ─────────── Blog Data ─────────── */
+const FEATURED_POST = {
+  slug: "industrial-water-treatment-system-guide",
+  category: "Water Treatment",
+  title: "Industrial Water Treatment: What Businesses Need to Know Before Choosing a System",
+  date: "Aug 21, 2026",
+  readTime: "8 min read",
+  image: "/images/industrial_water_treatment_hero.jpg",
+};
+
+const LATEST_POSTS = [
+  {
+    slug: "ro-membrane-scaling-causes-prevention",
+    category: "Water Treatment",
+    title: "RO Membrane Scaling: Causes, Warning Signs and Prevention",
+    date: "Aug 21, 2026",
+    readTime: "7 min read",
+    image: "/images/ro_membrane_skid_system.jpg",
+  },
+];
 
 const LINKEDIN_POSTS = [
   { id: 1, src: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392124039206703106?collapsed=1" },
@@ -55,10 +77,12 @@ function DesktopBlogsPage() {
   }, []);
 
   const processInstagramEmbeds = () => {
-    if (typeof window !== "undefined" && (window as any).instgrm) {
-      (window as any).instgrm.Embeds.process();
+    if (typeof window !== "undefined" && (window as unknown as Record<string, { Embeds: { process: () => void } }>).instgrm) {
+      (window as unknown as Record<string, { Embeds: { process: () => void } }>).instgrm.Embeds.process();
     }
   };
+
+
 
   return (
     <>
@@ -129,6 +153,77 @@ function DesktopBlogsPage() {
               d="M0,0 L1440,0 L1440,160 C1080,280 360,40 0,160 Z"
             />
           </svg>
+        </div>
+
+        {/* ── NEW: Featured Post + Latest Posts ── */}
+        <section className="bg-[#f8f9fb] pt-4 pb-16">
+          <div className="container mx-auto px-6 md:px-14 max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
+
+              {/* Featured (left) */}
+              <Link href={`/blogs/${FEATURED_POST.slug}`} className="group relative rounded-2xl overflow-hidden block w-full h-full shadow-xl shadow-black/10">
+                <div className="relative w-full h-full min-h-[420px]">
+                  <Image
+                    src={FEATURED_POST.image}
+                    alt={FEATURED_POST.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 65vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <span className="inline-flex items-center gap-1.5 mb-3">
+                      <span className="w-2 h-2 rounded-full bg-[#C17A3A] inline-block" />
+                      <span className="text-white/90 text-xs font-semibold tracking-wide">{FEATURED_POST.category}</span>
+                    </span>
+                    <h2 className="text-white text-2xl md:text-3xl font-semibold leading-snug mb-3 group-hover:text-[#66B2E8] transition-colors duration-300">
+                      {FEATURED_POST.title}
+                    </h2>
+                    <p className="text-white/60 text-sm">{FEATURED_POST.date} &nbsp;•&nbsp; {FEATURED_POST.readTime}</p>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Latest Posts sidebar (right) */}
+              <div className="flex flex-col">
+                <h3 className="text-[#0A1F3C] text-xl font-semibold mb-5">Latest post</h3>
+                <div className="flex flex-col gap-4">
+                  {LATEST_POSTS.map((post) => (
+                    <Link
+                      key={post.slug}
+                      href={`/blogs/${post.slug}`}
+                      className="group flex items-start gap-4 p-3 rounded-xl bg-white shadow-sm shadow-black/5 border border-black/5 hover:shadow-md transition-all duration-200"
+                    >
+                      <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          sizes="64px"
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[#0A1F3C] text-sm font-semibold leading-snug line-clamp-2 group-hover:text-[#66B2E8] transition-colors duration-200">
+                          {post.title}
+                        </p>
+                        <p className="text-black/40 text-xs mt-1.5">{post.date} &nbsp;•&nbsp; {post.readTime}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* ── Divider before Live Feeds ── */}
+        <div className="bg-[#f8f9fb] pb-4">
+          <div className="container mx-auto px-6 md:px-14 max-w-7xl">
+            <div className="border-t border-black/10" />
+          </div>
         </div>
 
         {/* --- LIVE FEEDS --- */}
