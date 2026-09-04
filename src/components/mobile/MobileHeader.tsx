@@ -211,8 +211,8 @@ export function MobileHeader() {
               </ul>
             </div>
 
-            {/* Downloads */}
-            <div className="flex flex-col gap-4 mt-2">
+            {/* Downloads - Temporarily hidden */}
+            {/* <div className="flex flex-col gap-4 mt-2">
               <span className="text-xs uppercase tracking-[0.2em] font-medium text-white/40 pl-2">Downloads</span>
               <div className="grid grid-cols-1 gap-3">
                 {downloadItems.map((item) => (
@@ -231,7 +231,7 @@ export function MobileHeader() {
                   </a>
                 ))}
               </div>
-            </div>
+            </div> */}
 
           </div>
         </div>
